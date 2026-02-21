@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Noël Enchanté | Yearbook 25-26</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+    <style>
+        /* Styles spécifiques pour dynamiser la page Noël */
+        .noel-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 30px 0; }
+        .festivite-card { background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px; text-align: left; border: 1px solid rgba(173, 216, 230, 0.3); transition: 0.3s; }
+        .festivite-card:hover { transform: translateY(-8px); border-color: #ade8f4; box-shadow: 0 10px 20px rgba(173, 216, 230, 0.2); }
+        .mini-img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.4); }
+        .main-img-noel { width: 100%; border-radius: 20px; margin-bottom: 30px; border: 2px solid rgba(255,255,255,0.5); box-shadow: 0 0 30px rgba(0,0,0,0.4); }
+        .noel-citation { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; color: #ade8f4; padding: 20px; border-top: 1px solid #ade8f4; border-bottom: 1px solid #ade8f4; margin: 25px 0; line-height: 1.6; }
+    </style>
+</head>
+<body class="theme-noel">
+    <nav class="navbar">
+        <div class="logo gold-text">Noël Enchanté</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="success_story.html">Success Story</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="glass-card">
+            <h1 class="gold-text">❄️ La Douceur d'un Noël Givré</h1>
+            
+            <div class="noel-citation">
+                "Noël n'est pas un jour, c'est un état d'esprit." <br>
+                <small>— Kris Kringle</small>
+            </div>
+
+            <p>Cette année, le collège a plongé dans la magie d'un Noël aux couleurs hivernales. Loin des festivités traditionnelles, nous avons créé une ambiance de sérénité et d'émerveillement, où chaque détail scintillait de douceur.</p>
+
+            <img src="https://images.unsplash.com/photo-1542385191-c274ee79496a?q=80&w=1000" class="main-img-noel" alt="Sapin de Noël enneigé">
+
+            <h2 class="gold-text" style="margin-top: 40px;">Nos Moments Magiques</h2>
+            
+            <div class="noel-grid">
+                <div class="festivite-card">
+                    <img src="https://images.unsplash.com/photo-1579737151241-d85108f9f743?q=80&w=500" class="mini-img" alt="Enfants décorant le sapin">
+                    <h4 class="gold-text">L'Arbre des Lumières</h4>
+                    <p>Ensemble, les élèves ont décoré un majestueux sapin d'argent et de bleu, symbole de nos vœux pour la paix.</p>
+                </div>
+                <div class="festivite-card">
+                    <img src="https://images.unsplash.com/photo-1514933651105-0646ef325880?q=80&w=500" class="mini-img" alt="Choeur d'enfants">
+                    <h4 class="gold-text">Chants Givrées</h4>
+                    <p>La chorale du collège a interprété des mélodies hivernales, réchauffant les cœurs avec des voix cristallines.</p>
+                </div>
+                <div class="festivite-card">
+                    <img src="https://images.unsplash.com/photo-1513217436049-7c85848c7c97?q=80&w=500" class="mini-img" alt="Atelier de fabrication de flocons">
+                    <h4 class="gold-text">Atelier Flocons d'Espoir</h4>
+                    <p>Les plus petits ont créé des flocons de neige scintillants, chacun portant un message de bonheur.</p>
+                </div>
+                <div class="festivite-card">
+                    <img src="https://images.unsplash.com/photo-1509930925725-d918b8f2d650?q=80&w=500" class="mini-img" alt="Parents et enfants autour d'un goûter">
+                    <h4 class="gold-text">Goûter Enchanté</h4>
+                    <p>Un moment convivial où parents et enfants ont partagé des douceurs dans une ambiance feutrée et chaleureuse.</p>
+                </div>
+            </div>
+
+            <div class="noel-citation">
+                "Le meilleur de tous les cadeaux autour de n'importe quel sapin de Noël est la présence d'une famille heureuse." <br>
+                <small>— Burton Hills</small>
+            </div>
+
+            <p style="margin-top: 30px; font-style: italic;">Ce Noël 2025 restera gravé dans nos mémoires comme une parenthèse de pure magie et de tendresse.</p>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

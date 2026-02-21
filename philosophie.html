@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Fête des Philosophes | Yearbook 25-26</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+    <style>
+        .philo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 30px 0; }
+        .quote-box { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.3rem; color: #fcf6ba; padding: 25px; border-top: 1px solid #fcf6ba; border-bottom: 1px solid #fcf6ba; margin: 30px 0; line-height: 1.6; }
+        .atelier-card { background: rgba(0,0,0,0.4); padding: 20px; border-radius: 15px; text-align: left; border: 1px solid rgba(252, 246, 186, 0.1); transition: 0.3s; }
+        .atelier-card:hover { transform: translateY(-10px); border-color: #fcf6ba; box-shadow: 0 10px 20px rgba(184, 134, 11, 0.3); }
+        .mini-img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px; margin-bottom: 15px; border: 1px solid #fcf6ba; }
+        .main-img-philo { width: 100%; border-radius: 20px; margin-bottom: 30px; border: 2px solid #fcf6ba; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
+    </style>
+</head>
+<body class="theme-philo">
+    <nav class="navbar">
+        <div class="logo gold-text">L'Agora de l'École</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="success_story.html">Success Story</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <div class="glass-card">
+            <h1 class="gold-text">🏛️ Le Grand Banquet des Philosophes</h1>
+            
+            <div class="quote-box">
+                "Le bonheur est de continuer à désirer ce qu'on possède." <br>
+                <small>— Saint Augustin</small>
+            </div>
+
+            <p>Une journée majestueuse où l'esprit critique et la sagesse ont envahi les couloirs du collège. Nos élèves, vêtus de toges blanches, ont recréé l'ambiance des grandes académies antiques pour débattre du futur et de la paix.</p>
+
+            <img src="https://images.unsplash.com/photo-1549845003-328bc2929546?q=80&w=1000" class="main-img-philo" alt="Buste de philosophe et livres">
+
+            <h2 class="gold-text">Nos Ateliers du Savoir</h2>
+            
+            <div class="philo-grid">
+                <div class="atelier-card">
+                    <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=500" class="mini-img" alt="Bibliothèque ancienne">
+                    <h4 class="gold-text">La Bibliothèque Interdite</h4>
+                    <p>Recherche et analyse des grands textes de Platon et Socrate pour comprendre les racines de la justice.</p>
+                </div>
+                <div class="atelier-card">
+                    <img src="https://images.unsplash.com/photo-1580894732230-2850ae33391d?q=80&w=500" class="mini-img" alt="Statue grecque">
+                    <h4 class="gold-text">L'Éloquence en Toge</h4>
+                    <p>Concours de discours où chaque élève devait défendre une valeur humaine devant un jury de sages.</p>
+                </div>
+                <div class="atelier-card">
+                    <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?q=80&w=500" class="mini-img" alt="Vieux parchemins">
+                    <h4 class="gold-text">Le Scriptorium</h4>
+                    <p>Atelier de calligraphie à la plume sur parchemin pour immortaliser les pensées nées durant la journée.</p>
+                </div>
+                <div class="atelier-card">
+                    <img src="https://images.unsplash.com/photo-1461360370896-922624d12aa1?q=80&w=500" class="mini-img" alt="Agora antique">
+                    <h4 class="gold-text">L'Agora des Petits</h4>
+                    <p>Même en maternelle, on se questionne ! Un cercle de parole sur le thème "Qu'est-ce qu'un ami ?".</p>
+                </div>
+            </div>
+
+            <div class="quote-box">
+                "L'ignorant affirme, le savant doute, le sage réfléchit." <br>
+                <small>— Aristote</small>
+            </div>
+
+            <p style="margin-top: 30px; font-style: italic;">Cette fête nous rappelle que l'éducation est la clé pour ouvrir toutes les portes de la pensée libre.</p>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
