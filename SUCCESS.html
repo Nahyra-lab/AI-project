@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Succes Story | Inspiring Minds</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+      
+ :root { --gold: #D4AF37; --dark-blue: #0A192F; }
+        body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; background-color: #fcfcfc; }
+        h1, h2, .font-serif { font-family: 'Playfair Display', serif; }
+        .section-content { display: none; }
+        .section-content.active { display: block; animation: fadeIn 0.5s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .card-story:hover .photo-after { opacity: 1; }
+        .photo-after { opacity: 0; transition: 0.6s ease-in-out; }
+        .nav-active { border-bottom: 2px solid var(--gold); color: var(--gold) !important; }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <nav class="fixed w-full z-50 bg-white shadow-sm px-6 py-4 flex justify-between items-center">
+        <div class="text-2xl font-bold tracking-tighter text-blue-900">SUCCES <span class="text-yellow-600 font-serif italic">Story</span></div>
+        <div class="hidden md:flex space-x-6 text-sm font-semibold uppercase tracking-wider">
+            <button onclick="showSection('accueil')" class="nav-btn nav-active hover:text-yellow-600 transition">Accueil</button>
+            <button onclick="showSection('stories')" class="nav-btn hover:text-yellow-600 transition">The Stories</button>
+            <button onclick="showSection('orientation')" class="nav-btn hover:text-yellow-600 transition">Orientation</button>
+            <button onclick="showSection('opportunities')" class="nav-btn hover:text-yellow-600 transition">Opportunities</button>
+            <button onclick="showSection('improving')" class="nav-btn hover:text-yellow-600 transition">Improving</button>
+        </div>
+    </nav>
+
+    <main id="accueil" class="section-content active pt-32 px-6">
+        <div class="max-w-5xl mx-auto text-center">
+            <h1 class="text-6xl md:text-8xl text-blue-900 mb-8">Meeting between <br><span class="text-yellow-600 italic">inspired minds</span></h1>
+            <div class="bg-white p-8 rounded-2xl shadow-xl border-l-8 border-yellow-600 mb-12">
+                <h2 class="text-2xl font-bold mb-4">C'est quoi Succes Story ?</h2>
+                <p class="text-gray-600 leading-relaxed text-lg">
+                    Succes Story est une plateforme dédiée à l'empowerment des jeunes filles. Ce projet est né du constat que voir le chemin parcouru par d'autres est le meilleur moteur pour l'ambition. Nous voulons briser les plafonds de verre en montrant que chaque leader d'aujourd'hui était une écolière rêveuse hier.
+                </p>
+            </div>
+            
+            <div class="py-12">
+                <p class="text-xl mb-6 font-semibold">Envie de rencontrer les créatrices du projet ?</p>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-yellow-500">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=1" class="w-24 h-24 mx-auto rounded-full mb-4 bg-slate-100">
+                        <h3 class="font-bold">AUGUSTE Elga J.</h3>
+                        <p class="text-sm italic text-gray-500">"Passionnée par l'éducation et le digital."</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-yellow-500">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=2" class="w-24 h-24 mx-auto rounded-full mb-4 bg-slate-100">
+                        <h3 class="font-bold">MARCEL Jardlyne</h3>
+                        <p class="text-sm italic text-gray-500">"Convaincue que chaque fille a un talent caché."</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-yellow-500">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=3" class="w-24 h-24 mx-auto rounded-full mb-4 bg-slate-100">
+                        <h3 class="font-bold">MESIDOR Carmita</h3>
+                        <p class="text-sm italic text-gray-500">"Ici pour construire le futur, pas à pas."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="stories" class="section-content pt-32 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-blue-900 mb-4 font-serif italic">The Stories</h2>
+            <p class="mb-10 text-gray-500">Découvrez les parcours inspirants à travers nos deux catégories :</p>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-bold border-b-2 border-yellow-500 pb-2">🌟 Passion</h3>
+                    <div class="flex gap-4">
+                        <button class="bg-white border-2 border-yellow-600 px-4 py-1 rounded-full text-sm font-bold hover:bg-yellow-600 hover:text-white">Danse</button>
+                        <button class="bg-white border-2 border-yellow-600 px-4 py-1 rounded-full text-sm font-bold hover:bg-yellow-600 hover:text-white">Musique</button>
+                    </div>
+                    <div class="card-story bg-white rounded-2xl overflow-hidden shadow-lg group">
+                        <div class="relative h-64">
+                            <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=400&q=80" class="absolute inset-0 w-full h-full object-cover" alt="Enfant">
+                            <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&w=400&q=80" class="photo-after absolute inset-0 w-full h-full object-cover" alt="Aujourd'hui">
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-bold text-yellow-600 uppercase">Danse</span>
+                            <h4 class="text-xl font-bold mt-1">L'histoire de Sarah</h4>
+                            <p class="text-sm text-gray-600 mt-4"><strong>Parcours :</strong> Du petit studio de quartier aux scènes internationales...</p>
+                            <div class="mt-4 p-3 bg-blue-50 border-l-4 border-blue-900 italic text-sm">"Conseil : Travaillez votre technique, mais ne perdez jamais votre âme."</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-bold border-b-2 border-blue-900 pb-2">🎓 Vie Universitaire</h3>
+                    <div class="flex flex-wrap gap-2 text-xs font-bold">
+                        <span class="bg-blue-100 text-blue-900 px-3 py-1 rounded">Sciences de la Vie</span>
+                        <span class="bg-blue-100 text-blue-900 px-3 py-1 rounded">Sciences Juridiques</span>
+                        <span class="bg-blue-100 text-blue-900 px-3 py-1 rounded">Sciences Économiques</span>
+                    </div>
+                    <div class="card-story bg-white rounded-2xl overflow-hidden shadow-lg">
+                        <div class="relative h-64">
+                            <img src="https://images.unsplash.com/photo-1491013516836-7dbf414a2728?auto=format&fit=crop&w=400&q=80" class="absolute inset-0 w-full h-full object-cover" alt="Enfant">
+                            <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=400&q=80" class="photo-after absolute inset-0 w-full h-full object-cover" alt="Aujourd'hui">
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-bold text-blue-800 uppercase">Juridique</span>
+                            <h4 class="text-xl font-bold mt-1">Maître Elena M.</h4>
+                            <p class="text-sm text-gray-600 mt-4"><strong>Parcours :</strong> Des heures à la bibliothèque universitaire aux plaidoiries en cour d'assises...</p>
+                            <div class="mt-4 p-3 bg-yellow-50 border-l-4 border-yellow-500 italic text-sm">"Conseil : La rigueur est votre meilleure alliée en droit."</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="orientation" class="section-content pt-32 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-12">Orientation Professionnelle</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="p-8 bg-white border border-slate-200 rounded-3xl hover:border-yellow-500 transition shadow-sm group">
+                    <div class="w-12 h-12 bg-red-100 text-red-600 flex items-center justify-center rounded-xl mb-6 text-2xl">⚕️</div>
+                    <h3 class="text-2xl font-bold mb-4">Médecine</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-6">Implique de longues études (7-10 ans), une grande résilience émotionnelle et une volonté d'aider son prochain. Un métier de passion et de dévouement.</p>
+                    <a href="#" class="text-yellow-600 font-bold hover:underline">Fiche complète →</a>
+                </div>
+                <div class="p-8 bg-white border border-slate-200 rounded-3xl hover:border-yellow-500 transition shadow-sm">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 flex items-center justify-center rounded-xl mb-6 text-2xl">🚀</div>
+                    <h3 class="text-2xl font-bold mb-4">Ingénieure Aérospatiale</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-6">Conception de satellites, fusées et avions. Nécessite une excellente maîtrise des mathématiques et de la physique. Un métier pour celles qui visent les étoiles.</p>
+                    <a href="#" class="text-yellow-600 font-bold hover:underline">Fiche complète →</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="opportunities" class="section-content pt-32 px-6">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-4xl font-bold mb-10 text-yellow-600">Opportunities</h2>
+            <div class="grid gap-6">
+                <div class="flex items-center p-6 bg-white rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
+                    <div class="flex-shrink-0 w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center text-3xl">🤖</div>
+                    <div class="ml-6">
+                        <h4 class="text-xl font-bold">Cours de Robotique (Eté 2024)</h4>
+                        <p class="text-gray-500 text-sm italic">Ouvert aux filles de 14 à 18 ans - Gratuit sur inscription.</p>
+                    </div>
+                </div>
+                <div class="flex items-center p-6 bg-white rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
+                    <div class="flex-shrink-0 w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-3xl">📝</div>
+                    <div class="ml-6">
+                        <h4 class="text-xl font-bold">Concours National d'Éloquence</h4>
+                        <p class="text-gray-500 text-sm italic">Thème : Le futur de l'éducation. Gagnez une bourse d'études.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="improving" class="section-content pt-32 px-6 pb-20">
+        <div class="max-w-4xl mx-auto bg-blue-950 text-white rounded-[3rem] p-12 shadow-2xl">
+            <h2 class="text-3xl font-bold mb-4">Improving our system</h2>
+            <p class="mb-10 text-blue-200">Ta voix compte. Dis-nous ce qu'il manque à ton école pour que tu puisses t'épanouir.</p>
+            
+            <form class="grid gap-6">
+                <input type="text" placeholder="Ton nom (optionnel)" class="bg-white/10 border border-white/20 p-4 rounded-xl outline-none focus:border-yellow-500 transition">
+                <textarea rows="4" placeholder="Quelles suggestions as-tu pour améliorer les compétences scolaires des filles ?" class="bg-white/10 border border-white/20 p-4 rounded-xl outline-none focus:border-yellow-500 transition"></textarea>
+                <button type="submit" class="bg-yellow-500 text-blue-950 font-bold py-4 rounded-xl hover:bg-yellow-400 transition uppercase tracking-widest">Envoyer mes conseils</button>
+            </form>
+
+            <div class="mt-16 pt-8 border-t border-white/10">
+                <h3 class="text-xl font-bold mb-4">Vos suggestions récentes 💡</h3>
+                <div class="space-y-4">
+                    <div class="p-4 bg-white/5 rounded-lg italic text-sm">"Plus de clubs de programmation dès le collège." - Inès, 15 ans</div>
+                    <div class="p-4 bg-white/5 rounded-lg italic text-sm">"Des séances de mentorat avec des femmes professionnelles une fois par mois." - Clara, Terminale</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-12 border-t mt-20 text-center text-gray-400 text-sm">
+        <p>© 2026 Succes Story. Pour les leaders de demain.Promotion NEXORA❤️</p>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            // Masquer toutes les sections
+            document.querySelectorAll('.section-content').forEach(section => {
+                section.classList.remove('active');
+            });
+            // Afficher la section demandée
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Mettre à jour le menu
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('nav-active');
+                if(btn.textContent.toLowerCase().includes(sectionId.substring(0,4))) {
+                    btn.classList.add('nav-active');
+                }
+            });
+            // Retour en haut de page
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
