@@ -36,6 +36,23 @@ document.addEventListener("DOMContentLoaded", function() {
             const text = document.getElementById('user-message').value;
             const isAnon = document.getElementById('is-anonymous').checked;
 
+            const bannedWords = [
+            "idiot", "stupide", "con", "crétin", "imbécile", 
+            "nul", "débile", "abruti", "sale", "merde",
+            "pute", "salope", "connard", "bête", "raciste", 
+            "homophobe", "haine", "violence", "terroriste","fuck","bitch","massisi","madivin"
+        ];
+
+for (let word of bannedWords) {
+    if (text.toLowerCase().includes(word)) {
+        alert("Votre message contient un mot interdit et ne peut pas être publié.");
+        return;
+    }
+}
+
+
+
+
             const newMsg = {
                 name: (isAnon || name === "") ? "Anonyme ✨" : name,
                 text: text,
