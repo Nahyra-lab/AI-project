@@ -9,103 +9,102 @@ body {
     background-attachment: fixed;
 }
 
-/* --- RIDEAU CINÉMA RÉALISTE --- */
-#curtain-container {
+
+
+/* --- TEXTE DORÉ --- */
+.gold-text {
+    background: l/* =========================
+   RIDEAU CINÉMA RÉALISTE
+========================= */
+
+#curtain-container{
     position: fixed;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 100vh;
     display: flex;
     z-index: 9999;
     overflow: hidden;
+    background: black;
 }
 
-/* Les deux côtés du rideau */
-.curtain-side {
+/* Les deux parties du rideau */
+.curtain-side{
     width: 50%;
     height: 100%;
 
-    background-image: url('/* --- RIDEAU CINÉMA RÉALISTE --- */
-#curtain-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    z-index: 9999;
-    overflow: hidden;
-}
-
-/* Les deux côtés du rideau */
-.curtain-side {
-    width: 50%;
-    height: 100%;
-
-    background-image: url('https://www.bing.com/images/search?view=detailV2&ccid=JJ2sygT6&id=2FC80F598473CC7F216A03BD365F93CB2185EC17&thid=OIP.JJ2sygT6YW9dIQq6YVRhQwHaDd&mediaurl=https%3a%2f%2fimg.freepik.com%2fvecteurs-libre%2frideau-bleu-pour-scene-theatre-cinema_107791-19129.jpg%3ft%3dst%3d1752068599%7eexp%3d1752072199%7ehmac%3dbda7fe068171333175f9c84ecdf5664b325b1c3b3200fe235e4b2f902bb1883a%26w%3d2000&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.249dacca04fa616f5d210aba61546143%3frik%3dF%252byFIcuTXza9Aw%26pid%3dImgRaw%26r%3d0&exph=933&expw=2000&q=rideau+de+cinema+bleu&mode=overlay&FORM=IQFRBA&ck=15F11D9FBABD335A4C71A58074148D44&selectedIndex=0&idpp=serp');
+    background-image:
+    linear-gradient(
+        to right,
+        rgba(0,0,0,0.35),
+        rgba(255,255,255,0.08),
+        rgba(0,0,0,0.35)
+    ),
+    url("https://images.unsplash.com/photo-1503095396549-807759245b35?q=80&w=1200&auto=format&fit=crop");
 
     background-size: cover;
     background-repeat: no-repeat;
-');
+    background-position: center;
 
-    background-size: cover;
-    background-repeat: no-repeat;
-
-    transition: transform 2s cubic-bezier(0.7, 0, 0.3, 1);
+    transition: transform 2s cubic-bezier(0.77,0,0.18,1);
 
     box-shadow:
-        inset 0 0 50px rgba(0,0,0,0.5),
+        inset 0 0 60px rgba(0,0,0,0.5),
         0 0 30px rgba(0,0,0,0.4);
 }
 
-/* Partie gauche */
-.left {
-    background-position: left center;
+/* Position des côtés */
+.left{
     transform-origin: left;
+    border-right: 2px solid rgba(255,255,255,0.1);
 }
 
-/* Partie droite */
-.right {
-    background-position: right center;
+.right{
     transform-origin: right;
+    border-left: 2px solid rgba(255,255,255,0.1);
 }
 
-/* Animation ouverture */
-.opened .left {
+/* Ouverture */
+.opened .left{
     transform: translateX(-100%);
 }
 
-.opened .right {
+.opened .right{
     transform: translateX(100%);
 }
 
-/* Texte au centre */
-.curtain-content {
+/* Contenu au centre */
+.curtain-content{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%,-50%);
     text-align: center;
     z-index: 10000;
+
+    transition: opacity 0.8s ease;
 }
 
-/* Titre */
-.curtain-text {
-    font-family: 'Playfair Display', serif;
+/* Texte */
+.curtain-text{
     font-size: 4rem;
     color: white;
-    text-shadow: 0 0 20px rgba(0,0,0,0.7);
+    font-family: 'Playfair Display', serif;
+
+    text-shadow:
+        0 0 10px rgba(255,255,255,0.3),
+        0 0 25px rgba(0,0,0,0.7);
+
     margin-bottom: 25px;
 }
 
-/* Bouton OPEN */
-#open-btn {
+/* Bouton */
+#open-btn{
     padding: 15px 40px;
     border: none;
     border-radius: 50px;
 
-    background: linear-gradient(135deg, #6a5acd, #00bcd4);
+    background: linear-gradient(135deg,#6a5acd,#00bcd4);
 
     color: white;
     font-size: 1rem;
@@ -118,13 +117,9 @@ body {
     transition: 0.3s;
 }
 
-#open-btn:hover {
+#open-btn:hover{
     transform: scale(1.08);
-}
-
-/* --- TEXTE DORÉ --- */
-.gold-text {
-    background: linear-gradient(45deg, #ffe4c4, #a8d0e6, #d0e7f9);
+}inear-gradient(45deg, #ffe4c4, #a8d0e6, #d0e7f9);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-family: 'Playfair Display', serif;
