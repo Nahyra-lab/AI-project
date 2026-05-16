@@ -5,7 +5,7 @@ body {
     color: #1a1a1a; /* texte sombre pour contraste */
     overflow-x: hidden;
     background:  linear-gradient(135deg, #001f3f, #003366, #000080);
-    color: white
+    color: white;
     background-attachment: fixed;
 }
 
