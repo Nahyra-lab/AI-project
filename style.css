@@ -26,7 +26,28 @@ body {
     width: 50%;
     height: 100%;
 
-    background-image: url('https://i.imgur.com/7b1QZ6x.jpg');
+    background-image: url('/* --- RIDEAU CINÉMA RÉALISTE --- */
+#curtain-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+/* Les deux côtés du rideau */
+.curtain-side {
+    width: 50%;
+    height: 100%;
+
+    background-image: url('https://www.bing.com/images/search?view=detailV2&ccid=JJ2sygT6&id=2FC80F598473CC7F216A03BD365F93CB2185EC17&thid=OIP.JJ2sygT6YW9dIQq6YVRhQwHaDd&mediaurl=https%3a%2f%2fimg.freepik.com%2fvecteurs-libre%2frideau-bleu-pour-scene-theatre-cinema_107791-19129.jpg%3ft%3dst%3d1752068599%7eexp%3d1752072199%7ehmac%3dbda7fe068171333175f9c84ecdf5664b325b1c3b3200fe235e4b2f902bb1883a%26w%3d2000&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.249dacca04fa616f5d210aba61546143%3frik%3dF%252byFIcuTXza9Aw%26pid%3dImgRaw%26r%3d0&exph=933&expw=2000&q=rideau+de+cinema+bleu&mode=overlay&FORM=IQFRBA&ck=15F11D9FBABD335A4C71A58074148D44&selectedIndex=0&idpp=serp');
+
+    background-size: cover;
+    background-repeat: no-repeat;
+');
 
     background-size: cover;
     background-repeat: no-repeat;
