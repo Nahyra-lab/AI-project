@@ -39,7 +39,7 @@ body {
 /* --- FOND NUAGEUX --- */
 .dream-wrapper {
     min-height: 100vh;
-    background: linear-gradient(to bottom, #f5f0e6, #d0e7f9, #a8d0e6);
+    background: linear-gradient(to bottom, 135deg, #2b1055, #7597de);
     position: relative;
     padding-bottom: 50px;
 }
