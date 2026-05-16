@@ -5,19 +5,37 @@ document.addEventListener("DOMContentLoaded", function() {
     const feedbackForm = document.getElementById('feedback-form');
     const commentsDisplay = document.getElementById('comments-display');
 
-    // 1. GESTION DU RIDEAU (SessionStorage)
-    if (sessionStorage.getItem('curtainOpened') === 'true') {
-        if (curtain) curtain.style.display = 'none';
-    }
+    // GESTION DU RIDEAU
 
-    if (openBtn) {
-        openBtn.addEventListener('click', () => {
-            curtain.classList.add('opened');
-            sessionStorage.setItem('curtainOpened', 'true');
-            setTimeout(() => { curtain.style.display = 'none'; }, 1500);
-        });
-    }
+if (sessionStorage.getItem('curtainOpened') === 'true') {
+    if (curtain) curtain.style.display = 'none';
+}
 
+if (openBtn) {
+
+    openBtn.addEventListener('click', () => {
+
+        // ouverture
+        curtain.classList.add('opened');
+
+        // disparition du texte
+        const content = document.querySelector('.curtain-content');
+
+        if(content){
+            content.style.opacity = "0";
+        }
+
+        // sauvegarde session
+        sessionStorage.setItem('curtainOpened', 'true');
+
+        // suppression après animation
+        setTimeout(() => {
+            curtain.style.display = 'none';
+        }, 2200);
+
+    });
+
+}
     // 2. GESTION DES COMMENTAIRES (LocalStorage)
     function loadComments() {
         if (!commentsDisplay) return;
