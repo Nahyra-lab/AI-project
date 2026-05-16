@@ -10,10 +10,7 @@ body {
 }
 
 
-/* --- TEXTE DORÉ --- */
-.gold-text {
-    background: l/* =========================
-
+/* --- TEXTE DORÉ --- */ .gold-text {     background: linear-gradient(45deg, #ffe4c4, #a8d0e6, #d0e7f9);     -webkit-background-clip: text;     -webkit-text-fill-color: transparent;     font-family: 'Playfair Display', serif; }
    RIDEAU CINÉMA RÉALISTE
 ========================= */v
 
@@ -119,10 +116,7 @@ body {
 
 #open-btn:hover{
     transform: scale(1.08);
-}inear-gradient(45deg, #ffe4c4, #a8d0e6, #d0e7f9);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-family: 'Playfair Display', serif;
+
 }
 
 /* --- FOND NUAGEUX --- */
