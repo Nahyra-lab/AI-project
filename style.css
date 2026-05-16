@@ -35,12 +35,7 @@ body {
     -webkit-text-fill-color: transparent;
     font-family: 'Playfair Display', serif;
 }
-/* --- THÈME YEARBOOK --- */
-.body-yearbook {
-    background: linear-gradient(135deg, #2b1055, #7597de);
-    color: white;
-    background-attachment: fixed;
-}
+
 /* --- FOND NUAGEUX --- */
 .dream-wrapper {
     min-height: 100vh;
