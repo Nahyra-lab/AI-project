@@ -9,24 +9,97 @@ body {
     background-attachment: fixed;
 }
 
-
-/* --- RIDEAU CYAN --- */
+/* --- RIDEAU CINÉMA RÉALISTE --- */
 #curtain-container {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-    z-index: 9999; display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    z-index: 9999;
+    overflow: hidden;
 }
+
+/* Les deux côtés du rideau */
 .curtain-side {
-    width: 50%; height: 100%; background: #00FFFF;
-    transition: transform 1.5s cubic-bezier(0.7, 0, 0.3, 1);
+    width: 50%;
+    height: 100%;
+
+    background-image: url('https://i.imgur.com/7b1QZ6x.jpg');
+
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    transition: transform 2s cubic-bezier(0.7, 0, 0.3, 1);
+
+    box-shadow:
+        inset 0 0 50px rgba(0,0,0,0.5),
+        0 0 30px rgba(0,0,0,0.4);
 }
+
+/* Partie gauche */
+.left {
+    background-position: left center;
+    transform-origin: left;
+}
+
+/* Partie droite */
+.right {
+    background-position: right center;
+    transform-origin: right;
+}
+
+/* Animation ouverture */
+.opened .left {
+    transform: translateX(-100%);
+}
+
+.opened .right {
+    transform: translateX(100%);
+}
+
+/* Texte au centre */
 .curtain-content {
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    text-align: center; width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 10000;
 }
-.curtain-text { font-family: 'Playfair Display'; font-size: 3rem; color: #003333; margin-bottom: 20px; }
-#open-btn { padding: 15px 40px; border-radius: 50px; border: none; background: #003333; color: white; cursor: pointer; font-weight: bold; }
-.opened .left { transform: translateX(-100%); }
-.opened .right { transform: translateX(100%); }
+
+/* Titre */
+.curtain-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    color: white;
+    text-shadow: 0 0 20px rgba(0,0,0,0.7);
+    margin-bottom: 25px;
+}
+
+/* Bouton OPEN */
+#open-btn {
+    padding: 15px 40px;
+    border: none;
+    border-radius: 50px;
+
+    background: linear-gradient(135deg, #6a5acd, #00bcd4);
+
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+
+    transition: 0.3s;
+}
+
+#open-btn:hover {
+    transform: scale(1.08);
+}
 
 /* --- TEXTE DORÉ --- */
 .gold-text {
