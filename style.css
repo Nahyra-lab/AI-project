@@ -4,7 +4,8 @@ body {
     font-family: 'Poppins', sans-serif;
     color: #1a1a1a; /* texte sombre pour contraste */
     overflow-x: hidden;
-    background: linear-gradient(135deg, #f5f0e6, #d0e7f9, #a8d0e6);
+    background:  linear-gradient(135deg, #001f3f, #003366, #000080);
+    color: white
     background-attachment: fixed;
 }
 
