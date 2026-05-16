@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function() {
             "idiot", "stupide", "con", "crétin", "imbécile", 
             "nul", "débile", "abruti", "sale", "merde",
             "pute", "salope", "connard", "bête", "raciste", 
-            "homophobe", "haine", "violence", "terroriste","fuck","bitch","massisi","madivin"
+            "homophobe", "haine", "violence", "terroriste","fuck","bitch","massisi","madivin","kaka"
         ];
 
 for (let word of bannedWords) {
