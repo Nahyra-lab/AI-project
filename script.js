@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
+    localStorage.removeItem('yearbookMsgs'); // Supprime TOUS les anciens messages
     const curtain = document.getElementById('curtain-container');
     const openBtn = document.getElementById('open-btn');
     const feedbackForm = document.getElementById('feedback-form');
