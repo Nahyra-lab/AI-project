@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Succes Story | Inspiring Minds</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght=700&family=Poppins:wght=300;400;600&display=swap" rel="stylesheet">
     <style>
-      
- :root { --gold: #D4AF37; --dark-blue: #0A192F; }
+        :root { --gold: #D4AF37; --dark-blue: #0A192F; }
         body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; background-color: #fcfcfc; }
         h1, h2, .font-serif { font-family: 'Playfair Display', serif; }
         .section-content { display: none; }
@@ -17,6 +16,10 @@
         .card-story:hover .photo-after { opacity: 1; }
         .photo-after { opacity: 0; transition: 0.6s ease-in-out; }
         .nav-active { border-bottom: 2px solid var(--gold); color: var(--gold) !important; }
+        
+        /* Styles pour la boîte modale */
+        .modal { display: none; position: fixed; inset: 0; z-index: 100; background-color: rgba(10, 25, 47, 0.6); backdrop-filter: blur(4px); }
+        .modal.open { display: flex; animation: fadeIn 0.3s ease-in-out; }
     </style>
 </head>
 <body class="text-slate-800">
@@ -124,8 +127,9 @@
                     <div class="w-12 h-12 bg-red-100 text-red-600 flex items-center justify-center rounded-xl mb-6 text-2xl">⚕️</div>
                     <h3 class="text-2xl font-bold mb-4">Médecine</h3>
                     <p class="text-gray-600 text-sm leading-relaxed mb-6">Implique de longues études (7-10 ans), une grande résilience émotionnelle et une volonté d'aider son prochain. Un métier de passion et de dévouement.</p>
-                    <a href="#" class="text-yellow-600 font-bold hover:underline">Fiche complète →</a>
+                    <button onclick="toggleModal('medecine-modal', true)" class="text-yellow-600 font-bold hover:underline text-left">Fiche complète →</button>
                 </div>
+                
                 <div class="p-8 bg-white border border-slate-200 rounded-3xl hover:border-yellow-500 transition shadow-sm">
                     <div class="w-12 h-12 bg-blue-100 text-blue-600 flex items-center justify-center rounded-xl mb-6 text-2xl">🚀</div>
                     <h3 class="text-2xl font-bold mb-4">Ingénieure Aérospatiale</h3>
@@ -135,6 +139,48 @@
             </div>
         </div>
     </main>
+
+    <div id="medecine-modal" class="modal items-center justify-center p-4">
+        <div class="bg-white w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
+            <div class="bg-blue-900 text-white p-6 flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <span class="text-3xl">⚕️</span>
+                    <h3 class="text-2xl font-bold font-serif">Fiche Métier : Médecin</h3>
+                </div>
+                <button onclick="toggleModal('medecine-modal', false)" class="text-white hover:text-yellow-400 font-bold text-2xl transition">&times;</button>
+            </div>
+            <div class="p-8 overflow-y-auto space-y-6 text-sm leading-relaxed">
+                <div>
+                    <h4 class="text-lg font-bold text-blue-900 border-b pb-1 mb-2">📋 Description du Métier</h4>
+                    <p class="text-gray-600">Le médecin généraliste ou spécialiste soigne les malades, évalue leur état de santé générale, diagnostique les pathologies et prescrit les traitements adaptés. C'est un rôle pivot de la société qui demande autant de compétences scientifiques que de qualités humaines.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold text-blue-900 border-b pb-1 mb-2">🎓 Le Parcours d'Études</h4>
+                    <p class="text-gray-600 mb-2">Les études de médecine comptent parmi les plus longues du système universitaire :</p>
+                    <ul class="list-disc list-inside space-y-1 text-gray-600 pl-2">
+                        <li><strong>Premier cycle (3 ans) :</strong> Apprentissage des bases scientifiques, de l'anatomie et premier stage clinique.</li>
+                        <li><strong>Deuxième cycle (3 ans) :</strong> Approfondissement des pathologies (externat) partagé entre cours et hôpital.</li>
+                        <li><strong>Troisième cycle (3 à 6 ans) :</strong> L'internat selon la spécialité choisie (ex: 3 ans pour la médecine générale, jusqu'à 6 ans pour la chirurgie), débouchant sur la soutenance d'une thèse.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold text-blue-900 border-b pb-1 mb-2">🔑 Compétences & Qualités Requises</h4>
+                    <ul class="list-disc list-inside space-y-1 text-gray-600 pl-2">
+                        <li><strong>Résilience & Endurance :</strong> Capacité à gérer le stress des gardes de nuit et des situations d'urgence.</li>
+                        <li><strong>Empathie & Écoute :</strong> Instaurer une relation de confiance avec des patients parfois vulnérables.</li>
+                        <li><strong>Rigueur scientifique :</strong> Logique de diagnostic et apprentissage continu tout au long de sa carrière.</li>
+                    </ul>
+                </div>
+                <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-r-xl">
+                    <h5 class="font-bold text-yellow-800 mb-1">💡 Le Conseil de Succes Story :</h5>
+                    <p class="text-yellow-900 italic">"Ne vous laissez pas décourager par la longueur des études. Chaque année passée à apprendre vous rapproche du pouvoir de sauver des vies et de faire changer le quotidien des gens."</p>
+                </div>
+            </div>
+            <div class="bg-slate-50 px-8 py-4 flex justify-end">
+                <button onclick="toggleModal('medecine-modal', false)" class="bg-blue-900 hover:bg-blue-950 text-white font-semibold px-6 py-2 rounded-xl transition">Fermer</button>
+            </div>
+        </div>
+    </div>
 
     <main id="opportunities" class="section-content pt-32 px-6">
         <div class="max-w-5xl mx-auto">
@@ -185,22 +231,30 @@
 
     <script>
         function showSection(sectionId) {
-            // Masquer toutes les sections
             document.querySelectorAll('.section-content').forEach(section => {
                 section.classList.remove('active');
             });
-            // Afficher la section demandée
             document.getElementById(sectionId).classList.add('active');
             
-            // Mettre à jour le menu
             document.querySelectorAll('.nav-btn').forEach(btn => {
                 btn.classList.remove('nav-active');
                 if(btn.textContent.toLowerCase().includes(sectionId.substring(0,4))) {
                     btn.classList.add('nav-active');
                 }
             });
-            // Retour en haut de page
             window.scrollTo(0, 0);
+        }
+
+        // Nouvelle fonction pour ouvrir/fermer les boîtes modales
+        function toggleModal(modalId, shouldOpen) {
+            const modal = document.getElementById(modalId);
+            if (shouldOpen) {
+                modal.classList.add('open');
+                document.body.style.overflow = 'hidden'; // Bloque le défilement arrière-plan
+            } else {
+                modal.classList.remove('open');
+                document.body.style.overflow = ''; // Rétablit le défilement
+            }
         }
     </script>
 </body>
