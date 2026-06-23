@@ -3,209 +3,279 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Succes Book | Accueil</title>
-    <!-- Importation des polices : Great Vibes (calligraphie) + Poppins -->
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Succes Story | Inspiring Minds</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #001f3f, #003366, #000080);
-            color: white;
-            overflow: hidden;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* --- RIDEAU BLEU THÉÂTRE (VOTRE IMAGE) --- */
-        #curtain-container {
-            position: fixed;
-            inset: 0;
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            z-index: 9999;
-            overflow: hidden;
-            background: #000;
-        }
-        .curtain-side {
-            width: 50%;
-            height: 100%;
-            /* Intégration de votre image avec un léger filtre d'ombre pour accentuer le réalisme */
-            background-image: linear-gradient(to right, rgba(0,0,0,0.4), rgba(255,255,255,0.05), rgba(0,0,0,0.4)), 
-                              url("https://img.freepik.com/vecteurs-libre/rideau-bleu-ferme-theatre-cinema-scene_107791-25192.jpg");
-            background-size: 200% 100%; /* Permet de diviser l'image proprement en deux */
-            background-repeat: no-repeat;
-            transition: transform 2.2s cubic-bezier(0.77, 0, 0.18, 1);
-            box-shadow: inset 0 0 50px rgba(0,0,0,0.6);
-            position: absolute;
-            top: 0;
-        }
-        
-        /* Ajustement des moitiés gauche et droite de l'image */
-        .left { 
-            left: 0; 
-            background-position: left center; 
-            border-right: 1px solid rgba(255,255,255,0.1); 
-        }
-        .right { 
-            right: 0; 
-            background-position: right center; 
-            border-left: 1px solid rgba(255,255,255,0.1); 
-        }
-
-        /* Animation d'ouverture */
-        #curtain-container.opened .left { transform: translateX(-100%); }
-        #curtain-container.opened .right { transform: translateX(100%); }
-
-        /* Contenu textuel sur le rideau */
-        .curtain-content {
-            position: absolute;
-            top: 45%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            text-align: center;
-            z-index: 10000;
-            transition: opacity 0.8s ease;
-            width: 100%;
-        }
-        .curtain-text {
-            font-family: 'Great Vibes', cursive;
-            font-size: 6.5rem;
-            color: #fceabb;
-            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6), 0 0 30px rgba(252, 234, 187, 0.4);
-            margin-bottom: 35px;
-        }
-        #open-btn {
-            padding: 16px 45px;
-            border: none;
-            border-radius: 50px;
-            background: linear-gradient(135deg, #6a5acd, #00bcd4);
-            color: white;
-            font-size: 1.1rem;
-            font-weight: bold;
-            letter-spacing: 1px;
-            cursor: pointer;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
-            transition: all 0.3s ease;
-        }
-        #open-btn:hover { 
-            transform: scale(1.08); 
-            box-shadow: 0 10px 30px rgba(0, 188, 212, 0.4);
-        }
-
-        /* --- EFFET PLUIE D'ÉTOILES FILANTES --- */
-        .star-field { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
-        .star { position: absolute; background-color: white; border-radius: 50%; animation: fall linear infinite; box-shadow: 0 0 8px white; }
-        @keyframes fall {
-            0% { transform: translateY(-20px) scale(0); opacity: 0; }
-            10% { opacity: 1; transform: translateY(10vh) scale(1); }
-            90% { opacity: 1; }
-            100% { transform: translateY(105vh) scale(0.5); opacity: 0; }
-        }
-
-        /* --- MENU DE SÉLECTION (Contenu caché derrière) --- */
-        .selection-menu { position: relative; z-index: 10; text-align: center; max-width: 900px; padding: 2rem; }
-        .selection-title { font-size: 2.5rem; margin-bottom: 3rem; font-weight: 600; letter-spacing: 1px; }
-        .choices-container { display: flex; gap: 3rem; justify-content: center; flex-wrap: wrap; }
-        
-        .choice-card {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 25px;
-            padding: 45px 30px;
-            width: 320px;
-            text-decoration: none;
-            color: white;
-            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-        }
-        .choice-card:hover {
-            transform: translateY(-10px);
-            border-color: #fceabb;
-            box-shadow: 0 15px 35px rgba(248, 181, 0, 0.25);
-        }
-        .choice-card h2 { font-size: 2rem; margin-bottom: 15px; color: #fceabb; font-family: 'Poppins', sans-serif; }
-        .choice-card p { font-size: 0.95rem; color: rgba(255,255,255,0.75); line-height: 1.6; }
+      
+ :root { --gold: #D4AF37; --dark-blue: #0A192F; }
+        body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; background-color: #fcfcfc; }
+        h1, h2, .font-serif { font-family: 'Playfair Display', serif; }
+        .section-content { display: none; }
+        .section-content.active { display: block; animation: fadeIn 0.5s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .card-story:hover .photo-after { opacity: 1; }
+        .photo-after { opacity: 0; transition: 0.6s ease-in-out; }
+        .nav-active { border-bottom: 2px solid var(--gold); color: var(--gold) !important; }
     </style>
 </head>
-<body>
+<body class="text-slate-800">
 
-    <!-- Structure du Rideau -->
-    <div id="curtain-container">
-        <div class="curtain-side left"></div>
-        <div class="curtain-side right"></div>
-        <div class="curtain-content">
-            <h1 class="curtain-text">Succes Book</h1>
-            <button id="open-btn">OPEN</button>
+    <nav class="fixed w-full z-50 bg-white shadow-sm px-6 py-4 flex justify-between items-center">
+        <div class="text-2xl font-bold tracking-tighter text-blue-900">SUCCES <span class="text-yellow-600 font-serif italic">Story</span></div>
+        <div class="hidden md:flex space-x-6 text-sm font-semibold uppercase tracking-wider">
+            <button onclick="showSection('accueil')" class="nav-btn nav-active hover:text-yellow-600 transition">Accueil</button>
+            <button onclick="showSection('stories')" class="nav-btn hover:text-yellow-600 transition">The Stories</button>
+            <button onclick="showSection('orientation')" class="nav-btn hover:text-yellow-600 transition">Orientation</button>
+            <button onclick="showSection('opportunities')" class="nav-btn hover:text-yellow-600 transition">Opportunities</button>
+            <button onclick="showSection('improving')" class="nav-btn hover:text-yellow-600 transition">Improving</button>
+        </div>
+    </nav>
+
+    <main id="accueil" class="section-content active pt-32 px-6">
+        <div class="max-w-5xl mx-auto text-center">
+            <h1 class="text-6xl md:text-8xl text-blue-900 mb-8">Meeting between <br><span class="text-yellow-600 italic">inspired minds</span></h1>
+            <div class="bg-white p-8 rounded-2xl shadow-xl border-l-8 border-yellow-600 mb-12">
+                <h2 class="text-2xl font-bold mb-4">C'est quoi Succes Story ?</h2>
+                <p class="text-gray-600 leading-relaxed text-lg">
+                    Succes Story est une plateforme dédiée à l'empowerment des jeunes filles. Ce projet est né du constat que voir le chemin parcouru par d'autres est le meilleur moteur pour l'ambition. Nous voulons briser les plafonds de verre en montrant que chaque leader d'aujourd'hui était une écolière rêveuse hier.
+                </p>
+            </div>
+            
+            <div class="py-12">
+                <p class="text-xl mb-6 font-semibold">Envie de rencontrer les créatrices du projet ?</p>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-yellow-500">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=1" class="w-24 h-24 mx-auto rounded-full mb-4 bg-slate-100">
+                        <h3 class="font-bold">AUGUSTE Elga J.</h3>
+                        <p class="text-sm italic text-gray-500">" Coordinatrice et rédactrice passionnée, elle donne vie aux événements à travers ses mots et crée des récits empreints d’émotion."</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-yellow-500">
+                        <img src="images/Jardlyne.jpeg" class="w-24 h-24 mx-auto rounded-full mb-4 bg-slate-100">
+                        <h3 class="font-bold">MARCEL Jardlyne</h3>
+                        <p class="text-sm italic text-gray-500">" Fondatrice en chef du site, passionnée par la programmation, elle valorise chaque projet lié au code et leur accorde une attention particulière."</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-yellow-500">
+                        <img src="" class="w-24 h-24 mx-auto rounded-full mb-4 bg-slate-100">
+                        <h3 class="font-bold">MESIDOR Carmita</h3>
+                        <p class="text-sm italic text-gray-500">" Coordinatrice et rédactrice passionnée, elle donne vie aux événements à travers ses mots et crée des récits empreints d’émotion."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="stories" class="section-content pt-32 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-blue-900 mb-4 font-serif italic">The Stories</h2>
+            <p class="mb-10 text-gray-500">Découvrez les parcours inspirants à travers nos deux catégories :</p>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-bold border-b-2 border-yellow-500 pb-2">🌟 Passion</h3>
+                    <div class="flex gap-4">
+                        <button class="bg-white border-2 border-yellow-600 px-4 py-1 rounded-full text-sm font-bold hover:bg-yellow-600 hover:text-white">Danse</button>
+                        <button class="bg-white border-2 border-yellow-600 px-4 py-1 rounded-full text-sm font-bold hover:bg-yellow-600 hover:text-white">Musique</button>
+                        <button class="bg-white border-2 border-yellow-600 px-4 py-1 rounded-full text-sm font-bold hover:bg-yellow-600 hover:text-white">Ecriture</button>
+                    </div>
+                    <div class="card-story bg-white rounded-2xl overflow-hidden shadow-lg group">
+                        <div class="relative h-64">
+                            <img src="images/Enfant.jpeg" class="absolute inset-0 w-full h-full object-cover" alt="Enfant">
+                            <img src="images/Medcriture.jpeg" class="photo-after absolute inset-0 w-full h-full object-cover" alt="Aujourd'hui">
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-bold text-yellow-600 uppercase">Ecriture</span>
+                            <h4 class="text-xl font-bold mt-1">L'histoire de Karina</h4>
+                            <p class="text-sm text-gray-600 mt-4"><strong>Parcours :</strong> Passionnée d’écriture depuis son plus jeune âge, elle a commencé à coucher ses idées sur le papier dès l’âge de 11 ans. Récemment, elle a participé à un concours d’écriture et a remporté la troisième place, confirmant son talent et sa créativité..</p>
+                            <div class="mt-4 p-3 bg-blue-50 border-l-4 border-blue-900 italic text-sm">"Conseil :  Écris chaque jour, même si ce n’est qu’une phrase. C’est en laissant tes mots s’exprimer librement que ton style et ta voix uniques se révéleront."</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-bold border-b-2 border-blue-900 pb-2">🎓 Vie Universitaire</h3>
+                    <div class="flex flex-wrap gap-2 text-xs font-bold">
+                        <span class="bg-blue-100 text-blue-900 px-3 py-1 rounded">Sciences de la Vie</span>
+                        <span class="bg-blue-100 text-blue-900 px-3 py-1 rounded">Sciences Juridiques</span>
+                        <span class="bg-blue-100 text-blue-900 px-3 py-1 rounded">Sciences Économiques</span>
+                    </div>
+                    <div class="card-story bg-white rounded-2xl overflow-hidden shadow-lg">
+                        <div class="relative h-64">
+                            <img src="https://images.unsplash.com/photo-1491013516836-7dbf414a2728?auto=format&fit=crop&w=400&q=80" class="absolute inset-0 w-full h-full object-cover" alt="Enfant">
+                            <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=400&q=80" class="photo-after absolute inset-0 w-full h-full object-cover" alt="Aujourd'hui">
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-bold text-blue-800 uppercase">Juridique</span>
+                            <h4 class="text-xl font-bold mt-1">Maître Elena M.</h4>
+                            <p class="text-sm text-gray-600 mt-4"><strong>Parcours :</strong> Des heures à la bibliothèque universitaire aux plaidoiries en cour d'assises...</p>
+                            <div class="mt-4 p-3 bg-yellow-50 border-l-4 border-yellow-500 italic text-sm">"Conseil : La rigueur est votre meilleure alliée en droit."</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="orientation" class="section-content pt-32 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-12">Orientation Professionnelle</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="p-8 bg-white border border-slate-200 rounded-3xl hover:border-yellow-500 transition shadow-sm group">
+                    <div class="w-12 h-12 bg-red-100 text-red-600 flex items-center justify-center rounded-xl mb-6 text-2xl">⚕️</div>
+                    <h3 class="text-2xl font-bold mb-4">Médecine</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-6">Implique de longues études (7-10 ans), une grande résilience émotionnelle et une volonté d'aider son prochain. Un métier de passion et de dévouement.</p>
+                    <a href="#" class="text-yellow-600 font-bold hover:underline">Fiche complète →</a>
+                </div>
+                <div class="p-8 bg-white border border-slate-200 rounded-3xl hover:border-yellow-500 transition shadow-sm">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 flex items-center justify-center rounded-xl mb-6 text-2xl">🚀</div>
+                    <h3 class="text-2xl font-bold mb-4">Ingénieure Aérospatiale</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-6">Conception de satellites, fusées et avions. Nécessite une excellente maîtrise des mathématiques et de la physique. Un métier pour celles qui visent les étoiles.</p>
+                    <a href="#" class="text-yellow-600 font-bold hover:underline">Fiche complète →</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="opportunities" class="section-content pt-32 px-6">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-4xl font-bold mb-10 text-yellow-600">Opportunities</h2>
+            <div class="grid gap-6">
+                <div class="flex items-center p-6 bg-white rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
+                    <div class="flex-shrink-0 w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center text-3xl">🤖</div>
+                    <div class="ml-6">
+                        <h4 class="text-xl font-bold">Cours de Robotique (Eté 2024)</h4>
+                        <p class="text-gray-500 text-sm italic">Ouvert aux filles de 14 à 18 ans - Gratuit sur inscription.</p>
+                    </div>
+                </div>
+                <div class="flex items-center p-6 bg-white rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
+                    <div class="flex-shrink-0 w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-3xl">📝</div>
+                    <div class="ml-6">
+                        <h4 class="text-xl font-bold">Concours National d'Éloquence</h4>
+                        <p class="text-gray-500 text-sm italic">Thème : Le futur de l'éducation. Gagnez une bourse d'études.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Section Improving Modernisée et Dynamique -->
+   <main id="improving" class="section-content pt-32 px-6 pb-20">
+    <div class="max-w-4xl mx-auto bg-blue-950 text-white rounded-[2.5rem] p-8 md:p-12 shadow-2xl relative overflow-hidden">
+        <div class="relative z-10">
+            <h2 class="text-3xl font-bold mb-2 font-serif">Improving our system</h2>
+            <p class="mb-10 text-blue-200">Ta voix compte. Dis-nous ce qu'il manque à ton école pour que tu puisses t'épanouir pleinement.</p>
+            
+            <form id="improving-form" action="https://formspree.io/f/VOTRE_ID_FORMSPREE" method="POST" class="grid gap-6">
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="flex flex-col gap-2">
+                        <label for="student-lastname" class="text-xs font-semibold uppercase tracking-wider text-blue-200">Nom</label>
+                        <input type="text" id="student-lastname" name="nom" placeholder="Votre nom" class="bg-white/10 border border-white/15 p-4 rounded-xl outline-none focus:border-yellow-500 focus:bg-white/20 transition placeholder-white/40" required>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label for="student-firstname" class="text-xs font-semibold uppercase tracking-wider text-blue-200">Prénom</label>
+                        <input type="text" id="student-firstname" name="prenom" placeholder="Votre prénom" class="bg-white/10 border border-white/15 p-4 rounded-xl outline-none focus:border-yellow-500 focus:bg-white/20 transition placeholder-white/40" required>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-3 my-2">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-blue-200">Votre Statut</span>
+                    <div class="flex flex-wrap gap-6 bg-white/5 p-4 rounded-xl border border-white/10">
+                        <label class="flex items-center gap-2 cursor-pointer select-none">
+                            <input type="radio" name="statut" value="Eleve Actuelle" id="status-current" class="w-4 h-4 accent-yellow-500" required>
+                            <span class="text-sm">Élève actuelle</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer select-none">
+                            <input type="radio" name="statut" value="Ancienne Eleve" id="status-alumni" class="w-4 h-4 accent-yellow-500">
+                            <span class="text-sm">Ancienne élève</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer select-none">
+                            <input type="radio" name="statut" value="Visitor" id="status-visitor" class="w-4 h-4 accent-yellow-500">
+                            <span class="text-sm">Visitor</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div id="conditional-fields" class="hidden grid md:grid-cols-2 gap-6 p-5 rounded-2xl bg-white/5 border border-dashed border-white/20">
+                    <div class="flex flex-col gap-2">
+                        <label for="student-class" class="text-xs font-semibold uppercase tracking-wider text-yellow-400">Classe</label>
+                        <input type="text" id="student-class" name="classe" placeholder="Ex: Terminale A, Rhéto..." class="bg-white/10 border border-white/15 p-4 rounded-xl outline-none focus:border-yellow-500 focus:bg-white/20 transition placeholder-white/40">
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label for="student-email" class="text-xs font-semibold uppercase tracking-wider text-yellow-400">Email</label>
+                        <input type="email" id="student-email" name="email" placeholder="votre.email@exemple.com" class="bg-white/10 border border-white/15 p-4 rounded-xl outline-none focus:border-yellow-500 focus:bg-white/20 transition placeholder-white/40">
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label for="student-suggestion" class="text-xs font-semibold uppercase tracking-wider text-blue-200">Vos Suggestions / Commentaires</label>
+                    <textarea id="student-suggestion" name="message" rows="4" placeholder="Quelles suggestions as-tu pour améliorer les compétences scolaires des filles ou enrichir notre système ?" class="bg-white/10 border border-white/15 p-4 rounded-xl outline-none focus:border-yellow-500 focus:bg-white/20 transition placeholder-white/50" required></textarea>
+                </div>
+
+                <button type="submit" class="bg-yellow-500 text-blue-950 font-bold py-4 rounded-xl hover:bg-yellow-400 transition uppercase tracking-widest text-sm mt-2">
+                    Envoyer mes conseils
+                </button>
+            </form>
         </div>
     </div>
+</main>
 
-    <!-- Le conteneur pour la pluie d'étoiles -->
-    <div class="star-field" id="star-field"></div>
+<footer class="py-12 border-t mt-20 text-center text-gray-400 text-sm">
+    <p>© 2026 Succes Story. Pour les leaders de demain. Promotion NEXORA❤️</p>
+</footer>
 
-    <!-- Menu des choix (Yearbook / Success Story) -->
-    <div class="selection-menu">
-        <h1 class="selection-title">Choisissez votre univers</h1>
-        <div class="choices-container">
-            <a href="yearbook.html" class="choice-card">
-                <h2>Yearbook</h2>
-                <p>Revivez les éclats de rire, les souvenirs partagés et laissez une trace dans notre Livre d'Or personnalisé.</p>
-            </a>
-            <a href="SUCCESS.html" class="choice-card">
-                <h2>Succes Story</h2>
-                <p>Explorez les profils brillants, parcours inspirants et perspectives d'avenir de la promotion.</p>
-            </a>
-        </div>
-    </div>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const curtain = document.getElementById('curtain-container');
-            const openBtn = document.getElementById('open-btn');
-            const content = document.querySelector('.curtain-content');
-            const starField = document.getElementById('star-field');
-
-            // Vérifie si le rideau a déjà été ouvert durant la navigation
-            if (sessionStorage.getItem('mainCurtainOpened') === 'true') {
-                curtain.style.display = 'none';
-                startStarRain();
-            }
-
-            if (openBtn) {
-                openBtn.addEventListener('click', () => {
-                    curtain.classList.add('opened');
-                    if(content) content.style.opacity = "0";
-                    sessionStorage.setItem('mainCurtainOpened', 'true');
-
-                    // On retire le rideau du DOM après l'animation pour pouvoir cliquer sur les cartes
-                    setTimeout(() => {
-                        curtain.style.display = 'none';
-                    }, 2200);
-
-                    startStarRain();
-                });
-            }
-
-            // Générateur d'étoiles filantes en continu
-            function startStarRain() {
-                setInterval(() => {
-                    const star = document.createElement('div');
-                    star.classList.add('star');
-                    const size = Math.random() * 3 + 1.5;
-                    star.style.width = ${size}px;
-                    star.style.height = ${size}px;
-                    star.style.left = ${Math.random() * 100}vw;
-                    star.style.animationDuration = ${Math.random() * 2 + 1.5}s;
-                    
-                    starField.appendChild(star);
-                    setTimeout(() => { star.remove(); }, 3500);
-                }, 70); 
+<script>
+    function showSection(sectionId) {
+        // Masquer toutes les sections
+        document.querySelectorAll('.section-content').forEach(section => {
+            section.classList.remove('active');
+        });
+        // Afficher la section demandée
+        document.getElementById(sectionId).classList.add('active');
+        
+        // Mettre à jour le menu
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.classList.remove('nav-active');
+            if(btn.textContent.toLowerCase().includes(sectionId.substring(0,4))) {
+                btn.classList.add('nav-active');
             }
         });
-    </script>
+        // Retour en haut de page
+        window.scrollTo(0, 0);
+    }
+
+    // --- CODE D'AFFICHAGE DU CHAMP CLASSE / EMAIL ---
+    document.addEventListener("DOMContentLoaded", function() {
+        const statusCurrent = document.getElementById('status-current');
+        const allStatusRadios = document.querySelectorAll('input[name="statut"]');
+        const conditionalFields = document.getElementById('conditional-fields');
+        const classInput = document.getElementById('student-class');
+        const emailInput = document.getElementById('student-email');
+
+        if (allStatusRadios.length > 0) {
+            allStatusRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (statusCurrent && statusCurrent.checked) {
+                        // Supprime la classe 'hidden' et force l'affichage en CSS standard
+                        if (conditionalFields) {
+                            conditionalFields.classList.remove('hidden');
+                            conditionalFields.style.display = 'grid';
+                        }
+                        if (classInput) classInput.required = true;
+                        if (emailInput) emailInput.required = true;
+                    } else {
+                        // Remet la classe 'hidden' et nettoie les valeurs
+                        if (conditionalFields) {
+                            conditionalFields.classList.add('hidden');
+                            conditionalFields.style.display = 'none';
+                        }
+                        if (classInput) { classInput.required = false; classInput.value = ''; }
+                        if (emailInput) { emailInput.required = false; emailInput.value = ''; }
+                    }
+                });
+            });
+        }
+    });
+</script>
 </body>
 </html>
