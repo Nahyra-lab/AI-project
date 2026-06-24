@@ -3,37 +3,379 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Success Book | Yearbook 2025-2026</title>
+    <title>Yearbook - Collège Marianne</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* --- STYLES SPÉCIFIQUES ET AJUSTEMENTS DE CONTRASTE POUR LE YEARBOOK --- */
+        .yearbook-wrapper {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        /* En-tête de présentation */
+        .intro-box {
+            background: #ffffff;
+            border: 1px solid rgba(138, 127, 164, 0.15);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+            margin-bottom: 40px;
+        }
+
+        .intro-box h1 {
+            font-family: 'Playfair Display', serif;
+            color: #8a7fa4;
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+        }
+
+        .intro-box p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #5a5266;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Cadre pour la future photo du Collège Marianne */
+        .college-photo-placeholder {
+            width: 100%;
+            height: 350px;
+            background-color: #eae6f0;
+            border: 2px dashed #8a7fa4;
+            border-radius: 15px;
+            margin-top: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8a7fa4;
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        /* Section Horizontale des Années Scolaires */
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            color: #8a7fa4;
+            text-align: center;
+            font-size: 1.8rem;
+            margin: 40px 0 20px;
+            position: relative;
+        }
+
+        .years-horizontal-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .year-card {
+            background: #ffffff;
+            border: 1px solid rgba(138, 127, 164, 0.15);
+            border-radius: 15px;
+            padding: 20px 35px;
+            text-align: center;
+            cursor: pointer;
+            min-width: 200px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.01);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+
+        .year-card.active {
+            background-color: #8a7fa4;
+            border-color: #8a7fa4;
+        }
+
+        .year-card.active h3, .year-card.active p {
+            color: #ffffff;
+        }
+
+        .year-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(138, 127, 164, 0.15);
+        }
+
+        .year-card h3 {
+            font-size: 1.3rem;
+            color: #8a7fa4;
+            margin-bottom: 5px;
+        }
+
+        .year-card p {
+            font-size: 0.85rem;
+            color: #7a708a;
+        }
+
+        /* Section du Livre d'Or / Commentaires */
+        .guestbook-section {
+            background: #ffffff;
+            border: 1px solid rgba(138, 127, 164, 0.15);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.02);
+        }
+
+        .guestbook-section h2 {
+            font-family: 'Playfair Display', serif;
+            color: #8a7fa4;
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #5a5266;
+        }
+
+        .guestbook-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(138, 127, 164, 0.25);
+            background: #faf9f6;
+            color: #4a4357;
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .guestbook-input:focus {
+            outline: none;
+            border-color: #8a7fa4;
+            background: #ffffff;
+        }
+
+        .anon-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 15px 0;
+            font-size: 0.9rem;
+            color: #5a5266;
+            cursor: pointer;
+        }
+
+        .submit-btn {
+            background: #8a7fa4;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 20px auto 0;
+            box-shadow: 0 4px 12px rgba(138, 127, 164, 0.2);
+        }
+
+        .submit-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 18px rgba(138, 127, 164, 0.35);
+        }
+
+        /* Conteneur des messages postés */
+        #comments-display {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .comment-card {
+            background: #faf9f6;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #8a7fa4;
+            text-align: left;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.01);
+        }
+
+        .comment-card strong {
+            color: #8a7fa4;
+            font-size: 1rem;
+        }
+
+        .comment-card small {
+            color: #9a90ab;
+            float: right;
+        }
+
+        .comment-card p {
+            margin-top: 8px;
+            font-size: 0.95rem;
+            color: #4a4357;
+            line-height: 1.5;
+        }
+    </style>
 </head>
 <body>
 
-    <div class="dream-wrapper">
-        <div class="stars"></div>
-
-        <nav class="navbar">
-            <div class="logo gold-text">Yearbook 25-26</div>
-            <ul class="nav-links">
-                <li><a href="index.html">Accueil</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropbtn">Événements ▼</a>
-                    <div class="dropdown-content">
-                        <a href="philosophie.html">Fête des Philosophes</a>
-                        <a href="noel.html">Noël Enchanté</a>
-                        <a href="carnaval.html">Carnaval</a>
-                        <a href="foire.html">La Foire</a>
-                    </div>
-                </li>
-                <li><a href="SUCCESS.html">Success Story</a></li>
-            </ul>
-        </nav>
-
-        <main class="container">
-            <section class="hero">
-                <h1 class="main-title gold-text">Yearbook 2025-2026</h1>
-                <div class="glass-card">
-                    <h2 class="section-subtitle">L'Année de la Paix et de la Joie</h2>
-                    <p class="hero-description">Bienvenue dans cet espace de souvenirs. L'année scolaire 2025-2026 restera gravée comme un voyage de fraternité. Entre rires partagés et moments d'inclusion, nous gardons en mémoire chaque événement qui a fait battre le cœur de notre école.</p>
+    <nav class="navbar" style="display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; background: #ffffff; border-bottom: 1px solid rgba(138, 127, 164, 0.1); position: sticky; top: 0; z-index: 1000;">
+        <div class="logo">
+            <a href="index.html" style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #8a7fa4; text-decoration: none; font-weight: bold;">Marianne Book</a>
+        </div>
+        <ul class="nav-links" style="display: flex; list-style: none; gap: 30px; align-items: center;">
+            <li><a href="index.html" style="color: #4a4357; text-decoration: none; font-weight: 500; transition: 0.3s;">Accueil</a></li>
+            
+            <li class="dropdown" style="position: relative;">
+                <a href="#" style="color: #8a7fa4; text-decoration: none; font-weight: 600; transition: 0.3s;">Événements ▼</a>
+                <div class="dropdown-content" style="display: none; position: absolute; background: #ffffff; min-width: 200px; border-radius: 12px; top: 100%; left: 0; padding: 10px; box-shadow: 0 8px 25px rgba(138, 127, 164, 0.15); border: 1px solid rgba(138, 127, 164, 0.1);">
+                    <a href="philosophie.html" style="color: #4a4357; display: block; padding: 10px; text-decoration: none; border-radius: 8px; transition: 0.2s;">Fête des Philosophes</a>
+                    <a href="noel.html" style="color: #4a4357; display: block; padding: 10px; text-decoration: none; border-radius: 8px; transition: 0.2s;">Noël Enchanté</a>
+                    <a href="carnaval.html" style="color: #4a4357; display: block; padding: 10px; text-decoration: none; border-radius: 8px; transition: 0.2s;">Carnaval</a>
+                    <a href="foire.html" style="color: #4a4357; display: block; padding: 10px; text-decoration: none; border-radius: 8px; transition: 0.2s;">La Foire</a>
                 </div>
-            </section>
+            </li>
+            
+            <li><a href="SUCCESS.html" style="color: #4a4357; text-decoration: none; font-weight: 500; transition: 0.3s;">Success Story</a></li>
+        </ul>
+    </nav>
+
+    <div class="yearbook-wrapper">
+        
+        <div class="intro-box">
+            <h1>Le Yearbook En Ligne</h1>
+            <p>Bienvenue dans l'espace officiel des souvenirs du Collège Marianne. Ce Yearbook a été pensé pour capturer, préserver et relater les moments forts, les rires partagés et les événements marquants de notre vie scolaire. Parcourez les albums et laissez-vous emporter par la nostalgie de nos plus belles réussites.</p>
+            
+            <div class="college-photo-placeholder">
+                📍 [ Zone Photo : Collège Marianne 2025-2026 ]
+            </div>
+        </div>
+
+        <h2 class="section-title">Sélectionner une Année Scolaire</h2>
+        <div class="years-horizontal-grid">
+            <div class="year-card active">
+                <h3>2025 - 2026</h3>
+                <p>Année Actuelle ✨</p>
+            </div>
+            <div class="year-card future-year" data-year="2026-2027">
+                <h3>2026 - 2027</h3>
+                <p>À venir</p>
+            </div>
+            <div class="year-card future-year" data-year="2027-2028">
+                <h3>2027 - 2028</h3>
+                <p>À venir</p>
+            </div>
+        </div>
+
+        <div class="guestbook-section">
+            <h2>Livre d'Or &amp; Témoignages</h2>
+            <form id="feedback-form">
+                <div class="form-group">
+                    <label for="user-name">Votre Nom &amp; Prénom :</label>
+                    <input type="text" id="user-name" class="guestbook-input" placeholder="Ex: Jean Dupont...">
+                </div>
+                
+                <div class="form-group">
+                    <label for="user-message">Votre Message ou Souvenir :</label>
+                    <textarea id="user-message" class="guestbook-input" rows="4" placeholder="Laissez un message mémorable pour l'année..." required></textarea>
+                </div>
+
+                <label class="anon-checkbox">
+                    <input type="checkbox" id="is-anonymous"> Poster anonymement ✨
+                </label>
+
+                <button type="submit" class="submit-btn">Publier le message</button>
+            </form>
+
+            <div id="comments-display"></div>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="team-container" style="text-align: center; padding: 30px; margin-top: 50px; border-top: 1px dashed rgba(138, 127, 164, 0.3);">
+            <p style="font-size: 0.9rem; color: #8a7fa4; letter-spacing: 1px;">Créé avec ♥ par Marcelle Jardin, Elga Auguste &amp; Mimita</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Gestion du menu déroulant au survol
+            const dropdown = document.querySelector('.dropdown');
+            const dropdownContent = document.querySelector('.dropdown-content');
+            
+            if (dropdown && dropdownContent) {
+                dropdown.addEventListener('mouseenter', () => dropdownContent.style.display = 'block');
+                dropdown.style.paddingBottom = "15px"; // Évite les coupures de survol
+                dropdown.addEventListener('mouseleave', () => dropdownContent.style.display = 'none');
+            }
+
+            // Gestion des clics sur les années futures
+            const futureYears = document.querySelectorAll('.future-year');
+            futureYears.forEach(card => {
+                card.addEventListener('click', function() {
+                    const year = this.getAttribute('data-year');
+                    alert(`Nous ne sommes pas encore en ${year}. Un peu de patience ! ✨`);
+                });
+            });
+
+            // Système de Livre d'or localisé
+            const feedbackForm = document.getElementById('feedback-form');
+            const commentsDisplay = document.getElementById('comments-display');
+
+            function loadComments() {
+                if (!commentsDisplay) return;
+                const comments = JSON.parse(localStorage.getItem('yearbookMsgs')) || [];
+                commentsDisplay.innerHTML = comments.map(c => `
+                    <div class="comment-card">
+                        <small>${c.date}</small>
+                        <strong>${c.name}</strong>
+                        <p>${c.text}</p>
+                    </div>
+                `).join('');
+            }
+
+            if (feedbackForm) {
+                feedbackForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const name = document.getElementById('user-name').value;
+                    const text = document.getElementById('user-message').value;
+                    const isAnon = document.getElementById('is-anonymous').checked;
+
+                    // Mots interdits filtrés
+                    const bannedWords = ["idiot", "stupide", "con", "nul", "merde", "fuck", "bitch"];
+                    for (let word of bannedWords) {
+                        if (text.toLowerCase().includes(word)) {
+                            alert("Votre message contient un mot inapproprié et ne peut pas être publié.");
+                            return;
+                        }
+                    }
+
+                    const newMsg = {
+                        name: (isAnon || name.trim() === "") ? "Anonyme ✨" : name,
+                        text: text,
+                        date: new Date().toLocaleDateString('fr-FR')
+                    };
+
+                    const comments = JSON.parse(localStorage.getItem('yearbookMsgs')) || [];
+                    comments.unshift(newMsg); // Ajoute le message en premier
+                    localStorage.setItem('yearbookMsgs', JSON.stringify(comments));
+                    feedbackForm.reset();
+                    loadComments();
+                });
+            }
+
+            loadComments();
+        });
+    </script>
+</body>
+</html>
