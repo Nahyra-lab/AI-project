@@ -137,25 +137,112 @@
         </div>
     </main>
 
-    <main id="opportunities" class="section-content pt-32 px-6">
-        <div class="max-w-5xl mx-auto">
-            <h2 class="text-4xl font-bold mb-10 text-yellow-600">Opportunities</h2>
-            <div class="grid gap-6">
-                <div class="flex items-center p-6 bg-white rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
-                    <div class="flex-shrink-0 w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center text-3xl">🤖</div>
-                    <div class="ml-6">
-                        <h4 class="text-xl font-bold">Cours de Robotique (Eté 2024)</h4>
-                        <p class="text-gray-500 text-sm italic">Ouvert aux filles de 14 à 18 ans - Gratuit sur inscription.</p>
-                    </div>
+    <main id="opportunities" class="section-content pt-32 px-6 pb-20">
+        <div class="max-w-6xl mx-auto">
+            
+            <div id="opps-list-view">
+                <div class="max-w-3xl mx-auto text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6 text-blue-900">Opportunities</h2>
+                    <p class="text-lg text-gray-600 leading-relaxed bg-yellow-50/60 border border-yellow-200 p-6 rounded-2xl shadow-sm">
+                        Vous voulez atteindre votre plein potentiel mais vous ne savez pas où trouver des activités ? <br class="hidden md:block">
+                        Eh bien, **c'est précisément pour cela que cette page a été conçue.** Explorez les portes qui s'ouvrent à vous.
+                    </p>
                 </div>
-                <div class="flex items-center p-6 bg-white rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
-                    <div class="flex-shrink-0 w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-3xl">📝</div>
-                    <div class="ml-6">
-                        <h4 class="text-xl font-bold">Concours National d'Éloquence</h4>
-                        <p class="text-gray-500 text-sm italic">Thème : Le futur de l'éducation. Gagnez une bourse d'études.</p>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <div onclick="openOpportunity('robotique')" class="group bg-white p-8 rounded-3xl border border-slate-200 hover:border-yellow-500 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 bg-blue-50 text-blue-600 flex items-center justify-center rounded-2xl mb-6 text-3xl group-hover:scale-110 transition-transform">🤖</div>
+                            <h3 class="text-2xl font-bold text-blue-900 mb-3">Concours de Robotique</h3>
+                            <p class="text-gray-500 text-sm leading-relaxed line-clamp-3">Créez, programmez et relevez des défis technologiques. Parfait pour développer vos compétences en ingénierie et en travail d'équipe.</p>
+                        </div>
+                        <span class="text-yellow-600 font-bold text-sm mt-6 inline-flex items-center group-hover:translate-x-2 transition-transform">Découvrir l'opportunité →</span>
                     </div>
-                </div>
+
+                    <div onclick="openOpportunity('ecriture')" class="group bg-white p-8 rounded-3xl border border-slate-200 hover:border-yellow-500 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 bg-amber-50 text-amber-600 flex items-center justify-center rounded-2xl mb-6 text-3xl group-hover:scale-110 transition-transform">✍️</div>
+                            <h3 class="text-2xl font-bold text-blue-900 mb-3">Concours d'Écriture</h3>
+                            <p class="text-gray-500 text-sm leading-relaxed line-clamp-3">Partagez vos récits, vos poèmes ou vos essais. Une opportunité unique de faire résonner votre voix et de remporter des prix littéraires.</p>
+                        </div>
+                        <span class="text-yellow-600 font-bold text-sm mt-6 inline-flex items-center group-hover:translate-x-2 transition-transform">Découvrir l'opportunité →</span>
+                    </div>
+
+                    <div onclick="openOpportunity('plaidoirie')" class="group bg-white p-8 rounded-3xl border border-slate-200 hover:border-yellow-500 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 bg-purple-50 text-purple-600 flex items-center justify-center rounded-2xl mb-6 text-3xl group-hover:scale-110 transition-transform">⚖️</div>
+                            <h3 class="text-2xl font-bold text-blue-900 mb-3">Concours de Plaidoirie</h3>
+                            <p class="text-gray-500 text-sm leading-relaxed line-clamp-3">Maîtrisez l'art de l'éloquence, défendez des causes nobles devant des jurys d'experts et apprenez à convaincre avec force.</p>
+                        </div>
+                        <span class="text-yellow-600 font-bold text-sm mt-6 inline-flex items-center group-hover:translate-x-2 transition-transform">Découvrir l'opportunité →</span>
+                    </div>
+
+                    <div onclick="openOpportunity('programme-ete')" class="group bg-white p-8 rounded-3xl border border-slate-200 hover:border-yellow-500 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 bg-orange-50 text-orange-600 flex items-center justify-center rounded-2xl mb-6 text-3xl group-hover:scale-110 transition-transform">☀️</div>
+                            <h3 class="text-2xl font-bold text-blue-900 mb-3">Programmes d'Été</h3>
+                            <p class="text-gray-500 text-sm leading-relaxed line-clamp-3">Des immersions universitaires intensives durant les vacances pour découvrir des filières d'avenir et networker.</p>
+                        </div>
+                        <span class="text-yellow-600 font-bold text-sm mt-6 inline-flex items-center group-hover:translate-x-2 transition-transform">Découvrir l'opportunité →</span>
+                    </div>
+
+                    <div onclick="openOpportunity('benevolat')" class="group bg-white p-8 rounded-3xl border border-slate-200 hover:border-yellow-500 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 bg-rose-50 text-rose-600 flex items-center justify-center rounded-2xl mb-6 text-3xl group-hover:scale-110 transition-transform">🤝</div>
+                            <h3 class="text-2xl font-bold text-blue-900 mb-3">Bénévolat</h3>
+                            <p class="text-gray-500 text-sm leading-relaxed line-clamp-3">Engagez-vous dans des projets communautaires et associatifs. Idéal pour développer votre leadership humain.</p>
+                        </div>
+                        <span class="text-yellow-600 font-bold text-sm mt-6 inline-flex items-center group-hover:translate-x-2 transition-transform">Découvrir l'opportunité →</span>
+                    </div>
+
+                    <div onclick="openOpportunity('bourse')" class="group bg-white p-8 rounded-3xl border border-slate-200 hover:border-yellow-500 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 bg-emerald-50 text-emerald-600 flex items-center justify-center rounded-2xl mb-6 text-3xl group-hover:scale-110 transition-transform">🎓</div>
+                            <h3 class="text-2xl font-bold text-blue-900 mb-3">Bourses d'Étude</h3>
+                            <p class="text-gray-500 text-sm leading-relaxed line-clamp-3">Financer vos ambitions académiques grâce à des bourses de mérite ou de critères sociaux, au niveau national et international.</p>
+                        </div>
+                        <span class="text-yellow-600 font-bold text-sm mt-6 inline-flex items-center group-hover:translate-x-2 transition-transform">Découvrir l'opportunité →</span>
+                    </div>
+
+                    <div onclick="openOpportunity('mun')" class="group bg-white p-8 rounded-3xl border border-slate-200 hover:border-yellow-500 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 bg-sky-50 text-sky-600 flex items-center justify-center rounded-2xl mb-6 text-3xl group-hover:scale-110 transition-transform">🇺🇳</div>
+                            <h3 class="text-2xl font-bold text-blue-900 mb-3">Model United Nations</h3>
+                            <p class="text-gray-500 text-sm leading-relaxed line-clamp-3">Glissez-vous dans la peau d'un diplomate de l'ONU, débattez de géopolitique globale et résolvez des crises mondiales en anglais ou en français.</p>
+                        </div>
+                        <span class="text-yellow-600 font-bold text-sm mt-6 inline-flex items-center group-hover:translate-x-2 transition-transform">Découvrir l'opportunité →</span>
+                    </div>
+
+                    <div onclick="openOpportunity('uwc')" class="group bg-white p-8 rounded-3xl border border-slate-200 hover:border-yellow-500 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 bg-indigo-50 text-indigo-600 flex items-center justify-center rounded-2xl mb-6 text-3xl group-hover:scale-110 transition-transform">🌍</div>
+                            <h3 class="text-2xl font-bold text-blue-900 mb-3">United World College</h3>
+                            <p class="text-gray-500 text-sm leading-relaxed line-clamp-3">Intégrez des lycées internationaux d'élite à travers le monde pour y passer votre Bac International dans un environnement multiculturel unique.</p>
+                        </div>
+                        <span class="text-yellow-600 font-bold text-sm mt-6 inline-flex items-center group-hover:translate-x-2 transition-transform">Découvrir l'opportunité →</span>
+                    </div>
+
+                    <div onclick="openOpportunity('internationaux')" class="group bg-white p-8 rounded-3xl border border-slate-200 hover:border-yellow-500 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between">
+                        <div>
+                            <div class="w-14 h-14 bg-violet-50 text-violet-600 flex items-center justify-center rounded-2xl mb-6 text-3xl group-hover:scale-110 transition-transform">🏆</div>
+                            <h3 class="text-2xl font-bold text-blue-900 mb-3">Concours Internationaux</h3>
+                            <p class="text-gray-500 text-sm leading-relaxed line-clamp-3">Mesurez-vous à l'élite mondiale : Olympiades de sciences, concours d'art, compétitions de d'innovation ou de business.</p>
+                        </div>
+                        <span class="text-yellow-600 font-bold text-sm mt-6 inline-flex items-center group-hover:translate-x-2 transition-transform">Découvrir l'opportunité →</span>
+                    </div>
+  </div>
             </div>
+
+            <div id="opps-detail-view" class="hidden max-w-4xl mx-auto bg-white rounded-[2rem] shadow-xl border border-slate-100 p-8 md:p-12">
+                <button onclick="closeOpportunity()" class="mb-8 font-semibold text-sm tracking-wide text-slate-500 hover:text-yellow-600 flex items-center gap-2 transition">
+                    ← Retour aux opportunités
+                </button>
+                
+                <div id="detail-content">
+                    </div>
+            </div>
+
         </div>
     </main>
 
