@@ -16,14 +16,47 @@
     </style>
 </head>
 <body class="theme-noel">
-    <nav class="navbar">
-        <div class="logo gold-text">Noël Enchanté</div>
-        <ul class="nav-links">
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="SUCCESS.html">Succes Story</a></li>
-        </ul>
-    </nav>
+   <nav class="navbar" style="display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background-color: #ffffff; box-shadow: 0 4px 15px rgba(138, 127, 164, 0.05); position: sticky; top: 0; z-index: 1000;">
+    <div class="logo">
+        <a href="yearbook.html" style="font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: #8a7fa4; text-decoration: none; letter-spacing: -0.5px;">Marianne</a>
+    </div>
+    <ul class="nav-links" style="display: flex; list-style: none; gap: 35px; align-items: center; margin: 0; padding: 0;">
+        <li><a href="yearbook.html" style="text-decoration: none; color: #635b77; font-weight: 600; font-size: 0.95rem; transition: color 0.3s;">Accueil</a></li>
+        
+        <li class="dropdown" style="position: relative;">
+            <a href="#" class="dropdown-toggle" style="text-decoration: none; color: #8a7fa4; font-weight: 700; font-size: 0.95rem; display: flex; align-items: center; gap: 5px;">
+                Événements <span style="font-size: 0.8rem;">▼</span>
+            </a>
+            <ul class="dropdown-menu" style="position: absolute; top: 100%; right: 0; background-color: #ffffff; box-shadow: 0 8px 24px rgba(138, 127, 164, 0.12); border-radius: 12px; padding: 10px 0; min-width: 200px; list-style: none; margin-top: 10px; display: none; border: 1px solid rgba(138, 127, 164, 0.08);">
+                <li><a href="philosophie.html" style="display: block; padding: 12px 20px; text-decoration: none; color: #635b77; font-weight: 500; font-size: 0.9rem; transition: background 0.2s;">Fête des Philosophes</a></li>
+                <li><a href="noel.html" style="display: block; padding: 12px 20px; text-decoration: none; color: #635b77; font-weight: 500; font-size: 0.9rem; transition: background 0.2s;">Noël Enchanté</a></li>
+                <li><a href="carnaval.html" style="display: block; padding: 12px 20px; text-decoration: none; color: #635b77; font-weight: 500; font-size: 0.9rem; transition: background 0.2s;">Carnaval</a></li>
+                <li><a href="foire.html" style="display: block; padding: 12px 20px; text-decoration: none; color: #635b77; font-weight: 500; font-size: 0.9rem; transition: background 0.2s;">La Foire</a></li>
+            </ul>
+        </li>
+        
+        <li><a href="success-story.html" style="text-decoration: none; color: #635b77; font-weight: 600; font-size: 0.95rem; transition: color 0.3s;">Success Story</a></li>
+    </ul>
+</nav>
 
+<script>
+    const dropdownToggle = document.querySelector('.dropdown-toggle');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+
+    if (dropdownToggle && dropdownMenu) {
+        dropdownToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            const isDisplayed = dropdownMenu.style.display === 'block';
+            dropdownMenu.style.display = isDisplayed ? 'none' : 'block';
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                dropdownMenu.style.display = 'none';
+            }
+        });
+    }
+</script>
     <main class="container">
         <div class="glass-card">
             <h1 class="gold-text">❄️ La Douceur d'un Noël Givré</h1>
