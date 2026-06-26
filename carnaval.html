@@ -2,23 +2,74 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>La Foire - Livre Souvenir</title>
+    <title>La Foire - Livre Magique</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* --- CONFIGURATION DU LIVRE 3D --- */
+        /* --- CONFIGURATION DU FOND ANIMÉ ET FESTIF --- */
+        body.body-foire {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            /* Dégradé de couleurs Carnaval : Violet, Rose néon, Orange feu */
+            background: linear-gradient(135deg, #2e1a47, #7209b7, #f72585, #ffb703);
+            background-size: 400% 400%;
+            animation: carnivalGradient 15s ease infinite;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Animation fluide du fond coloré */
+        @keyframes carnivalGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* --- EFFET VERRE ULTRA-MODERNE POUR LES TITRES --- */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            padding: 30px;
+            text-align: center;
+            max-width: 800px;
+            margin: 40px auto;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .gold-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            background: linear-gradient(to right, #ffe600, #ffb703, #ffffff, #ffb703);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0 0 10px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .glass-card p {
+            color: #ffffff;
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        /* --- STRUCTURE DU LIVRE MAGIQUE 3D --- */
         .book-section {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 60px 20px;
-            perspective: 2000px; /* Donne l'effet de profondeur 3D */
+            padding: 40px 20px;
+            perspective: 2500px; /* Profondeur 3D accentuée */
         }
 
         .book {
-            relative;
-            width: 550px;  /* Largeur d'une page */
-            height: 650px; /* Plus grand et spectaculaire */
+            width: 550px;  
+            height: 680px; 
             position: relative;
             transform-style: preserve-3d;
             transition: transform 0.5s;
@@ -30,56 +81,80 @@
             height: 100%;
             top: 0;
             left: 0;
-            transform-origin: left center; /* Le livre tourne autour de la reliure à gauche */
+            transform-origin: left center;
             transform-style: preserve-3d;
-            transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1); /* Animation fluide style papier */
+            transition: transform 1.4s cubic-bezier(0.25, 1, 0.5, 1);
             z-index: 1;
         }
 
-        /* Face et Dos de chaque page */
+        /* Look "Livre de collection" avec texture Parchemin */
         .front, .back {
             position: absolute;
             width: 100%;
             height: 100%;
             top: 0;
             left: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backface-visibility: hidden; /* Cache le dos quand on regarde la face */
-            box-shadow: inset 3px 0 20px rgba(0, 0, 0, 0.2), 10px 10px 30px rgba(0,0,0,0.3);
-            border-radius: 0 16px 16px 0;
-            padding: 30px;
+            /* Couleur papier parchemin noble */
+            background: #fcf8f2;
+            backface-visibility: hidden;
+            box-shadow: inset 4px 0 30px rgba(0, 0, 0, 0.2), 15px 15px 35px rgba(0,0,0,0.5);
+            border-radius: 0 24px 24px 0;
+            padding: 40px;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            border: 1px solid #e2d4c9;
+        }
+
+        /* Couverture extérieure du livre (Page 1 Front) */
+        #p1 .front {
+            background: linear-gradient(135deg, #4a154b, #2c003e); /* Cuir violet royal */
+            border: 4px solid #ffb703; /* Bordure dorée */
+            border-radius: 0 24px 24px 0;
+        }
+
+        #p1 .front h2 {
+            color: #ffb703 !important;
+            font-size: 2.5rem;
+            text-align: center;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
 
         .back {
-            transform: rotateY(180deg); /* Le dos est retourné par défaut */
-            border-radius: 16px 0 0 16px;
+            transform: rotateY(180deg);
+            border-radius: 24px 0 0 24px;
         }
 
-        /* Effet visuel de la reliure au milieu */
+        /* Effet d'ombre réaliste sur la tranche du livre */
         .front::before {
             content: '';
             position: absolute;
             left: 0;
             top: 0;
-            width: 15px;
+            width: 25px;
             height: 100%;
-            background: linear-gradient(to right, rgba(0,0,0,0.15), transparent);
+            background: linear-gradient(to right, rgba(0,0,0,0.2), transparent);
         }
 
-        /* Contenu multimédia dans le livre */
+        .book h2 {
+            font-family: 'Playfair Display', serif;
+            color: #4a154b;
+            margin-top: 0;
+            font-size: 1.8rem;
+            border-bottom: 2px solid rgba(138, 127, 164, 0.2);
+            padding-bottom: 10px;
+        }
+
+        /* Conteneurs pour les futures Photos / Vidéos */
         .media-box {
             width: 100%;
-            height: 70%;
-            border-radius: 8px;
+            height: 65%;
+            border-radius: 12px;
             overflow: hidden;
-            background: #e5e0eb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: #111;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            border: 3px solid #ffffff;
         }
 
         .media-box img, .media-box video {
@@ -88,73 +163,71 @@
             object-fit: cover;
         }
 
-        /* Classe Javascript qui déclenche la rotation de la page */
         .page.flipped {
             transform: rotateY(-180deg);
         }
 
-        /* --- BOUTON SPECTACULAIRE TOURNER LA PAGE --- */
+        /* --- BOUTONS TOURNER LA PAGE --- */
         .controls {
             margin-top: 40px;
             display: flex;
-            gap: 20px;
+            gap: 25px;
         }
 
         .book-btn {
-            background: #8a7fa4;
-            color: white;
+            background: linear-gradient(135deg, #ffb703, #ff8c00);
+            color: #fff;
             border: none;
-            padding: 15px 35px;
+            padding: 16px 40px;
             font-size: 1.1rem;
-            font-weight: bold;
-            border-radius: 30px;
+            font-weight: 700;
+            border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(138, 127, 164, 0.4);
-            transition: all 0.3s ease;
+            box-shadow: 0 6px 25px rgba(255, 136, 0, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
         .book-btn:hover {
-            background: #635b77;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(138, 127, 164, 0.6);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(255, 136, 0, 0.6);
         }
 
         .book-btn:disabled {
-            background: #ccc;
+            background: rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.4);
             box-shadow: none;
             cursor: not-allowed;
             transform: none;
         }
 
-        /* --- SECTION TEXTE EN DESSOUS --- */
+        /* --- ZONE TEXTE EN DESSOUS --- */
         .description-section {
-            max-width: 900px;
-            margin: 50px auto 0 auto;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 16px;
-            color: #333;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            backdrop-filter: blur(5px);
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 24px;
+            color: #2c003e;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
         }
 
         .description-section h2 {
-            color: #8a7fa4;
+            color: #7209b7;
+            font-size: 2rem;
             margin-top: 0;
-            font-family: 'Playfair Display', serif;
         }
     </style>
 </head>
 <body class="body-foire">
+    
     <nav class="navbar" style="display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background-color: #ffffff; box-shadow: 0 4px 15px rgba(138, 127, 164, 0.05); position: sticky; top: 0; z-index: 1000;">
         <div class="logo">
             <a href="yearbook.html" style="font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: #8a7fa4; text-decoration: none; letter-spacing: -0.5px;">Our Yearbook</a>
         </div>
         <ul class="nav-links" style="display: flex; list-style: none; gap: 35px; align-items: center; margin: 0; padding: 0;">
             <li><a href="yearbook.html" style="text-decoration: none; color: #635b77; font-weight: 600; font-size: 0.95rem; transition: color 0.3s;">Accueil</a></li>
-            
             <li class="dropdown" style="position: relative;">
                 <a href="#" class="dropdown-toggle" style="text-decoration: none; color: #8a7fa4; font-weight: 700; font-size: 0.95rem; display: flex; align-items: center; gap: 5px;">
                     Événements <span style="font-size: 0.8rem;">▼</span>
@@ -172,94 +245,7 @@
     <script>
         const dropdownToggle = document.querySelector('.dropdown-toggle');
         const dropdownMenu = document.querySelector('.dropdown-menu');
-
         if (dropdownToggle && dropdownMenu) {
             dropdownToggle.addEventListener('click', (e) => {
                 e.preventDefault();
-                const isDisplayed = dropdownMenu.style.display === 'block';
-                dropdownMenu.style.display = isDisplayed ? 'none' : 'block';
-            });
-
-            document.addEventListener('click', (e) => {
-                if (!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
-                    dropdownMenu.style.display = 'none';
-                }
-            });
-        }
-    </script>
-
-    <main class="container">
-        <div class="glass-card" style="text-align: center; margin-bottom: 30px;">
-            <h1 class="gold-text">🎡 La Foire aux Talents</h1>
-            <p>Un moment d'inclusion où chaque projet a été mis en lumière.</p>
-        </div>
-
-        <section class="book-section">
-            <div class="book">
-                
-                <div class="page" id="p1" style="z-index: 3;">
-                    <div class="front">
-                        <h2>L'Ouverture de la Foire</h2>
-                        <div class="media-box">
-                            <img src="https://via.placeholder.com/550x650?text=Photo+1+-+Ouverture" alt="Photo 1">
-                        </div>
-                        <p style="font-style: italic; color: #666;">Aperçu des premiers instants festifs.</p>
-                    </div>
-                    <div class="back">
-                        <h2>L'Énergie du Public</h2>
-                        <div class="media-box">
-                            <img src="https://via.placeholder.com/550x650?text=Photo+2+-+Public" alt="Photo 2">
-                        </div>
-                        <p style="font-style: italic; color: #666;">Sourires et partages au rendez-vous.</p>
-                    </div>
-                </div>
-
-                <div class="page" id="p2" style="z-index: 2;">
-                    <div class="front">
-                        <h2>Les Stands et Créations</h2>
-                        <div class="media-box">
-                            <img src="https://via.placeholder.com/550x650?text=Photo+3+-+Stands" alt="Photo 3">
-                        </div>
-                        <p style="font-style: italic; color: #666;">Découverte des talents exposés.</p>
-                    </div>
-                    <div class="back">
-                        <h2>Le Film de l'Événement</h2>
-                        <div class="media-box">
-                            <video controls poster="https://via.placeholder.com/550x650?text=Cliquez+pour+lancer+la+video">
-                                <source src="" type="video/mp4">
-                                Votre navigateur ne gère pas les vidéos.
-                            </video>
-                        </div>
-                        <p style="font-style: italic; color: #666;">Retour en vidéo sur les temps forts.</p>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="controls">
-                <button class="book-btn" id="prev-btn" disabled>Page Précédente</button>
-                <button class="book-btn" id="next-btn">Tournez la page</button>
-            </div>
-        </section>
-
-        <section class="description-section">
-            <h2>À propos de cet Album Virtuel</h2>
-            <p>Cet espace est conçu pour immortaliser nos plus beaux souvenirs de la Foire aux Talents. Utilisez les boutons ci-dessus pour feuilleter l'album et revivre les moments forts à travers nos galeries photos et vidéos.</p>
-            <p>N'hésitez pas à rajouter autant de paragraphes textuels que nécessaire ici pour vos comptes-rendus ou vos remerciements.</p>
-        </section>
-
-    </main>
-
-    <script>
-        const prevBtn = document.querySelector("#prev-btn");
-        const nextBtn = document.querySelector("#next-btn");
-        
-        // Liste de nos pages dans l'ordre
-        const page1 = document.querySelector("#p1");
-        const page2 = document.querySelector("#p2");
-
-        let currentState = 1;
-        const maxState = 3; // 2 pages physiques = 3 états possibles (Fermé, Page 1 tournée, Page 2 tournée)
-
-        function openBook() {
-            //
+                const isDisplayed =
