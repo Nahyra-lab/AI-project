@@ -137,114 +137,268 @@
         </div>
     </main>
 
-    <main id="opportunities" class="section-content pt-32 px-6 pb-20">
-        <div class="max-w-6xl mx-auto">
-            
-            <div id="opps-list-view">
-                <div class="max-w-3xl mx-auto text-center mb-16">
-                    <h2 class="text-4xl md:text-5xl font-bold mb-6 text-blue-900">Opportunities</h2>
-                    <p class="text-lg text-gray-600 leading-relaxed bg-yellow-50/60 border border-yellow-200 p-6 rounded-2xl shadow-sm">
-                        Vous voulez atteindre votre plein potentiel mais vous ne savez pas où trouver des activités ? <br class="hidden md:block">
-                        Eh bien, **c'est précisément pour cela que cette page a été conçue.** Explorez les portes qui s'ouvrent à vous.
-                    </p>
+    <!-- ==================== SECTION OPPORTUNITIES ==================== -->
+<main id="opportunities" class="section-content pt-32 px-4 md:px-8 pb-24 bg-slate-50/50">
+
+    <div class="max-w-6xl mx-auto">
+
+        <!-- En-tête -->
+        <div class="max-w-3xl mb-16">
+            <span class="text-xs font-bold tracking-widest uppercase text-amber-600 bg-amber-50 px-3 py-1.5 rounded-full">
+                Explore
+            </span>
+
+            <h2 class="text-4xl md:text-5xl font-black text-slate-900 mt-4 tracking-tight">
+                Opportunities
+            </h2>
+
+            <p class="text-slate-600 mt-4 text-lg leading-relaxed">
+                Vous souhaitez atteindre votre plein potentiel mais vous ne savez pas où trouver les activités,
+                programmes, concours et expériences qui pourraient vous ouvrir de nouvelles portes ?
+                Cette page a été conçue pour vous guider. Explorez des opportunités académiques,
+                culturelles et internationales qui vous permettront de développer vos compétences,
+                d'élargir vos horizons et de vous rapprocher de vos rêves.
+            </p>
+        </div>
+
+        <!-- ==================== VUE LISTE ==================== -->
+        <div id="opps-list-view">
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[220px]">
+
+                <!-- ROBOTIQUE -->
+                <div onclick="openOpportunity('robotique')"
+                    class="opportunity-card cursor-pointer md:col-span-2 md:row-span-2 rounded-[2rem] overflow-hidden shadow-sm border border-slate-200/60 relative group bg-white">
+
+                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=1200')] bg-cover bg-center group-hover:scale-105 transition-transform duration-500">
+                    </div>
+
+                    <div class="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-transparent"></div>
+
+                    <div class="absolute inset-0 p-8 md:p-12 flex flex-col justify-between max-w-md z-10">
+                        <div class="w-12 h-12 bg-blue-600/10 text-blue-600 rounded-2xl flex items-center justify-center text-2xl">
+                            🤖
+                        </div>
+
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-900 mb-2">
+                                Concours de Robotique
+                            </h3>
+
+                            <p class="text-slate-600 text-sm">
+                                Concevez, programmez et présentez des projets technologiques innovants.
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    
-                    <div onclick="openOpportunity('robotique')" class="group bg-white p-8 rounded-3xl border border-slate-200 hover:border-yellow-500 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between">
-                        <div>
-                            <div class="w-14 h-14 bg-blue-50 text-blue-600 flex items-center justify-center rounded-2xl mb-6 text-3xl group-hover:scale-110 transition-transform">🤖</div>
-                            <h3 class="text-2xl font-bold text-blue-900 mb-3">Concours de Robotique</h3>
-                            <p class="text-gray-500 text-sm leading-relaxed line-clamp-3">Créez, programmez et relevez des défis technologiques. Parfait pour développer vos compétences en ingénierie et en travail d'équipe.</p>
-                        </div>
-                        <span class="text-yellow-600 font-bold text-sm mt-6 inline-flex items-center group-hover:translate-x-2 transition-transform">Découvrir l'opportunité →</span>
+                <!-- ÉCRITURE -->
+                <div onclick="openOpportunity('ecriture')"
+                    class="opportunity-card cursor-pointer md:row-span-2 rounded-[2rem] p-8 border border-slate-200/60 shadow-sm bg-gradient-to-b from-amber-50/50 to-orange-50/20 flex flex-col justify-between">
+
+                    <div class="w-12 h-12 bg-amber-500/10 text-amber-600 rounded-2xl flex items-center justify-center text-2xl">
+                        ✍️
                     </div>
 
-                    <div onclick="openOpportunity('ecriture')" class="group bg-white p-8 rounded-3xl border border-slate-200 hover:border-yellow-500 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between">
-                        <div>
-                            <div class="w-14 h-14 bg-amber-50 text-amber-600 flex items-center justify-center rounded-2xl mb-6 text-3xl group-hover:scale-110 transition-transform">✍️</div>
-                            <h3 class="text-2xl font-bold text-blue-900 mb-3">Concours d'Écriture</h3>
-                            <p class="text-gray-500 text-sm leading-relaxed line-clamp-3">Partagez vos récits, vos poèmes ou vos essais. Une opportunité unique de faire résonner votre voix et de remporter des prix littéraires.</p>
-                        </div>
-                        <span class="text-yellow-600 font-bold text-sm mt-6 inline-flex items-center group-hover:translate-x-2 transition-transform">Découvrir l'opportunité →</span>
+                    <div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-3">
+                            Concours d'Écriture
+                        </h3>
+
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Exprimez votre créativité à travers des récits, essais et poèmes.
+                        </p>
                     </div>
 
-                    <div onclick="openOpportunity('plaidoirie')" class="group bg-white p-8 rounded-3xl border border-slate-200 hover:border-yellow-500 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between">
-                        <div>
-                            <div class="w-14 h-14 bg-purple-50 text-purple-600 flex items-center justify-center rounded-2xl mb-6 text-3xl group-hover:scale-110 transition-transform">⚖️</div>
-                            <h3 class="text-2xl font-bold text-blue-900 mb-3">Concours de Plaidoirie</h3>
-                            <p class="text-gray-500 text-sm leading-relaxed line-clamp-3">Maîtrisez l'art de l'éloquence, défendez des causes nobles devant des jurys d'experts et apprenez à convaincre avec force.</p>
-                        </div>
-                        <span class="text-yellow-600 font-bold text-sm mt-6 inline-flex items-center group-hover:translate-x-2 transition-transform">Découvrir l'opportunité →</span>
+                    <span class="text-amber-600 font-semibold text-sm">
+                        En savoir plus →
+                    </span>
+                </div>
+
+                <!-- PROGRAMME ÉTÉ -->
+                <div onclick="openOpportunity('programme-ete')"
+                    class="opportunity-card cursor-pointer rounded-[2rem] overflow-hidden shadow-sm border border-slate-200/60 relative group bg-white">
+
+                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=800')] bg-cover bg-center group-hover:scale-105 transition-transform duration-500">
                     </div>
 
-                    <div onclick="openOpportunity('programme-ete')" class="group bg-white p-8 rounded-3xl border border-slate-200 hover:border-yellow-500 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between">
-                        <div>
-                            <div class="w-14 h-14 bg-orange-50 text-orange-600 flex items-center justify-center rounded-2xl mb-6 text-3xl group-hover:scale-110 transition-transform">☀️</div>
-                            <h3 class="text-2xl font-bold text-blue-900 mb-3">Programmes d'Été</h3>
-                            <p class="text-gray-500 text-sm leading-relaxed line-clamp-3">Des immersions universitaires intensives durant les vacances pour découvrir des filières d'avenir et networker.</p>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent"></div>
+
+                    <div class="absolute inset-0 p-6 flex flex-col justify-between z-10">
+                        <div class="w-10 h-10 bg-white/20 backdrop-blur-md text-white rounded-xl flex items-center justify-center">
+                            ☀️
                         </div>
-                        <span class="text-yellow-600 font-bold text-sm mt-6 inline-flex items-center group-hover:translate-x-2 transition-transform">Découvrir l'opportunité →</span>
+
+                        <h3 class="text-lg font-bold text-white">
+                            Programmes d'Été
+                        </h3>
+                    </div>
+                </div>
+
+                <!-- MUN -->
+                <div onclick="openOpportunity('mun')"
+                    class="opportunity-card cursor-pointer rounded-[2rem] p-6 border border-slate-200/60 shadow-sm bg-white flex flex-col justify-between">
+
+                    <div class="flex justify-between items-start">
+                        <div class="w-10 h-10 bg-sky-100 text-sky-600 rounded-xl flex items-center justify-center">
+                            🇺🇳
+                        </div>
+
+                        <span class="text-xs font-semibold text-slate-400">
+                            Diplomatie
+                        </span>
                     </div>
 
-                    <div onclick="openOpportunity('benevolat')" class="group bg-white p-8 rounded-3xl border border-slate-200 hover:border-yellow-500 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between">
-                        <div>
-                            <div class="w-14 h-14 bg-rose-50 text-rose-600 flex items-center justify-center rounded-2xl mb-6 text-3xl group-hover:scale-110 transition-transform">🤝</div>
-                            <h3 class="text-2xl font-bold text-blue-900 mb-3">Bénévolat</h3>
-                            <p class="text-gray-500 text-sm leading-relaxed line-clamp-3">Engagez-vous dans des projets communautaires et associatifs. Idéal pour développer votre leadership humain.</p>
-                        </div>
-                        <span class="text-yellow-600 font-bold text-sm mt-6 inline-flex items-center group-hover:translate-x-2 transition-transform">Découvrir l'opportunité →</span>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-900">
+                            Model United Nations
+                        </h3>
+
+                        <p class="text-slate-500 text-xs mt-1">
+                            Incarnez un diplomate et débattez des enjeux mondiaux.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- BOURSES -->
+                <div onclick="openOpportunity('bourse')"
+                    class="opportunity-card cursor-pointer md:col-span-2 md:row-span-2 rounded-[2rem] overflow-hidden shadow-sm border border-slate-200/60 relative group bg-white">
+
+                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=1200')] bg-cover bg-center group-hover:scale-105 transition-transform duration-500">
                     </div>
 
-                    <div onclick="openOpportunity('bourse')" class="group bg-white p-8 rounded-3xl border border-slate-200 hover:border-yellow-500 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between">
-                        <div>
-                            <div class="w-14 h-14 bg-emerald-50 text-emerald-600 flex items-center justify-center rounded-2xl mb-6 text-3xl group-hover:scale-110 transition-transform">🎓</div>
-                            <h3 class="text-2xl font-bold text-blue-900 mb-3">Bourses d'Étude</h3>
-                            <p class="text-gray-500 text-sm leading-relaxed line-clamp-3">Financer vos ambitions académiques grâce à des bourses de mérite ou de critères sociaux, au niveau national et international.</p>
+                    <div class="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-transparent"></div>
+
+                    <div class="absolute inset-0 p-8 md:p-12 flex flex-col justify-between max-w-md z-10">
+                        <div class="w-12 h-12 bg-emerald-500/10 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl">
+                            🎓
                         </div>
-                        <span class="text-yellow-600 font-bold text-sm mt-6 inline-flex items-center group-hover:translate-x-2 transition-transform">Découvrir l'opportunité →</span>
+
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-900 mb-2">
+                                Bourses d'Études
+                            </h3>
+
+                            <p class="text-slate-600 text-sm">
+                                Découvrez les programmes de financement pour poursuivre vos études.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PLAIDOIRIE -->
+                <div onclick="openOpportunity('plaidoirie')"
+                    class="opportunity-card cursor-pointer rounded-[2rem] p-6 border border-slate-200/60 shadow-sm bg-purple-50/40 flex flex-col justify-between">
+
+                    <div class="w-10 h-10 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center">
+                        ⚖️
                     </div>
 
-                    <div onclick="openOpportunity('mun')" class="group bg-white p-8 rounded-3xl border border-slate-200 hover:border-yellow-500 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between">
-                        <div>
-                            <div class="w-14 h-14 bg-sky-50 text-sky-600 flex items-center justify-center rounded-2xl mb-6 text-3xl group-hover:scale-110 transition-transform">🇺🇳</div>
-                            <h3 class="text-2xl font-bold text-blue-900 mb-3">Model United Nations</h3>
-                            <p class="text-gray-500 text-sm leading-relaxed line-clamp-3">Glissez-vous dans la peau d'un diplomate de l'ONU, débattez de géopolitique globale et résolvez des crises mondiales en anglais ou en français.</p>
-                        </div>
-                        <span class="text-yellow-600 font-bold text-sm mt-6 inline-flex items-center group-hover:translate-x-2 transition-transform">Découvrir l'opportunité →</span>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-900">
+                            Plaidoirie
+                        </h3>
+
+                        <p class="text-slate-500 text-xs mt-1">
+                            Développez votre éloquence et votre capacité à convaincre.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- BÉNÉVOLAT -->
+                <div onclick="openOpportunity('benevolat')"
+                    class="opportunity-card cursor-pointer rounded-[2rem] p-6 border border-slate-200/60 shadow-sm bg-white flex flex-col justify-between">
+
+                    <div class="w-10 h-10 bg-rose-100 text-rose-600 rounded-xl flex items-center justify-center">
+                        🤝
                     </div>
 
-                    <div onclick="openOpportunity('uwc')" class="group bg-white p-8 rounded-3xl border border-slate-200 hover:border-yellow-500 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between">
-                        <div>
-                            <div class="w-14 h-14 bg-indigo-50 text-indigo-600 flex items-center justify-center rounded-2xl mb-6 text-3xl group-hover:scale-110 transition-transform">🌍</div>
-                            <h3 class="text-2xl font-bold text-blue-900 mb-3">United World College</h3>
-                            <p class="text-gray-500 text-sm leading-relaxed line-clamp-3">Intégrez des lycées internationaux d'élite à travers le monde pour y passer votre Bac International dans un environnement multiculturel unique.</p>
-                        </div>
-                        <span class="text-yellow-600 font-bold text-sm mt-6 inline-flex items-center group-hover:translate-x-2 transition-transform">Découvrir l'opportunité →</span>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-900">
+                            Bénévolat
+                        </h3>
+
+                        <p class="text-slate-500 text-xs mt-1">
+                            Engagez-vous dans des projets à fort impact humain.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- UWC -->
+                <div onclick="openOpportunity('uwc')"
+                    class="opportunity-card cursor-pointer rounded-[2rem] overflow-hidden shadow-sm border border-slate-200/60 relative group bg-white">
+
+                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&q=80&w=800')] bg-cover bg-center group-hover:scale-105 transition-transform duration-500">
                     </div>
 
-                    <div onclick="openOpportunity('internationaux')" class="group bg-white p-8 rounded-3xl border border-slate-200 hover:border-yellow-500 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between">
-                        <div>
-                            <div class="w-14 h-14 bg-violet-50 text-violet-600 flex items-center justify-center rounded-2xl mb-6 text-3xl group-hover:scale-110 transition-transform">🏆</div>
-                            <h3 class="text-2xl font-bold text-blue-900 mb-3">Concours Internationaux</h3>
-                            <p class="text-gray-500 text-sm leading-relaxed line-clamp-3">Mesurez-vous à l'élite mondiale : Olympiades de sciences, concours d'art, compétitions de d'innovation ou de business.</p>
-                        </div>
-                        <span class="text-yellow-600 font-bold text-sm mt-6 inline-flex items-center group-hover:translate-x-2 transition-transform">Découvrir l'opportunité →</span>
-                    </div>
-  </div>
-            </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent"></div>
 
-            <div id="opps-detail-view" class="hidden max-w-4xl mx-auto bg-white rounded-[2rem] shadow-xl border border-slate-100 p-8 md:p-12">
-                <button onclick="closeOpportunity()" class="mb-8 font-semibold text-sm tracking-wide text-slate-500 hover:text-yellow-600 flex items-center gap-2 transition">
-                    ← Retour aux opportunités
-                </button>
-                
-                <div id="detail-content">
+                    <div class="absolute inset-0 p-6 flex flex-col justify-between z-10">
+
+                        <div class="w-10 h-10 bg-white/20 backdrop-blur-md text-white rounded-xl flex items-center justify-center">
+                            🌍
+                        </div>
+
+                        <h3 class="text-lg font-bold text-white">
+                            United World Colleges
+                        </h3>
+
                     </div>
+                </div>
+
+                <!-- CONCOURS INTERNATIONAUX -->
+                <div onclick="openOpportunity('international')"
+                    class="opportunity-card cursor-pointer md:col-span-3 rounded-[2rem] p-8 bg-gradient-to-r from-blue-900 to-indigo-900 text-white shadow-lg">
+
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+
+                        <div>
+                            <span class="text-sm uppercase tracking-widest text-blue-200">
+                                Global Challenge
+                            </span>
+
+                            <h3 class="text-2xl font-bold mt-2">
+                                Concours Internationaux
+                            </h3>
+
+                            <p class="text-blue-100 mt-2">
+                                Représentez votre pays dans des compétitions mondiales en sciences,
+                                innovation, leadership et entrepreneuriat.
+                            </p>
+                        </div>
+
+                        <div class="text-5xl">
+                            🏆
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
 
         </div>
-    </main>
+
+        <!-- ==================== VUE DETAIL ==================== -->
+        <div id="opps-detail-view"
+            class="hidden opacity-0 scale-95 transition-all duration-300">
+
+            <div class="bg-white rounded-[2rem] shadow-xl border border-slate-200 p-8 md:p-12">
+
+                <button onclick="closeOpportunity()"
+                    class="back-btn mb-8 flex items-center gap-2 text-slate-500 hover:text-blue-900">
+                    ← Retour aux opportunités
+                </button>
+
+                <div id="detail-content"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
 
     <!-- Section Improving Modernisée et Dynamique -->
    <main id="improving" class="section-content pt-32 px-6 pb-20">
