@@ -4,55 +4,197 @@
     <meta charset="UTF-8">
     <title>La Foire</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- Styles du Slider (Effet Livre / Slide) --- */
+        .gallery-container {
+            max-width: 800px;
+            margin: 40px auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%;
+        }
+
+        .slide-item {
+            min-width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+        }
+
+        .slide-item img, .slide-item video {
+            width: 100%;
+            max-height: 450px;
+            object-fit: cover;
+            border-radius: 16px;
+        }
+
+        /* Boutons de navigation */
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.7);
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #635b77;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .slider-btn:hover {
+            background: #8a7fa4;
+            color: white;
+        }
+
+        .prev-btn { left: 15px; }
+        .next-btn { right: 15px; }
+
+        /* --- Section Texte en dessous --- */
+        .description-section {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 12px;
+            color: #333;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: left;
+        }
+        
+        .description-section h2 {
+            color: #8a7fa4;
+            margin-top: 0;
+        }
+    </style>
 </head>
 <body class="body-foire">
     <nav class="navbar" style="display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background-color: #ffffff; box-shadow: 0 4px 15px rgba(138, 127, 164, 0.05); position: sticky; top: 0; z-index: 1000;">
-    <div class="logo">
-        <a href="yearbook.html" style="font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: #8a7fa4; text-decoration: none; letter-spacing: -0.5px;">Our Yearbook</a>
-    </div>
-    <ul class="nav-links" style="display: flex; list-style: none; gap: 35px; align-items: center; margin: 0; padding: 0;">
-        <li><a href="yearbook.html" style="text-decoration: none; color: #635b77; font-weight: 600; font-size: 0.95rem; transition: color 0.3s;">Accueil</a></li>
-        
-        <li class="dropdown" style="position: relative;">
-            <a href="#" class="dropdown-toggle" style="text-decoration: none; color: #8a7fa4; font-weight: 700; font-size: 0.95rem; display: flex; align-items: center; gap: 5px;">
-                Événements <span style="font-size: 0.8rem;">▼</span>
-            </a>
-            <ul class="dropdown-menu" style="position: absolute; top: 100%; right: 0; background-color: #ffffff; box-shadow: 0 8px 24px rgba(138, 127, 164, 0.12); border-radius: 12px; padding: 10px 0; min-width: 200px; list-style: none; margin-top: 10px; display: none; border: 1px solid rgba(138, 127, 164, 0.08);">
-                <li><a href="philosophie.html" style="display: block; padding: 12px 20px; text-decoration: none; color: #635b77; font-weight: 500; font-size: 0.9rem; transition: background 0.2s;">Fête des Philosophes</a></li>
-                <li><a href="noel.html" style="display: block; padding: 12px 20px; text-decoration: none; color: #635b77; font-weight: 500; font-size: 0.9rem; transition: background 0.2s;">Noël Enchanté</a></li>
-                <li><a href="carnaval.html" style="display: block; padding: 12px 20px; text-decoration: none; color: #635b77; font-weight: 500; font-size: 0.9rem; transition: background 0.2s;">Carnaval</a></li>
-                <li><a href="foire.html" style="display: block; padding: 12px 20px; text-decoration: none; color: #635b77; font-weight: 500; font-size: 0.9rem; transition: background 0.2s;">La Foire</a></li>
-            </ul>
-        </li>
-        
-        
-    </ul>
-</nav>
+        <div class="logo">
+            <a href="yearbook.html" style="font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: #8a7fa4; text-decoration: none; letter-spacing: -0.5px;">Our Yearbook</a>
+        </div>
+        <ul class="nav-links" style="display: flex; list-style: none; gap: 35px; align-items: center; margin: 0; padding: 0;">
+            <li><a href="yearbook.html" style="text-decoration: none; color: #635b77; font-weight: 600; font-size: 0.95rem; transition: color 0.3s;">Accueil</a></li>
+            
+            <li class="dropdown" style="position: relative;">
+                <a href="#" class="dropdown-toggle" style="text-decoration: none; color: #8a7fa4; font-weight: 700; font-size: 0.95rem; display: flex; align-items: center; gap: 5px;">
+                    Événements <span style="font-size: 0.8rem;">▼</span>
+                </a>
+                <ul class="dropdown-menu" style="position: absolute; top: 100%; right: 0; background-color: #ffffff; box-shadow: 0 8px 24px rgba(138, 127, 164, 0.12); border-radius: 12px; padding: 10px 0; min-width: 200px; list-style: none; margin-top: 10px; display: none; border: 1px solid rgba(138, 127, 164, 0.08);">
+                    <li><a href="philosophie.html" style="display: block; padding: 12px 20px; text-decoration: none; color: #635b77; font-weight: 500; font-size: 0.9rem; transition: background 0.2s;">Fête des Philosophes</a></li>
+                    <li><a href="noel.html" style="display: block; padding: 12px 20px; text-decoration: none; color: #635b77; font-weight: 500; font-size: 0.9rem; transition: background 0.2s;">Noël Enchanté</a></li>
+                    <li><a href="carnaval.html" style="display: block; padding: 12px 20px; text-decoration: none; color: #635b77; font-weight: 500; font-size: 0.9rem; transition: background 0.2s;">Carnaval</a></li>
+                    <li><a href="foire.html" style="display: block; padding: 12px 20px; text-decoration: none; color: #635b77; font-weight: 500; font-size: 0.9rem; transition: background 0.2s;">La Foire</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
 
-<script>
-    const dropdownToggle = document.querySelector('.dropdown-toggle');
-    const dropdownMenu = document.querySelector('.dropdown-menu');
+    <script>
+        const dropdownToggle = document.querySelector('.dropdown-toggle');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
 
-    if (dropdownToggle && dropdownMenu) {
-        dropdownToggle.addEventListener('click', (e) => {
-            e.preventDefault();
-            const isDisplayed = dropdownMenu.style.display === 'block';
-            dropdownMenu.style.display = isDisplayed ? 'none' : 'block';
-        });
+        if (dropdownToggle && dropdownMenu) {
+            dropdownToggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                const isDisplayed = dropdownMenu.style.display === 'block';
+                dropdownMenu.style.display = isDisplayed ? 'none' : 'block';
+            });
 
-        document.addEventListener('click', (e) => {
-            if (!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
-                dropdownMenu.style.display = 'none';
-            }
-        });
-    }
-</script>
+            document.addEventListener('click', (e) => {
+                if (!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                    dropdownMenu.style.display = 'none';
+                }
+            });
+        }
+    </script>
+
     <main class="container">
         <div class="glass-card">
             <h1 class="gold-text">🎡 La Foire aux Talents</h1>
             <p>Un moment d'inclusion où chaque projet a été mis en lumière.</p>
         </div>
+
+        <div class="gallery-container">
+            <button class="slider-btn prev-btn">❮</button>
+            
+            <div class="slider">
+                <div class="slide-item">
+                    <img src="https://via.placeholder.com/800x450?text=Votre+Premiere+Photo+Ici" alt="Carnaval Photo 1">
+                </div>
+                
+                <div class="slide-item">
+                    <img src="https://via.placeholder.com/800x450?text=Votre+Deuxieme+Photo+Ici" alt="Carnaval Photo 2">
+                </div>
+                
+                <div class="slide-item">
+                    <video controls poster="https://via.placeholder.com/800x450?text=Apercu+Video">
+                        <source src="" type="video/mp4">
+                        Votre navigateur ne supporte pas les vidéos HTML5.
+                    </video>
+                </div>
+            </div>
+
+            <button class="slider-btn next-btn">❯</button>
+        </div>
+
+        <section class="description-section">
+            <h2>Souvenirs et Festivités</h2>
+            <p>Écrivez ici le texte descriptif de l'événement. Vous pouvez raconter le déroulement de la foire, l'ambiance du carnaval, les retours des participants, ou ajouter des anecdotes spécifiques.</p>
+            <p>Ce bloc reste sous le livre d'images et s'adaptera automatiquement à la longueur de votre texte sans casser votre beau fond d'écran.</p>
+        </section>
+
     </main>
+
+    <script>
+        const slider = document.querySelector('.slider');
+        const slides = document.querySelectorAll('.slide-item');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+
+        let currentIndex = 0;
+
+        function updateSlider() {
+            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            if (currentIndex < slides.length - 1) {
+                currentIndex++;
+            } else {
+                currentIndex = 0; // Revient au début
+            }
+            updateSlider();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+            } else {
+                currentIndex = slides.length - 1; // Va à la fin
+            }
+            updateSlider();
+        });
+    </script>
+
     <script src="script.js"></script>
 </body>
 </html>
