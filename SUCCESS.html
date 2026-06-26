@@ -118,21 +118,95 @@
     </main>
 
     <main id="orientation" class="section-content pt-32 px-6">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl font-bold text-center mb-12">Orientation Professionnelle</h2>
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-5xl font-bold text-center mb-4 text-blue-900 font-serif">Orientation Professionnelle</h2>
+            <p class="text-center text-gray-600 mb-16 text-lg max-w-3xl mx-auto">Découvrez les différents domaines de métiers et trouvez celui qui correspond à vos aspirations. Cliquez sur chaque affiche pour explorer en détail.</p>
+            
+            <!-- Grille des affiches de domaines -->
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="p-8 bg-white border border-slate-200 rounded-3xl hover:border-yellow-500 transition shadow-sm group">
-                    <div class="w-12 h-12 bg-red-100 text-red-600 flex items-center justify-center rounded-xl mb-6 text-2xl">⚕️</div>
-                    <h3 class="text-2xl font-bold mb-4">Médecine</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-6">Implique de longues études (7-10 ans), une grande résilience émotionnelle et une volonté d'aider son prochain. Un métier de passion et de dévouement.</p>
-                    <a href="#" class="text-yellow-600 font-bold hover:underline">Fiche complète →</a>
-                </div>
-                <div class="p-8 bg-white border border-slate-200 rounded-3xl hover:border-yellow-500 transition shadow-sm">
-                    <div class="w-12 h-12 bg-blue-100 text-blue-600 flex items-center justify-center rounded-xl mb-6 text-2xl">🚀</div>
-                    <h3 class="text-2xl font-bold mb-4">Ingénieure Aérospatiale</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed mb-6">Conception de satellites, fusées et avions. Nécessite une excellente maîtrise des mathématiques et de la physique. Un métier pour celles qui visent les étoiles.</p>
-                    <a href="#" class="text-yellow-600 font-bold hover:underline">Fiche complète →</a>
-                </div>
+                <!-- Santé -->
+                <a href="orientation-sante.html" class="group block overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                    <div class="relative h-80 bg-gradient-to-br from-red-500 to-pink-600 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=800" alt="Santé" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-8">
+                            <div class="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center text-4xl mb-4 border border-white/30">⚕️</div>
+                            <h3 class="text-3xl font-bold text-white mb-2">Santé & Médical</h3>
+                            <p class="text-white/80 text-sm">Médecins, infirmiers, pharmaciens, chercheurs...</p>
+                            <span class="inline-block mt-4 text-white font-semibold group-hover:translate-x-2 transition-transform">Explorer ce domaine →</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Diplomatie -->
+                <a href="orientation-diplomatie.html" class="group block overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                    <div class="relative h-80 bg-gradient-to-br from-blue-700 to-indigo-900 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1529101091760-61df528aa2a3?auto=format&fit=crop&q=80&w=800" alt="Diplomatie" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-8">
+                            <div class="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center text-4xl mb-4 border border-white/30">🌍</div>
+                            <h3 class="text-3xl font-bold text-white mb-2">Diplomatie & Relations Internationales</h3>
+                            <p class="text-white/80 text-sm">Ambassadeurs, diplomates, analystes géopolitiques...</p>
+                            <span class="inline-block mt-4 text-white font-semibold group-hover:translate-x-2 transition-transform">Explorer ce domaine →</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Business et Gestion -->
+                <a href="orientation-business.html" class="group block overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                    <div class="relative h-80 bg-gradient-to-br from-emerald-600 to-teal-800 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=800" alt="Business" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-8">
+                            <div class="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center text-4xl mb-4 border border-white/30">💼</div>
+                            <h3 class="text-3xl font-bold text-white mb-2">Business & Gestion</h3>
+                            <p class="text-white/80 text-sm">Entrepreneurs, managers, consultants financiers...</p>
+                            <span class="inline-block mt-4 text-white font-semibold group-hover:translate-x-2 transition-transform">Explorer ce domaine →</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Informatique et Technologie -->
+                <a href="orientation-tech.html" class="group block overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                    <div class="relative h-80 bg-gradient-to-br from-purple-600 to-violet-900 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=800" alt="Technologie" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-8">
+                            <div class="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center text-4xl mb-4 border border-white/30">💻</div>
+                            <h3 class="text-3xl font-bold text-white mb-2">Informatique & Technologie</h3>
+                            <p class="text-white/80 text-sm">Développeurs, data scientists, ingénieurs IA...</p>
+                            <span class="inline-block mt-4 text-white font-semibold group-hover:translate-x-2 transition-transform">Explorer ce domaine →</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Métiers Émergents -->
+                <a href="orientation-emergents.html" class="group block overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                    <div class="relative h-80 bg-gradient-to-br from-orange-500 to-amber-700 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&q=80&w=800" alt="Métiers émergents" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-8">
+                            <div class="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center text-4xl mb-4 border border-white/30">🚀</div>
+                            <h3 class="text-3xl font-bold text-white mb-2">Métiers Émergents</h3>
+                            <p class="text-white/80 text-sm">Spécialistes IA, experts blockchain, bio-ingénieurs...</p>
+                            <span class="inline-block mt-4 text-white font-semibold group-hover:translate-x-2 transition-transform">Explorer ce domaine →</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Arts et Communication -->
+                <a href="orientation-arts.html" class="group block overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
+                    <div class="relative h-80 bg-gradient-to-br from-pink-500 to-rose-700 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&q=80&w=800" alt="Arts" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-8">
+                            <div class="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center text-4xl mb-4 border border-white/30">🎨</div>
+                            <h3 class="text-3xl font-bold text-white mb-2">Arts & Communication</h3>
+                            <p class="text-white/80 text-sm">Artistes, journalistes, designers, communicants...</p>
+                            <span class="inline-block mt-4 text-white font-semibold group-hover:translate-x-2 transition-transform">Explorer ce domaine →</span>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
     </main>

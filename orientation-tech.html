@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informatique & Technologie | Orientation - Success Story</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #7c3aed; --secondary: #6d28d9; }
+        body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+        }
+        
+        .career-card {
+            transition: all 0.4s ease;
+        }
+        
+        .career-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(124, 58, 237, 0.2);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .floating { animation: float 3s ease-in-out infinite; }
+        
+        @keyframes code-typing {
+            0% { opacity: 0.3; }
+            50% { opacity: 1; }
+            100% { opacity: 0.3; }
+        }
+        
+        .code-line {
+            animation: code-typing 2s ease-in-out infinite;
+        }
+        
+        .code-line:nth-child(2) { animation-delay: 0.3s; }
+        .code-line:nth-child(3) { animation-delay: 0.6s; }
+        .code-line:nth-child(4) { animation-delay: 0.9s; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="SUCCESS.html" class="text-2xl font-bold tracking-tighter text-blue-900 hover:text-purple-600 transition">← Retour</a>
+            <div class="text-xl font-bold text-purple-700">Informatique & Tech</div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="gradient-bg pt-40 pb-24 px-6 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-white rounded-full blur-3xl floating"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-white rounded-full blur-3xl floating" style="animation-delay: 1.5s;"></div>
+        </div>
+        
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <div class="w-24 h-24 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center text-6xl mb-8 mx-auto border border-white/30 floating">💻</div>
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6">Informatique & Technologie</h1>
+            <p class="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+                Façonnez le futur grâce au code et à l'innovation technologique. 
+                Un domaine en constante évolution pour celles qui veulent transformer le monde par la technologie.
+            </p>
+        </div>
+    </header>
+
+    <!-- Domain Overview -->
+    <section class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+                <div>
+                    <h2 class="text-4xl font-bold text-blue-900 mb-6">Pourquoi choisir la tech ?</h2>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                        L'informatique et la technologie sont au cœur de toutes les transformations modernes. 
+                        C'est un secteur dynamique, créatif et porteur d'opportunités exceptionnelles pour les talents féminins.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <span class="w-6 h-6 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">✓</span>
+                            <span class="text-gray-700">Secteur en forte croissance</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="w-6 h-6 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">✓</span>
+                            <span class="text-gray-700">Salaires attractifs dès le début</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="w-6 h-6 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">✓</span>
+                            <span class="text-gray-700">Flexibilité et télétravail</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="w-6 h-6 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">✓</span>
+                            <span class="text-gray-700">Impact sur la société</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=800" alt="Technologie" class="rounded-3xl shadow-2xl">
+                    <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-purple-100 rounded-2xl -z-10"></div>
+                    <div class="absolute -top-6 -right-6 w-32 h-32 bg-violet-100 rounded-2xl -z-10"></div>
+                </div>
+            </div>
+
+            <!-- Career Cards -->
+            <h2 class="text-4xl font-bold text-center text-blue-900 mb-4">Les Métiers du Domaine</h2>
+            <p class="text-center text-gray-600 mb-16 text-lg">Découvrez les carrières qui construisent le futur numérique</p>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Développeuse -->
+                <div class="career-card bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100">
+                    <div class="h-48 bg-gradient-to-br from-purple-600 to-violet-800 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=600" alt="Développeuse" class="absolute inset-0 w-full h-full object-cover opacity-50">
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <div class="text-4xl mb-2">👩‍💻</div>
+                            <h3 class="text-2xl font-bold">Développeuse Full Stack</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 text-sm mb-4">Création d'applications web et mobiles, développement frontend et backend, travail en équipe agile.</p>
+                        <div class="space-y-2 mb-4">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Durée des études</span>
+                                <span class="font-semibold text-blue-900">3-5 ans</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Salaire débutant</span>
+                                <span class="font-semibold text-blue-900">3 000-4 500€/mois</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-xs font-semibold">Web</span>
+                            <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-xs font-semibold">Mobile</span>
+                            <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-xs font-semibold">Startup</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Scientist -->
+                <div class="career-card bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100">
+                    <div class="h-48 bg-gradient-to-br from-blue-600 to-cyan-700 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600" alt="Data Scientist" class="absolute inset-0 w-full h-full object-cover opacity-50">
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <div class="text-4xl mb-2">📊</div>
+                            <h3 class="text-2xl font-bold">Data Scientist</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 text-sm mb-4">Analyse de données massives, création de modèles prédictifs, machine learning et intelligence artificielle.</p>
+                        <div class="space-y-2 mb-4">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Durée des études</span>
+                                <span class="font-semibold text-blue-900">5 ans (Master)</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Salaire débutant</span>
+                                <span class="font-semibold text-blue-900">3 500-5 000€/mois</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs font-semibold">IA</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs font-semibold">ML</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs font-semibold">Analytics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ingénieure Cybersécurité -->
+                <div class="career-card bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100">
+                    <div class="h-48 bg-gradient-to-br from-slate-700 to-gray-900 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=600" alt="Cybersécurité" class="absolute inset-0 w-full h-full object-cover opacity-50">
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <div class="text-4xl mb-2">🔒</div>
+                            <h3 class="text-2xl font-bold">Ingénieure Cybersécurité</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 text-sm mb-4">Protection des systèmes d'information, analyse des vulnérabilités, réponse aux incidents de sécurité.</p>
+                        <div class="space-y-2 mb-4">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Durée des études</span>
+                                <span class="font-semibold text-blue-900">5 ans (École d'ingénieur)</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Salaire débutant</span>
+                                <span class="font-semibold text-blue-900">3 500-5 000€/mois</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-xs font-semibold">Sécurité</span>
+                            <span class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-xs font-semibold">Audit</span>
+                            <span class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-xs font-semibold">SOC</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ingénieure IA -->
+                <div class="career-card bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100">
+                    <div class="h-48 bg-gradient-to-br from-emerald-500 to-teal-700 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600" alt="IA" class="absolute inset-0 w-full h-full object-cover opacity-50">
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <div class="text-4xl mb-2">🤖</div>
+                            <h3 class="text-2xl font-bold">Ingénieure Intelligence Artificielle</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 text-sm mb-4">Conception de systèmes intelligents, réseaux de neurones, traitement du langage naturel, vision par ordinateur.</p>
+                        <div class="space-y-2 mb-4">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Durée des études</span>
+                                <span class="font-semibold text-blue-900">5-6 ans (Master/Doctorat)</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Salaire débutant</span>
+                                <span class="font-semibold text-blue-900">4 000-6 000€/mois</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-emerald-100 text-emerald-600 rounded-full text-xs font-semibold">Deep Learning</span>
+                            <span class="px-3 py-1 bg-emerald-100 text-emerald-600 rounded-full text-xs font-semibold">NLP</span>
+                            <span class="px-3 py-1 bg-emerald-100 text-emerald-600 rounded-full text-xs font-semibold">Recherche</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- UX/UI Designer -->
+                <div class="career-card bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100">
+                    <div class="h-48 bg-gradient-to-br from-pink-500 to-rose-700 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=600" alt="UX Designer" class="absolute inset-0 w-full h-full object-cover opacity-50">
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <div class="text-4xl mb-2">🎨</div>
+                            <h3 class="text-2xl font-bold">UX/UI Designer</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 text-sm mb-4">Conception d'interfaces utilisateur, recherche utilisateur, prototypage, design thinking.</p>
+                        <div class="space-y-2 mb-4">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Durée des études</span>
+                                <span class="font-semibold text-blue-900">3-5 ans</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Salaire débutant</span>
+                                <span class="font-semibold text-blue-900">2 800-4 000€/mois</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-pink-100 text-pink-600 rounded-full text-xs font-semibold">Design</span>
+                            <span class="px-3 py-1 bg-pink-100 text-pink-600 rounded-full text-xs font-semibold">Figma</span>
+                            <span class="px-3 py-1 bg-pink-100 text-pink-600 rounded-full text-xs font-semibold">User Research</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DevOps -->
+                <div class="career-card bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100">
+                    <div class="h-48 bg-gradient-to-br from-orange-500 to-amber-700 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1667372393119-c81c0cda0a29?auto=format&fit=crop&q=80&w=600" alt="DevOps" class="absolute inset-0 w-full h-full object-cover opacity-50">
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <div class="text-4xl mb-2">⚙️</div>
+                            <h3 class="text-2xl font-bold">Ingénieure DevOps</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 text-sm mb-4">Automatisation des déploiements, gestion de l'infrastructure cloud, CI/CD, monitoring.</p>
+                        <div class="space-y-2 mb-4">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Durée des études</span>
+                                <span class="font-semibold text-blue-900">5 ans</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Salaire débutant</span>
+                                <span class="font-semibold text-blue-900">3 500-5 000€/mois</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs font-semibold">Cloud</span>
+                            <span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs font-semibold">AWS</span>
+                            <span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs font-semibold">Kubernetes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formation Section -->
+    <section class="py-20 px-6 bg-gradient-to-br from-purple-50 to-violet-50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center text-blue-900 mb-4">Parcours de Formation</h2>
+            <p class="text-center text-gray-600 mb-16 text-lg">Les voies vers une carrière dans la tech</p>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-3xl p-8 shadow-lg">
+                    <div class="w-16 h-16 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center text-3xl mb-6">🎓</div>
+                    <h3 class="text-2xl font-bold text-blue-900 mb-4">École d'Ingénieur</h3>
+                    <p class="text-gray-600 mb-4">Écoles spécialisées en informatique (EPITA, EPITECH, 42...). Formation technique intensive avec projets concrets.</p>
+                    <div class="text-sm text-gray-500">Durée : 5 ans</div>
+                </div>
+                
+                <div class="bg-white rounded-3xl p-8 shadow-lg">
+                    <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center text-3xl mb-6">💻</div>
+                    <h3 class="text-2xl font-bold text-blue-900 mb-4">Université / Master</h3>
+                    <p class="text-gray-600 mb-4">Licence et Master en informatique, data science ou cybersécurité. Formation théorique et recherche.</p>
+                    <div class="text-sm text-gray-500">Durée : 5 ans</div>
+                </div>
+                
+                <div class="bg-white rounded-3xl p-8 shadow-lg">
+                    <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-3xl mb-6">🚀</div>
+                    <h3 class="text-2xl font-bold text-blue-900 mb-4">Bootcamps / Auto-formation</h3>
+                    <p class="text-gray-600 mb-4">Formations intensives de 3-6 mois, plateformes en ligne (OpenClassrooms, Coursera). Reconversions rapides.</p>
+                    <div class="text-sm text-gray-500">Durée : 3-12 mois</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-20 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold text-blue-900 mb-6">Prête à coder votre avenir ?</h2>
+            <p class="text-gray-600 text-lg mb-8">Continuez votre exploration des domaines professionnels.</p>
+            <div class="flex gap-4 justify-center flex-wrap">
+                <a href="SUCCESS.html" class="px-8 py-4 bg-gradient-to-r from-purple-600 to-violet-600 text-white font-bold rounded-full hover:shadow-lg hover:scale-105 transition-all">Retour à l'accueil</a>
+                <a href="orientation-emergents.html" class="px-8 py-4 bg-white border-2 border-blue-900 text-blue-900 font-bold rounded-full hover:bg-blue-900 hover:text-white transition-all">Métiers Émergents →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-12 px-6">
+        <div class="max-w-6xl mx-auto text-center">
+            <div class="text-2xl font-bold mb-4">Success Story</div>
+            <p class="text-white/70 mb-6">Inspiring minds, building futures</p>
+            <div class="flex justify-center gap-6 text-sm text-white/50">
+                <a href="SUCCESS.html" class="hover:text-white transition">Accueil</a>
+                <a href="#" class="hover:text-white transition">Orientation</a>
+                <a href="#" class="hover:text-white transition">Contact</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
