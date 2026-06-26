@@ -10,7 +10,6 @@
             margin: 0;
             padding: 0;
             min-height: 100vh;
-            /* Dégradé de couleurs Carnaval : Violet, Rose néon, Orange feu */
             background: linear-gradient(135deg, #2e1a47, #7209b7, #f72585, #ffb703);
             background-size: 400% 400%;
             animation: carnivalGradient 15s ease infinite;
@@ -18,14 +17,13 @@
             overflow-x: hidden;
         }
 
-        /* Animation fluide du fond coloré */
         @keyframes carnivalGradient {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        /* --- EFFET VERRE ULTRA-MODERNE POUR LES TITRES --- */
+        /* --- EFFET VERRE POUR LES TITRES --- */
         .glass-card {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(12px);
@@ -57,20 +55,20 @@
             letter-spacing: 1px;
         }
 
-        /* --- STRUCTURE DU LIVRE MAGIQUE 3D --- */
+        /* --- STRUCTURE DU LIVRE 3D FIXÉE ET CORRIGÉE --- */
         .book-section {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 40px 20px;
-            perspective: 2500px; /* Profondeur 3D accentuée */
+            perspective: 2500px; 
         }
 
         .book {
             width: 550px;  
             height: 680px; 
-            position: relative;
+            position: relative; /* CORRIGÉ : L'élément s'affiche maintenant correctement */
             transform-style: preserve-3d;
             transition: transform 0.5s;
         }
@@ -87,14 +85,13 @@
             z-index: 1;
         }
 
-        /* Look "Livre de collection" avec texture Parchemin */
+        /* Look Parchemin */
         .front, .back {
             position: absolute;
             width: 100%;
             height: 100%;
             top: 0;
             left: 0;
-            /* Couleur papier parchemin noble */
             background: #fcf8f2;
             backface-visibility: hidden;
             box-shadow: inset 4px 0 30px rgba(0, 0, 0, 0.2), 15px 15px 35px rgba(0,0,0,0.5);
@@ -107,10 +104,10 @@
             border: 1px solid #e2d4c9;
         }
 
-        /* Couverture extérieure du livre (Page 1 Front) */
+        /* Couverture extérieure (Page 1 Front) */
         #p1 .front {
-            background: linear-gradient(135deg, #4a154b, #2c003e); /* Cuir violet royal */
-            border: 4px solid #ffb703; /* Bordure dorée */
+            background: linear-gradient(135deg, #4a154b, #2c003e); 
+            border: 4px solid #ffb703; 
             border-radius: 0 24px 24px 0;
         }
 
@@ -126,7 +123,6 @@
             border-radius: 24px 0 0 24px;
         }
 
-        /* Effet d'ombre réaliste sur la tranche du livre */
         .front::before {
             content: '';
             position: absolute;
@@ -146,7 +142,6 @@
             padding-bottom: 10px;
         }
 
-        /* Conteneurs pour les futures Photos / Vidéos */
         .media-box {
             width: 100%;
             height: 65%;
@@ -248,4 +243,130 @@
         if (dropdownToggle && dropdownMenu) {
             dropdownToggle.addEventListener('click', (e) => {
                 e.preventDefault();
-                const isDisplayed =
+                const isDisplayed = dropdownMenu.style.display === 'block';
+                dropdownMenu.style.display = isDisplayed ? 'none' : 'block';
+            });
+            document.addEventListener('click', (e) => {
+                if (!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                    dropdownMenu.style.display = 'none';
+                }
+            });
+        }
+    </script>
+
+    <main class="container">
+        <div class="glass-card">
+            <h1 class="gold-text">🎡 La Foire aux Talents</h1>
+            <p>Découvrez notre album interactif haut en couleur !</p>
+        </div>
+
+        <!-- LIVRE INTERACTIF -->
+        <section class="book-section">
+            <div class="book">
+                
+                <!-- COUVERTURE ET PAGE 1 -->
+                <div class="page" id="p1" style="z-index: 3;">
+                    <!-- Couverture Royale -->
+                    <div class="front" style="justify-content: center; align-items: center; gap: 20px;">
+                        <span style="font-size: 5rem;">✨</span>
+                        <h2>LIVRE SOUVENIR<br><span style="color:#fff; font-size:1.5rem;">Édition Spéciale</span></h2>
+                        <p style="color: #ffb703; font-weight: bold; font-size: 1.2rem;">Cliquez sur tourner la page ➔</p>
+                    </div>
+                    <!-- Page intérieure 1 -->
+                    <div class="back">
+                        <h2>🎭 L'Ambiance du Carnaval</h2>
+                        <div class="media-box">
+                            <img src="https://via.placeholder.com/550x680/ff007f/ffffff?text=Photo+1+-+Les+Déguisements" alt="Photo 1">
+                        </div>
+                        <p style="color: #555; font-style: italic; margin: 10px 0 0 0;">Les costumes les plus créatifs de l'année.</p>
+                    </div>
+                </div>
+
+                <!-- PAGE 2 -->
+                <div class="page" id="p2" style="z-index: 2;">
+                    <!-- Page intérieure 2 -->
+                    <div class="front">
+                        <h2>🎨 Stands de Créations</h2>
+                        <div class="media-box">
+                            <img src="https://via.placeholder.com/550x680/7209b7/ffffff?text=Photo+2+-+Les+Expositions" alt="Photo 2">
+                        </div>
+                        <p style="color: #555; font-style: italic; margin: 10px 0 0 0;">Une vitrine incroyable pour nos jeunes talents.</p>
+                    </div>
+                    <!-- Page Vidéo Finale -->
+                    <div class="back">
+                        <h2>🎬 Le Grand Récap' Vidéo</h2>
+                        <div class="media-box">
+                            <video controls poster="https://via.placeholder.com/550x680/000000/ffffff?text=Lancer+le+Film+du+Carnaval">
+                                <source src="" type="video/mp4">
+                                Votre navigateur ne supporte pas les vidéos.
+                            </video>
+                        </div>
+                        <p style="color: #555; font-style: italic; margin: 10px 0 0 0;">Installez-vous confortablement et visionnez le film.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- BOUTONS -->
+            <div class="controls">
+                <button class="book-btn" id="prev-btn" style="background: linear-gradient(135deg, #6c757d, #495057); box-shadow: none;" disabled>Page Précédente</button>
+                <button class="book-btn" id="next-btn">Tournez la page</button>
+            </div>
+        </section>
+
+        <!-- ESPACES TEXTES -->
+        <section class="description-section">
+            <h2>✨ Récit de notre Édition Magique</h2>
+            <p>Bienvenue sur l'album virtuel de la Foire aux Talents. Cet espace a été pensé pour capturer la folie, les rires et l'énergie débordante qui ont rythmé notre événement de type Carnaval.</p>
+            <p>Ajoute ici toutes les descriptions que tu souhaites. Ce bloc blanc immaculé ressortira parfaitement bien sur le dégradé en mouvement en arrière-plan sans perturber le livre 3D.</p>
+        </section>
+
+    </main>
+
+    <script>
+        const prevBtn = document.querySelector("#prev-btn");
+        const nextBtn = document.querySelector("#next-btn");
+        const page1 = document.querySelector("#p1");
+        const page2 = document.querySelector("#p2");
+
+        let currentState = 1;
+
+        function goNextPage() {
+            if(currentState === 1) {
+                page1.classList.add("flipped");
+                page1.style.zIndex = 1;
+                page2.style.zIndex = 3;
+                prevBtn.disabled = false;
+                currentState = 2;
+            } else if(currentState === 2) {
+                page2.classList.add("flipped");
+                page2.style.zIndex = 2;
+                nextBtn.disabled = true;
+                nextBtn.innerText = "Fin de l'album";
+                currentState = 3;
+            }
+        }
+
+        function goPrevPage() {
+            if(currentState === 2) {
+                page1.classList.remove("flipped");
+                page1.style.zIndex = 3;
+                page2.style.zIndex = 2;
+                prevBtn.disabled = true;
+                currentState = 1;
+            } else if(currentState === 3) {
+                page2.classList.remove("flipped");
+                page2.style.zIndex = 3;
+                nextBtn.disabled = false;
+                nextBtn.innerText = "Tournez la page";
+                currentState = 2;
+            }
+        }
+
+        nextBtn.addEventListener("click", goNextPage);
+        prevBtn.addEventListener("click", goPrevPage);
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>
