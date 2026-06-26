@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santé & Médical | Orientation - Success Story</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #dc2626; --secondary: #ec4899; }
+        body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #dc2626 0%, #ec4899 100%);
+        }
+        
+        .career-card {
+            transition: all 0.4s ease;
+        }
+        
+        .career-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(220, 38, 38, 0.2);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .floating { animation: float 3s ease-in-out infinite; }
+        
+        .pulse-glow {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="SUCCESS.html" class="text-2xl font-bold tracking-tighter text-blue-900 hover:text-red-600 transition">← Retour</a>
+            <div class="text-xl font-bold text-red-600">Santé & Médical</div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="gradient-bg pt-40 pb-24 px-6 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-white rounded-full blur-3xl floating"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-white rounded-full blur-3xl floating" style="animation-delay: 1.5s;"></div>
+        </div>
+        
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <div class="w-24 h-24 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center text-6xl mb-8 mx-auto border border-white/30 floating">⚕️</div>
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6">Santé & Médical</h1>
+            <p class="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+                Un domaine d'excellence dédié au soin, à la recherche et au bien-être des patients. 
+                Découvrez les multiples carrières qui permettent de sauver des vies et d'améliorer la santé publique.
+            </p>
+        </div>
+    </header>
+
+    <!-- Domain Overview -->
+    <section class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+                <div>
+                    <h2 class="text-4xl font-bold text-blue-900 mb-6">Pourquoi choisir la santé ?</h2>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                        Le secteur de la santé offre des carrières variées et enrichissantes, où chaque jour apporte son lot de défis 
+                        et de satisfactions. C'est un domaine en constante évolution, porté par les avancées technologiques et scientifiques.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <span class="w-6 h-6 bg-red-100 text-red-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">✓</span>
+                            <span class="text-gray-700">Impact direct sur la vie des patients</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="w-6 h-6 bg-red-100 text-red-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">✓</span>
+                            <span class="text-gray-700">Diversité des spécialités et opportunités</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="w-6 h-6 bg-red-100 text-red-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">✓</span>
+                            <span class="text-gray-700">Évolution continue grâce à la recherche</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="w-6 h-6 bg-red-100 text-red-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">✓</span>
+                            <span class="text-gray-700">Débouchés internationaux</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1576091160550-217358c7e618?auto=format&fit=crop&q=80&w=800" alt="Professionnels de santé" class="rounded-3xl shadow-2xl">
+                    <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-red-100 rounded-2xl -z-10"></div>
+                    <div class="absolute -top-6 -right-6 w-32 h-32 bg-pink-100 rounded-2xl -z-10"></div>
+                </div>
+            </div>
+
+            <!-- Career Cards -->
+            <h2 class="text-4xl font-bold text-center text-blue-900 mb-4">Les Métiers du Domaine</h2>
+            <p class="text-center text-gray-600 mb-16 text-lg">Explorez les différentes carrières possibles dans le secteur de la santé</p>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Médecin -->
+                <div class="career-card bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100">
+                    <div class="h-48 bg-gradient-to-br from-red-500 to-pink-600 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=600" alt="Médecin" class="absolute inset-0 w-full h-full object-cover opacity-50">
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <div class="text-4xl mb-2">👨‍⚕️</div>
+                            <h3 class="text-2xl font-bold">Médecin</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 text-sm mb-4">Diagnostic et traitement des maladies. Spécialisations possibles : cardiologie, pédiatrie, chirurgie, etc.</p>
+                        <div class="space-y-2 mb-4">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Durée des études</span>
+                                <span class="font-semibold text-blue-900">9-12 ans</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Salaire débutant</span>
+                                <span class="font-semibold text-blue-900">3 500-5 000€/mois</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-red-100 text-red-600 rounded-full text-xs font-semibold">Hôpital</span>
+                            <span class="px-3 py-1 bg-red-100 text-red-600 rounded-full text-xs font-semibold">Libéral</span>
+                            <span class="px-3 py-1 bg-red-100 text-red-600 rounded-full text-xs font-semibold">Recherche</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Infirmier(ère) -->
+                <div class="career-card bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100">
+                    <div class="h-48 bg-gradient-to-br from-blue-500 to-cyan-600 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?auto=format&fit=crop&q=80&w=600" alt="Infirmier" class="absolute inset-0 w-full h-full object-cover opacity-50">
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <div class="text-4xl mb-2">👩‍⚕️</div>
+                            <h3 class="text-2xl font-bold">Infirmier(ère)</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 text-sm mb-4">Soins aux patients, administration de traitements, surveillance de l'état de santé.</p>
+                        <div class="space-y-2 mb-4">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Durée des études</span>
+                                <span class="font-semibold text-blue-900">3 ans</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Salaire débutant</span>
+                                <span class="font-semibold text-blue-900">2 000-2 500€/mois</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs font-semibold">Hôpital</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs font-semibold">Clinique</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs font-semibold">Domicile</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pharmacien(ne) -->
+                <div class="career-card bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100">
+                    <div class="h-48 bg-gradient-to-br from-green-500 to-emerald-600 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&q=80&w=600" alt="Pharmacien" class="absolute inset-0 w-full h-full object-cover opacity-50">
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <div class="text-4xl mb-2">💊</div>
+                            <h3 class="text-2xl font-bold">Pharmacien(ne)</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 text-sm mb-4">Dispensation de médicaments, conseils thérapeutiques, préparation de formulations.</p>
+                        <div class="space-y-2 mb-4">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Durée des études</span>
+                                <span class="font-semibold text-blue-900">6-9 ans</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Salaire débutant</span>
+                                <span class="font-semibold text-blue-900">2 500-4 000€/mois</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-xs font-semibold">Officine</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-xs font-semibold">Industrie</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-xs font-semibold">Hôpital</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chercheur(se) -->
+                <div class="career-card bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100">
+                    <div class="h-48 bg-gradient-to-br from-purple-500 to-violet-600 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=600" alt="Chercheur" class="absolute inset-0 w-full h-full object-cover opacity-50">
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <div class="text-4xl mb-2">🔬</div>
+                            <h3 class="text-2xl font-bold">Chercheur(se)</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 text-sm mb-4">Recherche fondamentale ou appliquée en biologie, médecine, pharmacologie.</p>
+                        <div class="space-y-2 mb-4">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Durée des études</span>
+                                <span class="font-semibold text-blue-900">8-10 ans (Doctorat)</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Salaire débutant</span>
+                                <span class="font-semibold text-blue-900">2 200-3 500€/mois</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-xs font-semibold">Laboratoire</span>
+                            <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-xs font-semibold">Université</span>
+                            <span class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-xs font-semibold">Industrie</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kinésithérapeute -->
+                <div class="career-card bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100">
+                    <div class="h-48 bg-gradient-to-br from-orange-500 to-amber-600 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&q=80&w=600" alt="Kinésithérapeute" class="absolute inset-0 w-full h-full object-cover opacity-50">
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <div class="text-4xl mb-2">🏃</div>
+                            <h3 class="text-2xl font-bold">Kinésithérapeute</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 text-sm mb-4">Rééducation fonctionnelle, massages thérapeutiques, prévention des troubles moteurs.</p>
+                        <div class="space-y-2 mb-4">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Durée des études</span>
+                                <span class="font-semibold text-blue-900">5 ans</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Salaire débutant</span>
+                                <span class="font-semibold text-blue-900">2 000-3 000€/mois</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs font-semibold">Cabinet</span>
+                            <span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs font-semibold">Hôpital</span>
+                            <span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs font-semibold">Sport</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Psychologue -->
+                <div class="career-card bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100">
+                    <div class="h-48 bg-gradient-to-br from-teal-500 to-cyan-600 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=600" alt="Psychologue" class="absolute inset-0 w-full h-full object-cover opacity-50">
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <div class="text-4xl mb-2">🧠</div>
+                            <h3 class="text-2xl font-bold">Psychologue</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 text-sm mb-4">Accompagnement psychologique, thérapies, évaluation et diagnostic des troubles mentaux.</p>
+                        <div class="space-y-2 mb-4">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Durée des études</span>
+                                <span class="font-semibold text-blue-900">5-6 ans (Master/Doctorat)</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Salaire débutant</span>
+                                <span class="font-semibold text-blue-900">1 800-3 000€/mois</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-teal-100 text-teal-600 rounded-full text-xs font-semibold">Cabinet</span>
+                            <span class="px-3 py-1 bg-teal-100 text-teal-600 rounded-full text-xs font-semibold">Hôpital</span>
+                            <span class="px-3 py-1 bg-teal-100 text-teal-600 rounded-full text-xs font-semibold">Entreprise</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formation Section -->
+    <section class="py-20 px-6 bg-gradient-to-br from-red-50 to-pink-50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center text-blue-900 mb-4">Parcours de Formation</h2>
+            <p class="text-center text-gray-600 mb-16 text-lg">Les principales voies d'accès aux métiers de la santé</p>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-3xl p-8 shadow-lg">
+                    <div class="w-16 h-16 bg-red-100 text-red-600 rounded-2xl flex items-center justify-center text-3xl mb-6">📚</div>
+                    <h3 class="text-2xl font-bold text-blue-900 mb-4">PASS/LAS</h3>
+                    <p class="text-gray-600 mb-4">Première Année Commune aux Études de Santé ou Licence Accès Santé. Sélection très compétitive pour accéder aux études médicales.</p>
+                    <div class="text-sm text-gray-500">Durée : 1 an</div>
+                </div>
+                
+                <div class="bg-white rounded-3xl p-8 shadow-lg">
+                    <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center text-3xl mb-6">🎓</div>
+                    <h3 class="text-2xl font-bold text-blue-900 mb-4">École d'Infirmier</h3>
+                    <p class="text-gray-600 mb-4">Institut de Formation en Soins Infirmiers (IFSI). Formation alternant théorie et stages pratiques.</p>
+                    <div class="text-sm text-gray-500">Durée : 3 ans</div>
+                </div>
+                
+                <div class="bg-white rounded-3xl p-8 shadow-lg">
+                    <div class="w-16 h-16 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center text-3xl mb-6">💊</div>
+                    <h3 class="text-2xl font-bold text-blue-900 mb-4">Faculté de Pharmacie</h3>
+                    <p class="text-gray-600 mb-4">Études pharmaceutiques avec spécialisation possible en officine, industrie ou hôpital.</p>
+                    <div class="text-sm text-gray-500">Durée : 6-9 ans</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-20 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold text-blue-900 mb-6">Prêt à commencer votre parcours ?</h2>
+            <p class="text-gray-600 text-lg mb-8">Découvrez d'autres domaines professionnels ou retournez à la page principale.</p>
+            <div class="flex gap-4 justify-center">
+                <a href="SUCCESS.html" class="px-8 py-4 bg-gradient-to-r from-red-600 to-pink-600 text-white font-bold rounded-full hover:shadow-lg hover:scale-105 transition-all">Retour à l'accueil</a>
+                <a href="orientation-diplomatie.html" class="px-8 py-4 bg-white border-2 border-blue-900 text-blue-900 font-bold rounded-full hover:bg-blue-900 hover:text-white transition-all">Domaine suivant →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-12 px-6">
+        <div class="max-w-6xl mx-auto text-center">
+            <div class="text-2xl font-bold mb-4">Success Story</div>
+            <p class="text-white/70 mb-6">Inspiring minds, building futures</p>
+            <div class="flex justify-center gap-6 text-sm text-white/50">
+                <a href="SUCCESS.html" class="hover:text-white transition">Accueil</a>
+                <a href="#" class="hover:text-white transition">Orientation</a>
+                <a href="#" class="hover:text-white transition">Contact</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

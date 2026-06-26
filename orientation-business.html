@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business & Gestion | Orientation - Success Story</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #059669; --secondary: #0d9488; }
+        body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #059669 0%, #0d9488 100%);
+        }
+        
+        .career-card {
+            transition: all 0.4s ease;
+        }
+        
+        .career-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(5, 150, 105, 0.2);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .floating { animation: float 3s ease-in-out infinite; }
+        
+        .chart-bar {
+            animation: grow 1.5s ease-out forwards;
+            transform-origin: bottom;
+        }
+        
+        @keyframes grow {
+            from { transform: scaleY(0); }
+            to { transform: scaleY(1); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="SUCCESS.html" class="text-2xl font-bold tracking-tighter text-blue-900 hover:text-emerald-600 transition">← Retour</a>
+            <div class="text-xl font-bold text-emerald-700">Business & Gestion</div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="gradient-bg pt-40 pb-24 px-6 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-20 left-10 w-72 h-72 bg-white rounded-full blur-3xl floating"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-white rounded-full blur-3xl floating" style="animation-delay: 1.5s;"></div>
+        </div>
+        
+        <div class="max-w-6xl mx-auto text-center relative z-10">
+            <div class="w-24 h-24 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center text-6xl mb-8 mx-auto border border-white/30 floating">💼</div>
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6">Business & Gestion</h1>
+            <p class="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
+                Développez votre esprit d'entreprise et maîtrisez les rouages du monde des affaires. 
+                Un domaine dynamique pour celles qui aspirent à innover, diriger et créer de la valeur.
+            </p>
+        </div>
+    </header>
+
+    <!-- Domain Overview -->
+    <section class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+                <div>
+                    <h2 class="text-4xl font-bold text-blue-900 mb-6">Pourquoi choisir le business ?</h2>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                        Le monde du business et de la gestion offre des opportunités infinies pour celles qui souhaitent 
+                        entreprendre, innover et avoir un impact concret sur l'économie. C'est un secteur en perpétuelle évolution.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <span class="w-6 h-6 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">✓</span>
+                            <span class="text-gray-700">Opportunités entrepreneuriales</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="w-6 h-6 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">✓</span>
+                            <span class="text-gray-700">Évolution de carrière rapide</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="w-6 h-6 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">✓</span>
+                            <span class="text-gray-700">Salaires attractifs et primes</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="w-6 h-6 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">✓</span>
+                            <span class="text-gray-700">Mobilité internationale</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=800" alt="Business" class="rounded-3xl shadow-2xl">
+                    <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-emerald-100 rounded-2xl -z-10"></div>
+                    <div class="absolute -top-6 -right-6 w-32 h-32 bg-teal-100 rounded-2xl -z-10"></div>
+                </div>
+            </div>
+
+            <!-- Career Cards -->
+            <h2 class="text-4xl font-bold text-center text-blue-900 mb-4">Les Métiers du Domaine</h2>
+            <p class="text-center text-gray-600 mb-16 text-lg">Explorez les carrières qui façonnent l'économie</p>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Entrepreneur -->
+                <div class="career-card bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100">
+                    <div class="h-48 bg-gradient-to-br from-emerald-500 to-teal-700 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&q=80&w=600" alt="Entrepreneur" class="absolute inset-0 w-full h-full object-cover opacity-50">
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <div class="text-4xl mb-2">🚀</div>
+                            <h3 class="text-2xl font-bold">Entrepreneur / CEO</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 text-sm mb-4">Création et direction d'entreprise, développement de stratégie, management d'équipes.</p>
+                        <div class="space-y-2 mb-4">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Durée des études</span>
+                                <span class="font-semibold text-blue-900">Variable</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Rémunération</span>
+                                <span class="font-semibold text-blue-900">Variable</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-emerald-100 text-emerald-600 rounded-full text-xs font-semibold">Startup</span>
+                            <span class="px-3 py-1 bg-emerald-100 text-emerald-600 rounded-full text-xs font-semibold">PME</span>
+                            <span class="px-3 py-1 bg-emerald-100 text-emerald-600 rounded-full text-xs font-semibold">Innovation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Consultant -->
+                <div class="career-card bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100">
+                    <div class="h-48 bg-gradient-to-br from-blue-600 to-indigo-800 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=600" alt="Consultant" class="absolute inset-0 w-full h-full object-cover opacity-50">
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <div class="text-4xl mb-2">📊</div>
+                            <h3 class="text-2xl font-bold">Consultant en Stratégie</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 text-sm mb-4">Conseil aux entreprises sur leur stratégie, optimisation des processus, transformation digitale.</p>
+                        <div class="space-y-2 mb-4">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Durée des études</span>
+                                <span class="font-semibold text-blue-900">5 ans (Grande École)</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Salaire débutant</span>
+                                <span class="font-semibold text-blue-900">4 000-6 000€/mois</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs font-semibold">Cabinet</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs font-semibold">Stratégie</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs font-semibold">Conseil</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Directeur Financier -->
+                <div class="career-card bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100">
+                    <div class="h-48 bg-gradient-to-br from-slate-600 to-gray-800 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=600" alt="Finance" class="absolute inset-0 w-full h-full object-cover opacity-50">
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <div class="text-4xl mb-2">💰</div>
+                            <h3 class="text-2xl font-bold">Directeur Financier</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 text-sm mb-4">Gestion financière de l'entreprise, stratégie d'investissement, relations avec les investisseurs.</p>
+                        <div class="space-y-2 mb-4">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Durée des études</span>
+                                <span class="font-semibold text-blue-900">5-7 ans + Expérience</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Salaire</span>
+                                <span class="font-semibold text-blue-900">8 000-15 000€/mois</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-xs font-semibold">CFO</span>
+                            <span class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-xs font-semibold">Finance</span>
+                            <span class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-xs font-semibold">Direction</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Marketing Manager -->
+                <div class="career-card bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100">
+                    <div class="h-48 bg-gradient-to-br from-pink-500 to-rose-700 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600" alt="Marketing" class="absolute inset-0 w-full h-full object-cover opacity-50">
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <div class="text-4xl mb-2">📱</div>
+                            <h3 class="text-2xl font-bold">Marketing Manager</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 text-sm mb-4">Stratégie marketing, gestion de marque, campagnes publicitaires, analyse de marché.</p>
+                        <div class="space-y-2 mb-4">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Durée des études</span>
+                                <span class="font-semibold text-blue-900">5 ans (Master)</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Salaire débutant</span>
+                                <span class="font-semibold text-blue-900">3 000-4 500€/mois</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-pink-100 text-pink-600 rounded-full text-xs font-semibold">Marque</span>
+                            <span class="px-3 py-1 bg-pink-100 text-pink-600 rounded-full text-xs font-semibold">Digital</span>
+                            <span class="px-3 py-1 bg-pink-100 text-pink-600 rounded-full text-xs font-semibold">Communication</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chef de Projet -->
+                <div class="career-card bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100">
+                    <div class="h-48 bg-gradient-to-br from-orange-500 to-amber-700 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=600" alt="Chef de projet" class="absolute inset-0 w-full h-full object-cover opacity-50">
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <div class="text-4xl mb-2">📋</div>
+                            <h3 class="text-2xl font-bold">Chef de Projet</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 text-sm mb-4">Planification et coordination de projets, gestion d'équipes, respect des délais et budgets.</p>
+                        <div class="space-y-2 mb-4">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Durée des études</span>
+                                <span class="font-semibold text-blue-900">5 ans (Master)</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Salaire débutant</span>
+                                <span class="font-semibold text-blue-900">2 800-4 000€/mois</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs font-semibold">Gestion</span>
+                            <span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs font-semibold">Agile</span>
+                            <span class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs font-semibold">Coordination</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Auditeur -->
+                <div class="career-card bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100">
+                    <div class="h-48 bg-gradient-to-br from-violet-500 to-purple-700 relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1554224154-260327c0c6a3?auto=format&fit=crop&q=80&w=600" alt="Auditeur" class="absolute inset-0 w-full h-full object-cover opacity-50">
+                        <div class="absolute bottom-4 left-4 text-white">
+                            <div class="text-4xl mb-2">🔍</div>
+                            <h3 class="text-2xl font-bold">Auditeur / Commissaire</h3>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 text-sm mb-4">Vérification des comptes, évaluation des risques, conseil en organisation et conformité.</p>
+                        <div class="space-y-2 mb-4">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Durée des études</span>
+                                <span class="font-semibold text-blue-900">5 ans + DEC</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-500">Salaire débutant</span>
+                                <span class="font-semibold text-blue-900">3 000-4 500€/mois</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-violet-100 text-violet-600 rounded-full text-xs font-semibold">Audit</span>
+                            <span class="px-3 py-1 bg-violet-100 text-violet-600 rounded-full text-xs font-semibold">Expertise</span>
+                            <span class="px-3 py-1 bg-violet-100 text-violet-600 rounded-full text-xs font-semibold">Conseil</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formation Section -->
+    <section class="py-20 px-6 bg-gradient-to-br from-emerald-50 to-teal-50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center text-blue-900 mb-4">Parcours de Formation</h2>
+            <p class="text-center text-gray-600 mb-16 text-lg">Les voies d'excellence vers une carrière en business</p>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-3xl p-8 shadow-lg">
+                    <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-3xl mb-6">🏫</div>
+                    <h3 class="text-2xl font-bold text-blue-900 mb-4">École de Commerce</h3>
+                    <p class="text-gray-600 mb-4">Grandes écoles de commerce (HEC, ESSEC, ESCP...). Formation généraliste avec spécialisations possibles.</p>
+                    <div class="text-sm text-gray-500">Durée : 5 ans</div>
+                </div>
+                
+                <div class="bg-white rounded-3xl p-8 shadow-lg">
+                    <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center text-3xl mb-6">🎯</div>
+                    <h3 class="text-2xl font-bold text-blue-900 mb-4">IAE / Écoles de Gestion</h3>
+                    <p class="text-gray-600 mb-4">Instituts d'Administration des Entreprises. Formation universitaire en gestion avec forte professionnalisation.</p>
+                    <div class="text-sm text-gray-500">Durée : 3-5 ans</div>
+                </div>
+                
+                <div class="bg-white rounded-3xl p-8 shadow-lg">
+                    <div class="w-16 h-16 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center text-3xl mb-6">💡</div>
+                    <h3 class="text-2xl font-bold text-blue-900 mb-4">Incubateurs / Startup</h3>
+                    <p class="text-gray-600 mb-4">Programmes d'accompagnement pour entrepreneurs, concours de création d'entreprise.</p>
+                    <div class="text-sm text-gray-500">Durée : Variable</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-20 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold text-blue-900 mb-6">Prêt(e) à lancer votre carrière ?</h2>
+            <p class="text-gray-600 text-lg mb-8">Continuez votre exploration des domaines professionnels.</p>
+            <div class="flex gap-4 justify-center flex-wrap">
+                <a href="SUCCESS.html" class="px-8 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold rounded-full hover:shadow-lg hover:scale-105 transition-all">Retour à l'accueil</a>
+                <a href="orientation-tech.html" class="px-8 py-4 bg-white border-2 border-blue-900 text-blue-900 font-bold rounded-full hover:bg-blue-900 hover:text-white transition-all">Informatique & Tech →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-12 px-6">
+        <div class="max-w-6xl mx-auto text-center">
+            <div class="text-2xl font-bold mb-4">Success Story</div>
+            <p class="text-white/70 mb-6">Inspiring minds, building futures</p>
+            <div class="flex justify-center gap-6 text-sm text-white/50">
+                <a href="SUCCESS.html" class="hover:text-white transition">Accueil</a>
+                <a href="#" class="hover:text-white transition">Orientation</a>
+                <a href="#" class="hover:text-white transition">Contact</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
