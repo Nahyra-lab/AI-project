@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orientation - Découvrez Votre Avenir Professionnel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #667eea;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #667eea;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #667eea;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 150px 20px 80px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.3s both;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Domain Cards Section */
+        .domains-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            color: white;
+            font-size: 36px;
+            margin-bottom: 50px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .domains-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .domain-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            height: 400px;
+        }
+
+        .domain-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .domain-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(0,0,0,0.7) 100%);
+            z-index: 1;
+        }
+
+        .domain-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .domain-card:hover .domain-image {
+            transform: scale(1.1);
+        }
+
+        .domain-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px;
+            z-index: 2;
+            color: white;
+        }
+
+        .domain-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+            display: block;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .domain-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .domain-description {
+            font-size: 14px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .explore-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 25px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .domain-card:hover .explore-btn {
+            background: white;
+            color: #333;
+        }
+
+        /* Specific Domain Colors */
+        .domain-card.sante .domain-icon { filter: drop-shadow(0 0 10px #e74c3c); }
+        .domain-card.diplomatie .domain-icon { filter: drop-shadow(0 0 10px #3498db); }
+        .domain-card.business .domain-icon { filter: drop-shadow(0 0 10px #f39c12); }
+        .domain-card.tech .domain-icon { filter: drop-shadow(0 0 10px #9b59b6); }
+        .domain-card.emergents .domain-icon { filter: drop-shadow(0 0 10px #2ecc71); }
+        .domain-card.arts .domain-icon { filter: drop-shadow(0 0 10px #e91e63); }
+
+        /* Floating Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: float 15s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .domains-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            .domain-card {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo">🎓 Orientation</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="orientation.html">Orientation</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Trouvez Votre Voie Professionnelle</h1>
+        <p>Découvrez les différents domaines de métiers et explorez les opportunités qui s'offrent à vous</p>
+    </section>
+
+    <!-- Domains Section -->
+    <section class="domains-section">
+        <h2 class="section-title">Explorez Nos Domaines de Métiers</h2>
+        <div class="domains-grid">
+            <!-- Santé -->
+            <a href="orientation-sante.html" class="domain-card sante" style="text-decoration: none;">
+                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop" alt="Santé" class="domain-image">
+                <div class="domain-content">
+                    <span class="domain-icon">🏥</span>
+                    <h3 class="domain-title">Santé & Médecine</h3>
+                    <p class="domain-description">Médecins, infirmiers, pharmaciens, chercheurs... Des métiers passionnants au service du bien-être et de la vie.</p>
+                    <span class="explore-btn">Explorer ce domaine →</span>
+                </div>
+            </a>
+
+            <!-- Diplomatie -->
+            <a href="orientation-diplomatie.html" class="domain-card diplomatie" style="text-decoration: none;">
+                <img src="https://images.unsplash.com/photo-1529101091760-61df528aa8c6?w=800&h=600&fit=crop" alt="Diplomatie" class="domain-image">
+                <div class="domain-content">
+                    <span class="domain-icon">🌍</span>
+                    <h3 class="domain-title">Diplomatie & Relations Internationales</h3>
+                    <p class="domain-description">Ambassadeurs, diplomates, négociateurs... Représentez votre pays et façonnez les relations internationales.</p>
+                    <span class="explore-btn">Explorer ce domaine →</span>
+                </div>
+            </a>
+
+            <!-- Business -->
+            <a href="orientation-business.html" class="domain-card business" style="text-decoration: none;">
+                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop" alt="Business" class="domain-image">
+                <div class="domain-content">
+                    <span class="domain-icon">💼</span>
+                    <h3 class="domain-title">Business & Gestion</h3>
+                    <p class="domain-description">Entrepreneurs, managers, consultants... Développez des stratégies et dirigez des entreprises vers le succès.</p>
+                    <span class="explore-btn">Explorer ce domaine →</span>
+                </div>
+            </a>
+
+            <!-- Tech -->
+            <a href="orientation-tech.html" class="domain-card tech" style="text-decoration: none;">
+                <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=600&fit=crop" alt="Technologie" class="domain-image">
+                <div class="domain-content">
+                    <span class="domain-icon">💻</span>
+                    <h3 class="domain-title">Informatique & Technologie</h3>
+                    <p class="domain-description">Développeurs, data scientists, ingénieurs... Innovez et créez les technologies de demain.</p>
+                    <span class="explore-btn">Explorer ce domaine →</span>
+                </div>
+            </a>
+
+            <!-- Métiers Émergents -->
+            <a href="orientation-emergents.html" class="domain-card emergents" style="text-decoration: none;">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=600&fit=crop" alt="Métiers Émergents" class="domain-image">
+                <div class="domain-content">
+                    <span class="domain-icon">🚀</span>
+                    <h3 class="domain-title">Métiers Émergents</h3>
+                    <p class="domain-description">IA, blockchain, énergies renouvelables... Soyez pionnier dans les secteurs d'avenir.</p>
+                    <span class="explore-btn">Explorer ce domaine →</span>
+                </div>
+            </a>
+
+            <!-- Arts & Culture -->
+            <a href="orientation-arts.html" class="domain-card arts" style="text-decoration: none;">
+                <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&h=600&fit=crop" alt="Arts" class="domain-image">
+                <div class="domain-content">
+                    <span class="domain-icon">🎨</span>
+                    <h3 class="domain-title">Arts & Culture</h3>
+                    <p class="domain-description">Artistes, designers, musiciens... Exprimez votre créativité et inspirez le monde.</p>
+                    <span class="explore-btn">Explorer ce domaine →</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Orientation - Tous droits réservés | Votre avenir commence ici</p>
+    </footer>
+
+    <script>
+        // Generate floating particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 20; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            particle.style.width = (Math.random() * 10 + 5) + 'px';
+            particle.style.height = particle.style.width;
+            particlesContainer.appendChild(particle);
+        }
+
+        // Add smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add entrance animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.domain-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = `all 0.6s ease ${index * 0.1}s`;
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
