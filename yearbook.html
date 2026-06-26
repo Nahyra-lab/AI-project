@@ -39,10 +39,11 @@
             margin: 0 auto;
         }
 
-        /* Bouton pour accéder aux témoignages */
+        /* Bouton pour accéder aux témoignages --- MODIFIÉ POUR ÊTRE CENTRÉ --- */
         .cta-button {
-            display: inline-block;
-            margin-top: 25px;
+            display: block;           /* Changé de inline-block à block */
+            width: fit-content;       /* La largeur s'adapte au texte */
+            margin: 30px auto 50px auto; /* auto à gauche et à droite = centré ! */
             background: #8a7fa4;
             color: white;
             padding: 14px 35px;
@@ -122,8 +123,6 @@
         <div class="intro-box">
             <h1>Le Yearbook En Ligne</h1>
             <p>Bienvenue dans l'espace officiel des souvenirs du Collège Marie-Anne. Ce Yearbook a été pensé pour capturer, préserver et relater les moments forts, les rires partagés et les événements marquants de notre vie scolaire. Parcourez les albums et laissez-vous emporter par la nostalgie de nos plus belles réussites.</p>
-            
-            
         </div>
 
         <div class="college-photo-container">
@@ -146,8 +145,9 @@
             </div>
         </div>
     </div>
-    <!-- Bouton d'appel à l'action -->
-            <a href="temoignages.html" class="cta-button">Laisser un témoignage ✨</a>
+    
+    <!-- Bouton d'appel à l'action (Maintenant centré grâce au CSS) -->
+    <a href="temoignages.html" class="cta-button">Laisser un témoignage ✨</a>
 
     <!-- PIED DE PAGE -->
     <footer>
