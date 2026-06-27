@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,600&family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
-        /* --- ACCORD ET FOND GLOBAL NOËL --- */
+        /* --- DÉCOR ET STYLE DE NOËL ORIGINE --- */
         * {
             margin: 0;
             padding: 0;
@@ -33,7 +33,7 @@
             z-index: 1;
         }
 
-        /* --- BARRE DE NAVIGATION COMMUNE --- */
+        /* --- NAVIGATION --- */
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -125,7 +125,6 @@
             padding: 40px 20px;
         }
 
-        /* --- EN-TÊTE --- */
         .hero-section {
             text-align: center;
             padding: 60px 20px 20px 20px;
@@ -151,7 +150,6 @@
             opacity: 0.95;
         }
 
-        /* --- DESCRIPTION INTRO --- */
         .description-section {
             max-width: 800px;
             margin: 0 auto 50px auto;
@@ -169,7 +167,6 @@
             text-align: center;
         }
 
-        /* --- TITRE DE SECTION SOUVENIRS --- */
         .section-headline {
             font-family: 'Cinzel', serif;
             font-size: 2.2rem;
@@ -180,7 +177,7 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* --- GRILLE POUR LES PHOTOS --- */
+        /* --- GRILLES PHOTOS & VIDEOS --- */
         .album-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -243,7 +240,6 @@
             color: rgba(252, 246, 186, 0.85);
         }
 
-        /* --- ZONE MULTI-VIDÉOS --- */
         .video-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -273,7 +269,7 @@
             text-align: center;
         }
 
-        /* --- SECTION CITATIONS TOUT EN BAS --- */
+        /* --- SECTION CITATIONS --- */
         .bottom-quotes-section {
             margin-top: 60px;
             border-top: 1px solid rgba(252, 246, 186, 0.2);
@@ -329,7 +325,7 @@
             font-weight: 600;
         }
 
-        /* --- MODAL ZOOM --- */
+        /* --- MODAL --- */
         .modal {
             display: none;
             position: fixed;
@@ -356,7 +352,6 @@
             cursor: pointer;
         }
 
-        /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
             .hero-title { font-size: 2.2rem; }
             .navbar { padding: 15px 20px; }
@@ -370,7 +365,7 @@
 
     <nav class="navbar">
         <div class="logo">
-            <a href="yearbook.html">Marianne</a>
+            <a href="yearbook.html">Our Yearbook</a>
         </div>
         <ul class="nav-links">
             <li><a href="yearbook.html">Accueil</a></li>
@@ -421,8 +416,7 @@
                 </video>
                 <div class="video-title">🎼 Chants & Festivités</div>
             </div>
-            
-            </div>
+        </div>
 
         <section class="bottom-quotes-section">
             <h2 class="quotes-headline">📜 Merveilles de Noël</h2>
@@ -436,6 +430,11 @@
                 <p class="quote-text">Noël n'est pas un jour ni une saison, c'est un état d'esprit.</p>
                 <p class="quote-author">— Calvin Coolidge</p>
             </div>
+
+            <div class="quote-container">
+                <p class="quote-text">La magie de Noël est invisible, elle se ressent dans le partage et les sourires.</p>
+                <p class="quote-author">— Sagesse Hivernale</p>
+            </div>
         </section>
 
     </div>
@@ -447,7 +446,7 @@
 
     <script>
         // ============================================
-        // 📸 METS TES QUELQUES PHOTOS DE NOËL ICI !
+        // 📸 METS TES PHOTOS DE NOËL ICI QUAND TU VEUX
         // ============================================
         const photosData = [
             {
@@ -462,7 +461,6 @@
             }
         ];
 
-        // Génération automatique des photos
         const albumGrid = document.getElementById('album-grid');
         photosData.forEach(photo => {
             const card = document.createElement('div');
@@ -480,7 +478,6 @@
             albumGrid.appendChild(card);
         });
 
-        // Gestion de la modale zoom
         const modal = document.getElementById('image-modal');
         const modalImage = document.getElementById('modal-image');
         const modalClose = document.getElementById('modal-close');
@@ -493,7 +490,7 @@
         modalClose.addEventListener('click', () => modal.classList.remove('active'));
         modal.addEventListener('click', (e) => { if(e.target === modal) modal.classList.remove('active'); });
 
-        // Effet de neige tombante en arrière-plan
+        // Effet de neige d'origine
         const canvas = document.getElementById('snow-particles');
         const ctx = canvas.getContext('2d');
         
@@ -535,7 +532,6 @@
         }
         drawFlakes();
 
-        // Gestion du menu de navigation dropdown
         const dropdownToggle = document.querySelector('.dropdown-toggle');
         const dropdownMenu = document.querySelector('.dropdown-menu');
         dropdownToggle.addEventListener('click', (e) => {
