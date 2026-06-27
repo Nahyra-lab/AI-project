@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Inspiring Minds</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --gold: #D4AF37; --dark-blue: #0A192F; }
+        body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; background-color: #fcfcfc; }
+        h1, h2, .font-serif { font-family: 'Playfair Display', serif; }
+        
+        @keyframes slideInFromLeft {
+            from { opacity: 0; transform: translateX(-100px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideInFromRight {
+            from { opacity: 0; transform: translateX(100px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .animate-slide-left { animation: slideInFromLeft 0.8s ease-out forwards; }
+        .animate-slide-right { animation: slideInFromRight 0.8s ease-out forwards; }
+        .animate-fade-up { animation: fadeInUp 0.8s ease-out forwards; }
+        .animate-pulse-slow { animation: pulse 2s ease-in-out infinite; }
+        
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-600 { animation-delay: 0.6s; }
+        
+        .contact-card {
+            transition: all 0.3s ease;
+        }
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .phone-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--gold), #F59E0B);
+            border-radius: 50%;
+            margin-right: 15px;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white shadow-sm px-6 py-4 flex justify-between items-center">
+        <div class="text-2xl font-bold tracking-tighter text-blue-900 cursor-pointer" onclick="window.location.href='SUCCESS.html'">SUCCES <span class="text-yellow-600 font-serif italic">Story</span></div>
+        <div class="hidden md:flex space-x-6 text-sm font-semibold uppercase tracking-wider">
+            <button onclick="window.location.href='SUCCESS.html#acceuil'" class="nav-btn hover:text-yellow-600 transition">Accueil</button>
+            <button onclick="window.location.href='SUCCESS.html#stories'" class="nav-btn hover:text-yellow-600 transition">The Stories</button>
+            <button onclick="window.location.href='SUCCESS.html#orientation'" class="nav-btn hover:text-yellow-600 transition">Orientation</button>
+            <button onclick="window.location.href='SUCCESS.html#opportunities'" class="nav-btn hover:text-yellow-600 transition">Opportunities</button>
+            <button onclick="window.location.href='SUCCESS.html#improving'" class="nav-btn hover:text-yellow-600 transition">Improving</button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-32 px-6 min-h-screen">
+        <div class="max-w-6xl mx-auto">
+            <!-- Title Section -->
+            <div class="text-center mb-16 opacity-0 animate-fade-up">
+                <h1 class="text-6xl md:text-8xl font-bold text-blue-900 mb-4 font-serif">Contact</h1>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Nous sommes là pour vous accompagner dans votre parcours</p>
+            </div>
+
+            <!-- Contact Cards Section -->
+            <div class="grid md:grid-cols-2 gap-8 mb-16">
+                <!-- Join the Journal Card -->
+                <div class="contact-card opacity-0 animate-slide-left bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl p-8 md:p-10 shadow-xl border-l-8 border-blue-600">
+                    <div class="flex items-start gap-4 mb-6">
+                        <div class="phone-icon">📞</div>
+                        <div>
+                            <h2 class="text-2xl font-bold text-blue-900 mb-2">Intégrer le journal du collège</h2>
+                            <p class="text-gray-600 mb-4">Vous souhaitez rejoindre notre équipe et contribuer au projet ?</p>
+                            <div class="flex items-center bg-white rounded-xl p-4 shadow-md">
+                                <span class="text-3xl mr-3">📱</span>
+                                <span class="text-2xl font-bold text-blue-900">31429876</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Share Your Story Card -->
+                <div class="contact-card opacity-0 animate-slide-right delay-200 bg-gradient-to-br from-purple-50 to-pink-50 rounded-3xl p-8 md:p-10 shadow-xl border-l-8 border-purple-600">
+                    <div class="flex items-start gap-4 mb-6">
+                        <div class="phone-icon" style="background: linear-gradient(135deg, #9333EA, #EC4899);">📞</div>
+                        <div>
+                            <h2 class="text-2xl font-bold text-purple-900 mb-2">Partager votre histoire</h2>
+                            <p class="text-gray-600 mb-4">Vous avez une histoire inspirante à raconter ? Contactez-nous !</p>
+                            <div class="flex items-center bg-white rounded-xl p-4 shadow-md">
+                                <span class="text-3xl mr-3">📱</span>
+                                <span class="text-2xl font-bold text-purple-900">34145675</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Large Image Section -->
+            <div class="opacity-0 animate-fade-up delay-400">
+                <div class="bg-gradient-to-r from-blue-900 via-purple-900 to-indigo-900 rounded-3xl overflow-hidden shadow-2xl">
+                    <div class="grid md:grid-cols-2 gap-0">
+                        <div class="p-8 md:p-12 flex flex-col justify-center">
+                            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6 font-serif">Rejoignez notre communauté</h2>
+                            <p class="text-gray-200 text-lg mb-6 leading-relaxed">
+                                Chaque histoire compte. Chaque réussite inspire. Ensemble, construisons un avenir où chaque fille peut réaliser ses rêves et devenir une leader de demain.
+                            </p>
+                            <div class="flex flex-wrap gap-4">
+                                <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-white text-sm font-semibold">✨ Inspiration</span>
+                                <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-white text-sm font-semibold">🎓 Excellence</span>
+                                <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-white text-sm font-semibold">💪 Empowerment</span>
+                                <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-white text-sm font-semibold">🌟 Avenir</span>
+                            </div>
+                        </div>
+                        <div class="relative h-80 md:h-auto min-h-[400px]">
+                            <img src="https://chatgpt.com/s/m_6a401bed197081919b6740cdc24a2b74" 
+                                 alt="Communauté Inspiring Minds" 
+                                 class="absolute inset-0 w-full h-full object-cover"
+                                 onerror="this.src='https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80'">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Back Button -->
+            <div class="text-center mt-12 opacity-0 animate-fade-up delay-600">
+                <button onclick="window.location.href='SUCCESS.html#stories'" 
+                        class="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-blue-900 px-8 py-4 rounded-full font-bold text-lg hover:from-yellow-500 hover:to-orange-600 transition-all transform hover:scale-105 shadow-lg">
+                    ← Retour aux Stories
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-8 px-6 mt-20">
+        <div class="max-w-6xl mx-auto text-center">
+            <p>© 2026 Succes Story. Pour les leaders de demain. Promotion NEXORA❤️</p>
+        </div>
+    </footer>
+
+    <script>
+        // Trigger animations on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.contact-card').forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
