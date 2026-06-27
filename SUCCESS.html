@@ -14,42 +14,32 @@
         .section-content { display: none; }
         .section-content.active { display: block; animation: fadeIn 0.5s ease-in-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .card-story:hover .photo-after { opacity: 1; }
-        .photo-after { opacity: 0; transition: 0.6s ease-in-out; }
         .nav-active { border-bottom: 2px solid var(--gold); color: var(--gold) !important; }
         
-        /* New Animations for Stories Page */
-        @keyframes titleGlow {
-            0%, 100% { text-shadow: 0 0 20px rgba(255,255,255,0.5); }
-            50% { text-shadow: 0 0 40px rgba(255,215,0,0.8), 0 0 60px rgba(255,215,0,0.4); }
-        }
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        /* Modern Animations */
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(-100vh); }
+            from { opacity: 0; transform: translateY(50px); }
             to { opacity: 1; transform: translateY(0); }
         }
         @keyframes slideInFromLeft {
             from { opacity: 0; transform: translateX(-100px); }
             to { opacity: 1; transform: translateX(0); }
         }
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
-        }
-        @keyframes floatDelayed {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(-5deg); }
-        }
-        @keyframes pulseDelayed {
-            0%, 100% { transform: scale(1); opacity: 0.3; }
-            50% { transform: scale(1.1); opacity: 0.5; }
-        }
-        @keyframes slideInRight {
-            from { opacity: 0; transform: translateX(50px); }
+        @keyframes slideInFromRight {
+            from { opacity: 0; transform: translateX(100px); }
             to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
         @keyframes shimmer {
             0% { background-position: -1000px 0; }
@@ -63,55 +53,58 @@
             0%, 100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
             50% { box-shadow: 0 0 40px rgba(212, 175, 55, 0.6); }
         }
-        
-        .animate-title-glow { animation: titleGlow 3s ease-in-out infinite; }
-        .animate-fade-in-up { animation: fadeUp 0.8s ease-out forwards; }
-        .animate-float { animation: float 6s ease-in-out infinite; }
-        .animate-float-delayed { animation: floatDelayed 7s ease-in-out infinite 1s; }
-        .animate-pulse-delayed { animation: pulseDelayed 3s ease-in-out infinite 1.5s; }
-        .delay-300 { animation-delay: 0.3s; }
-        .delay-500 { animation-delay: 0.5s; }
-        .delay-700 { animation-delay: 0.7s; }
-        
-        .story-card { transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
-        .story-card.visible { opacity: 1 !important; transform: translateY(0) !important; }
-        .story-card.hidden { opacity: 0; transform: translateY(50px); }
-        
-        .promotion-card { transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
-        .promotion-card.visible { opacity: 1 !important; transform: translateY(0) scale(1) !important; }
-        
-        .story-filter-btn.active { background-color: #EAB308 !important; color: #0A192F !important; }
-        
-        .stars-container {
-            background-image: 
-                radial-gradient(2px 2px at 20px 30px, white, transparent),
-                radial-gradient(2px 2px at 40px 70px, white, transparent),
-                radial-gradient(2px 2px at 50px 160px, white, transparent),
-                radial-gradient(2px 2px at 90px 40px, white, transparent),
-                radial-gradient(2px 2px at 130px 80px, white, transparent);
-            background-repeat: repeat;
-            background-size: 200px 200px;
-            animation: shimmer 10s linear infinite;
+        @keyframes rotateCard {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(180deg); }
         }
         
-        /* Flip Card Styles */
-        .flip-card { perspective: 1000px; }
-        .flip-card-inner { 
-            position: relative; 
+        .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+        .animate-slide-left { animation: slideInFromLeft 0.8s ease-out forwards; }
+        .animate-slide-right { animation: slideInFromRight 0.8s ease-out forwards; }
+        .animate-scale-in { animation: scaleIn 0.6s ease-out forwards; }
+        .animate-float { animation: float 3s ease-in-out infinite; }
+        .animate-pulse { animation: pulse 2s ease-in-out infinite; }
+        .animate-text-wave { animation: textWave 2s ease-in-out infinite; }
+        .glow-text { animation: glow 2s ease-in-out infinite; }
+        
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+        .delay-600 { animation-delay: 0.6s; }
+        .delay-700 { animation-delay: 0.7s; }
+        .delay-800 { animation-delay: 0.8s; }
+        
+        /* Mystery Card Styles */
+        .mystery-card {
+            perspective: 1000px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .mystery-card:hover {
+            transform: translateY(-10px);
+        }
+        .mystery-card-inner {
+            position: relative;
             width: 100%;
             height: 100%;
-            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             transform-style: preserve-3d;
         }
-        .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
-        .flip-card-front, .flip-card-back {
+        .mystery-card.revealed .mystery-card-inner {
+            transform: rotateY(180deg);
+        }
+        .mystery-card-front, .mystery-card-back {
             position: absolute;
             width: 100%;
             height: 100%;
             backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
         }
-        .flip-card-back { transform: rotateY(180deg); }
+        .mystery-card-back {
+            transform: rotateY(180deg);
+        }
         
         /* Magazine Modal */
         .magazine-modal {
@@ -119,25 +112,76 @@
             position: fixed;
             inset: 0;
             z-index: 1000;
-            background: rgba(0,0,0,0.9);
+            background: rgba(0,0,0,0.95);
             overflow-y: auto;
+            animation: fadeIn 0.3s ease-out;
         }
-        .magazine-modal.active { display: block; animation: fadeIn 0.3s ease-out; }
+        .magazine-modal.active { display: block; }
         .magazine-content {
             max-width: 900px;
             margin: 40px auto;
             background: white;
             border-radius: 20px;
             overflow: hidden;
+            animation: slideInFromLeft 0.5s ease-out;
         }
         
-        /* Animated Text */
-        .animate-text-wave { animation: textWave 2s ease-in-out infinite; }
-        .glow-text { animation: glow 2s ease-in-out infinite; }
+        /* Card Gradient Backgrounds */
+        .gradient-yellow { background: linear-gradient(135deg, #FCD34D 0%, #F59E0B 100%); }
+        .gradient-purple { background: linear-gradient(135deg, #C084FC 0%, #E879F9 100%); }
+        .gradient-blue { background: linear-gradient(135deg, #60A5FA 0%, #3B82F6 100%); }
+        .gradient-green { background: linear-gradient(135deg, #34D399 0%, #10B981 100%); }
+        .gradient-orange { background: linear-gradient(135deg, #FB923C 0%, #F97316 100%); }
+        .gradient-rose { background: linear-gradient(135deg, #FB7185 0%, #F43F5E 100%); }
         
-        /* Flip card entrance animation */
-        .flip-card.entrance { opacity: 0; transform: translateY(50px); }
-        .flip-card.entrance.visible { opacity: 1; transform: translateY(0); }
+        /* Question Mark Styling */
+        .question-mark {
+            font-size: 4rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* Profile Card */
+        .profile-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 100%;
+            padding: 2rem;
+            color: white;
+        }
+        
+        .profile-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid white;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+        
+        .profile-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .profile-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            margin-top: 1rem;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
     </style>
 </head>
 <body class="text-slate-800">
@@ -167,7 +211,6 @@
                 <p class="text-xl mb-6 font-semibold">Envie de rencontrer les créatrices du projet ?</p>
                 <div class="grid md:grid-cols-3 gap-8">
                     <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-yellow-500">
-                        
                         <img src="images/Elga2.jpeg.png" class="w-24 h-24 mx-auto rounded-full mb-4 bg-slate-100 object-cover" alt="AUGUSTE Elga J.">
                         <h3 class="font-bold">AUGUSTE Elga J.</h3>
                         <p class="text-sm italic text-gray-500">" Coordinatrice et rédactrice passionnée, elle donne vie aux événements à travers ses mots et crée des récits empreints d'émotion."</p>
@@ -189,159 +232,134 @@
 
     <main id="stories" class="section-content pt-20 px-6 overflow-hidden">
         <!-- Hero Section with Animated Title -->
-        <div class="relative min-h-[70vh] flex items-center justify-center mb-16">
+        <div class="relative min-h-[60vh] flex items-center justify-center mb-20">
             <div class="absolute inset-0 bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900"></div>
             <div class="relative z-10 text-center max-w-5xl mx-auto px-4">
-                <!-- Animated Title - Falls from sky -->
+                <!-- Animated Title -->
                 <h1 id="stories-title" class="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 opacity-0" style="font-family: 'Great Vibes', cursive; text-shadow: 0 0 30px rgba(255,215,0,0.5);">
                     The <span class="text-yellow-400 italic">Stories</span>
                 </h1>
-                <!-- Tagline - Slides from left to right -->
+                <!-- Tagline -->
                 <p id="stories-tagline" class="text-lg md:text-xl text-gray-200 mb-8 opacity-0 max-w-4xl mx-auto leading-relaxed">
                     Chaque grande histoire commence sur les bancs du collège. Aujourd'hui, nous célébrons celles qui inspirent par leur parcours, pour encourager celles qui écriront les plus belles histoires de demain.
                 </p>
             </div>
         </div>
 
-        <!-- Stories Grid -->
+        <!-- Mystery Cards Grid -->
         <div class="max-w-7xl mx-auto mb-20">
-            <!-- Flip Cards Section -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-                <!-- Karina Flip Card -->
-                <div class="flip-card entrance">
-                    <div class="flip-card-inner bg-gradient-to-br from-yellow-50 to-amber-50 rounded-2xl shadow-xl overflow-hidden cursor-pointer h-[450px]">
-                        <!-- Front of card -->
-                        <div class="flip-card-front p-6 flex flex-col items-center justify-center text-center">
-                            <img src="images/karina18.jpeg" class="w-40 h-40 rounded-full object-cover mb-4 border-4 border-yellow-500 shadow-lg" alt="Karina" onerror="this.src='https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=400&q=80'">
-                            <h3 class="text-2xl font-bold text-blue-900 font-serif mb-2">Karina</h3>
-                            <p class="text-yellow-600 font-semibold">Secondaire 4</p>
-                            <span class="mt-4 bg-yellow-500 text-blue-900 px-4 py-2 rounded-full text-sm font-bold">🏆 Medcriture</span>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Karina Mystery Card -->
+                <div class="mystery-card opacity-0 animate-fade-in-up delay-100" data-person="karina">
+                    <div class="mystery-card-inner h-[350px] rounded-2xl shadow-xl overflow-hidden">
+                        <!-- Front: Mystery -->
+                        <div class="mystery-card-front gradient-yellow flex flex-col items-center justify-center">
+                            <div class="question-mark">?</div>
+                            <p class="text-white font-bold mt-4 text-lg">Cliquez pour découvrir</p>
                         </div>
-                        <!-- Back of card -->
-                        <div class="flip-card-back bg-gradient-to-br from-yellow-500 to-amber-600 p-6 flex flex-col items-center justify-center text-center text-white">
-                            <div class="overflow-y-auto max-h-[400px] pr-2">
-                                <p class="italic text-lg mb-4">"Écris chaque jour, même si ce n'est qu'une phrase."</p>
-                                <p class="text-sm mb-3"><strong>Parcours:</strong> Passionnée d'écriture depuis l'âge de 11 ans</p>
-                                <p class="text-sm mb-3"><strong>Réalisations:</strong> 3ème gagnante du concours Medcriture, suivant l'exemple de son aînée Kate (2ème place l'an dernier)</p>
-                                <button class="magazine-btn mt-4 bg-white text-yellow-600 px-6 py-2 rounded-full font-bold hover:bg-blue-900 hover:text-white transition">Voir le Magazine →</button>
-                            </div>
+                        <!-- Back: Profile -->
+                        <div class="mystery-card-back gradient-yellow profile-card">
+                            <img src="images/karina18.jpeg" class="profile-image" alt="Karina" onerror="this.src='https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=400&q=80'">
+                            <div class="profile-name">Karina</div>
+                            <p class="text-white/90">Secondaire 4</p>
+                            <div class="profile-badge">🏆 Medcriture</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Esperancia Flip Card -->
-                <div class="flip-card entrance">
-                    <div class="flip-card-inner bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl shadow-xl overflow-hidden cursor-pointer h-[450px]">
-                        <!-- Front of card -->
-                        <div class="flip-card-front p-6 flex flex-col items-center justify-center text-center">
-                            <img src="images/Esperancia.jpeg" class="w-40 h-40 rounded-full object-cover mb-4 border-4 border-purple-500 shadow-lg" alt="Esperancia" onerror="this.src='https://images.unsplash.com/photo-1516280440614-6697288d5d38?auto=format&fit=crop&w=400&q=80'">
-                            <h3 class="text-2xl font-bold text-blue-900 font-serif mb-2">Esperancia</h3>
-                            <p class="text-purple-600 font-semibold">Chant & Musique</p>
-                            <span class="mt-4 bg-purple-500 text-white px-4 py-2 rounded-full text-sm font-bold">🎤 3ème Place</span>
+                <!-- Esperancia Mystery Card -->
+                <div class="mystery-card opacity-0 animate-fade-in-up delay-200" data-person="esperancia">
+                    <div class="mystery-card-inner h-[350px] rounded-2xl shadow-xl overflow-hidden">
+                        <!-- Front: Mystery -->
+                        <div class="mystery-card-front gradient-purple flex flex-col items-center justify-center">
+                            <div class="question-mark">?</div>
+                            <p class="text-white font-bold mt-4 text-lg">Cliquez pour découvrir</p>
                         </div>
-                        <!-- Back of card -->
-                        <div class="flip-card-back bg-gradient-to-br from-purple-500 to-pink-600 p-6 flex flex-col items-center justify-center text-center text-white">
-                            <div class="overflow-y-auto max-h-[400px] pr-2">
-                                <p class="italic text-lg mb-4">"La musique est le langage universel de l'âme"</p>
-                                <p class="text-sm mb-3"><strong>Parcours:</strong> Dotée d'une voix exceptionnelle, elle brille dans tous les concours de chant</p>
-                                <p class="text-sm mb-3"><strong>Réalisations:</strong> 3ème place au concours de chant du collège, inspire ses camarades par sa passion et son talent naturel</p>
-                                <button class="magazine-btn mt-4 bg-white text-purple-600 px-6 py-2 rounded-full font-bold hover:bg-blue-900 hover:text-white transition">Voir le Magazine →</button>
-                            </div>
+                        <!-- Back: Profile -->
+                        <div class="mystery-card-back gradient-purple profile-card">
+                            <img src="images/Esperancia.jpeg" class="profile-image" alt="Esperancia" onerror="this.src='https://images.unsplash.com/photo-1516280440614-6697288d5d38?auto=format&fit=crop&w=400&q=80'">
+                            <div class="profile-name">Esperancia</div>
+                            <p class="text-white/90">Chant & Musique</p>
+                            <div class="profile-badge">🎤 3ème Place</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Elga Flip Card -->
-                <div class="flip-card entrance">
-                    <div class="flip-card-inner bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl shadow-xl overflow-hidden cursor-pointer h-[450px]">
-                        <!-- Front of card -->
-                        <div class="flip-card-front p-6 flex flex-col items-center justify-center text-center">
-                            <img src="images/Elga2.jpeg.png" class="w-40 h-40 rounded-full object-cover mb-4 border-4 border-blue-500 shadow-lg" alt="Elga" onerror="this.src='https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80'">
-                            <h3 class="text-2xl font-bold text-blue-900 font-serif mb-2">Elga</h3>
-                            <p class="text-blue-600 font-semibold">Poésie & Engagement</p>
-                            <span class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-bold">✨ Excellence</span>
+                <!-- Elga Mystery Card -->
+                <div class="mystery-card opacity-0 animate-fade-in-up delay-300" data-person="elga">
+                    <div class="mystery-card-inner h-[350px] rounded-2xl shadow-xl overflow-hidden">
+                        <!-- Front: Mystery -->
+                        <div class="mystery-card-front gradient-blue flex flex-col items-center justify-center">
+                            <div class="question-mark">?</div>
+                            <p class="text-white font-bold mt-4 text-lg">Cliquez pour découvrir</p>
                         </div>
-                        <!-- Back of card -->
-                        <div class="flip-card-back bg-gradient-to-br from-blue-500 to-indigo-600 p-6 flex flex-col items-center justify-center text-center text-white">
-                            <div class="overflow-y-auto max-h-[400px] pr-2">
-                                <p class="italic text-lg mb-4">"Chaque mot a le pouvoir de changer une vie"</p>
-                                <p class="text-sm mb-3"><strong>Parcours:</strong> À l'école depuis petite, elle s'engage activement au collège</p>
-                                <p class="text-sm mb-3"><strong>Réalisations:</strong> Coordinatrice et rédactrice passionnée, elle donne vie aux événements à travers ses mots et crée des récits empreints d'émotion. Reconnue pour son excellence en poésie.</p>
-                                <button class="magazine-btn mt-4 bg-white text-blue-600 px-6 py-2 rounded-full font-bold hover:bg-blue-900 hover:text-white transition">Voir le Magazine →</button>
-                            </div>
+                        <!-- Back: Profile -->
+                        <div class="mystery-card-back gradient-blue profile-card">
+                            <img src="images/Elga2.jpeg.png" class="profile-image" alt="Elga" onerror="this.src='https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80'">
+                            <div class="profile-name">Elga</div>
+                            <p class="text-white/90">Poésie & Engagement</p>
+                            <div class="profile-badge">✨ Excellence</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Yvenie Flip Card -->
-                <div class="flip-card entrance">
-                    <div class="flip-card-inner bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl shadow-xl overflow-hidden cursor-pointer h-[450px]">
-                        <!-- Front of card -->
-                        <div class="flip-card-front p-6 flex flex-col items-center justify-center text-center">
-                            <img src="https://images.unsplash.com/photo-1525926477800-7a3be5800fcb?auto=format&fit=crop&w=400&q=80" class="w-40 h-40 rounded-full object-cover mb-4 border-4 border-green-500 shadow-lg" alt="Yvenie">
-                            <h3 class="text-2xl font-bold text-blue-900 font-serif mb-2">Yvenie</h3>
-                            <p class="text-green-600 font-semibold">Excellence Académique</p>
-                            <span class="mt-4 bg-green-500 text-white px-4 py-2 rounded-full text-sm font-bold">🎓 Bourse</span>
+                <!-- Yvenie Mystery Card -->
+                <div class="mystery-card opacity-0 animate-fade-in-up delay-400" data-person="yvenie">
+                    <div class="mystery-card-inner h-[350px] rounded-2xl shadow-xl overflow-hidden">
+                        <!-- Front: Mystery -->
+                        <div class="mystery-card-front gradient-green flex flex-col items-center justify-center">
+                            <div class="question-mark">?</div>
+                            <p class="text-white font-bold mt-4 text-lg">Cliquez pour découvrir</p>
                         </div>
-                        <!-- Back of card -->
-                        <div class="flip-card-back bg-gradient-to-br from-green-500 to-emerald-600 p-6 flex flex-col items-center justify-center text-center text-white">
-                            <div class="overflow-y-auto max-h-[400px] pr-2">
-                                <p class="italic text-lg mb-4">"L'excellence est un voyage, pas une destination"</p>
-                                <p class="text-sm mb-3"><strong>Parcours:</strong> Venue au collège en 7e année avec un excellent rendement scolaire</p>
-                                <p class="text-sm mb-3"><strong>Réalisations:</strong> À l'école, on valorise l'excellence. C'est pour cela qu'elle a reçu la bourse complète offerte par la promotion 1995. Son parcours exemplaire montre que la persévérance et le travail acharné mènent toujours à la réussite.</p>
-                                <button class="magazine-btn mt-4 bg-white text-green-600 px-6 py-2 rounded-full font-bold hover:bg-blue-900 hover:text-white transition">Voir le Magazine →</button>
-                            </div>
+                        <!-- Back: Profile -->
+                        <div class="mystery-card-back gradient-green profile-card">
+                            <img src="https://images.unsplash.com/photo-1525926477800-7a3be5800fcb?auto=format&fit=crop&w=400&q=80" class="profile-image" alt="Yvenie">
+                            <div class="profile-name">Yvenie</div>
+                            <p class="text-white/90">Excellence Académique</p>
+                            <div class="profile-badge">🎓 Bourse</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Exposcience Team Flip Card -->
-                <div class="flip-card entrance">
-                    <div class="flip-card-inner bg-gradient-to-br from-orange-50 to-red-50 rounded-2xl shadow-xl overflow-hidden cursor-pointer h-[450px]">
-                        <!-- Front of card -->
-                        <div class="flip-card-front p-6 flex flex-col items-center justify-center text-center">
-                            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=400&q=80" class="w-40 h-40 rounded-full object-cover mb-4 border-4 border-orange-500 shadow-lg" alt="Exposcience">
-                            <h3 class="text-2xl font-bold text-blue-900 font-serif mb-2">Les Innovatrices</h3>
-                            <p class="text-orange-600 font-semibold">Promotion Armoni</p>
-                            <span class="mt-4 bg-orange-500 text-white px-4 py-2 rounded-full text-sm font-bold">🚀 Exposcience</span>
+                <!-- Exposcience Mystery Card -->
+                <div class="mystery-card opacity-0 animate-fade-in-up delay-500" data-person="exposcience">
+                    <div class="mystery-card-inner h-[350px] rounded-2xl shadow-xl overflow-hidden">
+                        <!-- Front: Mystery -->
+                        <div class="mystery-card-front gradient-orange flex flex-col items-center justify-center">
+                            <div class="question-mark">?</div>
+                            <p class="text-white font-bold mt-4 text-lg">Cliquez pour découvrir</p>
                         </div>
-                        <!-- Back of card -->
-                        <div class="flip-card-back bg-gradient-to-br from-orange-500 to-red-600 p-6 flex flex-col items-center justify-center text-center text-white">
-                            <div class="overflow-y-auto max-h-[400px] pr-2">
-                                <p class="italic text-lg mb-4">"L'innovation naît du courage d'essayer"</p>
-                                <p class="text-sm mb-3"><strong>Qu'est-ce qui vous a poussé à y participer?</strong> La première fois (2022), c'était pour l'expérience. La seconde (2023), c'était par égo - j'avais perdu et je voulais corriger cela.</p>
-                                <p class="text-sm mb-3"><strong>Obstacles surmontés:</strong> Manque de support, problèmes internes d'équipe, fatigue... Mais la veille de la compétition, malgré l'abandon prévu, on a décidé d'y aller!</p>
-                                <button class="magazine-btn mt-4 bg-white text-orange-600 px-6 py-2 rounded-full font-bold hover:bg-blue-900 hover:text-white transition">Voir le Magazine →</button>
-                            </div>
+                        <!-- Back: Profile -->
+                        <div class="mystery-card-back gradient-orange profile-card">
+                            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=400&q=80" class="profile-image" alt="Exposcience">
+                            <div class="profile-name">Les Innovatrices</div>
+                            <p class="text-white/90">Promotion Armoni</p>
+                            <div class="profile-badge">🚀 Exposcience</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Promotion 1995 Flip Card -->
-                <div class="flip-card entrance">
-                    <div class="flip-card-inner bg-gradient-to-br from-rose-50 to-pink-50 rounded-2xl shadow-xl overflow-hidden cursor-pointer h-[450px]">
-                        <!-- Front of card -->
-                        <div class="flip-card-front p-6 flex flex-col items-center justify-center text-center">
-                            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=400&q=80" class="w-40 h-40 rounded-full object-cover mb-4 border-4 border-rose-500 shadow-lg" alt="Promotion 1995">
-                            <h3 class="text-2xl font-bold text-blue-900 font-serif mb-2">Promotion 1995</h3>
-                            <p class="text-rose-600 font-semibold">Mérites Exceptionnels</p>
-                            <span class="mt-4 bg-rose-500 text-white px-4 py-2 rounded-full text-sm font-bold">💎 Générosité</span>
+                <!-- Promotion 1995 Mystery Card -->
+                <div class="mystery-card opacity-0 animate-fade-in-up delay-600" data-person="promotion1995">
+                    <div class="mystery-card-inner h-[350px] rounded-2xl shadow-xl overflow-hidden">
+                        <!-- Front: Mystery -->
+                        <div class="mystery-card-front gradient-rose flex flex-col items-center justify-center">
+                            <div class="question-mark">?</div>
+                            <p class="text-white font-bold mt-4 text-lg">Cliquez pour découvrir</p>
                         </div>
-                        <!-- Back of card -->
-                        <div class="flip-card-back bg-gradient-to-br from-rose-500 to-pink-600 p-6 flex flex-col items-center justify-center text-center text-white">
-                            <div class="overflow-y-auto max-h-[400px] pr-2">
-                                <p class="italic text-lg mb-4">"Donner c'est recevoir infiniment plus"</p>
-                                <p class="text-sm mb-3"><strong>Engagement:</strong> La seule promotion qui a été aussi généreuse et qui aide toujours leurs petites sœurs</p>
-                                <p class="text-sm mb-3"><strong>Contributions:</strong> Malgré les moments difficiles, elles sont toujours là. Elles offrent une bourse complète à une fille du secondaire 4 et une demi-bourse à une fille de 6e année. Elles ont aussi offert une carte cadeau et une imprimante 3D!</p>
-                                <button class="magazine-btn mt-4 bg-white text-rose-600 px-6 py-2 rounded-full font-bold hover:bg-blue-900 hover:text-white transition">Voir le Magazine →</button>
-                            </div>
+                        <!-- Back: Profile -->
+                        <div class="mystery-card-back gradient-rose profile-card">
+                            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=400&q=80" class="profile-image" alt="Promotion 1995">
+                            <div class="profile-name">Promotion 1995</div>
+                            <p class="text-white/90">Mérites Exceptionnels</p>
+                            <div class="profile-badge">💎 Générosité</div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Call to Action Section -->
-            <div class="max-w-4xl mx-auto text-center py-16 mb-12">
+            <div class="max-w-4xl mx-auto text-center py-20 mt-12">
                 <h2 id="cta-text" class="text-3xl md:text-4xl font-bold text-blue-900 mb-6 opacity-0">
                     Vous avez une histoire <span class="text-yellow-600 animate-text-wave">inspirante?</span>
                 </h2>
@@ -357,8 +375,8 @@
 
     <!-- Magazine Modal -->
     <div id="magazine-modal" class="magazine-modal">
+        <button onclick="closeMagazine()" class="absolute top-4 right-4 text-white hover:text-gray-300 text-4xl z-50 font-light">×</button>
         <div class="magazine-content">
-            <button onclick="closeMagazine()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl z-10">×</button>
             <div id="magazine-body" class="p-8 md:p-12"></div>
         </div>
     </div>
@@ -369,26 +387,9 @@
                 <h2 class="text-5xl md:text-6xl font-bold text-blue-900 mb-4 font-serif">Orientation</h2>
                 <p class="text-xl text-gray-600">Explorez différents domaines et trouvez votre passion</p>
             </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Placeholder for orientation cards -->
-                <a href="orientation-tech.html" class="group block overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
-                    <div class="relative h-80 bg-gradient-to-br from-purple-600 to-violet-900 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=800" alt="Technologie" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-                        <div class="absolute bottom-0 left-0 right-0 p-8">
-                            <div class="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center text-4xl mb-4 border border-white/30">💻</div>
-                            <h3 class="text-3xl font-bold text-white mb-2">Informatique & Technologie</h3>
-                            <p class="text-white/80 text-sm">Développeurs, data scientists, ingénieurs IA...</p>
-                            <span class="inline-block mt-4 text-white font-semibold group-hover:translate-x-2 transition-transform">Explorer ce domaine →</span>
-                        </div>
-                    </div>
-                </a>
-            </div>
         </div>
     </main>
 
-    <!-- Section Opportunities -->
     <main id="opportunities" class="section-content pt-32 px-4 md:px-8 pb-24 bg-slate-50/50">
         <div class="max-w-6xl mx-auto">
             <div class="max-w-3xl mb-16">
@@ -398,14 +399,10 @@
                 <h2 class="text-4xl md:text-5xl font-black text-slate-900 mt-4 tracking-tight">
                     Opportunities
                 </h2>
-                <p class="text-slate-600 mt-4 text-lg leading-relaxed">
-                    Vous souhaitez atteindre votre plein potentiel mais vous ne savez pas où trouver les activités, programmes, concours et expériences qui pourraient vous ouvrir de nouvelles portes?
-                </p>
             </div>
         </div>
     </main>
 
-    <!-- Section Improving -->
     <main id="improving" class="section-content pt-32 px-6 pb-20">
         <div class="max-w-4xl mx-auto bg-blue-950 text-white rounded-[2.5rem] p-8 md:p-12 shadow-2xl relative overflow-hidden">
             <div class="relative z-10">
@@ -473,32 +470,25 @@
 
 <script>
     function showSection(sectionId) {
-        // Masquer toutes les sections
         document.querySelectorAll('.section-content').forEach(section => {
             section.classList.remove('active');
         });
-        // Afficher la section demandée
         document.getElementById(sectionId).classList.add('active');
         
-        // Mettre à jour le menu
         document.querySelectorAll('.nav-btn').forEach(btn => {
             btn.classList.remove('nav-active');
             if(btn.textContent.toLowerCase().includes(sectionId.substring(0,4))) {
                 btn.classList.add('nav-active');
             }
         });
-        // Retour en haut de page
         window.scrollTo(0, 0);
         
-        // Trigger animations for stories section
         if (sectionId === 'stories') {
             setTimeout(triggerStoryAnimations, 100);
         }
     }
     
-    // Trigger animations when stories section is visible
     function triggerStoryAnimations() {
-        // Animate title falling from sky
         const title = document.getElementById('stories-title');
         const tagline = document.getElementById('stories-tagline');
         
@@ -510,14 +500,6 @@
                 tagline.style.animation = 'slideInFromLeft 1s ease-out forwards';
             }, 500);
         }
-        
-        // Animate flip cards with stagger effect
-        const flipCards = document.querySelectorAll('.flip-card');
-        flipCards.forEach((card, index) => {
-            setTimeout(() => {
-                card.classList.add('visible');
-            }, 800 + (index * 150));
-        });
 
         // Animate CTA section
         const ctaText = document.getElementById('cta-text');
@@ -526,31 +508,36 @@
         
         if (ctaText) {
             setTimeout(() => {
-                ctaText.style.animation = 'fadeUp 0.8s ease-out forwards';
-            }, 1500);
+                ctaText.style.animation = 'fadeInUp 0.8s ease-out forwards';
+            }, 2000);
         }
         if (ctaSubtext) {
             setTimeout(() => {
-                ctaSubtext.style.animation = 'fadeUp 0.8s ease-out forwards';
-            }, 1700);
+                ctaSubtext.style.animation = 'fadeInUp 0.8s ease-out forwards';
+            }, 2200);
         }
         if (ctaButton) {
             setTimeout(() => {
-                ctaButton.style.animation = 'fadeUp 0.8s ease-out forwards';
-            }, 1900);
+                ctaButton.style.animation = 'fadeInUp 0.8s ease-out forwards';
+            }, 2400);
         }
     }
     
-    // Flip Card functionality
-    document.querySelectorAll('.flip-card').forEach(card => {
+    // Mystery Card Click Handlers
+    document.querySelectorAll('.mystery-card').forEach(card => {
         card.addEventListener('click', function(e) {
-            // Don't flip if clicking on magazine button
-            if (e.target.closest('.magazine-btn')) return;
-            this.classList.toggle('flipped');
+            if (this.classList.contains('revealed')) {
+                // Second click: open magazine
+                const person = this.dataset.person;
+                openMagazine(person);
+            } else {
+                // First click: reveal profile
+                this.classList.add('revealed');
+            }
         });
     });
 
-    // Magazine Modal functionality
+    // Magazine Modal Data
     const magazineData = {
         karina: {
             name: 'Karina',
@@ -641,23 +628,14 @@
         document.body.style.overflow = 'auto';
     }
 
-    // Add click events to magazine buttons
-    document.querySelectorAll('.magazine-btn').forEach((btn, index) => {
-        const persons = ['karina', 'esperancia', 'elga', 'yvenie', 'exposcience', 'promotion1995'];
-        btn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            openMagazine(persons[index]);
-        });
-    });
-
     // Close modal on outside click
     document.getElementById('magazine-modal').addEventListener('click', function(e) {
         if (e.target === this) {
             closeMagazine();
         }
     });
-    
-    // Intersection Observer for scroll animations
+
+    // Intersection Observer for animations
     document.addEventListener('DOMContentLoaded', function() {
         const observerOptions = {
             threshold: 0.1,
@@ -672,13 +650,12 @@
             });
         }, observerOptions);
         
-        // Observe all flip cards
-        document.querySelectorAll('.flip-card').forEach(card => {
+        document.querySelectorAll('.mystery-card').forEach(card => {
             observer.observe(card);
         });
     });
 
-    // --- CODE D'AFFICHAGE DU CHAMP CLASSE / EMAIL ---
+    // Status radio button handler
     document.addEventListener("DOMContentLoaded", function() {
         const statusCurrent = document.getElementById('status-current');
         const allStatusRadios = document.querySelectorAll('input[name="statut"]');
