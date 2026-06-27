@@ -370,7 +370,7 @@
 
     <nav class="navbar">
         <div class="logo">
-            <a href="yearbook.html">Our Yearbook</a>
+            <a href="yearbook.html">Marianne</a>
         </div>
         <ul class="nav-links">
             <li><a href="yearbook.html">Accueil</a></li>
@@ -421,15 +421,8 @@
                 </video>
                 <div class="video-title">🎼 Chants & Festivités</div>
             </div>
-
-            <div class="video-container">
-                <video controls>
-                    <source src="images/video_noel03.mp4" type="video/mp4">
-                    Votre navigateur ne supporte pas la lecture de vidéos.
-                </video>
-                <div class="video-title">✨ Étoiles Féeriques</div>
+            
             </div>
-        </div>
 
         <section class="bottom-quotes-section">
             <h2 class="quotes-headline">📜 Merveilles de Noël</h2>
@@ -443,11 +436,6 @@
                 <p class="quote-text">Noël n'est pas un jour ni une saison, c'est un état d'esprit.</p>
                 <p class="quote-author">— Calvin Coolidge</p>
             </div>
-
-            <div class="quote-container">
-                <p class="quote-text">La magie de Noël est invisible, elle se ressent profondément dans le partage et le sourire des autres.</p>
-                <p class="quote-author">— Sagesse Hivernale</p>
-            </div>
         </section>
 
     </div>
@@ -459,17 +447,22 @@
 
     <script>
         // ============================================
-        // 📸 CONFIGURATION POUR UNE SEULE PHOTO UNIQUE
+        // 📸 METS TES QUELQUES PHOTOS DE NOËL ICI !
         // ============================================
         const photosData = [
             {
                 src: 'images/noel01.jpg', 
                 title: '✨ Les Lumières de la Fête',
                 description: 'Le collège paré de ses plus beaux habits de lumière.'
+            },
+            {
+                src: 'images/noel02.jpg',
+                title: '🎁 Partage & Joie',
+                description: 'Un moment d\'échange chaleureux entre les élèves.'
             }
         ];
 
-        // Génération automatique de l'unique photo
+        // Génération automatique des photos
         const albumGrid = document.getElementById('album-grid');
         photosData.forEach(photo => {
             const card = document.createElement('div');
