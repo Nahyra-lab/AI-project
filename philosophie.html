@@ -133,7 +133,7 @@
             padding: 40px 20px;
         }
 
-        /* --- EN-TÊTE DE LA PAGE (CONSERVÉ ET SUBLIMÉ) --- */
+        /* --- EN-TÊTE DE LA PAGE --- */
         .hero-section {
             text-align: center;
             padding: 60px 20px 20px 20px;
@@ -160,7 +160,7 @@
             opacity: 0.95;
         }
 
-        /* --- DESCRIPTION COURTE ET ÉPURÉE --- */
+        /* --- DESCRIPTION --- */
         .description-section {
             max-width: 800px;
             margin: 0 auto 50px auto;
@@ -178,7 +178,7 @@
             text-align: center;
         }
 
-        /* --- STRUCTURATION DE L'ALBUM PHOTO (MOSAÏQUE PROPRE) --- */
+        /* --- STRUCTURATION DE L'ALBUM PHOTO --- */
         .album-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -241,7 +241,7 @@
             color: rgba(252, 246, 186, 0.85);
         }
 
-        /* --- SECTION CITATIONS FLOTTANTES TOUT EN BAS DE PAGE --- */
+        /* --- SECTION CITATIONS --- */
         .bottom-quotes-section {
             margin-top: 60px;
             border-top: 1px solid rgba(252, 246, 186, 0.2);
@@ -324,7 +324,7 @@
             cursor: pointer;
         }
 
-        /* --- TOTALEMENT RESPONSIVE POUR TOUS LES ÉCRANS --- */
+        /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
             .hero-title { font-size: 2.2rem; }
             .hero-subtitle { font-size: 1.2rem; }
@@ -369,8 +369,15 @@
             <p>Une journée majestueuse où l'esprit critique et la sagesse ont envahi les couloirs du collège. Nos élèves de la promotion <strong>Nexora</strong>, ont recréé l'ambiance mythique des grandes académies antiques. Parcourez notre album de souvenirs ci-dessous.</p>
         </section>
 
-        <div class="album-grid" id="album-grid">
-            </div>
+        <div class="album-grid" id="album-grid"></div>
+
+        <div style="max-width: 800px; margin: 40px auto; text-align: center; padding: 20px; position: relative; z-index: 5;">
+            <h2 style="font-family: 'Cinzel', serif; color: #fcf6ba; margin-bottom: 20px;">🎥 Les Meilleurs Moments en Vidéo</h2>
+            <video controls style="width: 100%; border-radius: 15px; border: 1px solid rgba(252, 246, 186, 0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                <source src="images/video01.mp4.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas la lecture de cette vidéo.
+            </video>
+        </div>
 
         <section class="bottom-quotes-section">
             <h2 class="quotes-headline">📜 Paroles de Sages</h2>
@@ -392,13 +399,7 @@
         </section>
 
     </div>
-<div style="max-width: 800px; margin: 40px auto; text-align: center; padding: 20px;">
-    <h2 style="font-family: 'Cinzel', serif; color: #fcf6ba; margin-bottom: 20px;">🎥 Les Meilleurs Moments en Vidéo</h2>
-    <video controls style="width: 100%; border-radius: 15px; border: 1px solid rgba(252, 246, 186, 0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-        <source src="images/video01.mp4.mp4" type="video/mp4">
-        Votre navigateur ne supporte pas la lecture de cette vidéo.
-    </video>
-</div>
+
     <div class="modal" id="image-modal">
         <span class="modal-close" id="modal-close">×</span>
         <img class="modal-content" id="modal-image" alt="Aperçu">
@@ -406,61 +407,61 @@
 
     <script>
         // ============================================
-// 📸 METS TES PHOTOS DE LA FÊTE ET DE NEXORA ICI !
-// ============================================
-const photosData = [
-    {
-        src: 'images/image02.jpg.jpeg', 
-        title: '🏛️ Les Jeunes Sages',
-        description: 'La promotion Nexora fièrement réunie en toges blanches.'
-    },
-    {
-        src: 'images/image03.jpg.jpeg',
-        title: '💭 Le Grand Débat',
-        description: 'Discussion passionnée et animée sur l’avenir.'
-    },
-    {
-        src: 'images/image04.jpg.jpeg',
-        title: '✍️ L\'Art de l\'Écriture',
-        description: 'Ateliers de calligraphie créative et de réflexion.'
-    },
-    {
-        src: 'images/image05.jpg.jpeg',
-        title: '📚 L\'Agora de Nexora',
-        description: 'Un moment suspendu de partage et de fraternité.'
-    },
-    {
-        src: 'images/image06.jpg.jpeg',
-        title: '📚 L\'Agora de Nexora',
-        description: 'Un moment suspendu de partage et de fraternité.'
-    },
-    {
-        src: 'images/image07.jpg.jpeg',
-        title: '📚 L\'Agora de Nexora',
-        description: 'Un moment suspendu de partage et de fraternité.'
-    }
-    {
-        src: 'images/image08.jpg.jpeg',
-        title: '📚 L\'Agora de Nexora',
-        description: 'Un moment suspendu de partage et de fraternité.'
-    }
-        {
-        src: 'images/image09.jpg.jpeg',
-        title: '📚 L\'Agora de Nexora',
-        description: 'Un moment suspendu de partage et de fraternité.'
-    }
-        {
-        src: 'images/image10.jpg.jpeg',
-        title: '📚 L\'Agora de Nexora',
-        description: 'Un moment suspendu de partage et de fraternité.'
-    }
-        {
-        src: 'images/image11.jpg.jpeg',
-        title: '📚 L\'Agora de Nexora',
-        description: 'Un moment suspendu de partage et de fraternité.'
-    }
-        
-];
+        // 📸 TABLEAU DES PHOTOS (CORRIGÉ AVEC LES VIRGULES)
+        // ============================================
+        const photosData = [
+            {
+                src: 'images/image02.jpg.jpeg', 
+                title: '🏛️ Les Jeunes Sages',
+                description: 'La promotion Nexora fièrement réunie en toges blanches.'
+            },
+            {
+                src: 'images/image03.jpg.jpeg',
+                title: '💭 Le Grand Débat',
+                description: 'Discussion passionnée et animée sur l’avenir.'
+            },
+            {
+                src: 'images/image04.jpg.jpeg',
+                title: '✍️ L\'Art de l\'Écriture',
+                description: 'Ateliers de calligraphie créative et de réflexion.'
+            },
+            {
+                src: 'images/image05.jpg.jpeg',
+                title: '📚 L\'Agora de Nexora',
+                description: 'Un moment suspendu de partage et de fraternité.'
+            },
+            {
+                src: 'images/image06.jpg.jpeg',
+                title: '📚 L\'Agora de Nexora',
+                description: 'Un moment suspendu de partage et de fraternité.'
+            },
+            {
+                src: 'images/image07.jpg.jpeg',
+                title: '📚 L\'Agora de Nexora',
+                description: 'Un moment suspendu de partage et de fraternité.'
+            },
+            {
+                src: 'images/image08.jpg.jpeg',
+                title: '📚 L\'Agora de Nexora',
+                description: 'Un moment suspendu de partage et de fraternité.'
+            },
+            {
+                src: 'images/image09.jpg.jpeg',
+                title: '📚 L\'Agora de Nexora',
+                description: 'Un moment suspendu de partage et de fraternité.'
+            },
+            {
+                src: 'images/image10.jpg.jpeg',
+                title: '📚 L\'Agora de Nexora',
+                description: 'Un moment suspendu de partage et de fraternité.'
+            },
+            {
+                src: 'images/image11.jpg.jpeg',
+                title: '📚 L\'Agora de Nexora',
+                description: 'Un moment suspendu de partage et de fraternité.'
+            }
+        ];
+
         // Génération automatique des carreaux photo
         const albumGrid = document.getElementById('album-grid');
         photosData.forEach(photo => {
@@ -495,8 +496,13 @@ const photosData = [
         // Particules étoiles en arrière-plan
         const canvas = document.getElementById('wisdom-particles');
         const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
 
         const particles = [];
         for (let i = 0; i < 50; i++) {
