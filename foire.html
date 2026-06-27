@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Activités Parascolaires | Yearbook 25-26</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
     <style>
-        /* --- FOND DYNAMIQUE --- */
+        /* --- THÈME COCOONING LAVANDE / AZUR --- */
         * {
             margin: 0;
             padding: 0;
@@ -16,1135 +15,337 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            background-size: 400% 400%;
-            animation: gradientShift 20s ease infinite;
-            overflow-x: hidden;
+            background: linear-gradient(135deg, #e0e7ff 0%, #ccfbf1 100%); /* Fond doux lavande et bleu azur pâle */
             min-height: 100vh;
-            position: relative;
-            color: #ffffff;
-        }
-
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* --- ANIMATION DU TAPIS ROUGE --- */
-        .red-carpet-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #000;
-            z-index: 9999;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            animation: fadeOutOverlay 1s ease 4s forwards;
+            overflow-x: hidden;
+            color: #334155;
         }
 
-        @keyframes fadeOutOverlay {
-            to {
-                opacity: 0;
-                pointer-events: none;
-            }
-        }
-
-        .red-carpet {
-            width: 0;
-            height: 100vh;
-            background: linear-gradient(90deg, 
-                #8b0000 0%, 
-                #dc143c 20%, 
-                #ff0000 50%, 
-                #dc143c 80%, 
-                #8b0000 100%
-            );
-            position: relative;
-            animation: unrollCarpet 3s ease-out forwards;
-            box-shadow: 0 0 100px rgba(255, 0, 0, 0.8);
-        }
-
-        @keyframes unrollCarpet {
-            0% {
-                width: 0;
-            }
-            100% {
-                width: 100%;
-            }
-        }
-
-        .red-carpet::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: repeating-linear-gradient(
-                90deg,
-                transparent,
-                transparent 50px,
-                rgba(255, 215, 0, 0.3) 50px,
-                rgba(255, 215, 0, 0.3) 52px
-            );
-            animation: shimmerGold 2s ease-in-out infinite;
-        }
-
-        @keyframes shimmerGold {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.8; }
-        }
-
-        .welcome-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            font-weight: 900;
-            color: #ffd700;
-            text-shadow: 0 0 30px rgba(255, 215, 0, 0.8), 0 0 60px rgba(255, 215, 0, 0.4);
-            z-index: 10000;
-            animation: welcomeAnimation 3s ease-out forwards;
-            white-space: nowrap;
-        }
-
-        @keyframes welcomeAnimation {
-            0% {
-                opacity: 0;
-                transform: translate(-50%, -50%) scale(0.5);
-            }
-            50% {
-                opacity: 1;
-                transform: translate(-50%, -50%) scale(1.2);
-            }
-            100% {
-                opacity: 0;
-                transform: translate(-50%, -50%) scale(1);
-            }
-        }
-
-        /* --- NAVIGATION --- */
+        /* --- NAVIGATION DISCRÈTE ET ÉLÉGANTE --- */
         .navbar {
+            width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 40px;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border-bottom: 3px solid rgba(255, 215, 0, 0.5);
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
         }
 
         .logo a {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #ffd700, #ffffff, #ffd700);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #4f46e5;
             text-decoration: none;
-            letter-spacing: 2px;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 35px;
-            align-items: center;
+            gap: 30px;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: #ffffff;
+            color: #64748b;
             font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s;
-            letter-spacing: 1px;
+            transition: color 0.3s;
         }
 
         .nav-links a:hover {
-            color: #ffd700;
+            color: #4f46e5;
+        }
+
+        /* --- BOUTON DE CONTRÔLE DU LIVRE --- */
+        .btn-discover {
+            margin: 30px 0;
+            padding: 14px 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #ffffff;
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .btn-discover:hover {
             transform: translateY(-3px);
-            text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+            box-shadow: 0 15px 25px rgba(79, 70, 229, 0.4);
         }
 
-        .dropdown {
-            position: relative;
-        }
-
-        .dropdown-toggle {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            cursor: pointer;
-        }
-
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(15px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-            border-radius: 12px;
-            padding: 10px 0;
-            min-width: 220px;
-            list-style: none;
-            margin-top: 10px;
-            display: none;
-            border: 2px solid rgba(255, 215, 0, 0.3);
-        }
-
-        .dropdown-menu.active {
-            display: block;
-            animation: slideDown 0.3s ease;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .dropdown-menu li a {
-            display: block;
-            padding: 12px 20px;
-            color: #ffffff;
-            font-weight: 500;
-            transition: all 0.2s;
-        }
-
-        .dropdown-menu li a:hover {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(255, 255, 255, 0.1));
-            color: #ffd700;
-            transform: translateX(5px);
-        }
-
-        /* --- CONTENU PRINCIPAL --- */
-        .container {
-            position: relative;
-            z-index: 2;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        /* --- HERO SECTION --- */
-        .hero-section {
-            text-align: center;
-            padding: 100px 20px;
-            position: relative;
-            opacity: 0;
-            animation: fadeInHero 1.5s ease 4.5s forwards;
-        }
-
-        @keyframes fadeInHero {
-            to {
-                opacity: 1;
-            }
-        }
-
-        .hero-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 5rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #ffd700, #ff6b6b, #ffd700);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 30px;
-            text-shadow: 0 0 40px rgba(255, 215, 0, 0.6);
-            animation: titlePulse 3s ease-in-out infinite;
-        }
-
-        @keyframes titlePulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .hero-subtitle {
-            font-size: 1.8rem;
-            font-weight: 300;
-            color: #ffffff;
-            margin-bottom: 40px;
-            opacity: 0.95;
-        }
-
-        .hero-emoji {
-            font-size: 4rem;
-            margin: 0 20px;
-            animation: bounce 2s ease-in-out infinite;
-            display: inline-block;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(10deg); }
-        }
-
-        /* --- SECTIONS D'ACTIVITÉS --- */
-        .activity-section {
-            margin: 100px 0;
-            opacity: 0;
-            transform: translateY(100px);
-            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .activity-section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .activity-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 30px;
-            padding: 50px;
-            border: 3px solid rgba(255, 215, 0, 0.3);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .activity-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.1), transparent);
-            transform: rotate(45deg);
-            transition: all 0.6s;
-            opacity: 0;
-        }
-
-        .activity-card:hover::before {
-            opacity: 1;
-            animation: shine 1.5s;
-        }
-
-        @keyframes shine {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-        }
-
-        .activity-header {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-
-        .activity-icon {
-            font-size: 5rem;
-            animation: iconFloat 3s ease-in-out infinite;
-        }
-
-        @keyframes iconFloat {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(5deg); }
-        }
-
-        .activity-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #ffd700, #ffffff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            flex: 1;
-        }
-
-        .activity-description {
-            font-size: 1.3rem;
-            line-height: 1.8;
-            color: #ffffff;
-            margin-bottom: 40px;
-            text-align: center;
-            opacity: 0.95;
-        }
-
-        /* --- GALERIE DE PHOTOS --- */
-        .photo-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-
-        .photo-item {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-            cursor: pointer;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 3px solid rgba(255, 215, 0, 0.4);
-            aspect-ratio: 1;
-        }
-
-        .photo-item:hover {
-            transform: translateY(-15px) scale(1.05) rotate(2deg);
-            box-shadow: 0 25px 60px rgba(255, 215, 0, 0.6);
-            border-color: #ffd700;
-        }
-
-        .photo-item img {
+        /* --- ZONE DE PERSPECTIVE 3D DU LIVRE --- */
+        .book-container {
+            perspective: 2000px; /* Donne la profondeur de l'effet 3D */
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: all 0.5s;
-        }
-
-        .photo-item:hover img {
-            transform: scale(1.15);
-            filter: brightness(0.7);
-        }
-
-        .photo-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
-            padding: 30px 20px 20px;
-            transform: translateY(100%);
-            transition: all 0.5s;
-        }
-
-        .photo-item:hover .photo-caption {
-            transform: translateY(0);
-        }
-
-        .photo-caption h4 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: #ffd700;
-            margin-bottom: 8px;
-        }
-
-        .photo-caption p {
-            font-size: 1rem;
-            color: #ffffff;
-            opacity: 0.9;
-        }
-
-        /* --- ANIMATIONS SPÉCIFIQUES POUR CHAQUE SECTION --- */
-        .slide-left {
-            transform: translateX(-200px);
-        }
-
-        .slide-right {
-            transform: translateX(200px);
-        }
-
-        .rotate-in {
-            transform: rotate(-180deg) scale(0.5);
-        }
-
-        .zoom-in {
-            transform: scale(0.3);
-        }
-
-        .flip-in {
-            transform: perspective(1000px) rotateY(90deg);
-        }
-
-        .activity-section.visible.slide-left,
-        .activity-section.visible.slide-right,
-        .activity-section.visible.rotate-in,
-        .activity-section.visible.zoom-in,
-        .activity-section.visible.flip-in {
-            transform: translateX(0) rotate(0deg) scale(1) perspective(1000px) rotateY(0deg);
-        }
-
-        /* --- MODAL POUR ZOOMER --- */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 2000;
+            max-width: 950px;
+            height: 600px;
+            margin: 20px auto;
+            display: flex;
             justify-content: center;
             align-items: center;
-            animation: fadeIn 0.3s;
         }
 
-        .modal.active {
-            display: flex;
+        /* --- STRUCTURE DU LIVRE --- */
+        .book {
+            position: relative;
+            width: 450px; /* Largeur d'une seule page fermée */
+            height: 550px;
+            transform-style: preserve-3d;
+            transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(0); /* Position de départ centrée */
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        /* Décalage du livre vers la droite quand il s'ouvre pour rester au centre de l'écran */
+        .book.open {
+            transform: translateX(225px);
         }
 
-        .modal-content {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 20px;
-            box-shadow: 0 0 60px rgba(255, 215, 0, 0.6);
-            border: 4px solid rgba(255, 215, 0, 0.5);
-            animation: zoomIn 0.5s;
-        }
-
-        @keyframes zoomIn {
-            from { transform: scale(0.5); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-
-        .modal-close {
+        /* --- STYLE COMMUN DES PAGES --- */
+        .page {
             position: absolute;
-            top: 30px;
-            right: 30px;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            transform-origin: left center; /* La page tourne sur son bord gauche */
+            transform-style: preserve-3d;
+            transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 4px 16px 16px 4px;
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- COUVERTURE DU LIVRE (PAGE DE GARDE) --- */
+        .cover {
+            background: linear-gradient(135deg, #312e81 0%, #1e1b4b 100%);
+            z-index: 5;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            border-left: 8px solid #111827;
+            backface-visibility: hidden; /* Cache l'arrière quand elle tourne */
+        }
+
+        /* EFFET NÉON CALLIGRAPHIQUE DE LA PHOTO */
+        .neon-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.2rem;
+            color: #fff;
+            text-align: center;
+            line-height: 1.2;
+            text-shadow: 
+                0 0 5px #fff,
+                0 0 10px #818cf8,
+                0 0 20px #4f46e5,
+                0 0 40px #4f46e5;
+            animation: neonPulse 2s infinite alternate;
+        }
+
+        @keyframes neonPulse {
+            from { text-shadow: 0 0 5px #fff, 0 0 10px #818cf8, 0 0 20px #4f46e5; }
+            to { text-shadow: 0 0 7px #fff, 0 0 15px #a5b4fc, 0 0 30px #6366f1, 0 0 50px #6366f1; }
+        }
+
+        .cover-deco {
             font-size: 3rem;
-            color: #ffd700;
-            cursor: pointer;
-            transition: all 0.3s;
-            background: rgba(0, 0, 0, 0.9);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 3px solid #ffd700;
+            margin-top: 30px;
+            opacity: 0.8;
         }
 
-        .modal-close:hover {
-            transform: rotate(90deg) scale(1.1);
-            background: #ffd700;
-            color: #000;
-        }
-
-        /* --- CONFETTIS ANIMÉS --- */
-        #confetti-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
+        /* Quand le livre s'ouvre, la couverture tourne à 180° à gauche */
+        .book.open .cover {
+            transform: rotateY(-180deg);
             z-index: 1;
         }
 
-        /* --- RESPONSIVE DESIGN --- */
-        @media (max-width: 1024px) {
-            .hero-title {
-                font-size: 3.5rem;
-            }
-
-            .activity-title {
-                font-size: 2.5rem;
-            }
-
-            .activity-card {
-                padding: 30px;
-            }
+        /* --- INTERIEUR DU LIVRE (PAGES INTERNES) --- */
+        .page-inside {
+            background: #fafafa;
+            background-image: linear-gradient(90deg, rgba(0,0,0,0.03) 0%, rgba(0,0,0,0) 5%, rgba(0,0,0,0) 95%, rgba(0,0,0,0.05) 100%);
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
         }
 
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.3rem;
-            }
-
-            .hero-emoji {
-                font-size: 2.5rem;
-                margin: 0 10px;
-            }
-
-            .activity-header {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .activity-title {
-                font-size: 2rem;
-            }
-
-            .activity-icon {
-                font-size: 3.5rem;
-            }
-
-            .activity-description {
-                font-size: 1.1rem;
-            }
-
-            .photo-gallery {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: 15px;
-            }
-
-            .navbar {
-                padding: 15px 20px;
-            }
-
-            .nav-links {
-                gap: 20px;
-            }
-
-            .welcome-text {
-                font-size: 2.5rem;
-            }
+        /* Page de gauche (Reste fixe, cachée derrière au début) */
+        .left-page {
+            z-index: 2;
+            border-radius: 16px 4px 4px 16px;
+            /* Crée l'ombre réaliste de la reliure au milieu */
+            box-shadow: inset -15px 0 20px rgba(0,0,0,0.05), -5px 5px 15px rgba(0,0,0,0.1);
         }
 
-        @media (max-width: 480px) {
-            .hero-title {
-                font-size: 2rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-
-            .activity-title {
-                font-size: 1.6rem;
-            }
-
-            .photo-gallery {
-                grid-template-columns: 1fr;
-            }
-
-            .nav-links {
-                gap: 15px;
-                font-size: 0.9rem;
-            }
-
-            .welcome-text {
-                font-size: 1.8rem;
-            }
+        /* Page de droite (Se dévoile quand la couverture tourne) */
+        .right-page {
+            z-index: 3;
+            transform: translateZ(-1px); /* Positionnée juste derrière la couverture fermée */
+            transform-origin: left center;
+            border-radius: 4px 16px 16px 4px;
+            box-shadow: inset 15px 0 20px rgba(0,0,0,0.05), 5px 5px 15px rgba(0,0,0,0.1);
         }
+
+        /* Style du contenu à l'intérieur du livre */
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #1e1b4b;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .page-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #475569;
+            margin-bottom: 25px;
+        }
+
+        /* Grille d'images intégrée dans les pages */
+        .page-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            flex: 1;
+        }
+
+        .book-photo {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid #ffffff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .book-photo:hover {
+            transform: scale(1.04);
+        }
+
+        /* --- MODAL ZOOM EXTERNE --- */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal.active { display: flex; }
+        .modal-content { max-width: 85%; max-height: 85%; border-radius: 12px; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
+        .modal-close { position: absolute; top: 20px; right: 20px; font-size: 2.5rem; color: #fff; cursor: pointer; }
     </style>
 </head>
 <body>
 
-    <!-- ANIMATION DU TAPIS ROUGE -->
-    <div class="red-carpet-overlay">
-        <div class="red-carpet"></div>
-        <div class="welcome-text">✨ Bienvenue sur le Tapis Rouge ✨</div>
-    </div>
-
-    <!-- CANVAS POUR LES CONFETTIS -->
-    <canvas id="confetti-canvas"></canvas>
-
-    <!-- NAVIGATION -->
     <nav class="navbar">
         <div class="logo">
             <a href="yearbook.html">🌟 Our Yearbook</a>
         </div>
         <ul class="nav-links">
             <li><a href="yearbook.html">Accueil</a></li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle">
-                    Événements <span style="font-size: 0.8rem;">▼</span>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="philosophie.html">Fête des Philosophes</a></li>
-                    <li><a href="noel.html">Noël Enchanté</a></li>
-                    <li><a href="carnaval.html">Carnaval</a></li>
-                    <li><a href="foire.html">La Foire</a></li>
-                    <li><a href="parascolaire.html">Activités Parascolaires</a></li>
-                </ul>
-            </li>
+            <li><a href="noel.html">Noël</a></li>
+            <li><a href="parascolaire.html" style="color: #4f46e5;">Activités</a></li>
         </ul>
     </nav>
 
-    <!-- CONTENU PRINCIPAL -->
-    <div class="container">
-        
-        <!-- HERO SECTION -->
-        <section class="hero-section">
-            <h1 class="hero-title">
-                <span class="hero-emoji">🎭</span>
-                Activités Parascolaires
-                <span class="hero-emoji">🎨</span>
-            </h1>
-            <p class="hero-subtitle">Découvrez nos talents cachés et nos passions débordantes!</p>
-        </section>
+    <button class="btn-discover" id="book-trigger">Découvrir le livre</button>
 
-        <!-- SECTION 1: CUISINE -->
-        <section class="activity-section slide-left">
-            <div class="activity-card">
-                <div class="activity-header">
-                    <div class="activity-icon">👨‍🍳</div>
-                    <h2 class="activity-title">Club Cuisine</h2>
-                </div>
-                <p class="activity-description">
-                    De la pâtisserie française aux spécialités haïtiennes, nos jeunes chefs explorent les saveurs du monde! 
-                    Chaque semaine, c'est une nouvelle aventure culinaire où créativité et gourmandise se rencontrent.
+    <div class="book-container">
+        <div class="book" id="my-book">
+            
+            <div class="page cover">
+                <h1 class="neon-title">Activités<br>Parascolaires</h1>
+                <div class="cover-deco">✨ 📖 ✨</div>
+            </div>
+
+            <div class="page page-inside left-page">
+                <h2 class="page-title">👨‍🍳 Le Club Cuisine</h2>
+                <p class="page-text">
+                    De la pâtisserie fine aux spécialités traditionnelles, nos jeunes chefs explorent les saveurs et développent leur créativité culinaire chaque semaine !
                 </p>
-                <div class="photo-gallery" id="cuisine-gallery">
-                    <!-- Photos générées par JavaScript -->
+                <div class="page-grid">
+                    <img src="photos/parascolaire/cuisine1.jpg" alt="Cuisine 1" class="book-photo" onclick="zoomImage(this.src)">
+                    <img src="photos/parascolaire/cuisine2.jpg" alt="Cuisine 2" class="book-photo" onclick="zoomImage(this.src)">
+                    <img src="photos/parascolaire/cuisine3.jpg" alt="Cuisine 3" class="book-photo" onclick="zoomImage(this.src)">
+                    <img src="photos/parascolaire/cuisine4.jpg" alt="Cuisine 4" class="book-photo" onclick="zoomImage(this.src)">
                 </div>
             </div>
-        </section>
 
-        <!-- SECTION 2: DANSE -->
-        <section class="activity-section slide-right">
-            <div class="activity-card">
-                <div class="activity-header">
-                    <div class="activity-icon">💃</div>
-                    <h2 class="activity-title">Troupe de Danse</h2>
-                </div>
-                <p class="activity-description">
-                    Du hip-hop au ballet, en passant par les danses traditionnelles, notre troupe de danseurs fait vibrer la scène!
-                    Rythme, grâce et passion se mêlent pour créer des spectacles inoubliables.
+            <div class="page page-inside right-page">
+                <h2 class="page-title">💻 Codage & Technologie</h2>
+                <p class="page-text">
+                    Création d'applications, logique algorithmique et conception de projets numériques. Nos élèves construisent l'avenir du web à travers des lignes de code inspirantes.
                 </p>
-                <div class="photo-gallery" id="danse-gallery">
-                    <!-- Photos générées par JavaScript -->
+                <div class="page-grid">
+                    <img src="photos/parascolaire/code1.jpg" alt="Code 1" class="book-photo" onclick="zoomImage(this.src)">
+                    <img src="photos/parascolaire/code2.jpg" alt="Code 2" class="book-photo" onclick="zoomImage(this.src)">
+                    <img src="photos/parascolaire/code3.jpg" alt="Code 3" class="book-photo" onclick="zoomImage(this.src)">
+                    <img src="photos/parascolaire/code4.jpg" alt="Code 4" class="book-photo" onclick="zoomImage(this.src)">
                 </div>
             </div>
-        </section>
 
-        <!-- SECTION 3: VIDÉO & CAMÉRAS -->
-        <section class="activity-section rotate-in">
-            <div class="activity-card">
-                <div class="activity-header">
-                    <div class="activity-icon">🎥</div>
-                    <h2 class="activity-title">Club Vidéo & Cinéma</h2>
-                </div>
-                <p class="activity-description">
-                    Nos jeunes cinéastes apprennent l'art de la caméra, du montage et de la réalisation!
-                    Courts-métrages, documentaires et clips vidéo : ils capturent la vie du collège avec créativité.
-                </p>
-                <div class="photo-gallery" id="video-gallery">
-                    <!-- Photos générées par JavaScript -->
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 4: CHANT -->
-        <section class="activity-section zoom-in">
-            <div class="activity-card">
-                <div class="activity-header">
-                    <div class="activity-icon">🎤</div>
-                    <h2 class="activity-title">Concours de Chant</h2>
-                </div>
-                <p class="activity-description">
-                    Nos étoiles montantes brillent sur scène lors de nos concours de chant!
-                    Pop, R&B, gospel, jazz : tous les styles sont représentés dans ces moments de pure émotion musicale.
-                </p>
-                <div class="photo-gallery" id="chant-gallery">
-                    <!-- Photos générées par JavaScript -->
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 5: ART & PEINTURE -->
-        <section class="activity-section flip-in">
-            <div class="activity-card">
-                <div class="activity-header">
-                    <div class="activity-icon">🎨</div>
-                    <h2 class="activity-title">Atelier d'Art</h2>
-                </div>
-                <p class="activity-description">
-                    Peinture, dessin, sculpture : nos artistes expriment leur vision du monde à travers leurs créations!
-                    Chaque œuvre est une fenêtre sur l'âme de nos élèves talentueux.
-                </p>
-                <div class="photo-gallery" id="art-gallery">
-                    <!-- Photos générées par JavaScript -->
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 6: SPORT -->
-        <section class="activity-section slide-left">
-            <div class="activity-card">
-                <div class="activity-header">
-                    <div class="activity-icon">⚽</div>
-                    <h2 class="activity-title">Club Sportif</h2>
-                </div>
-                <p class="activity-description">
-                    Football, basketball, volleyball : nos athlètes repoussent leurs limites sur le terrain!
-                    Esprit d'équipe, dépassement de soi et fair-play sont nos valeurs fondamentales.
-                </p>
-                <div class="photo-gallery" id="sport-gallery">
-                    <!-- Photos générées par JavaScript -->
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 7: THÉÂTRE -->
-        <section class="activity-section slide-right">
-            <div class="activity-card">
-                <div class="activity-header">
-                    <div class="activity-icon">🎭</div>
-                    <h2 class="activity-title">Troupe de Théâtre</h2>
-                </div>
-                <p class="activity-description">
-                    Nos comédiens en herbe donnent vie aux plus grandes œuvres sur scène!
-                    Du classique au contemporain, ils explorent toutes les facettes de l'art dramatique.
-                </p>
-                <div class="photo-gallery" id="theatre-gallery">
-                    <!-- Photos générées par JavaScript -->
-                </div>
-            </div>
-        </section>
-
+        </div>
     </div>
 
-    <!-- MODAL POUR ZOOMER -->
-    <div class="modal" id="image-modal">
-        <span class="modal-close" id="modal-close">×</span>
-        <img class="modal-content" id="modal-image">
+    <div class="modal" id="zoom-modal">
+        <span class="modal-close" onclick="closeModal()">×</span>
+        <img class="modal-content" id="modal-img" alt="Zoom">
     </div>
 
-    <!-- SCRIPTS -->
     <script>
-        // ============================================
-        // 📸 DONNÉES DES PHOTOS POUR CHAQUE ACTIVITÉ
-        // ============================================
-        // AJOUTEZ VOS PHOTOS ICI!
-        
-        const activitiesData = {
-            cuisine: [
-                {
-                    src: 'photos/parascolaire/cuisine1.jpg',
-                    title: '🍰 Pâtisserie Française',
-                    description: 'Préparation de macarons délicats'
-                },
-                {
-                    src: 'photos/parascolaire/cuisine2.jpg',
-                    title: '🍕 Cuisine du Monde',
-                    description: 'Découverte des saveurs internationales'
-                },
-                {
-                    src: 'photos/parascolaire/cuisine3.jpg',
-                    title: '👨‍🍳 Nos Chefs en Action',
-                    description: 'Création culinaire en équipe'
-                },
-                {
-                    src: 'photos/parascolaire/cuisine4.jpg',
-                    title: '🎂 Gâteaux Artistiques',
-                    description: 'Des œuvres d\'art comestibles!'
-                }
-            ],
-            danse: [
-                {
-                    src: 'photos/parascolaire/danse1.jpg',
-                    title: '💃 Spectacle de Danse',
-                    description: 'Performance époustouflante sur scène'
-                },
-                {
-                    src: 'photos/parascolaire/danse2.jpg',
-                    title: '🕺 Répétition Intensive',
-                    description: 'Préparation du prochain spectacle'
-                },
-                {
-                    src: 'photos/parascolaire/danse3.jpg',
-                    title: '🎵 Danse Traditionnelle',
-                    description: 'Hommage à nos racines culturelles'
-                },
-                {
-                    src: 'photos/parascolaire/danse4.jpg',
-                    title: '✨ Chorégraphie Moderne',
-                    description: 'Création originale de nos danseurs'
-                }
-            ],
-            video: [
-                {
-                    src: 'photos/parascolaire/video1.jpg',
-                    title: '🎬 Tournage en Cours',
-                    description: 'Notre équipe de production à l\'œuvre'
-                },
-                {
-                    src: 'photos/parascolaire/video2.jpg',
-                    title: '📹 Installation Caméra',
-                    description: 'Préparation technique d\'un tournage'
-                },
-                {
-                    src: 'photos/parascolaire/video3.jpg',
-                    title: '🎥 Montage Vidéo',
-                    description: 'Post-production de notre court-métrage'
-                },
-                {
-                    src: 'photos/parascolaire/video4.jpg',
-                    title: '🎞️ Projection Privée',
-                    description: 'Première de notre dernier film'
-                }
-            ],
-            chant: [
-                {
-                    src: 'photos/parascolaire/chant1.jpg',
-                    title: '🎤 Concours de Chant',
-                    description: 'Nos étoiles montantes sur scène'
-                },
-                {
-                    src: 'photos/parascolaire/chant2.jpg',
-                    title: '🎵 Répétition Chorale',
-                    description: 'Préparation des harmonies vocales'
-                },
-                {
-                    src: 'photos/parascolaire/chant3.jpg',
-                    title: '🎶 Performance Live',
-                    description: 'Moment d\'émotion pure'
-                },
-                {
-                    src: 'photos/parascolaire/chant4.jpg',
-                    title: '🏆 Remise des Prix',
-                    description: 'Célébration de nos talents'
-                }
-            ],
-            art: [
-                {
-                    src: 'photos/parascolaire/art1.jpg',
-                    title: '🎨 Atelier de Peinture',
-                    description: 'Création de toiles colorées'
-                },
-                {
-                    src: 'photos/parascolaire/art2.jpg',
-                    title: '✏️ Dessin Artistique',
-                    description: 'Expression à travers le crayon'
-                },
-                {
-                    src: 'photos/parascolaire/art3.jpg',
-                    title: '🖼️ Exposition',
-                    description: 'Galerie d\'art de nos élèves'
-                },
-                {
-                    src: 'photos/parascolaire/art4.jpg',
-                    title: '🎭 Sculpture',
-                    description: 'L\'art en trois dimensions'
-                }
-            ],
-            sport: [
-                {
-                    src: 'photos/parascolaire/sport1.jpg',
-                    title: '⚽ Match de Football',
-                    description: 'Compétition inter-classes'
-                },
-                {
-                    src: 'photos/parascolaire/sport2.jpg',
-                    title: '🏀 Entraînement Basketball',
-                    description: 'Préparation physique intensive'
-                },
-                {
-                    src: 'photos/parascolaire/sport3.jpg',
-                    title: '🏐 Tournoi de Volleyball',
-                    description: 'Esprit d\'équipe et fair-play'
-                },
-                {
-                    src: 'photos/parascolaire/sport4.jpg',
-                    title: '🏆 Cérémonie de Victoire',
-                    description: 'Célébration de nos champions'
-                }
-            ],
-            theatre: [
-                {
-                    src: 'photos/parascolaire/theatre1.jpg',
-                    title: '🎭 Représentation Théâtrale',
-                    description: 'Nos comédiens sur scène'
-                },
-                {
-                    src: 'photos/parascolaire/theatre2.jpg',
-                    title: '📖 Répétition Générale',
-                    description: 'Préparation du spectacle'
-                },
-                {
-                    src: 'photos/parascolaire/theatre3.jpg',
-                    title: '🎨 Création de Décors',
-                    description: 'Atelier de scénographie'
-                },
-                {
-                    src: 'photos/parascolaire/theatre4.jpg',
-                    title: '👏 Standing Ovation',
-                    description: 'Succès mérité!'
-                }
-            ]
-        };
+        const book = document.getElementById('my-book');
+        const trigger = document.getElementById('book-trigger');
 
-        // ============================================
-        // 🎨 GÉNÉRATION DES GALERIES DE PHOTOS
-        // ============================================
-        
-        function generateGallery(galleryId, photos) {
-            const gallery = document.getElementById(galleryId);
-            photos.forEach(photo => {
-                const item = document.createElement('div');
-                item.className = 'photo-item';
-                item.innerHTML = `
-                    <img src="${photo.src}" alt="${photo.title}">
-                    <div class="photo-caption">
-                        <h4>${photo.title}</h4>
-                        <p>${photo.description}</p>
-                    </div>
-                `;
-                item.addEventListener('click', () => openModal(photo.src));
-                gallery.appendChild(item);
-            });
-        }
+        trigger.addEventListener('click', () => {
+            book.classList.toggle('open');
+            
+            if (book.classList.contains('open')) {
+                trigger.textContent = "Refermer le livre";
+                trigger.style.background = "linear-gradient(135deg, #ef4444, #dc2626)"; // Rouge quand ouvert
+            } else {
+                trigger.textContent = "Découvrir le livre";
+                trigger.style.background = "linear-gradient(135deg, #6366f1, #4f46e5)"; // Indigo d'origine
+            }
+        });
 
-        // Générer toutes les galeries
-        generateGallery('cuisine-gallery', activitiesData.cuisine);
-        generateGallery('danse-gallery', activitiesData.danse);
-        generateGallery('video-gallery', activitiesData.video);
-        generateGallery('chant-gallery', activitiesData.chant);
-        generateGallery('art-gallery', activitiesData.art);
-        generateGallery('sport-gallery', activitiesData.sport);
-        generateGallery('theatre-gallery', activitiesData.theatre);
+        // Fonctions pour gérer le zoom des images
+        const modal = document.getElementById('zoom-modal');
+        const modalImg = document.getElementById('modal-img');
 
-        // ============================================
-        // 🔍 MODAL POUR ZOOMER SUR LES PHOTOS
-        // ============================================
-        
-        const modal = document.getElementById('image-modal');
-        const modalImage = document.getElementById('modal-image');
-        const modalClose = document.getElementById('modal-close');
-
-        function openModal(src) {
-            modalImage.src = src;
+        function zoomImage(src) {
+            modalImg.src = src;
             modal.classList.add('active');
         }
 
-        modalClose.addEventListener('click', () => {
+        function closeModal() {
             modal.classList.remove('active');
-        });
+        }
 
         modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.remove('active');
-            }
+            if(e.target === modal) closeModal();
         });
-
-        // ============================================
-        // 🎬 ANIMATIONS AU SCROLL
-        // ============================================
-        
-        const observerOptions = {
-            threshold: 0.2,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.activity-section').forEach(section => {
-            observer.observe(section);
-        });
-
-        // ============================================
-        // 🎉 CONFETTIS ANIMÉS
-        // ============================================
-        
-        const canvas = document.getElementById('confetti-canvas');
-        const ctx = canvas.getContext('2d');
-        
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-
-        const confettiColors = ['#ffd700', '#ff6b6b', '#4ecdc4', '#45b7d1', '#f093fb', '#ffffff'];
-        const confettiPieces = [];
-
-        class Confetti {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height - canvas.height;
-                this.size = Math.random() * 8 + 4;
-                this.speedY = Math.random() * 3 + 2;
-                this.speedX = Math.random() * 2 - 1;
-                this.color = confettiColors[Math.floor(Math.random() * confettiColors.length)];
-                this.rotation = Math.random() * 360;
-                this.rotationSpeed = Math.random() * 10 - 5;
-            }
-
-            update() {
-                this.y += this.speedY;
-                this.x += this.speedX;
-                this.rotation += this.rotationSpeed;
-
-                if (this.y > canvas.height) {
-                    this.y = -20;
-                    this.x = Math.random() * canvas.width;
-                }
-            }
-
-            draw() {
-                ctx.save();
-                ctx.translate(this.x, this.y);
-                ctx.rotate(this.rotation * Math.PI / 180);
-                ctx.fillStyle = this.color;
-                ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
-                ctx.restore();
-            }
-        }
-
-        // Créer les confettis
-        for (let i = 0; i < 80; i++) {
-            confettiPieces.push(new Confetti());
-        }
-
-        // Animation des confettis
-        function animateConfetti() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            confettiPieces.forEach(confetti => {
-                confetti.update();
-                confetti.draw();
-            });
-            
-            requestAnimationFrame(animateConfetti);
-        }
-
-        animateConfetti();
-
-        // ============================================
-        // 📱 MENU DÉROULANT
-        // ============================================
-        
-        const dropdownToggle = document.querySelector('.dropdown-toggle');
-        const dropdownMenu = document.querySelector('.dropdown-menu');
-        
-        if (dropdownToggle && dropdownMenu) {
-            dropdownToggle.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                dropdownMenu.classList.toggle('active');
-            });
-
-            document.addEventListener('click', (e) => {
-                if (!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
-                    dropdownMenu.classList.remove('active');
-                }
-            });
-        }
     </script>
-
 </body>
 </html>
