@@ -241,26 +241,34 @@
             color: #ffffff;
         }
 
-        /* --- SOUVENIRS MULTI-VIDÉOS --- */
-        .video-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
-        }
+       /* --- SOUVENIRS MULTI-VIDÉOS AJUSTÉS --- */
+.video-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centre les vidéos horizontalement */
+    gap: 30px;
+    margin-bottom: 60px;
+}
 
-        .video-container {
-            background: rgba(255, 255, 255, 0.15);
-            border: 2px solid #ffffff;
-            border-radius: 12px;
-            padding: 12px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
+.video-container {
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid #ffffff;
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    
+    /* C'est ici qu'on gère la petite taille du cadre */
+    width: 100%;
+    max-width: 280px; /* Aligné sur la taille des cartes photos (ex: 280px ou 300px selon ton choix) */
+    text-align: center;
+}
 
-        .video-container video {
-            width: 100%;
-            border-radius: 8px;
-        }
+.video-container video {
+    width: 100%;          /* Force la vidéo à prendre la largeur du petit cadre */
+    height: auto;         /* Conserve les proportions de la vidéo */
+    border-radius: 8px;
+    display: block;       /* Évite les espaces vides sous la vidéo */
+}
 
         .video-title {
             font-family: 'Cinzel', serif;
