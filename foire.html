@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Activités Parascolaires | Yearbook 25-26</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600;700&family=Playfair+Display:ital,wght@0,700;1,400&family=Cinzel:wght@600&display=swap" rel="stylesheet">
     <style>
-        /* --- THÈME COCOONING LAVANDE / AZUR --- */
+        /* --- BACKGROUND SOUVENIR COCOONING --- */
         * {
             margin: 0;
             padding: 0;
@@ -15,7 +15,7 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, #e0e7ff 0%, #ccfbf1 100%); /* Fond doux lavande et bleu azur pâle */
+            background: linear-gradient(135deg, #e0e7ff 0%, #ccfbf1 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -24,39 +24,44 @@
             color: #334155;
         }
 
-        /* --- NAVIGATION DISCRÈTE ET ÉLÉGANTE --- */
+        /* --- BARRE DE NAVIGATION RECONSTRUITE À L'IDENTIQUE --- */
         .navbar {
             width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 40px;
-            background: rgba(255, 255, 255, 0.7);
+            padding: 15px 40px;
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            border-bottom: 2px solid #6366f1;
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         }
 
         .logo a {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
             font-weight: 700;
             color: #4f46e5;
             text-decoration: none;
+            letter-spacing: 1px;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 30px;
+            gap: 35px;
+            align-items: center;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: #64748b;
+            color: #475569;
+            font-family: 'Cinzel', serif;
             font-weight: 600;
+            font-size: 0.95rem;
             transition: color 0.3s;
         }
 
@@ -64,182 +69,224 @@
             color: #4f46e5;
         }
 
-        /* --- BOUTON DE CONTRÔLE DU LIVRE --- */
-        .btn-discover {
-            margin: 30px 0;
-            padding: 14px 30px;
-            font-size: 1.1rem;
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle {
+            cursor: pointer;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: #ffffff;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 10px 0;
+            min-width: 240px;
+            list-style: none;
+            margin-top: 10px;
+            display: none;
+            border: 2px solid #6366f1;
+        }
+
+        .dropdown-menu.active {
+            display: block;
+        }
+
+        .dropdown-menu li a {
+            display: block;
+            padding: 12px 20px;
+            color: #334155;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .dropdown-menu li a:hover {
+            background: #f0fdfa;
+            color: #4f46e5;
+        }
+
+        /* --- NAVIGATION DES PAGES (BOUTONS) --- */
+        .controls {
+            display: flex;
+            gap: 20px;
+            margin: 25px 0;
+            z-index: 10;
+        }
+
+        .btn-book {
+            padding: 12px 25px;
+            font-size: 1rem;
             font-weight: 700;
             color: #ffffff;
             background: linear-gradient(135deg, #6366f1, #4f46e5);
             border: none;
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+            box-shadow: 0 6px 15px rgba(79, 70, 229, 0.2);
             transition: all 0.3s ease;
-            z-index: 10;
         }
 
-        .btn-discover:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 25px rgba(79, 70, 229, 0.4);
+        .btn-book:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
         }
 
-        /* --- ZONE DE PERSPECTIVE 3D DU LIVRE --- */
+        .btn-book:disabled {
+            background: #cbd5e1;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* --- ZONE 3D ET LIVRE --- */
         .book-container {
-            perspective: 2000px; /* Donne la profondeur de l'effet 3D */
+            perspective: 2000px;
             width: 100%;
-            max-width: 950px;
+            max-width: 1000px;
             height: 600px;
-            margin: 20px auto;
             display: flex;
             justify-content: center;
             align-items: center;
+            margin-bottom: 40px;
         }
 
-        /* --- STRUCTURE DU LIVRE --- */
         .book {
             position: relative;
-            width: 450px; /* Largeur d'une seule page fermée */
-            height: 550px;
+            width: 460px; /* Largeur d'une page */
+            height: 560px;
             transform-style: preserve-3d;
-            transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-            transform: translateX(0); /* Position de départ centrée */
+            transition: transform 1s ease;
+            transform: translateX(0); /* Aligné au centre fermé au début */
         }
 
-        /* Décalage du livre vers la droite quand il s'ouvre pour rester au centre de l'écran */
-        .book.open {
-            transform: translateX(225px);
+        /* Décale l'axe central du livre quand il est ouvert pour voir la page gauche ET droite */
+        .book.opened {
+            transform: translateX(230px);
         }
 
-        /* --- STYLE COMMUN DES PAGES --- */
-        .page {
+        /* --- BLOC DOUBLE-PAGE --- */
+        .page-block {
             position: absolute;
             width: 100%;
             height: 100%;
             top: 0;
             left: 0;
-            transform-origin: left center; /* La page tourne sur son bord gauche */
+            transform-origin: left center;
             transform-style: preserve-3d;
-            transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 4px 16px 16px 4px;
-            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1;
         }
 
-        /* --- COUVERTURE DU LIVRE (PAGE DE GARDE) --- */
-        .cover {
-            background: linear-gradient(135deg, #312e81 0%, #1e1b4b 100%);
-            z-index: 5;
+        /* Gestion de la superposition des pages */
+        #p1 { z-index: 5; }
+        #p2 { z-index: 4; }
+        #p3 { z-index: 3; }
+        #p4 { z-index: 2; }
+
+        /* --- FACES AVANT ET ARRIÈRE D'UNE PAGE --- */
+        .front, .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            backface-visibility: hidden;
+            padding: 35px;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.02);
+        }
+
+        .front {
+            background: #fafafa;
+            border-radius: 4px 16px 16px 4px;
+            border: 1px solid #e2e8f0;
+            border-left: none;
+        }
+
+        .back {
+            background: #fcfcfc;
+            border-radius: 16px 4px 4px 16px;
+            border: 1px solid #e2e8f0;
+            border-right: none;
+            transform: rotateY(180deg); /* Retourne le dos de la page */
+        }
+
+        /* --- DESIGN DE LA COUVERTURE FERMÉE --- */
+        .front-cover {
+            background: linear-gradient(135deg, #2e2a72 0%, #17153b 100%);
+            border-left: 8px solid #0f0e26;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 40px;
-            border-left: 8px solid #111827;
-            backface-visibility: hidden; /* Cache l'arrière quand elle tourne */
         }
 
-        /* EFFET NÉON CALLIGRAPHIQUE DE LA PHOTO */
         .neon-title {
             font-family: 'Dancing Script', cursive;
             font-size: 3.2rem;
             color: #fff;
             text-align: center;
-            line-height: 1.2;
-            text-shadow: 
-                0 0 5px #fff,
-                0 0 10px #818cf8,
-                0 0 20px #4f46e5,
-                0 0 40px #4f46e5;
+            line-height: 1.3;
+            text-shadow: 0 0 8px #fff, 0 0 15px #818cf8, 0 0 30px #4f46e5;
             animation: neonPulse 2s infinite alternate;
         }
 
         @keyframes neonPulse {
-            from { text-shadow: 0 0 5px #fff, 0 0 10px #818cf8, 0 0 20px #4f46e5; }
-            to { text-shadow: 0 0 7px #fff, 0 0 15px #a5b4fc, 0 0 30px #6366f1, 0 0 50px #6366f1; }
+            from { text-shadow: 0 0 8px #fff, 0 0 15px #818cf8, 0 0 20px #4f46e5; }
+            to { text-shadow: 0 0 10px #fff, 0 0 20px #a5b4fc, 0 0 35px #6366f1; }
         }
 
-        .cover-deco {
-            font-size: 3rem;
-            margin-top: 30px;
-            opacity: 0.8;
+        /* Reliures et ombrages réalistes au centre du livre ouvert */
+        .front:not(.front-cover) {
+            box-shadow: inset 15px 0 20px rgba(0,0,0,0.04), 4px 4px 10px rgba(0,0,0,0.05);
+        }
+        .back {
+            box-shadow: inset -15px 0 20px rgba(0,0,0,0.04), -4px 4px 10px rgba(0,0,0,0.05);
         }
 
-        /* Quand le livre s'ouvre, la couverture tourne à 180° à gauche */
-        .book.open .cover {
+        /* --- CLASSE DE FEUILLETAGE (PASSAGE À LA PAGE SUIVANTE) --- */
+        .flipped {
             transform: rotateY(-180deg);
-            z-index: 1;
         }
 
-        /* --- INTERIEUR DU LIVRE (PAGES INTERNES) --- */
-        .page-inside {
-            background: #fafafa;
-            background-image: linear-gradient(90deg, rgba(0,0,0,0.03) 0%, rgba(0,0,0,0) 5%, rgba(0,0,0,0) 95%, rgba(0,0,0,0.05) 100%);
-            padding: 35px;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            border: 1px solid #e2e8f0;
-        }
-
-        /* Page de gauche (Reste fixe, cachée derrière au début) */
-        .left-page {
-            z-index: 2;
-            border-radius: 16px 4px 4px 16px;
-            /* Crée l'ombre réaliste de la reliure au milieu */
-            box-shadow: inset -15px 0 20px rgba(0,0,0,0.05), -5px 5px 15px rgba(0,0,0,0.1);
-        }
-
-        /* Page de droite (Se dévoile quand la couverture tourne) */
-        .right-page {
-            z-index: 3;
-            transform: translateZ(-1px); /* Positionnée juste derrière la couverture fermée */
-            transform-origin: left center;
-            border-radius: 4px 16px 16px 4px;
-            box-shadow: inset 15px 0 20px rgba(0,0,0,0.05), 5px 5px 15px rgba(0,0,0,0.1);
-        }
-
-        /* Style du contenu à l'intérieur du livre */
+        /* --- CONTENU DE L'INTÉRIEUR DU LIVRE --- */
         .page-title {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
+            font-size: 1.7rem;
             color: #1e1b4b;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            padding-bottom: 6px;
         }
 
         .page-text {
-            font-size: 0.95rem;
-            line-height: 1.6;
+            font-size: 0.9rem;
+            line-height: 1.5;
             color: #475569;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
         }
 
-        /* Grille d'images intégrée dans les pages */
         .page-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            flex: 1;
+            gap: 12px;
         }
 
         .book-photo {
             width: 100%;
-            height: 140px;
+            height: 125px;
             object-fit: cover;
-            border-radius: 8px;
+            border-radius: 6px;
             border: 2px solid #ffffff;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.08);
             cursor: pointer;
+            transition: transform 0.2s;
         }
 
         .book-photo:hover {
-            transform: scale(1.04);
+            transform: scale(1.03);
         }
 
         /* --- MODAL ZOOM EXTERNE --- */
@@ -253,7 +300,7 @@
             align-items: center;
         }
         .modal.active { display: flex; }
-        .modal-content { max-width: 85%; max-height: 85%; border-radius: 12px; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
+        .modal-content { max-width: 85%; max-height: 85%; border-radius: 12px; }
         .modal-close { position: absolute; top: 20px; right: 20px; font-size: 2.5rem; color: #fff; cursor: pointer; }
     </style>
 </head>
@@ -261,48 +308,113 @@
 
     <nav class="navbar">
         <div class="logo">
-            <a href="yearbook.html">🌟 Our Yearbook</a>
+            <a href="yearbook.html">Our Yearbook</a>
         </div>
         <ul class="nav-links">
             <li><a href="yearbook.html">Accueil</a></li>
-            <li><a href="noel.html">Noël</a></li>
-            <li><a href="parascolaire.html" style="color: #4f46e5;">Activités</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">Événements ▼</a>
+                <ul class="dropdown-menu">
+                    <li><a href="philosophie.html">Fête des Philosophes</a></li>
+                    <li><a href="noel.html">Noël Enchanté</a></li>
+                    <li><a href="carnaval.html">Carnaval</a></li>
+                    <li><a href="parascolaire.html">Activités Parascolaires</a></li>
+                </ul>
+            </li>
         </ul>
     </nav>
 
-    <button class="btn-discover" id="book-trigger">Découvrir le livre</button>
+    <div class="controls">
+        <button class="btn-book" id="prev-btn" disabled>Précédent</button>
+        <button class="btn-book" id="next-btn">Ouvrir le livre</button>
+    </div>
 
     <div class="book-container">
-        <div class="book" id="my-book">
+        <div class="book" id="book">
             
-            <div class="page cover">
-                <h1 class="neon-title">Activités<br>Parascolaires</h1>
-                <div class="cover-deco">✨ 📖 ✨</div>
-            </div>
-
-            <div class="page page-inside left-page">
-                <h2 class="page-title">👨‍🍳 Le Club Cuisine</h2>
-                <p class="page-text">
-                    De la pâtisserie fine aux spécialités traditionnelles, nos jeunes chefs explorent les saveurs et développent leur créativité culinaire chaque semaine !
-                </p>
-                <div class="page-grid">
-                    <img src="photos/parascolaire/cuisine1.jpg" alt="Cuisine 1" class="book-photo" onclick="zoomImage(this.src)">
-                    <img src="photos/parascolaire/cuisine2.jpg" alt="Cuisine 2" class="book-photo" onclick="zoomImage(this.src)">
-                    <img src="photos/parascolaire/cuisine3.jpg" alt="Cuisine 3" class="book-photo" onclick="zoomImage(this.src)">
-                    <img src="photos/parascolaire/cuisine4.jpg" alt="Cuisine 4" class="book-photo" onclick="zoomImage(this.src)">
+            <div class="page-block" id="p1">
+                <div class="front front-cover">
+                    <h1 class="neon-title">Activités<br>Parascolaires</h1>
+                    <div style="font-size: 2.5rem; margin-top: 20px;">✨ 📖 ✨</div>
+                </div>
+                <div class="back">
+                    <h2 class="page-title">👨‍🍳 Club Cuisine</h2>
+                    <p class="page-text">De la pâtisserie fine aux spécialités locales, nos jeunes chefs explorent chaque semaine les saveurs du monde avec gourmandise et passion.</p>
+                    <div class="page-grid">
+                        <img src="photos/parascolaire/cuisine1.jpg" class="book-photo" onclick="zoomImage(this.src)">
+                        <img src="photos/parascolaire/cuisine2.jpg" class="book-photo" onclick="zoomImage(this.src)">
+                        <img src="photos/parascolaire/cuisine3.jpg" class="book-photo" onclick="zoomImage(this.src)">
+                        <img src="photos/parascolaire/cuisine4.jpg" class="book-photo" onclick="zoomImage(this.src)">
+                    </div>
                 </div>
             </div>
 
-            <div class="page page-inside right-page">
-                <h2 class="page-title">💻 Codage & Technologie</h2>
-                <p class="page-text">
-                    Création d'applications, logique algorithmique et conception de projets numériques. Nos élèves construisent l'avenir du web à travers des lignes de code inspirantes.
-                </p>
-                <div class="page-grid">
-                    <img src="photos/parascolaire/code1.jpg" alt="Code 1" class="book-photo" onclick="zoomImage(this.src)">
-                    <img src="photos/parascolaire/code2.jpg" alt="Code 2" class="book-photo" onclick="zoomImage(this.src)">
-                    <img src="photos/parascolaire/code3.jpg" alt="Code 3" class="book-photo" onclick="zoomImage(this.src)">
-                    <img src="photos/parascolaire/code4.jpg" alt="Code 4" class="book-photo" onclick="zoomImage(this.src)">
+            <div class="page-block" id="p2">
+                <div class="front">
+                    <h2 class="page-title">💻 Codage & Tech</h2>
+                    <p class="page-text">Logique, algorithmes et conception d'interfaces. Nos élèves programment de fantastiques créations numériques tout en construisant le web de demain.</p>
+                    <div class="page-grid">
+                        <img src="photos/parascolaire/code1.jpg" class="book-photo" onclick="zoomImage(this.src)">
+                        <img src="photos/parascolaire/code2.jpg" class="book-photo" onclick="zoomImage(this.src)">
+                        <img src="photos/parascolaire/code3.jpg" class="book-photo" onclick="zoomImage(this.src)">
+                        <img src="photos/parascolaire/code4.jpg" class="book-photo" onclick="zoomImage(this.src)">
+                    </div>
+                </div>
+                <div class="back">
+                    <h2 class="page-title">💃 Troupe de Danse</h2>
+                    <p class="page-text">Du rythme, de la grâce et une énergie incroyable sur scène. Notre troupe explore tous les styles pour créer des spectacles captivants.</p>
+                    <div class="page-grid">
+                        <img src="photos/parascolaire/danse1.jpg" class="book-photo" onclick="zoomImage(this.src)">
+                        <img src="photos/parascolaire/danse2.jpg" class="book-photo" onclick="zoomImage(this.src)">
+                        <img src="photos/parascolaire/danse3.jpg" class="book-photo" onclick="zoomImage(this.src)">
+                        <img src="photos/parascolaire/danse4.jpg" class="book-photo" onclick="zoomImage(this.src)">
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-block" id="p3">
+                <div class="front">
+                    <h2 class="page-title">🎥 Vidéo & Cinéma</h2>
+                    <p class="page-text">Derrière l'objectif ou au montage, nos vidéastes capturent les plus beaux souvenirs de l'année scolaire à travers de superbes plans de cinéma.</p>
+                    <div class="page-grid">
+                        <img src="photos/parascolaire/video1.jpg" class="book-photo" onclick="zoomImage(this.src)">
+                        <img src="photos/parascolaire/video2.jpg" class="book-photo" onclick="zoomImage(this.src)">
+                        <img src="photos/parascolaire/video3.jpg" class="book-photo" onclick="zoomImage(this.src)">
+                        <img src="photos/parascolaire/video4.jpg" class="book-photo" onclick="zoomImage(this.src)">
+                    </div>
+                </div>
+                <div class="back">
+                    <h2 class="page-title">Art & Dessin</h2>
+                    <p class="page-text">Peinture, fusain et modelage. L'atelier d'art permet à nos artistes en herbe de matérialiser leurs émotions et leur imagination débordante.</p>
+                    <div class="page-grid">
+                        <img src="photos/parascolaire/art1.jpg" class="book-photo" onclick="zoomImage(this.src)">
+                        <img src="photos/parascolaire/art2.jpg" class="book-photo" onclick="zoomImage(this.src)">
+                        <img src="photos/parascolaire/art3.jpg" class="book-photo" onclick="zoomImage(this.src)">
+                        <img src="photos/parascolaire/art4.jpg" class="book-photo" onclick="zoomImage(this.src)">
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-block" id="p4">
+                <div class="front">
+                    <h2 class="page-title">⚽ Club Sportif</h2>
+                    <p class="page-text">Esprit d'équipe, dépassement de soi et convivialité lors de nos tournois passionnés de football, basketball et volley-ball.</p>
+                    <div class="page-grid">
+                        <img src="photos/parascolaire/sport1.jpg" class="book-photo" onclick="zoomImage(this.src)">
+                        <img src="photos/parascolaire/sport2.jpg" class="book-photo" onclick="zoomImage(this.src)">
+                        <img src="photos/parascolaire/sport3.jpg" class="book-photo" onclick="zoomImage(this.src)">
+                        <img src="photos/parascolaire/sport4.jpg" class="book-photo" onclick="zoomImage(this.src)">
+                    </div>
+                </div>
+                <div class="front" style="transform: rotateY(180deg); background: #fafafa; border-radius: 16px 4px 4px 16px;">
+                    <h2 class="page-title">🎭 Troupe de Théâtre</h2>
+                    <p class="page-text">Entrez en scène ! Nos comédiens s'initient à l'expression scénique, aux jeux de voix et redonnent vie à de grands classiques littéraires.</p>
+                    <div class="page-grid">
+                        <img src="photos/parascolaire/theatre1.jpg" class="book-photo" onclick="zoomImage(this.src)">
+                        <img src="photos/parascolaire/theatre2.jpg" class="book-photo" onclick="zoomImage(this.src)">
+                        <img src="photos/parascolaire/theatre3.jpg" class="book-photo" onclick="zoomImage(this.src)">
+                        <img src="photos/parascolaire/theatre4.jpg" class="book-photo" onclick="zoomImage(this.src)">
+                    </div>
                 </div>
             </div>
 
@@ -315,22 +427,106 @@
     </div>
 
     <script>
-        const book = document.getElementById('my-book');
-        const trigger = document.getElementById('book-trigger');
+        // --- GESTION DU FEUILLETAGE MULTI-PAGES ---
+        const prevBtn = document.getElementById("prev-btn");
+        const nextBtn = document.getElementById("next-btn");
+        const book = document.getElementById("book");
 
-        trigger.addEventListener('click', () => {
-            book.classList.toggle('open');
-            
-            if (book.classList.contains('open')) {
-                trigger.textContent = "Refermer le livre";
-                trigger.style.background = "linear-gradient(135deg, #ef4444, #dc2626)"; // Rouge quand ouvert
-            } else {
-                trigger.textContent = "Découvrir le livre";
-                trigger.style.background = "linear-gradient(135deg, #6366f1, #4f46e5)"; // Indigo d'origine
+        const p1 = document.getElementById("p1");
+        const p2 = document.getElementById("p2");
+        const p3 = document.getElementById("p3");
+        const p4 = document.getElementById("p4");
+
+        let currentState = 1;
+        const maxState = 5;
+
+        function openBook() {
+            book.classList.add("opened");
+        }
+
+        function closeBook(isAtStart) {
+            if(isAtStart) {
+                book.classList.remove("opened");
+            }
+        }
+
+        function goNext() {
+            if(currentState < maxState) {
+                switch(currentState) {
+                    case 1:
+                        openBook();
+                        p1.classList.add("flipped");
+                        p1.style.zIndex = 1;
+                        nextBtn.textContent = "Page Suivante";
+                        break;
+                    case 2:
+                        p2.classList.add("flipped");
+                        p2.style.zIndex = 2;
+                        break;
+                    case 3:
+                        p3.classList.add("flipped");
+                        p3.style.zIndex = 3;
+                        break;
+                    case 4:
+                        p4.classList.add("flipped");
+                        p4.style.zIndex = 4;
+                        nextBtn.textContent = "Fin du Livre";
+                        nextBtn.disabled = true;
+                        break;
+                }
+                currentState++;
+                prevBtn.disabled = false;
+            }
+        }
+
+        function goPrev() {
+            if(currentState > 1) {
+                switch(currentState) {
+                    case 2:
+                        closeBook(true);
+                        p1.classList.remove("flipped");
+                        p1.style.zIndex = 5;
+                        nextBtn.textContent = "Ouvrir le livre";
+                        prevBtn.disabled = true;
+                        break;
+                    case 3:
+                        p2.classList.remove("flipped");
+                        p2.style.zIndex = 4;
+                        break;
+                    case 4:
+                        p3.classList.remove("flipped");
+                        p3.style.zIndex = 3;
+                        break;
+                    case 5:
+                        p4.classList.remove("flipped");
+                        p4.style.zIndex = 2;
+                        nextBtn.textContent = "Page Suivante";
+                        nextBtn.disabled = false;
+                        break;
+                }
+                currentState--;
+            }
+        }
+
+        nextBtn.addEventListener("click", goNext);
+        prevBtn.addEventListener("click", goPrev);
+
+        // --- INTERACTIVITÉ DU MENU DROPDOWN ---
+        const dropdownToggle = document.querySelector('.dropdown-toggle');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+        
+        dropdownToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            dropdownMenu.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (e) => {
+            if(!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                dropdownMenu.classList.remove('active');
             }
         });
 
-        // Fonctions pour gérer le zoom des images
+        // --- MODAL ZOOM DES IMAGES ---
         const modal = document.getElementById('zoom-modal');
         const modalImg = document.getElementById('modal-img');
 
@@ -343,9 +539,7 @@
             modal.classList.remove('active');
         }
 
-        modal.addEventListener('click', (e) => {
-            if(e.target === modal) closeModal();
-        });
+        modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
     </script>
 </body>
 </html>
