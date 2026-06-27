@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,600&family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
-        /* --- FOND ANIMÉ THÈME PHILOSOPHIQUE --- */
+        /* --- ACCORD ET FOND GLOBAL --- */
         * {
             margin: 0;
             padding: 0;
@@ -31,7 +31,6 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* --- CANVAS POUR LES PARTICULES DE SAGESSE --- */
         #wisdom-particles {
             position: fixed;
             top: 0;
@@ -42,16 +41,16 @@
             z-index: 1;
         }
 
-        /* --- NAVIGATION AMÉLIORÉE --- */
+        /* --- BARRE DE NAVIGATION COMMUNE RESTRUCTURÉE --- */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 40px;
-            background: rgba(26, 26, 46, 0.8);
+            background: rgba(26, 26, 46, 0.85);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            border-bottom: 2px solid rgba(252, 246, 186, 0.3);
+            border-bottom: 2px solid rgba(252, 246, 186, 0.2);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -67,7 +66,6 @@
             -webkit-text-fill-color: transparent;
             text-decoration: none;
             letter-spacing: 1px;
-            text-shadow: 0 0 20px rgba(252, 246, 186, 0.5);
         }
 
         .nav-links {
@@ -84,24 +82,15 @@
             font-weight: 500;
             font-size: 0.95rem;
             transition: all 0.3s;
-            letter-spacing: 0.5px;
         }
 
         .nav-links a:hover {
             color: #b8860b;
-            transform: translateY(-2px);
             text-shadow: 0 0 10px rgba(184, 134, 11, 0.8);
         }
 
         .dropdown {
             position: relative;
-        }
-
-        .dropdown-toggle {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            cursor: pointer;
         }
 
         .dropdown-menu {
@@ -125,520 +114,233 @@
             animation: slideDown 0.3s ease;
         }
 
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         .dropdown-menu li a {
             display: block;
             padding: 12px 20px;
             color: #fcf6ba;
-            font-family: 'Cinzel', serif;
-            font-weight: 500;
-            transition: all 0.2s;
         }
 
         .dropdown-menu li a:hover {
             background: linear-gradient(135deg, rgba(184, 134, 11, 0.3), rgba(252, 246, 186, 0.1));
-            color: #fcf6ba;
-            transform: translateX(5px);
         }
 
-        /* --- CONTENU PRINCIPAL --- */
+        /* --- CONTENU --- */
         .container {
             position: relative;
             z-index: 2;
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 40px 20px;
         }
 
-        /* --- HERO SECTION AVEC ANIMATION DE TEXTE --- */
+        /* --- EN-TÊTE DE LA PAGE (CONSERVÉ ET SUBLIMÉ) --- */
         .hero-section {
             text-align: center;
-            padding: 80px 20px;
-            position: relative;
-            animation: fadeInUp 1.5s ease;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            padding: 60px 20px 20px 20px;
+            animation: fadeInUp 1.2s ease;
         }
 
         .hero-title {
             font-family: 'Cinzel', serif;
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 700;
             background: linear-gradient(135deg, #fcf6ba, #b8860b, #daa520, #fcf6ba);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 30px;
-            text-shadow: 0 0 40px rgba(252, 246, 186, 0.6);
-            animation: shimmer 3s ease-in-out infinite;
-        }
-
-        @keyframes shimmer {
-            0%, 100% {
-                filter: brightness(1);
-            }
-            50% {
-                filter: brightness(1.3);
-            }
+            margin-bottom: 20px;
+            text-shadow: 0 0 30px rgba(252, 246, 186, 0.4);
         }
 
         .hero-subtitle {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-style: italic;
             color: #fcf6ba;
-            margin-bottom: 40px;
-            opacity: 0.9;
+            margin-bottom: 30px;
+            opacity: 0.95;
         }
 
-        /* --- CITATION ANIMÉE --- */
+        /* --- DESCRIPTION COURTE ET ÉPURÉE --- */
+        .description-section {
+            max-width: 800px;
+            margin: 0 auto 50px auto;
+            padding: 25px 35px;
+            background: rgba(26, 26, 46, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 1px solid rgba(252, 246, 186, 0.15);
+        }
+
+        .description-section p {
+            font-size: 1.25rem;
+            line-height: 1.7;
+            color: #fcf6ba;
+            text-align: center;
+        }
+
+        /* --- STRUCTURATION DE L'ALBUM PHOTO (MOSAÏQUE PROPRE) --- */
+        .album-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 40px 0 80px 0;
+        }
+
+        .photo-card {
+            background: rgba(26, 26, 46, 0.7);
+            border: 1px solid rgba(252, 246, 186, 0.2);
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s;
+            cursor: pointer;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(184, 134, 11, 0.3);
+            border-color: #fcf6ba;
+        }
+
+        .photo-wrapper {
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(252, 246, 186, 0.1);
+        }
+
+        .photo-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .photo-card:hover .photo-wrapper img {
+            transform: scale(1.08);
+        }
+
+        .card-details {
+            text-align: center;
+            padding: 5px 0;
+        }
+
+        .card-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: #fcf6ba;
+            margin-bottom: 6px;
+        }
+
+        .card-desc {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            font-style: italic;
+            color: rgba(252, 246, 186, 0.85);
+        }
+
+        /* --- SECTION CITATIONS FLOTTANTES TOUT EN BAS DE PAGE --- */
+        .bottom-quotes-section {
+            margin-top: 60px;
+            border-top: 1px solid rgba(252, 246, 186, 0.2);
+            padding-top: 40px;
+        }
+
+        .quotes-headline {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, #fcf6ba, #b8860b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
         .quote-container {
-            max-width: 900px;
-            margin: 60px auto;
-            padding: 50px;
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+            padding: 30px 40px;
             background: rgba(26, 26, 46, 0.6);
             backdrop-filter: blur(10px);
-            border-radius: 20px;
-            border: 2px solid rgba(252, 246, 186, 0.3);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            border: 1px solid rgba(252, 246, 186, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             position: relative;
-            overflow: hidden;
-            animation: float 6s ease-in-out infinite;
+            animation: floatEffect 6s ease-in-out infinite;
         }
 
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
+        .quote-container:nth-child(even) {
+            animation-delay: 2s;
         }
 
-        .quote-container::before {
-            content: '"';
-            position: absolute;
-            top: -20px;
-            left: 20px;
-            font-size: 150px;
-            font-family: 'Playfair Display', serif;
-            color: rgba(252, 246, 186, 0.1);
-            line-height: 1;
+        @keyframes floatEffect {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
 
         .quote-text {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color: #fcf6ba;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 1;
+            line-height: 1.5;
+            margin-bottom: 15px;
         }
 
         .quote-author {
             font-family: 'Cinzel', serif;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: #b8860b;
             text-align: right;
             font-weight: 600;
         }
 
-        /* --- SECTION DESCRIPTION --- */
-        .description-section {
-            max-width: 1000px;
-            margin: 60px auto;
-            padding: 50px;
-            background: rgba(26, 26, 46, 0.7);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            border: 1px solid rgba(252, 246, 186, 0.2);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-        }
-
-        .description-section p {
-            font-size: 1.3rem;
-            line-height: 1.8;
-            color: #fcf6ba;
-            text-align: center;
-        }
-
-        /* --- GALERIE DE PHOTOS EN MOSAÏQUE --- */
-        .gallery-section {
-            margin: 80px 0;
-        }
-
-        .section-title {
-            font-family: 'Cinzel', serif;
-            font-size: 3rem;
-            text-align: center;
-            background: linear-gradient(135deg, #fcf6ba, #b8860b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 50px;
-            text-shadow: 0 0 30px rgba(252, 246, 186, 0.5);
-        }
-
-        .photo-mosaic {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin: 40px 0;
-        }
-
-        .photo-card {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-            cursor: pointer;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 2px solid rgba(252, 246, 186, 0.3);
-            opacity: 0;
-            transform: translateY(50px);
-            animation: fadeInCard 0.8s ease forwards;
-        }
-
-        .photo-card:nth-child(1) { animation-delay: 0.1s; }
-        .photo-card:nth-child(2) { animation-delay: 0.2s; }
-        .photo-card:nth-child(3) { animation-delay: 0.3s; }
-        .photo-card:nth-child(4) { animation-delay: 0.4s; }
-        .photo-card:nth-child(5) { animation-delay: 0.5s; }
-        .photo-card:nth-child(6) { animation-delay: 0.6s; }
-
-        @keyframes fadeInCard {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .photo-card:hover {
-            transform: translateY(-15px) scale(1.05);
-            box-shadow: 0 25px 60px rgba(184, 134, 11, 0.6);
-            border-color: #fcf6ba;
-        }
-
-        .photo-card img {
-            width: 100%;
-            height: 350px;
-            object-fit: cover;
-            transition: all 0.5s;
-        }
-
-        .photo-card:hover img {
-            transform: scale(1.1);
-            filter: brightness(0.7);
-        }
-
-        .photo-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(26, 26, 46, 0.95), transparent);
-            padding: 30px 20px 20px;
-            transform: translateY(100%);
-            transition: all 0.5s;
-        }
-
-        .photo-card:hover .photo-overlay {
-            transform: translateY(0);
-        }
-
-        .photo-title {
-            font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
-            color: #fcf6ba;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        .photo-description {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.1rem;
-            color: #fcf6ba;
-            font-style: italic;
-            opacity: 0.9;
-        }
-
-        /* --- SECTION ATELIERS AVEC EFFETS --- */
-        .ateliers-section {
-            margin: 80px 0;
-        }
-
-        .atelier-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .atelier-card {
-            background: rgba(26, 26, 46, 0.7);
-            backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 20px;
-            border: 2px solid rgba(252, 246, 186, 0.2);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            opacity: 0;
-            transform: translateX(-50px);
-            animation: slideInLeft 0.8s ease forwards;
-        }
-
-        .atelier-card:nth-child(even) {
-            transform: translateX(50px);
-            animation: slideInRight 0.8s ease forwards;
-        }
-
-        .atelier-card:nth-child(1) { animation-delay: 0.1s; }
-        .atelier-card:nth-child(2) { animation-delay: 0.2s; }
-        .atelier-card:nth-child(3) { animation-delay: 0.3s; }
-        .atelier-card:nth-child(4) { animation-delay: 0.4s; }
-
-        @keyframes slideInLeft {
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideInRight {
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .atelier-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(252, 246, 186, 0.1), transparent);
-            transform: rotate(45deg);
-            transition: all 0.6s;
-            opacity: 0;
-        }
-
-        .atelier-card:hover::before {
-            opacity: 1;
-            animation: shine 1.5s;
-        }
-
-        @keyframes shine {
-            0% {
-                transform: translateX(-100%) translateY(-100%) rotate(45deg);
-            }
-            100% {
-                transform: translateX(100%) translateY(100%) rotate(45deg);
-            }
-        }
-
-        .atelier-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: #fcf6ba;
-            box-shadow: 0 20px 50px rgba(184, 134, 11, 0.4);
-        }
-
-        .atelier-image {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            border: 2px solid rgba(252, 246, 186, 0.3);
-            transition: all 0.5s;
-        }
-
-        .atelier-card:hover .atelier-image {
-            transform: scale(1.05);
-            border-color: #fcf6ba;
-        }
-
-        .atelier-title {
-            font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
-            color: #fcf6ba;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        .atelier-description {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2rem;
-            color: #fcf6ba;
-            line-height: 1.6;
-            opacity: 0.9;
-        }
-
-        /* --- COLONNES GRECQUES DÉCORATIVES --- */
-        .greek-columns {
-            display: flex;
-            justify-content: space-around;
-            margin: 60px 0;
-            opacity: 0.3;
-        }
-
-        .column {
-            width: 60px;
-            height: 200px;
-            background: linear-gradient(to bottom, #fcf6ba, #b8860b);
-            border-radius: 10px 10px 0 0;
-            position: relative;
-            animation: columnPulse 4s ease-in-out infinite;
-        }
-
-        .column::before {
-            content: '';
-            position: absolute;
-            top: -20px;
-            left: -10px;
-            right: -10px;
-            height: 20px;
-            background: #fcf6ba;
-            border-radius: 5px;
-        }
-
-        .column::after {
-            content: '';
-            position: absolute;
-            bottom: -20px;
-            left: -10px;
-            right: -10px;
-            height: 20px;
-            background: #fcf6ba;
-            border-radius: 5px;
-        }
-
-        @keyframes columnPulse {
-            0%, 100% {
-                opacity: 0.3;
-            }
-            50% {
-                opacity: 0.6;
-            }
-        }
-
-        /* --- MODAL POUR ZOOMER SUR LES PHOTOS --- */
+        /* --- MODAL POUR ZOOMER --- */
         .modal {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.9);
             z-index: 2000;
             justify-content: center;
             align-items: center;
-            animation: fadeIn 0.3s;
         }
 
-        .modal.active {
-            display: flex;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+        .modal.active { display: flex; }
 
         .modal-content {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 20px;
-            box-shadow: 0 0 60px rgba(252, 246, 186, 0.5);
-            animation: zoomIn 0.5s;
-        }
-
-        @keyframes zoomIn {
-            from {
-                transform: scale(0.5);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
+            max-width: 85%;
+            max-height: 85%;
+            border-radius: 10px;
+            box-shadow: 0 0 40px rgba(252, 246, 186, 0.3);
         }
 
         .modal-close {
             position: absolute;
-            top: 30px;
-            right: 30px;
-            font-size: 3rem;
-            color: #fcf6ba;
+            top: 20px; right: 20px;
+            font-size: 2.5rem; color: #fcf6ba;
             cursor: pointer;
-            transition: all 0.3s;
-            background: rgba(26, 26, 46, 0.8);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid #fcf6ba;
         }
 
-        .modal-close:hover {
-            transform: rotate(90deg) scale(1.1);
-            background: #b8860b;
-        }
-
-        /* --- RESPONSIVE --- */
+        /* --- TOTALEMENT RESPONSIVE POUR TOUS LES ÉCRANS --- */
         @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .quote-text {
-                font-size: 1.3rem;
-            }
-            
-            .photo-mosaic {
-                grid-template-columns: 1fr;
-            }
-            
-            .atelier-grid {
-                grid-template-columns: 1fr;
-            }
+            .hero-title { font-size: 2.2rem; }
+            .hero-subtitle { font-size: 1.2rem; }
+            .navbar { padding: 15px 20px; }
+            .album-grid { grid-template-columns: 1fr; }
+            .quote-text { font-size: 1.2rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- CANVAS POUR LES PARTICULES DE SAGESSE -->
     <canvas id="wisdom-particles"></canvas>
 
-    <!-- NAVIGATION -->
     <nav class="navbar">
         <div class="logo">
-            <a href="yearbook.html">Our Yearbook</a>
+            <a href="yearbook.html">Marianne</a>
         </div>
         <ul class="nav-links">
             <li><a href="yearbook.html">Accueil</a></li>
@@ -656,181 +358,92 @@
         </ul>
     </nav>
 
-    <!-- CONTENU PRINCIPAL -->
     <div class="container">
         
-        <!-- HERO SECTION -->
         <section class="hero-section">
             <h1 class="hero-title">🏛️ Le Grand Banquet des Philosophes</h1>
             <p class="hero-subtitle">Une journée où la sagesse antique a rencontré la jeunesse moderne</p>
         </section>
 
-        <!-- CITATION ANIMÉE -->
-        <div class="quote-container">
-            <p class="quote-text">Le bonheur est de continuer à désirer ce qu'on possède.</p>
-            <p class="quote-author">— Saint Augustin</p>
-        </div>
-
-        <!-- DESCRIPTION -->
         <section class="description-section">
-            <p>Une journée majestueuse où l'esprit critique et la sagesse ont envahi les couloirs du collège. Nos élèves, vêtus de toges blanches, ont recréé l'ambiance des grandes académies antiques pour débattre du futur et de la paix. Découvrez en images les moments forts de cette célébration de la pensée.</p>
+            <p>Une journée majestueuse où l'esprit critique et la sagesse ont envahi les couloirs du collège. Nos élèves de la promotion <strong>Nexora</strong>, vêtus de superbes toges blanches, ont recréé l'ambiance mythique des grandes académies antiques. Parcourez notre album de souvenirs ci-dessous.</p>
         </section>
 
-        <!-- COLONNES GRECQUES -->
-        <div class="greek-columns">
-            <div class="column"></div>
-            <div class="column"></div>
-            <div class="column"></div>
-            <div class="column"></div>
-        </div>
-
-        <!-- GALERIE DE PHOTOS -->
-        <section class="gallery-section">
-            <h2 class="section-title">✨ Galerie des Souvenirs Philosophiques</h2>
-            
-            <div class="photo-mosaic" id="photo-mosaic">
-                <!-- Les photos seront générées dynamiquement par JavaScript -->
+        <div class="album-grid" id="album-grid">
             </div>
-        </section>
 
-        <!-- DEUXIÈME CITATION -->
-        <div class="quote-container">
-            <p class="quote-text">L'ignorant affirme, le savant doute, le sage réfléchit.</p>
-            <p class="quote-author">— Aristote</p>
-        </div>
-
-        <!-- SECTION ATELIERS -->
-        <section class="ateliers-section">
-            <h2 class="section-title">📚 Nos Ateliers du Savoir</h2>
+        <section class="bottom-quotes-section">
+            <h2 class="quotes-headline">📜 Paroles de Sages</h2>
             
-            <div class="atelier-grid" id="atelier-grid">
-                <!-- Les ateliers seront générés dynamiquement par JavaScript -->
+            <div class="quote-container">
+                <p class="quote-text">Le bonheur est de continuer à désirer ce qu'on possède.</p>
+                <p class="quote-author">— Saint Augustin</p>
             </div>
-        </section>
 
-        <!-- TROISIÈME CITATION -->
-        <div class="quote-container">
-            <p class="quote-text">Je sais que je ne sais rien, mais c'est le début de la sagesse.</p>
-            <p class="quote-author">— Socrate</p>
-        </div>
+            <div class="quote-container">
+                <p class="quote-text">L'ignorant affirme, le savant doute, le sage réfléchit.</p>
+                <p class="quote-author">— Aristote</p>
+            </div>
 
-        <!-- MESSAGE FINAL -->
-        <section class="description-section">
-            <p style="font-style: italic; font-size: 1.4rem;">Cette fête nous rappelle que l'éducation est la clé pour ouvrir toutes les portes de la pensée libre. Que la sagesse guide toujours nos pas.</p>
+            <div class="quote-container">
+                <p class="quote-text">Je sais que je ne sais rien, mais c'est le début de la sagesse.</p>
+                <p class="quote-author">— Socrate</p>
+            </div>
         </section>
 
     </div>
 
-    <!-- MODAL POUR ZOOMER -->
     <div class="modal" id="image-modal">
         <span class="modal-close" id="modal-close">×</span>
-        <img class="modal-content" id="modal-image">
+        <img class="modal-content" id="modal-image" alt="Aperçu">
     </div>
 
-    <!-- SCRIPTS -->
     <script>
         // ============================================
-        // 📸 SYSTÈME DE GESTION DES PHOTOS
+        // 📸 METS TES PHOTOS DE LA FÊTE ET DE NEXORA ICI !
         // ============================================
-        // AJOUTEZ VOS PHOTOS ICI !
-        
         const photosData = [
             {
-                src: 'photos/philosophes/toge1.jpg',
+                src: 'images/photo1.jpg', // Remplace par le chemin correct de ta photo
                 title: '🏛️ Les Jeunes Sages',
-                description: 'Nos élèves en toge, prêts à débattre'
+                description: 'La promotion Nexora fièrement réunie en toges blanches.'
             },
             {
-                src: 'photos/philosophes/debat.jpg',
+                src: 'images/photo2.jpg',
                 title: '💭 Le Grand Débat',
-                description: 'Discussion passionnée sur la justice'
+                description: 'Discussion passionnée et animée sur l’avenir.'
             },
             {
-                src: 'photos/philosophes/bibliotheque.jpg',
-                title: '📚 La Bibliothèque Interdite',
-                description: 'Recherche des textes anciens'
-            },
-            {
-                src: 'photos/philosophes/calligraphie.jpg',
+                src: 'images/photo3.jpg',
                 title: '✍️ L\'Art de l\'Écriture',
-                description: 'Calligraphie sur parchemin'
+                description: 'Ateliers de calligraphie créative et de réflexion.'
             },
             {
-                src: 'photos/philosophes/agora.jpg',
-                title: '🎭 L\'Agora des Petits',
-                description: 'Même les plus jeunes philosophent !'
-            },
-            {
-                src: 'photos/philosophes/ceremonie.jpg',
-                title: '🎓 Cérémonie de Clôture',
-                description: 'Remise des diplômes de sagesse'
+                src: 'images/photo4.jpg',
+                title: '📚 L\'Agora de Nexora',
+                description: 'Un moment suspendu de partage et de fraternité.'
             }
         ];
 
-        // ============================================
-        // 📚 SYSTÈME DE GESTION DES ATELIERS
-        // ============================================
-        
-        const ateliersData = [
-            {
-                image: 'photos/philosophes/bibliotheque.jpg',
-                title: '📚 La Bibliothèque Interdite',
-                description: 'Recherche et analyse des grands textes de Platon et Socrate pour comprendre les racines de la justice.'
-            },
-            {
-                image: 'photos/philosophes/eloquence.jpg',
-                title: '🎤 L\'Éloquence en Toge',
-                description: 'Concours de discours où chaque élève devait défendre une valeur humaine devant un jury de sages.'
-            },
-            {
-                image: 'photos/philosophes/calligraphie.jpg',
-                title: '✍️ Le Scriptorium',
-                description: 'Atelier de calligraphie à la plume sur parchemin pour immortaliser les pensées nées durant la journée.'
-            },
-            {
-                image: 'photos/philosophes/agora.jpg',
-                title: '🎭 L\'Agora des Petits',
-                description: 'Même en maternelle, on se questionne ! Un cercle de parole sur le thème "Qu\'est-ce qu\'un ami ?".'
-            }
-        ];
-
-        // ============================================
-        // 🎨 GÉNÉRATION DYNAMIQUE DU CONTENU
-        // ============================================
-        
-        // Générer la galerie de photos
-        const photoMosaic = document.getElementById('photo-mosaic');
-        photosData.forEach((photo, index) => {
+        // Génération automatique des carreaux photo
+        const albumGrid = document.getElementById('album-grid');
+        photosData.forEach(photo => {
             const card = document.createElement('div');
             card.className = 'photo-card';
             card.innerHTML = `
-                <img src="${photo.src}" alt="${photo.title}">
-                <div class="photo-overlay">
-                    <h3 class="photo-title">${photo.title}</h3>
-                    <p class="photo-description">${photo.description}</p>
+                <div class="photo-wrapper">
+                    <img src="${photo.src}" alt="${photo.title}">
+                </div>
+                <div class="card-details">
+                    <h3 class="card-title">${photo.title}</h3>
+                    <p class="card-desc">${photo.description}</p>
                 </div>
             `;
             card.addEventListener('click', () => openModal(photo.src));
-            photoMosaic.appendChild(card);
+            albumGrid.appendChild(card);
         });
 
-        // Générer les ateliers
-        const atelierGrid = document.getElementById('atelier-grid');
-        ateliersData.forEach((atelier, index) => {
-            const card = document.createElement('div');
-            card.className = 'atelier-card';
-            card.innerHTML = `
-                <img src="${atelier.image}" alt="${atelier.title}" class="atelier-image">
-                <h3 class="atelier-title">${atelier.title}</h3>
-                <p class="atelier-description">${atelier.description}</p>
-            `;
-            atelierGrid.appendChild(card);
-        });
-
-        // ============================================
-        // 🔍 MODAL POUR ZOOMER SUR LES PHOTOS
-        // ============================================
-        
+        // Gestion du zoom (Modal)
         const modal = document.getElementById('image-modal');
         const modalImage = document.getElementById('modal-image');
         const modalClose = document.getElementById('modal-close');
@@ -840,135 +453,47 @@
             modal.classList.add('active');
         }
 
-        modalClose.addEventListener('click', () => {
-            modal.classList.remove('active');
-        });
+        modalClose.addEventListener('click', () => modal.classList.remove('active'));
+        modal.addEventListener('click', (e) => { if(e.target === modal) modal.classList.remove('active'); });
 
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.remove('active');
-            }
-        });
-
-        // ============================================
-        // ✨ PARTICULES DE SAGESSE ANIMÉES
-        // ============================================
-        
+        // Particules étoiles en arrière-plan
         const canvas = document.getElementById('wisdom-particles');
         const ctx = canvas.getContext('2d');
-        
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
 
         const particles = [];
-        const symbols = ['✦', '✧', '⚝', '✶', '❋', '✺', '⁂'];
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 3 + 1;
-                this.speedY = Math.random() * 0.5 - 0.25;
-                this.speedX = Math.random() * 0.5 - 0.25;
-                this.opacity = Math.random() * 0.5 + 0.2;
-                this.symbol = symbols[Math.floor(Math.random() * symbols.length)];
-                this.rotation = Math.random() * 360;
-                this.rotationSpeed = Math.random() * 2 - 1;
-            }
-
-            update() {
-                this.y += this.speedY;
-                this.x += this.speedX;
-                this.rotation += this.rotationSpeed;
-
-                if (this.y < 0) this.y = canvas.height;
-                if (this.y > canvas.height) this.y = 0;
-                if (this.x < 0) this.x = canvas.width;
-                if (this.x > canvas.width) this.x = 0;
-            }
-
-            draw() {
-                ctx.save();
-                ctx.translate(this.x, this.y);
-                ctx.rotate(this.rotation * Math.PI / 180);
-                ctx.globalAlpha = this.opacity;
-                ctx.fillStyle = '#fcf6ba';
-                ctx.font = `${this.size * 4}px serif`;
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'middle';
-                ctx.fillText(this.symbol, 0, 0);
-                ctx.restore();
-            }
-        }
-
-        // Créer les particules
-        for (let i = 0; i < 80; i++) {
-            particles.push(new Particle());
-        }
-
-        // Animation des particules
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
-            particles.forEach(particle => {
-                particle.update();
-                particle.draw();
+        for (let i = 0; i < 50; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                size: Math.random() * 2 + 1,
+                alpha: Math.random(),
+                speed: Math.random() * 0.02 + 0.01
             });
-            
-            requestAnimationFrame(animateParticles);
         }
 
-        animateParticles();
+        function animate() {
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            particles.forEach(p => {
+                p.alpha += p.speed;
+                if(p.alpha > 1 || p.alpha < 0) p.speed = -p.speed;
+                ctx.fillStyle = `rgba(252, 246, 186, ${Math.abs(p.alpha)})`;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI*2);
+                ctx.fill();
+            });
+            requestAnimationFrame(animate);
+        }
+        animate();
 
-        // ============================================
-        // 📱 MENU DÉROULANT
-        // ============================================
-        
+        // Gestion de l'ouverture de la barre de navigation
         const dropdownToggle = document.querySelector('.dropdown-toggle');
         const dropdownMenu = document.querySelector('.dropdown-menu');
-        
-        if (dropdownToggle && dropdownMenu) {
-            dropdownToggle.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                dropdownMenu.classList.toggle('active');
-            });
-
-            document.addEventListener('click', (e) => {
-                if (!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
-                    dropdownMenu.classList.remove('active');
-                }
-            });
-        }
-
-        // ============================================
-        // 🎭 ANIMATIONS AU SCROLL
-        // ============================================
-        
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observer les citations
-        document.querySelectorAll('.quote-container').forEach(el => {
-            observer.observe(el);
+        dropdownToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            dropdownMenu.classList.toggle('active');
         });
     </script>
-
 </body>
 </html>
