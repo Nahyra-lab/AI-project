@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,600&family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
-        /* --- DÉCOR ET STYLE DE NOËL ORIGINE --- */
+        /* --- ACCORD ET FOND GLOBAL NOËL --- */
         * {
             margin: 0;
             padding: 0;
@@ -33,7 +33,7 @@
             z-index: 1;
         }
 
-        /* --- NAVIGATION --- */
+        /* --- BARRE DE NAVIGATION COMMUNE --- */
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -125,6 +125,7 @@
             padding: 40px 20px;
         }
 
+        /* --- EN-TÊTE --- */
         .hero-section {
             text-align: center;
             padding: 60px 20px 20px 20px;
@@ -150,6 +151,7 @@
             opacity: 0.95;
         }
 
+        /* --- DESCRIPTION INTRO --- */
         .description-section {
             max-width: 800px;
             margin: 0 auto 50px auto;
@@ -167,6 +169,7 @@
             text-align: center;
         }
 
+        /* --- TITRE DE SECTION SOUVENIRS --- */
         .section-headline {
             font-family: 'Cinzel', serif;
             font-size: 2.2rem;
@@ -177,7 +180,7 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* --- GRILLES PHOTOS & VIDEOS --- */
+        /* --- GRILLE POUR LES PHOTOS --- */
         .album-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -240,6 +243,7 @@
             color: rgba(252, 246, 186, 0.85);
         }
 
+        /* --- ZONE MULTI-VIDÉOS --- */
         .video-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -269,7 +273,7 @@
             text-align: center;
         }
 
-        /* --- SECTION CITATIONS --- */
+        /* --- SECTION CITATIONS TOUT EN BAS --- */
         .bottom-quotes-section {
             margin-top: 60px;
             border-top: 1px solid rgba(252, 246, 186, 0.2);
@@ -325,7 +329,7 @@
             font-weight: 600;
         }
 
-        /* --- MODAL --- */
+        /* --- MODAL ZOOM --- */
         .modal {
             display: none;
             position: fixed;
@@ -352,6 +356,7 @@
             cursor: pointer;
         }
 
+        /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
             .hero-title { font-size: 2.2rem; }
             .navbar { padding: 15px 20px; }
@@ -416,6 +421,14 @@
                 </video>
                 <div class="video-title">🎼 Chants & Festivités</div>
             </div>
+
+            <div class="video-container">
+                <video controls>
+                    <source src="images/video_noel03.mp4" type="video/mp4">
+                    Votre navigateur ne supporte pas la lecture de vidéos.
+                </video>
+                <div class="video-title">✨ Magie des Décors</div>
+            </div>
         </div>
 
         <section class="bottom-quotes-section">
@@ -432,8 +445,8 @@
             </div>
 
             <div class="quote-container">
-                <p class="quote-text">La magie de Noël est invisible, elle se ressent dans le partage et les sourires.</p>
-                <p class="quote-author">— Sagesse Hivernale</p>
+                <p class="quote-text">La magie de Noël ne se trouve pas dans les présents, mais dans la présence d'un esprit de fraternité.</p>
+                <p class="quote-author">— Sagesse Partagée</p>
             </div>
         </section>
 
@@ -446,21 +459,17 @@
 
     <script>
         // ============================================
-        // 📸 METS TES PHOTOS DE NOËL ICI QUAND TU VEUX
+        // 📸 CONFIGURATION POUR UNE SEULE PHOTO
         // ============================================
         const photosData = [
             {
                 src: 'images/noel01.jpg', 
                 title: '✨ Les Lumières de la Fête',
                 description: 'Le collège paré de ses plus beaux habits de lumière.'
-            },
-            {
-                src: 'images/noel02.jpg',
-                title: '🎁 Partage & Joie',
-                description: 'Un moment d\'échange chaleureux entre les élèves.'
             }
         ];
 
+        // Génération automatique de l'unique photo
         const albumGrid = document.getElementById('album-grid');
         photosData.forEach(photo => {
             const card = document.createElement('div');
@@ -478,6 +487,7 @@
             albumGrid.appendChild(card);
         });
 
+        // Gestion de la modale zoom
         const modal = document.getElementById('image-modal');
         const modalImage = document.getElementById('modal-image');
         const modalClose = document.getElementById('modal-close');
@@ -490,7 +500,7 @@
         modalClose.addEventListener('click', () => modal.classList.remove('active'));
         modal.addEventListener('click', (e) => { if(e.target === modal) modal.classList.remove('active'); });
 
-        // Effet de neige d'origine
+        // Effet de neige tombante en arrière-plan
         const canvas = document.getElementById('snow-particles');
         const ctx = canvas.getContext('2d');
         
@@ -532,6 +542,7 @@
         }
         drawFlakes();
 
+        // Gestion du menu de navigation dropdown
         const dropdownToggle = document.querySelector('.dropdown-toggle');
         const dropdownMenu = document.querySelector('.dropdown-menu');
         dropdownToggle.addEventListener('click', (e) => {
