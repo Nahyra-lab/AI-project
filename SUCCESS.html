@@ -17,6 +17,70 @@
         .card-story:hover .photo-after { opacity: 1; }
         .photo-after { opacity: 0; transition: 0.6s ease-in-out; }
         .nav-active { border-bottom: 2px solid var(--gold); color: var(--gold) !important; }
+        
+        /* New Animations for Stories Page */
+        @keyframes titleGlow {
+            0%, 100% { text-shadow: 0 0 20px rgba(255,255,255,0.5); }
+            50% { text-shadow: 0 0 40px rgba(255,215,0,0.8), 0 0 60px rgba(255,215,0,0.4); }
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        @keyframes floatDelayed {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(-5deg); }
+        }
+        @keyframes pulseDelayed {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.1); opacity: 0.5; }
+        }
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+        
+        .animate-title-glow { animation: titleGlow 3s ease-in-out infinite; }
+        .animate-fade-in-up { animation: fadeUp 0.8s ease-out forwards; }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        .animate-float-delayed { animation: floatDelayed 7s ease-in-out infinite 1s; }
+        .animate-pulse-delayed { animation: pulseDelayed 3s ease-in-out infinite 1.5s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-500 { animation-delay: 0.5s; }
+        .delay-700 { animation-delay: 0.7s; }
+        
+        .story-card { transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+        .story-card.visible { opacity: 1 !important; transform: translateY(0) !important; }
+        .story-card.hidden { opacity: 0; transform: translateY(50px); }
+        
+        .promotion-card { transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+        .promotion-card.visible { opacity: 1 !important; transform: translateY(0) scale(1) !important; }
+        
+        .story-filter-btn.active { background-color: #EAB308 !important; color: #0A192F !important; }
+        
+        .stars-container {
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, white, transparent),
+                radial-gradient(2px 2px at 40px 70px, white, transparent),
+                radial-gradient(2px 2px at 50px 160px, white, transparent),
+                radial-gradient(2px 2px at 90px 40px, white, transparent),
+                radial-gradient(2px 2px at 130px 80px, white, transparent);
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            animation: shimmer 10s linear infinite;
+        }
     </style>
 </head>
 <body class="text-slate-800">
@@ -66,53 +130,304 @@
         </div>
     </main>
 
-    <main id="stories" class="section-content pt-32 px-6">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl font-bold text-blue-900 mb-4 font-serif italic">The Stories</h2>
-            <p class="mb-10 text-gray-500">Découvrez les parcours inspirants à travers nos deux catégories :</p>
-            
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="space-y-6">
-                    <h3 class="text-2xl font-bold border-b-2 border-yellow-500 pb-2">🌟 Passion</h3>
-                    <div class="flex gap-4">
-                        <button class="bg-white border-2 border-yellow-600 px-4 py-1 rounded-full text-sm font-bold hover:bg-yellow-600 hover:text-white">Danse</button>
-                        <button class="bg-white border-2 border-yellow-600 px-4 py-1 rounded-full text-sm font-bold hover:bg-yellow-600 hover:text-white">Musique</button>
-                        <button class="bg-white border-2 border-yellow-600 px-4 py-1 rounded-full text-sm font-bold hover:bg-yellow-600 hover:text-white">Ecriture</button>
-                    </div>
-                    <div class="card-story bg-white rounded-2xl overflow-hidden shadow-lg group">
-                        <div class="relative h-64">
-                            <img src="images/Karina18.jpeg" class="absolute inset-0 w-full h-full object-cover" alt="Enfant">
-                            <img src="images/Medcriture.jpeg" class="photo-after absolute inset-0 w-full h-full object-cover" alt="Aujourd'hui">
+    <main id="stories" class="section-content pt-20 px-6 overflow-hidden">
+        <!-- Hero Section with Parallax Effect -->
+        <div class="relative min-h-[80vh] flex items-center justify-center mb-20">
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900"></div>
+            <div class="absolute inset-0 opacity-30">
+                <div class="stars-container"></div>
+            </div>
+            <div class="relative z-10 text-center max-w-5xl mx-auto px-4">
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 font-serif animate-title-glow">
+                    The <span class="text-yellow-400 italic">Stories</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-200 mb-8 animate-fade-in-up">
+                    Célébrons l'excellence, la créativité et les prouesses des filles du collège
+                </p>
+                <div class="flex flex-wrap justify-center gap-4 animate-fade-in-up delay-300">
+                    <button onclick="filterStories('all')" class="story-filter-btn active px-6 py-3 rounded-full bg-yellow-500 text-blue-900 font-bold hover:bg-yellow-400 transition-all transform hover:scale-105">Toutes</button>
+                    <button onclick="filterStories('ecriture')" class="story-filter-btn px-6 py-3 rounded-full bg-white/10 backdrop-blur-sm text-white font-bold border-2 border-white/30 hover:bg-yellow-500 hover:text-blue-900 transition-all transform hover:scale-105">✍️ Écriture</button>
+                    <button onclick="filterStories('innovation')" class="story-filter-btn px-6 py-3 rounded-full bg-white/10 backdrop-blur-sm text-white font-bold border-2 border-white/30 hover:bg-yellow-500 hover:text-blue-900 transition-all transform hover:scale-105">🔬 Innovation</button>
+                    <button onclick="filterStories('musique')" class="story-filter-btn px-6 py-3 rounded-full bg-white/10 backdrop-blur-sm text-white font-bold border-2 border-white/30 hover:bg-yellow-500 hover:text-blue-900 transition-all transform hover:scale-105">🎵 Musique/Chant</button>
+                    <button onclick="filterStories('poesie')" class="story-filter-btn px-6 py-3 rounded-full bg-white/10 backdrop-blur-sm text-white font-bold border-2 border-white/30 hover:bg-yellow-500 hover:text-blue-900 transition-all transform hover:scale-105">📜 Poésie</button>
+                </div>
+            </div>
+            <!-- Floating Elements -->
+            <div class="floating-element absolute top-20 left-10 text-6xl animate-float">✨</div>
+            <div class="floating-element absolute bottom-20 right-10 text-6xl animate-float-delayed">🌟</div>
+            <div class="floating-element absolute top-1/2 left-1/4 text-4xl animate-float">💫</div>
+        </div>
+
+        <!-- Stories Grid -->
+        <div class="max-w-7xl mx-auto mb-20">
+            <!-- Writing Category - Karina -->
+            <div class="story-card ecriture mb-16 opacity-0 translate-y-20" data-category="ecriture">
+                <div class="bg-gradient-to-r from-yellow-50 to-amber-50 rounded-3xl overflow-hidden shadow-2xl border-l-8 border-yellow-500 hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
+                    <div class="grid md:grid-cols-2 gap-0">
+                        <div class="relative h-80 md:h-auto overflow-hidden group">
+                            <div class="absolute inset-0 bg-gradient-to-br from-yellow-400/20 to-transparent z-10"></div>
+                            <img src="images/Karina18.jpeg" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" alt="Karina" onerror="this.src='https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=600&q=80'">
+                            <div class="absolute bottom-4 left-4 z-20">
+                                <span class="bg-yellow-500 text-blue-900 px-4 py-2 rounded-full font-bold text-sm uppercase tracking-wider">🏆 Concours Medcriture</span>
+                            </div>
                         </div>
-                        <div class="p-6">
-                            <span class="text-xs font-bold text-yellow-600 uppercase">Ecriture</span>
-                            <h4 class="text-xl font-bold mt-1">L'histoire de Karina</h4>
-                            <p class="text-sm text-gray-600 mt-4"><strong>Parcours :</strong> Passionnée d’écriture depuis son plus jeune âge, elle a commencé à coucher ses idées sur le papier dès l’âge de 11 ans. Récemment, elle a participé à un concours d’écriture et a remporté la troisième place, confirmant son talent et sa créativité..</p>
-                            <div class="mt-4 p-3 bg-blue-50 border-l-4 border-blue-900 italic text-sm">"Conseil :  Écris chaque jour, même si ce n’est qu’une phrase. C’est en laissant tes mots s’exprimer librement que ton style et ta voix uniques se révéleront."</div>
+                        <div class="p-8 md:p-12 flex flex-col justify-center">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span class="text-4xl">✍️</span>
+                                <h3 class="text-3xl font-bold text-blue-900 font-serif">Karina</h3>
+                            </div>
+                            <p class="text-gray-700 leading-relaxed mb-6 text-lg">
+                                Passionnée d'écriture depuis son plus jeune âge, Karina a commencé à coucher ses idées sur le papier dès l'âge de 11 ans. Son talent exceptionnel l'a menée à remporter un <strong class="text-yellow-600">concours prestigieux organisé par Medcriture</strong>, confirmant ainsi sa créativité et sa maîtrise des mots.
+                            </p>
+                            <div class="bg-white p-4 rounded-xl border-l-4 border-yellow-500 shadow-md">
+                                <p class="italic text-gray-600">"Écris chaque jour, même si ce n'est qu'une phrase. C'est en laissant tes mots s'exprimer librement que ton style et ta voix uniques se révéleront."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Innovation Category - 3 Girls Exposcience -->
+            <div class="story-card innovation mb-16 opacity-0 translate-y-20" data-category="innovation">
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-3xl overflow-hidden shadow-2xl border-l-8 border-blue-600 hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
+                    <div class="grid md:grid-cols-2 gap-0">
+                        <div class="p-8 md:p-12 flex flex-col justify-center order-2 md:order-1">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span class="text-4xl">🔬</span>
+                                <h3 class="text-3xl font-bold text-blue-900 font-serif">Les Innovatrices Exposcience</h3>
+                            </div>
+                            <p class="text-gray-700 leading-relaxed mb-6 text-lg">
+                                Trois anciennes élèves ont marqué l'histoire du collège en remportant le <strong class="text-blue-600">concours Exposcience</strong> grâce à leur projet innovant. Leur esprit scientifique, leur créativité et leur détermination ont impressionné le jury et ouvert la voie aux futures générations de scientifiques.
+                            </p>
+                            <div class="grid grid-cols-3 gap-4 mb-6">
+                                <div class="text-center p-4 bg-white rounded-xl shadow-md">
+                                    <div class="text-3xl mb-2">🥇</div>
+                                    <div class="text-xs font-bold text-blue-600 uppercase">Gagnantes</div>
+                                </div>
+                                <div class="text-center p-4 bg-white rounded-xl shadow-md">
+                                    <div class="text-3xl mb-2">💡</div>
+                                    <div class="text-xs font-bold text-blue-600 uppercase">Innovation</div>
+                                </div>
+                                <div class="text-center p-4 bg-white rounded-xl shadow-md">
+                                    <div class="text-3xl mb-2">🎓</div>
+                                    <div class="text-xs font-bold text-blue-600 uppercase">Excellence</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative h-80 md:h-auto overflow-hidden group order-1 md:order-2">
+                            <div class="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-transparent z-10"></div>
+                            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" alt="Projet Exposcience">
+                            <div class="absolute bottom-4 left-4 z-20">
+                                <span class="bg-blue-600 text-white px-4 py-2 rounded-full font-bold text-sm uppercase tracking-wider">🏆 Exposcience</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Music Category - Esperancia -->
+            <div class="story-card musique mb-16 opacity-0 translate-y-20" data-category="musique">
+                <div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-3xl overflow-hidden shadow-2xl border-l-8 border-purple-500 hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
+                    <div class="grid md:grid-cols-2 gap-0">
+                        <div class="relative h-80 md:h-auto overflow-hidden group">
+                            <div class="absolute inset-0 bg-gradient-to-br from-purple-400/20 to-transparent z-10"></div>
+                            <img src="https://images.unsplash.com/photo-1516280440614-6697288d5d38?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" alt="Esperancia" onerror="this.src='https://images.unsplash.com/photo-1516280440614-6697288d5d38?auto=format&fit=crop&w=600&q=80'">
+                            <div class="absolute bottom-4 left-4 z-20">
+                                <span class="bg-purple-500 text-white px-4 py-2 rounded-full font-bold text-sm uppercase tracking-wider">🎤 3ème Place - Concours de Chant</span>
+                            </div>
+                        </div>
+                        <div class="p-8 md:p-12 flex flex-col justify-center">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span class="text-4xl">🎵</span>
+                                <h3 class="text-3xl font-bold text-blue-900 font-serif">Esperancia</h3>
+                            </div>
+                            <p class="text-gray-700 leading-relaxed mb-6 text-lg">
+                                Dotée d'une voix exceptionnelle, Esperancia a brillé lors d'un concours de chant en décrochant la <strong class="text-purple-600">3ème place</strong>. Sa passion pour la musique et son talent naturel continuent de l'inspirer dans son parcours artistique.
+                            </p>
+                            <div class="flex gap-4">
+                                <div class="flex items-center gap-2 bg-white px-4 py-3 rounded-xl shadow-md">
+                                    <span class="text-2xl">🎶</span>
+                                    <span class="font-semibold text-gray-700">Chant</span>
+                                </div>
+                                <div class="flex items-center gap-2 bg-white px-4 py-3 rounded-xl shadow-md">
+                                    <span class="text-2xl">🎹</span>
+                                    <span class="font-semibold text-gray-700">Musique</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Poetry Category - Elga -->
+            <div class="story-card poesie mb-16 opacity-0 translate-y-20" data-category="poesie">
+                <div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-3xl overflow-hidden shadow-2xl border-l-8 border-green-500 hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
+                    <div class="grid md:grid-cols-2 gap-0">
+                        <div class="p-8 md:p-12 flex flex-col justify-center order-2 md:order-1">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span class="text-4xl">📜</span>
+                                <h3 class="text-3xl font-bold text-blue-900 font-serif">Elga</h3>
+                            </div>
+                            <p class="text-gray-700 leading-relaxed mb-6 text-lg">
+                                Depuis toute petite, Elga écrit des textes poétiques qui touchent le cœur. Sa sensibilité artistique et sa plume élégante lui ont valu une <strong class="text-green-600">carte cadeau offerte par la promotion 1982</strong>, reconnaissant ainsi son talent littéraire exceptionnel.
+                            </p>
+                            <div class="bg-white p-4 rounded-xl border-l-4 border-green-500 shadow-md mb-4">
+                                <p class="italic text-gray-600">"La poésie est le langage de l'âme, où chaque mot danse avec émotion."</p>
+                            </div>
+                            <div class="flex items-center gap-3 bg-gradient-to-r from-green-100 to-emerald-100 p-4 rounded-xl">
+                                <span class="text-3xl">🎁</span>
+                                <div>
+                                    <p class="font-bold text-green-700">Récompense Promotion 1982</p>
+                                    <p class="text-sm text-green-600">Carte cadeau pour son excellence en poésie</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative h-80 md:h-auto overflow-hidden group order-1 md:order-2">
+                            <div class="absolute inset-0 bg-gradient-to-br from-green-400/20 to-transparent z-10"></div>
+                            <img src="images/Elga2.jpeg.png" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" alt="Elga" onerror="this.src='https://images.unsplash.com/photo-1457139621581-67576207ac79?auto=format&fit=crop&w=600&q=80'">
+                            <div class="absolute bottom-4 left-4 z-20">
+                                <span class="bg-green-500 text-white px-4 py-2 rounded-full font-bold text-sm uppercase tracking-wider">✒️ Poétesse</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Music & Excellence - Yvenie -->
+            <div class="story-card musique mb-16 opacity-0 translate-y-20" data-category="musique">
+                <div class="bg-gradient-to-r from-orange-50 to-red-50 rounded-3xl overflow-hidden shadow-2xl border-l-8 border-orange-500 hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
+                    <div class="grid md:grid-cols-2 gap-0">
+                        <div class="relative h-80 md:h-auto overflow-hidden group">
+                            <div class="absolute inset-0 bg-gradient-to-br from-orange-400/20 to-transparent z-10"></div>
+                            <img src="https://images.unsplash.com/photo-1525926477800-7a3be5800fcb?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" alt="Yvenie" onerror="this.src='https://images.unsplash.com/photo-1525926477800-7a3be5800fcb?auto=format&fit=crop&w=600&q=80'">
+                            <div class="absolute bottom-4 left-4 z-20">
+                                <span class="bg-orange-500 text-white px-4 py-2 rounded-full font-bold text-sm uppercase tracking-wider">🎓 Bourse Complète</span>
+                            </div>
+                        </div>
+                        <div class="p-8 md:p-12 flex flex-col justify-center">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span class="text-4xl">🌟</span>
+                                <h3 class="text-3xl font-bold text-blue-900 font-serif">Yvenie</h3>
+                            </div>
+                            <p class="text-gray-700 leading-relaxed mb-6 text-lg">
+                                Talenteuse et déterminée, Yvenie a reçu une <strong class="text-orange-600">bourse complète offerte par la promotion 1995</strong>. Cette reconnaissance témoigne de son excellence académique et de son potentiel exceptionnel pour l'avenir.
+                            </p>
+                            <div class="flex items-center gap-3 bg-gradient-to-r from-orange-100 to-red-100 p-4 rounded-xl">
+                                <span class="text-3xl">🎓</span>
+                                <div>
+                                    <p class="font-bold text-orange-700">Récompense Promotion 1995</p>
+                                    <p class="text-sm text-orange-600">Bourse complète pour l'excellence</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Promotions Section -->
+        <div class="max-w-6xl mx-auto mb-20">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-bold text-blue-900 mb-4 font-serif animate-title-glow">
+                    🙏 Hommage aux <span class="text-yellow-500">Promotions Légendaires</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Ces promotions ont profondément contribué au développement du collège par leur générosité et leur engagement
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Promotion 1982 -->
+                <div class="promotion-card opacity-0 translate-y-20 bg-gradient-to-br from-emerald-500 to-green-700 rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div>
+                    <div class="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full -ml-12 -mb-12"></div>
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center text-3xl">🎁</div>
+                            <div>
+                                <h3 class="text-3xl font-bold font-serif">Promotion 1982</h3>
+                                <p class="text-emerald-100">Mécènes de l'excellence</p>
+                            </div>
+                        </div>
+                        <p class="text-emerald-50 leading-relaxed mb-6">
+                            La promotion 1982 continue d'inspirer par son engagement envers les nouvelles générations. Leur soutien constant aux talents émergents, notamment à travers l'offre de cartes cadeaux aux élèves méritantes comme Elga, témoigne de leur attachement durable au collège.
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold">🎁 Cartes Cadeau</span>
+                            <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold">📚 Soutien Éducatif</span>
+                            <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold">💝 Générosité</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="space-y-6">
-                    <h3 class="text-2xl font-bold border-b-2 border-blue-900 pb-2">🎓 Vie Universitaire</h3>
-                    <div class="flex flex-wrap gap-2 text-xs font-bold">
-                        <span class="bg-blue-100 text-blue-900 px-3 py-1 rounded">Sciences de la Vie</span>
-                        <span class="bg-blue-100 text-blue-900 px-3 py-1 rounded">Sciences Juridiques</span>
-                        <span class="bg-blue-100 text-blue-900 px-3 py-1 rounded">Sciences Économiques</span>
-                    </div>
-                    <div class="card-story bg-white rounded-2xl overflow-hidden shadow-lg">
-                        <div class="relative h-64">
-                            <img src="https://images.unsplash.com/photo-1491013516836-7dbf414a2728?auto=format&fit=crop&w=400&q=80" class="absolute inset-0 w-full h-full object-cover" alt="Enfant">
-                            <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=400&q=80" class="photo-after absolute inset-0 w-full h-full object-cover" alt="Aujourd'hui">
+                <!-- Promotion 1995 -->
+                <div class="promotion-card opacity-0 translate-y-20 bg-gradient-to-br from-blue-600 to-indigo-800 rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div>
+                    <div class="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full -ml-12 -mb-12"></div>
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center text-3xl">🎓</div>
+                            <div>
+                                <h3 class="text-3xl font-bold font-serif">Promotion 1995</h3>
+                                <p class="text-blue-100">Bâtisseurs d'avenir</p>
+                            </div>
                         </div>
-                        <div class="p-6">
-                            <span class="text-xs font-bold text-blue-800 uppercase">Juridique</span>
-                            <h4 class="text-xl font-bold mt-1">Maître Elena M.</h4>
-                            <p class="text-sm text-gray-600 mt-4"><strong>Parcours :</strong> Des heures à la bibliothèque universitaire aux plaidoiries en cour d'assises...</p>
-                            <div class="mt-4 p-3 bg-yellow-50 border-l-4 border-yellow-500 italic text-sm">"Conseil : La rigueur est votre meilleure alliée en droit."</div>
+                        <p class="text-blue-50 leading-relaxed mb-6">
+                            La promotion 1995 s'illustre par son investissement massif dans l'éducation des filles. En offrant des bourses complètes à des étudiantes exceptionnelles comme Yvenie, elles ouvrent les portes de l'avenir et transforment des rêves en réalités.
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold">🎓 Bourses Complètes</span>
+                            <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold">🚀 Avenir</span>
+                            <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold">⭐ Excellence</span>
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <!-- Recent Donation - 3D Printer -->
+            <div class="promotion-card opacity-0 translate-y-20 mt-8 bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 rounded-3xl p-8 md:p-12 text-white shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2 relative overflow-hidden">
+                <div class="absolute inset-0 opacity-20">
+                    <div class="absolute top-10 left-10 w-20 h-20 border-4 border-white rounded-full animate-pulse"></div>
+                    <div class="absolute bottom-10 right-10 w-32 h-32 border-4 border-white rounded-full animate-pulse-delayed"></div>
+                </div>
+                <div class="relative z-10 flex flex-col md:flex-row items-center gap-8">
+                    <div class="flex-1">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center text-4xl">🖨️</div>
+                            <div>
+                                <h3 class="text-3xl md:text-4xl font-bold font-serif">Don Récent Exceptionnel</h3>
+                                <p class="text-purple-100 text-lg">Une imprimante 3D pour l'innovation</p>
+                            </div>
+                        </div>
+                        <p class="text-purple-50 leading-relaxed text-lg mb-6">
+                            Grâce à la générosité continue des anciennes promotions, le collège vient de recevoir une <strong class="text-white">imprimante 3D</strong>. Cet équipement de pointe permettra aux élèves de concrétiser leurs idées innovantes et de se former aux technologies de demain.
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="bg-white/20 backdrop-blur-sm px-5 py-3 rounded-full font-semibold">🔬 Innovation</span>
+                            <span class="bg-white/20 backdrop-blur-sm px-5 py-3 rounded-full font-semibold">💡 Créativité</span>
+                            <span class="bg-white/20 backdrop-blur-sm px-5 py-3 rounded-full font-semibold">🎯 Technologie</span>
+                            <span class="bg-white/20 backdrop-blur-sm px-5 py-3 rounded-full font-semibold">🚀 Avenir</span>
+                        </div>
+                    </div>
+                    <div class="flex-shrink-0">
+                        <div class="w-48 h-48 bg-white/10 backdrop-blur-sm rounded-3xl flex items-center justify-center border-4 border-white/30 shadow-2xl animate-float">
+                            <span class="text-8xl">🖨️</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="text-center mb-20">
+            <div class="inline-block bg-gradient-to-r from-yellow-400 to-orange-500 rounded-3xl p-8 md:p-12 shadow-2xl transform hover:scale-105 transition-all duration-300">
+                <h3 class="text-3xl md:text-4xl font-bold text-white mb-4 font-serif">🌟 Votre histoire commence ici</h3>
+                <p class="text-white/90 text-lg mb-6 max-w-2xl">
+                    Rejoignez cette lignée de femmes exceptionnelles et écrivez votre propre succès story
+                </p>
+                <button onclick="showSection('opportunities')" class="bg-white text-blue-900 px-8 py-4 rounded-full font-bold text-lg hover:bg-yellow-400 transition-all transform hover:scale-105 shadow-lg">
+                    Découvrir les Opportunités →
+                </button>
             </div>
         </div>
     </main>
@@ -558,7 +873,73 @@
         });
         // Retour en haut de page
         window.scrollTo(0, 0);
+        
+        // Trigger animations for stories section
+        if (sectionId === 'stories') {
+            setTimeout(triggerStoryAnimations, 100);
+        }
     }
+    
+    // Filter stories by category
+    function filterStories(category) {
+        // Update active button
+        document.querySelectorAll('.story-filter-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        event.target.classList.add('active');
+        
+        // Filter cards
+        const allCards = document.querySelectorAll('.story-card');
+        allCards.forEach(card => {
+            if (category === 'all' || card.dataset.category === category) {
+                card.classList.remove('hidden');
+                setTimeout(() => card.classList.add('visible'), 100);
+            } else {
+                card.classList.remove('visible');
+                card.classList.add('hidden');
+            }
+        });
+    }
+    
+    // Trigger animations when stories section is visible
+    function triggerStoryAnimations() {
+        // Animate story cards with stagger effect
+        const storyCards = document.querySelectorAll('.story-card');
+        storyCards.forEach((card, index) => {
+            setTimeout(() => {
+                card.classList.add('visible');
+            }, index * 150);
+        });
+        
+        // Animate promotion cards
+        const promoCards = document.querySelectorAll('.promotion-card');
+        promoCards.forEach((card, index) => {
+            setTimeout(() => {
+                card.classList.add('visible');
+            }, (storyCards.length * 150) + (index * 200));
+        });
+    }
+    
+    // Intersection Observer for scroll animations
+    document.addEventListener('DOMContentLoaded', function() {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all story and promotion cards
+        document.querySelectorAll('.story-card, .promotion-card').forEach(card => {
+            observer.observe(card);
+        });
+    });
 
     // --- CODE D'AFFICHAGE DU CHAMP CLASSE / EMAIL ---
     document.addEventListener("DOMContentLoaded", function() {
