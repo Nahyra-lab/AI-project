@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Noël Enchanté | Yearbook 25-26</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,600&family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,600&family=Mountains+of+Christmas:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
-        /* --- ACCORD ET FOND GLOBAL NOËL --- */
+        /* --- FOND DE NOËL ANIMÉ --- */
         * {
             margin: 0;
             padding: 0;
@@ -16,14 +16,23 @@
 
         body {
             font-family: 'Cormorant Garamond', serif;
-            background: linear-gradient(135deg, #050c1a 0%, #0b1d3a 40%, #162a45 70%, #0d3b66 100%);
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 25%, #7e8ba3 50%, #4a7c8f 75%, #2a5298 100%);
+            background-size: 400% 400%;
+            animation: christmasGradient 15s ease infinite;
             overflow-x: hidden;
             min-height: 100vh;
             position: relative;
-            color: #fcf6ba;
+            color: #ffffff;
         }
 
-        #snow-particles {
+        @keyframes christmasGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* --- NEIGE QUI TOMBE --- */
+        #snow-canvas {
             position: fixed;
             top: 0;
             left: 0;
@@ -33,31 +42,38 @@
             z-index: 1;
         }
 
-        /* --- BARRE DE NAVIGATION COMMUNE --- */
+        /* --- NAVIGATION DE NOËL --- */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 40px;
-            background: rgba(11, 29, 58, 0.85);
+            background: rgba(139, 0, 0, 0.85);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            border-bottom: 2px solid rgba(252, 246, 186, 0.2);
+            border-bottom: 3px solid rgba(255, 215, 0, 0.5);
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.3);
         }
 
         .logo a {
-            font-family: 'Cinzel', serif;
-            font-size: 1.6rem;
+            font-family: 'Mountains of Christmas', cursive;
+            font-size: 2rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #fcf6ba, #b8860b, #fcf6ba);
+            background: linear-gradient(135deg, #ffd700, #ffffff, #ffd700);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-decoration: none;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+            animation: logoGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes logoGlow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.3); }
         }
 
         .nav-links {
@@ -69,27 +85,36 @@
 
         .nav-links a {
             text-decoration: none;
-            color: #fcf6ba;
-            font-family: 'Cinzel', serif;
-            font-weight: 500;
-            font-size: 0.95rem;
+            color: #ffffff;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            font-size: 1.1rem;
             transition: all 0.3s;
+            letter-spacing: 1px;
         }
 
         .nav-links a:hover {
-            color: #b8860b;
-            text-shadow: 0 0 10px rgba(184, 134, 11, 0.8);
+            color: #ffd700;
+            transform: translateY(-2px);
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
         }
 
         .dropdown {
             position: relative;
         }
 
+        .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+
         .dropdown-menu {
             position: absolute;
             top: 100%;
             right: 0;
-            background: rgba(11, 29, 58, 0.95);
+            background: rgba(139, 0, 0, 0.95);
             backdrop-filter: blur(15px);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
             border-radius: 12px;
@@ -98,7 +123,7 @@
             list-style: none;
             margin-top: 10px;
             display: none;
-            border: 1px solid rgba(252, 246, 186, 0.3);
+            border: 2px solid rgba(255, 215, 0, 0.3);
         }
 
         .dropdown-menu.active {
@@ -106,271 +131,552 @@
             animation: slideDown 0.3s ease;
         }
 
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .dropdown-menu li a {
             display: block;
             padding: 12px 20px;
-            color: #fcf6ba;
+            color: #ffffff;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            transition: all 0.2s;
         }
 
         .dropdown-menu li a:hover {
-            background: linear-gradient(135deg, rgba(184, 134, 11, 0.3), rgba(252, 246, 186, 0.1));
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.3), rgba(255, 255, 255, 0.1));
+            color: #ffd700;
+            transform: translateX(5px);
         }
 
-        /* --- CONTENU --- */
+        /* --- CONTENU PRINCIPAL --- */
         .container {
             position: relative;
             z-index: 2;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 40px 20px;
         }
 
-        /* --- EN-TÊTE --- */
+        /* --- HERO SECTION DE NOËL --- */
         .hero-section {
             text-align: center;
-            padding: 60px 20px 20px 20px;
+            padding: 80px 20px;
+            position: relative;
+            animation: fadeInUp 1.5s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero-title {
-            font-family: 'Cinzel', serif;
-            font-size: 3.5rem;
+            font-family: 'Mountains of Christmas', cursive;
+            font-size: 4.5rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #ffffff, #d4af37, #ffffff);
+            background: linear-gradient(135deg, #ffd700, #ffffff, #ff6b6b, #ffd700);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 20px;
-            text-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+            text-shadow: 0 0 40px rgba(255, 215, 0, 0.6);
+            animation: titleShimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes titleShimmer {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.4); }
         }
 
         .hero-subtitle {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.6rem;
             font-style: italic;
-            color: #fcf6ba;
+            color: #ffffff;
             margin-bottom: 30px;
             opacity: 0.95;
         }
 
-        /* --- DESCRIPTION INTRO --- */
-        .description-section {
-            max-width: 800px;
-            margin: 0 auto 50px auto;
-            padding: 25px 35px;
-            background: rgba(11, 29, 58, 0.6);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            border: 1px solid rgba(252, 246, 186, 0.15);
+        .christmas-emoji {
+            font-size: 3rem;
+            margin: 0 10px;
+            animation: bounce 2s ease-in-out infinite;
+            display: inline-block;
         }
 
-        .description-section p {
-            font-size: 1.25rem;
-            line-height: 1.7;
-            color: #fcf6ba;
-            text-align: center;
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
         }
 
-        /* --- TITRE DE SECTION SOUVENIRS --- */
-        .section-headline {
-            font-family: 'Cinzel', serif;
-            font-size: 2.2rem;
-            text-align: center;
-            margin: 40px 0 20px 0;
-            background: linear-gradient(135deg, #ffffff, #fcf6ba);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* --- GRILLE POUR LES PHOTOS --- */
-        .album-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-
-        .photo-card {
-            background: rgba(11, 29, 58, 0.7);
-            border: 1px solid rgba(252, 246, 186, 0.2);
-            border-radius: 15px;
-            padding: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s;
-            cursor: pointer;
-        }
-
-        .photo-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(255, 255, 255, 0.15);
-            border-color: #ffffff;
-        }
-
-        .photo-wrapper {
-            width: 100%;
-            height: 280px;
-            overflow: hidden;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            border: 1px solid rgba(252, 246, 186, 0.1);
-        }
-
-        .photo-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-
-        .photo-card:hover .photo-wrapper img {
-            transform: scale(1.08);
-        }
-
-        .card-details {
-            text-align: center;
-            padding: 5px 0;
-        }
-
-        .card-title {
-            font-family: 'Cinzel', serif;
-            font-size: 1.2rem;
-            color: #ffffff;
-            margin-bottom: 6px;
-        }
-
-        .card-desc {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.05rem;
-            font-style: italic;
-            color: rgba(252, 246, 186, 0.85);
-        }
-
-        /* --- ZONE MULTI-VIDÉOS --- */
-        .video-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-
-        .video-container {
-            background: rgba(11, 29, 58, 0.6);
-            border: 1px solid rgba(252, 246, 186, 0.2);
-            border-radius: 15px;
-            padding: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .video-container video {
-            width: 100%;
-            border-radius: 10px;
-            border: 1px solid rgba(252, 246, 186, 0.1);
-        }
-
-        .video-title {
-            font-family: 'Cinzel', serif;
-            color: #fcf6ba;
-            font-size: 1.1rem;
-            margin-top: 10px;
-            text-align: center;
-        }
-
-        /* --- SECTION CITATIONS TOUT EN BAS --- */
-        .bottom-quotes-section {
-            margin-top: 60px;
-            border-top: 1px solid rgba(252, 246, 186, 0.2);
-            padding-top: 40px;
-        }
-
-        .quotes-headline {
-            font-family: 'Cinzel', serif;
-            font-size: 2rem;
-            text-align: center;
-            margin-bottom: 40px;
-            background: linear-gradient(135deg, #ffffff, #fcf6ba);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
+        /* --- CITATION DE NOËL --- */
         .quote-container {
-            max-width: 800px;
-            margin: 0 auto 30px auto;
-            padding: 30px 40px;
-            background: rgba(11, 29, 58, 0.6);
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 50px;
+            background: rgba(139, 0, 0, 0.6);
             backdrop-filter: blur(10px);
-            border-radius: 15px;
-            border: 1px solid rgba(252, 246, 186, 0.2);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 215, 0, 0.4);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 215, 0, 0.3);
             position: relative;
-            animation: floatEffect 6s ease-in-out infinite;
+            overflow: hidden;
+            animation: float 6s ease-in-out infinite;
         }
 
-        .quote-container:nth-child(even) {
-            animation-delay: 2s;
-        }
-
-        @keyframes floatEffect {
+        @keyframes float {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .quote-container::before {
+            content: '❄';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 100px;
+            color: rgba(255, 255, 255, 0.1);
+            line-height: 1;
+        }
+
+        .quote-container::after {
+            content: '❄';
+            position: absolute;
+            bottom: -20px;
+            right: 20px;
+            font-size: 100px;
+            color: rgba(255, 255, 255, 0.1);
+            line-height: 1;
         }
 
         .quote-text {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: #ffffff;
-            line-height: 1.5;
-            margin-bottom: 15px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
         }
 
         .quote-author {
-            font-family: 'Cinzel', serif;
-            font-size: 1.1rem;
-            color: #d4af37;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: #ffd700;
             text-align: right;
             font-weight: 600;
         }
 
-        /* --- MODAL ZOOM --- */
+        /* --- SECTION DESCRIPTION --- */
+        .description-section {
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .description-section p {
+            font-size: 1.3rem;
+            line-height: 1.9;
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* --- GALERIE DE PHOTOS DE NOËL --- */
+        .gallery-section {
+            margin: 80px 0;
+        }
+
+        .section-title {
+            font-family: 'Mountains of Christmas', cursive;
+            font-size: 3.5rem;
+            text-align: center;
+            background: linear-gradient(135deg, #ffd700, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 50px;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .photo-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 3px solid rgba(255, 215, 0, 0.4);
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInCard 0.8s ease forwards;
+        }
+
+        .photo-card:nth-child(1) { animation-delay: 0.1s; }
+        .photo-card:nth-child(2) { animation-delay: 0.2s; }
+        .photo-card:nth-child(3) { animation-delay: 0.3s; }
+        .photo-card:nth-child(4) { animation-delay: 0.4s; }
+        .photo-card:nth-child(5) { animation-delay: 0.5s; }
+        .photo-card:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes fadeInCard {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .photo-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 25px 60px rgba(255, 215, 0, 0.5);
+            border-color: #ffd700;
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            transition: all 0.5s;
+        }
+
+        .photo-card:hover img {
+            transform: scale(1.1);
+            filter: brightness(0.7);
+        }
+
+        .photo-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(139, 0, 0, 0.95), transparent);
+            padding: 30px 20px 20px;
+            transform: translateY(100%);
+            transition: all 0.5s;
+        }
+
+        .photo-card:hover .photo-overlay {
+            transform: translateY(0);
+        }
+
+        .photo-title {
+            font-family: 'Mountains of Christmas', cursive;
+            font-size: 1.6rem;
+            color: #ffd700;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .photo-description {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: #ffffff;
+            font-style: italic;
+            opacity: 0.95;
+        }
+
+        /* --- SECTION ACTIVITÉS --- */
+        .activities-section {
+            margin: 80px 0;
+        }
+
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .activity-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: slideInLeft 0.8s ease forwards;
+        }
+
+        .activity-card:nth-child(even) {
+            transform: translateX(50px);
+            animation: slideInRight 0.8s ease forwards;
+        }
+
+        .activity-card:nth-child(1) { animation-delay: 0.1s; }
+        .activity-card:nth-child(2) { animation-delay: 0.2s; }
+        .activity-card:nth-child(3) { animation-delay: 0.3s; }
+        .activity-card:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .activity-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s;
+            opacity: 0;
+        }
+
+        .activity-card:hover::before {
+            opacity: 1;
+            animation: shine 1.5s;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .activity-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: #ffd700;
+            box-shadow: 0 20px 50px rgba(255, 215, 0, 0.4);
+        }
+
+        .activity-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border: 2px solid rgba(255, 215, 0, 0.4);
+            transition: all 0.5s;
+        }
+
+        .activity-card:hover .activity-image {
+            transform: scale(1.05);
+            border-color: #ffd700;
+        }
+
+        .activity-title {
+            font-family: 'Mountains of Christmas', cursive;
+            font-size: 1.8rem;
+            color: #ffd700;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .activity-description {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: #ffffff;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        /* --- MODAL POUR ZOOMER --- */
         .modal {
             display: none;
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
             z-index: 2000;
             justify-content: center;
             align-items: center;
+            animation: fadeIn 0.3s;
         }
 
-        .modal.active { display: flex; }
+        .modal.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
 
         .modal-content {
-            max-width: 85%;
-            max-height: 85%;
-            border-radius: 10px;
-            box-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 20px;
+            box-shadow: 0 0 60px rgba(255, 215, 0, 0.6);
+            border: 4px solid rgba(255, 215, 0, 0.5);
+            animation: zoomIn 0.5s;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
 
         .modal-close {
             position: absolute;
-            top: 20px; right: 20px;
-            font-size: 2.5rem; color: #ffffff;
+            top: 30px;
+            right: 30px;
+            font-size: 3rem;
+            color: #ffd700;
             cursor: pointer;
+            transition: all 0.3s;
+            background: rgba(139, 0, 0, 0.9);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid #ffd700;
         }
 
-        /* --- RESPONSIVE --- */
+        .modal-close:hover {
+            transform: rotate(90deg) scale(1.1);
+            background: #ffd700;
+            color: #8b0000;
+        }
+
+        /* --- GUIRLANDES LUMINEUSES --- */
+        .lights-decoration {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            height: 30px;
+            background: repeating-linear-gradient(90deg, 
+                transparent 0px,
+                transparent 50px,
+                rgba(255, 0, 0, 0.6) 50px,
+                rgba(255, 0, 0, 0.6) 70px,
+                transparent 70px,
+                transparent 120px,
+                rgba(0, 128, 0, 0.6) 120px,
+                rgba(0, 128, 0, 0.6) 140px,
+                transparent 140px,
+                transparent 190px,
+                rgba(255, 215, 0, 0.6) 190px,
+                rgba(255, 215, 0, 0.6) 210px,
+                transparent 210px,
+                transparent 260px
+            );
+            z-index: 0;
+            animation: lightsBlink 2s ease-in-out infinite;
+        }
+
+        @keyframes lightsBlink {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
         @media (max-width: 768px) {
-            .hero-title { font-size: 2.2rem; }
-            .navbar { padding: 15px 20px; }
-            .album-grid, .video-gallery { grid-template-columns: 1fr; }
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .quote-text {
+                font-size: 1.3rem;
+            }
+            
+            .navbar {
+                padding: 15px 20px;
+            }
+            
+            .nav-links {
+                gap: 20px;
+            }
+            
+            .photo-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .activity-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .description-section {
+                padding: 30px 20px;
+            }
+            
+            .quote-container {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .christmas-emoji {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                gap: 15px;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <canvas id="snow-particles"></canvas>
+    <!-- CANVAS POUR LA NEIGE -->
+    <canvas id="snow-canvas"></canvas>
 
+    <!-- GUIRLANDES LUMINEUSES -->
+    <div class="lights-decoration"></div>
+
+    <!-- NAVIGATION -->
     <nav class="navbar">
         <div class="logo">
-            <a href="yearbook.html">Our Yearbook</a>
+            <a href="yearbook.html">🎄 Our Yearbook</a>
         </div>
         <ul class="nav-links">
             <li><a href="yearbook.html">Accueil</a></li>
@@ -388,143 +694,173 @@
         </ul>
     </nav>
 
+    <!-- CONTENU PRINCIPAL -->
     <div class="container">
         
+        <!-- HERO SECTION -->
         <section class="hero-section">
-            <h1 class="hero-title">🎄 Noël Enchanté</h1>
-            <p class="hero-subtitle">Une journée magique remplie de joie, de partage et de merveilles</p>
+            <h1 class="hero-title">
+                <span class="christmas-emoji">❄️</span>
+                Noël Enchanté
+                <span class="christmas-emoji">🎄</span>
+            </h1>
+            <p class="hero-subtitle">Une journée magique remplie de joie, de partage et d'émerveillement</p>
         </section>
 
-        <section class="description-section">
-            <p>Cette année, le collège a plongé dans la magie de Noël aux couleurs hivernales. Les rires, les chants et les décors scintillants ont illuminé l'établissement pour créer des souvenirs inoubliables.</p>
-        </section>
-
-        <h2 class="section-headline">📸 Souvenirs de Noël</h2>
-        
-        <div class="album-grid" id="album-grid"></div>
-
-        <h2 class="section-headline">🎥 Les Moments Magiques en Vidéo</h2>
-
-        <div class="video-gallery">
-            <div class="video-container">
-                <video controls>
-                    <source src="images/video01.mp4.mp4" type="video/mp4">
-                    Votre navigateur ne supporte pas la lecture de vidéos.
-                </video>
-                <div class="video-title">🎬 Ambiance Hivernale</div>
-            </div>
-
-            <div class="video-container">
-                <video controls>
-                    <source src="images/video02.mp4" type="video/mp4">
-                    Votre navigateur ne supporte pas la lecture de vidéos.
-                </video>
-                <div class="video-title">🎼 Chants & Festivités</div>
-            </div>
+        <!-- CITATION DE NOËL -->
+        <div class="quote-container">
+            <p class="quote-text">Noël n'est pas un jour, c'est un état d'esprit.</p>
+            <p class="quote-author">— Kris Kringle</p>
         </div>
 
-        <section class="bottom-quotes-section">
-            <h2 class="quotes-headline">📜 Merveilles de Noël</h2>
+        <!-- DESCRIPTION -->
+        <section class="description-section">
+            <p>Cette année, le collège a plongé dans la magie d'un Noël aux couleurs hivernales. Loin des festivités traditionnelles, nous avons créé une ambiance de sérénité et d'émerveillement, où chaque détail scintillait de douceur.</p>
+            <p>Ce 17 Décembre, l'école s'est transformée en un véritable havre de joie et de partage. Dès le matin, les élèves ont été accueillis par des chants de Noël et des décorations scintillantes qui illuminaient chaque coin de la cour. Les sourires étaient contagieux, et l'esprit de fête se ressentait dans chaque geste.</p>
+            <p>Les filles de S4 ont rendu ce moment inoubliable à travers le décor qu'elles ont créé et les activités de divertissement qu'elles ont organisées. Laissez-vous emporter par chaque image, laissez parler la joie que vous verrez à travers ces photographies et voyez comment chacune des filles transmet leur envie de vivre !</p>
+        </section>
+
+        <!-- GALERIE DE PHOTOS -->
+        <section class="gallery-section">
+            <h2 class="section-title">✨ Souvenirs de Noël</h2>
             
-            <div class="quote-container">
-                <p class="quote-text">Celui qui n'a pas Noël dans son cœur ne le trouvera jamais au pied d'un arbre.</p>
-                <p class="quote-author">— Roy L. Smith</p>
+            <div class="photo-grid" id="photo-grid">
+                <!-- Les photos seront générées dynamiquement par JavaScript -->
             </div>
+        </section>
 
-            <div class="quote-container">
-                <p class="quote-text">Noël n'est pas un jour ni une saison, c'est un état d'esprit.</p>
-                <p class="quote-author">— Calvin Coolidge</p>
-            </div>
+        <!-- DEUXIÈME CITATION -->
+        <div class="quote-container">
+            <p class="quote-text">Le meilleur de tous les cadeaux autour de n'importe quel sapin de Noël est la présence d'une famille heureuse.</p>
+            <p class="quote-author">— Burton Hills</p>
+        </div>
 
-            <div class="quote-container">
-                <p class="quote-text">L'ignorant affirme, le savant doute, le sage réfléchit.</p>
-                <p class="quote-author">— Aristote</p>
+        <!-- SECTION ACTIVITÉS -->
+        <section class="activities-section">
+            <h2 class="section-title">🎁 Nos Moments Magiques</h2>
+            
+            <div class="activity-grid" id="activity-grid">
+                <!-- Les activités seront générées dynamiquement par JavaScript -->
             </div>
+        </section>
+
+        <!-- MESSAGE FINAL -->
+        <section class="description-section">
+            <p style="font-style: italic; font-size: 1.4rem; text-align: center;">Ce Noël 2025 restera gravé dans nos mémoires comme une parenthèse de pure magie et de tendresse. Joyeux Noël à tous ! 🎅✨</p>
         </section>
 
     </div>
 
+    <!-- MODAL POUR ZOOMER -->
     <div class="modal" id="image-modal">
         <span class="modal-close" id="modal-close">×</span>
-        <img class="modal-content" id="modal-image" alt="Aperçu">
+        <img class="modal-content" id="modal-image">
     </div>
 
+    <!-- SCRIPTS -->
     <script>
         // ============================================
-        // 📸 DONNÉES DE TES SOUVENIRS DE NOËL
+        // 📸 SYSTÈME DE GESTION DES PHOTOS
         // ============================================
+        // AJOUTEZ VOS PHOTOS ICI !
+        
         const photosData = [
             {
-                src: 'images/image02.jpg.jpeg', 
-                title: '🏛️ Les Jeunes Sages',
-                description: 'La promotion Nexora fièrement réunie en toges blanches.'
+                src: 'images/Noel.jpeg',  // TA PHOTO PRINCIPALE
+                title: '🎄 Le Sapin Enchanté',
+                description: 'Notre magnifique sapin décoré avec amour'
             },
             {
-                src: 'images/image03.jpg.jpeg',
-                title: '💬 Le Grand Débat',
-                description: 'Discussion passionnée et animée sur l\'avenir.'
+                src: 'photos/noel/decoration1.jpg',
+                title: '✨ Décorations Scintillantes',
+                description: 'Les décorations créées par les élèves de S4'
             },
             {
-                src: 'images/image04.jpg.jpeg',
-                title: '✍️ L\'Art de l\'Écriture',
-                description: 'Ateliers de calligraphie créative et de réflexion.'
+                src: 'photos/noel/chants.jpg',
+                title: '🎵 Chants de Noël',
+                description: 'La chorale qui réchauffe les cœurs'
             },
             {
-                src: 'images/image05.jpg.jpeg',
-                title: '🔰 L\'Agora de Nexora',
-                description: 'Un moment suspendu de partage et de fraternité.'
+                src: 'photos/noel/activites.jpg',
+                title: '🎨 Activités Festives',
+                description: 'Moments de partage et de créativité'
             },
             {
-                src: 'images/image06.jpg.jpeg',
-                title: '🔰 L\'Agora de Nexora',
-                description: 'Un moment suspendu de partage et de fraternité.'
+                src: 'photos/noel/sourires.jpg',
+                title: '😊 Sourires Contagieux',
+                description: 'La joie de Noël dans tous les regards'
             },
             {
-                src: 'images/image07.jpg.jpeg',
-                title: '🔰 L\'Agora de Nexora',
-                description: 'Une promotion unie.'
-            },
-            {
-                src: 'images/image08.jpg.jpeg',
-                title: '🔰 L\'Agora de Nexora',
-                description: 'Photo entre Besties.'
-            },
-            {
-                src: 'images/image09.jpg.jpeg',
-                title: '🔰 L\'Agora de Nexora',
-                description: 'Les membres de notre comité de classe.'
-            },
-            {
-                src: 'images/image10.jpg.jpeg',
-                title: '🔰 L\'Agora de Nexora',
-                description: 'Groupe d\'amies.'
-            },
-            {
-                src: 'images/image11.jpg.jpeg',
-                title: '🔰 L\'Agora de Nexora',
-                description: 'Un moment suspendu de partage et de fraternité.'
+                src: 'photos/noel/gouter.jpg',
+                title: '🍪 Goûter de Noël',
+                description: 'Partage de douceurs festives'
             }
         ];
 
-        // Génération automatique des photos
-        const albumGrid = document.getElementById('album-grid');
-        photosData.forEach(photo => {
+        // ============================================
+        // 🎁 SYSTÈME DE GESTION DES ACTIVITÉS
+        // ============================================
+        
+        const activitiesData = [
+            {
+                image: 'photos/noel/sapin.jpg',
+                title: '🎄 L\'Arbre des Lumières',
+                description: 'Ensemble, les élèves ont décoré un majestueux sapin d\'argent et de bleu, symbole de nos vœux pour la paix.'
+            },
+            {
+                image: 'photos/noel/chorale.jpg',
+                title: '🎵 Chants Givrés',
+                description: 'La chorale du collège a interprété des mélodies hivernales, réchauffant les cœurs avec des voix cristallines.'
+            },
+            {
+                image: 'photos/noel/flocons.jpg',
+                title: '❄️ Atelier Flocons d\'Espoir',
+                description: 'Les plus petits ont créé des flocons de neige scintillants, chacun portant un message de bonheur.'
+            },
+            {
+                image: 'photos/noel/gouter.jpg',
+                title: '🍰 Goûter Enchanté',
+                description: 'Un moment convivial où parents et enfants ont partagé des douceurs dans une ambiance feutrée et chaleureuse.'
+            }
+        ];
+
+        // ============================================
+        // 🎨 GÉNÉRATION DYNAMIQUE DU CONTENU
+        // ============================================
+        
+        // Générer la galerie de photos
+        const photoGrid = document.getElementById('photo-grid');
+        photosData.forEach((photo, index) => {
             const card = document.createElement('div');
             card.className = 'photo-card';
             card.innerHTML = `
-                <div class="photo-wrapper">
-                    <img src="${photo.src}" alt="${photo.title}">
-                </div>
-                <div class="card-details">
-                    <h3 class="card-title">${photo.title}</h3>
-                    <p class="card-desc">${photo.description}</p>
+                <img src="${photo.src}" alt="${photo.title}">
+                <div class="photo-overlay">
+                    <h3 class="photo-title">${photo.title}</h3>
+                    <p class="photo-description">${photo.description}</p>
                 </div>
             `;
             card.addEventListener('click', () => openModal(photo.src));
-            albumGrid.appendChild(card);
+            photoGrid.appendChild(card);
         });
 
-        // Gestion de la modale zoom
+        // Générer les activités
+        const activityGrid = document.getElementById('activity-grid');
+        activitiesData.forEach((activity, index) => {
+            const card = document.createElement('div');
+            card.className = 'activity-card';
+            card.innerHTML = `
+                <img src="${activity.image}" alt="${activity.title}" class="activity-image">
+                <h3 class="activity-title">${activity.title}</h3>
+                <p class="activity-description">${activity.description}</p>
+            `;
+            activityGrid.appendChild(card);
+        });
+
+        // ============================================
+        // 🔍 MODAL POUR ZOOMER SUR LES PHOTOS
+        // ============================================
+        
         const modal = document.getElementById('image-modal');
         const modalImage = document.getElementById('modal-image');
         const modalClose = document.getElementById('modal-close');
@@ -534,58 +870,104 @@
             modal.classList.add('active');
         }
 
-        modalClose.addEventListener('click', () => modal.classList.remove('active'));
-        modal.addEventListener('click', (e) => { if(e.target === modal) modal.classList.remove('active'); });
+        modalClose.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
 
-        // Effet de neige tombante en arrière-plan
-        const canvas = document.getElementById('snow-particles');
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+
+        // ============================================
+        // ❄️ SYSTÈME DE NEIGE ANIMÉE
+        // ============================================
+        
+        const canvas = document.getElementById('snow-canvas');
         const ctx = canvas.getContext('2d');
         
-        function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        window.addEventListener('resize', () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
+        });
 
-        const flakes = [];
-        for (let i = 0; i < 60; i++) {
-            flakes.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                r: Math.random() * 3 + 1,
-                d: Math.random() * 20
-            });
-        }
+        const snowflakes = [];
 
-        function drawFlakes() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "rgba(255, 255, 255, 0.7)";
-            ctx.beginPath();
-            for (let i = 0; i < flakes.length; i++) {
-                const f = flakes[i];
-                ctx.moveTo(f.x, f.y);
-                ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2, true);
-                
-                f.y += Math.cos(f.d) + 1 + f.r / 2;
-                f.x += Math.sin(f.d) * 0.5;
+        class Snowflake {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 5 + 2;
+                this.speedY = Math.random() * 1 + 0.5;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.opacity = Math.random() * 0.5 + 0.3;
+            }
 
-                if (f.y > canvas.height) {
-                    flakes[i] = { x: Math.random() * canvas.width, y: 0, r: f.r, d: f.d };
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+
+                if (this.y > canvas.height) {
+                    this.y = -10;
+                    this.x = Math.random() * canvas.width;
                 }
             }
-            ctx.fill();
-            requestAnimationFrame(drawFlakes);
-        }
-        drawFlakes();
 
-        // Gestion du menu de navigation dropdown
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.opacity;
+                ctx.fillStyle = '#ffffff';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        // Créer les flocons de neige
+        for (let i = 0; i < 150; i++) {
+            snowflakes.push(new Snowflake());
+        }
+
+        // Animation de la neige
+        function animateSnow() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            snowflakes.forEach(flake => {
+                flake.update();
+                flake.draw();
+            });
+            
+            requestAnimationFrame(animateSnow);
+        }
+
+        animateSnow();
+
+        // ============================================
+        // 📱 MENU DÉROULANT
+        // ============================================
+        
         const dropdownToggle = document.querySelector('.dropdown-toggle');
         const dropdownMenu = document.querySelector('.dropdown-menu');
-        dropdownToggle.addEventListener('click', (e) => {
-            e.preventDefault();
-            dropdownMenu.classList.toggle('active');
-        });
+        
+        if (dropdownToggle && dropdownMenu) {
+            dropdownToggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                dropdownMenu.classList.toggle('active');
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                    dropdownMenu.classList.remove('active');
+                }
+            });
+        }
     </script>
+
 </body>
 </html>
