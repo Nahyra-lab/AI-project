@@ -241,11 +241,11 @@
             color: #ffffff;
         }
 
-       /* --- SOUVENIRS MULTI-VIDÉOS AJUSTÉS --- */
+      /* --- SOUVENIRS MULTI-VIDÉOS CORRIGÉS --- */
 .video-gallery {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Centre les vidéos horizontalement */
+    justify-content: center; /* C'EST CETTE LIGNE QUI METTRA LA TROISIÈME VIDÉO AU MILIEU EN BAS ! */
     gap: 30px;
     margin-bottom: 60px;
 }
@@ -256,18 +256,16 @@
     border-radius: 12px;
     padding: 12px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    
-    /* C'est ici qu'on gère la petite taille du cadre */
     width: 100%;
-    max-width: 280px; /* Aligné sur la taille des cartes photos (ex: 280px ou 300px selon ton choix) */
+    max-width: 280px; /* Garde la taille idéale ajustée à tes vidéos */
     text-align: center;
 }
 
 .video-container video {
-    width: 100%;          /* Force la vidéo à prendre la largeur du petit cadre */
-    height: auto;         /* Conserve les proportions de la vidéo */
+    width: 100%;
+    height: auto;
     border-radius: 8px;
-    display: block;       /* Évite les espaces vides sous la vidéo */
+    display: block;
 }
 
         .video-title {
@@ -399,7 +397,7 @@
                     <source src="images/video03.mp4.mp4" type="video/mp4">
                     Votre navigateur ne supporte pas la lecture de vidéos.
                 </video>
-                <div class="video-title">🎼 Chants & Festivités</div>
+                <div class="video-title">🎼 Défilé de mode</div>
             </div>
         </div>
         <div class="video-container">
