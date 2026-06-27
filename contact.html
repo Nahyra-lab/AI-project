@@ -27,11 +27,16 @@
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.05); }
         }
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(212, 175, 55, 0.6); }
+        }
         
         .animate-slide-left { animation: slideInFromLeft 0.8s ease-out forwards; }
         .animate-slide-right { animation: slideInFromRight 0.8s ease-out forwards; }
         .animate-fade-up { animation: fadeInUp 0.8s ease-out forwards; }
         .animate-pulse-slow { animation: pulse 2s ease-in-out infinite; }
+        .glow-button { animation: glow 2s ease-in-out infinite; }
         
         .delay-200 { animation-delay: 0.2s; }
         .delay-400 { animation-delay: 0.4s; }
@@ -64,7 +69,7 @@
     <nav class="fixed w-full z-50 bg-white shadow-sm px-6 py-4 flex justify-between items-center">
         <div class="text-2xl font-bold tracking-tighter text-blue-900 cursor-pointer" onclick="window.location.href='SUCCESS.html'">SUCCES <span class="text-yellow-600 font-serif italic">Story</span></div>
         <div class="hidden md:flex space-x-6 text-sm font-semibold uppercase tracking-wider">
-            <button onclick="window.location.href='SUCCESS.html#acceuil'" class="nav-btn hover:text-yellow-600 transition">Accueil</button>
+            <button onclick="window.location.href='SUCCESS.html#accueil'" class="nav-btn hover:text-yellow-600 transition">Accueil</button>
             <button onclick="window.location.href='SUCCESS.html#stories'" class="nav-btn hover:text-yellow-600 transition">The Stories</button>
             <button onclick="window.location.href='SUCCESS.html#orientation'" class="nav-btn hover:text-yellow-600 transition">Orientation</button>
             <button onclick="window.location.href='SUCCESS.html#opportunities'" class="nav-btn hover:text-yellow-600 transition">Opportunities</button>
@@ -89,7 +94,7 @@
                         <div class="phone-icon">📞</div>
                         <div>
                             <h2 class="text-2xl font-bold text-blue-900 mb-2">Intégrer le journal du collège</h2>
-                            <p class="text-gray-600 mb-4">Vous souhaitez rejoindre notre équipe et contribuer au projet ?</p>
+                            <p class="text-gray-600 mb-4">Vous souhaitez rejoindre notre équipe et contribuer au projet?</p>
                             <div class="flex items-center bg-white rounded-xl p-4 shadow-md">
                                 <span class="text-3xl mr-3">📱</span>
                                 <span class="text-2xl font-bold text-blue-900">31429876</span>
@@ -104,7 +109,7 @@
                         <div class="phone-icon" style="background: linear-gradient(135deg, #9333EA, #EC4899);">📞</div>
                         <div>
                             <h2 class="text-2xl font-bold text-purple-900 mb-2">Partager votre histoire</h2>
-                            <p class="text-gray-600 mb-4">Vous avez une histoire inspirante à raconter ? Contactez-nous !</p>
+                            <p class="text-gray-600 mb-4">Vous avez une histoire inspirante à raconter? Contactez-nous!</p>
                             <div class="flex items-center bg-white rounded-xl p-4 shadow-md">
                                 <span class="text-3xl mr-3">📱</span>
                                 <span class="text-2xl font-bold text-purple-900">34145675</span>
@@ -131,7 +136,7 @@
                             </div>
                         </div>
                         <div class="relative h-80 md:h-auto min-h-[400px]">
-                            <img src="https://chatgpt.com/s/m_6a401bed197081919b6740cdc24a2b74" 
+                            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80" 
                                  alt="Communauté Inspiring Minds" 
                                  class="absolute inset-0 w-full h-full object-cover"
                                  onerror="this.src='https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80'">
@@ -143,7 +148,7 @@
             <!-- Back Button -->
             <div class="text-center mt-12 opacity-0 animate-fade-up delay-600">
                 <button onclick="window.location.href='SUCCESS.html#stories'" 
-                        class="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-blue-900 px-8 py-4 rounded-full font-bold text-lg hover:from-yellow-500 hover:to-orange-600 transition-all transform hover:scale-105 shadow-lg">
+                        class="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-blue-900 px-8 py-4 rounded-full font-bold text-lg hover:from-yellow-500 hover:to-orange-600 transition-all transform hover:scale-105 shadow-lg glow-button">
                     ← Retour aux Stories
                 </button>
             </div>

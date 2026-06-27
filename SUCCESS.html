@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Success Story | Inspiring Minds</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&family=Great+Vibes:wght@400&display=swap" rel="stylesheet">
     <style>
       
  :root { --gold: #D4AF37; --dark-blue: #0A192F; }
@@ -54,6 +54,14 @@
         @keyframes shimmer {
             0% { background-position: -1000px 0; }
             100% { background-position: 1000px 0; }
+        }
+        @keyframes textWave {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(212, 175, 55, 0.6); }
         }
         
         .animate-title-glow { animation: titleGlow 3s ease-in-out infinite; }
@@ -124,11 +132,12 @@
         }
         
         /* Animated Text */
-        @keyframes textWave {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
         .animate-text-wave { animation: textWave 2s ease-in-out infinite; }
+        .glow-text { animation: glow 2s ease-in-out infinite; }
+        
+        /* Flip card entrance animation */
+        .flip-card.entrance { opacity: 0; transform: translateY(50px); }
+        .flip-card.entrance.visible { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body class="text-slate-800">
@@ -161,7 +170,7 @@
                         
                         <img src="images/Elga2.jpeg.png" class="w-24 h-24 mx-auto rounded-full mb-4 bg-slate-100 object-cover" alt="AUGUSTE Elga J.">
                         <h3 class="font-bold">AUGUSTE Elga J.</h3>
-                        <p class="text-sm italic text-gray-500">" Coordinatrice et rédactrice passionnée, elle donne vie aux événements à travers ses mots et crée des récits empreints d’émotion."</p>
+                        <p class="text-sm italic text-gray-500">" Coordinatrice et rédactrice passionnée, elle donne vie aux événements à travers ses mots et crée des récits empreints d'émotion."</p>
                     </div>
                     <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-yellow-500">
                         <img src="images/Jardlyne.jpeg" class="w-24 h-24 mx-auto rounded-full mb-4 bg-slate-100">
@@ -171,7 +180,7 @@
                     <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-yellow-500">
                         <img src="images/Carmita.jpeg.jpeg" class="w-24 h-24 mx-auto rounded-full mb-4 bg-slate-100">
                         <h3 class="font-bold">MESIDOR Carmita</h3>
-                        <p class="text-sm italic text-gray-500">" Coordinatrice et rédactrice passionnée, elle donne vie aux événements à travers ses mots et crée des récits empreints d’émotion."</p>
+                        <p class="text-sm italic text-gray-500">" Coordinatrice et rédactrice passionnée, elle donne vie aux événements à travers ses mots et crée des récits empreints d'émotion."</p>
                     </div>
                 </div>
             </div>
@@ -184,7 +193,7 @@
             <div class="absolute inset-0 bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900"></div>
             <div class="relative z-10 text-center max-w-5xl mx-auto px-4">
                 <!-- Animated Title - Falls from sky -->
-                <h1 id="stories-title" class="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 font-serif opacity-0" style="font-family: 'Great Vibes', cursive; text-shadow: 0 0 30px rgba(255,215,0,0.5);">
+                <h1 id="stories-title" class="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 opacity-0" style="font-family: 'Great Vibes', cursive; text-shadow: 0 0 30px rgba(255,215,0,0.5);">
                     The <span class="text-yellow-400 italic">Stories</span>
                 </h1>
                 <!-- Tagline - Slides from left to right -->
@@ -199,7 +208,7 @@
             <!-- Flip Cards Section -->
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
                 <!-- Karina Flip Card -->
-                <div class="flip-card opacity-0" data-aos="fade-up">
+                <div class="flip-card entrance">
                     <div class="flip-card-inner bg-gradient-to-br from-yellow-50 to-amber-50 rounded-2xl shadow-xl overflow-hidden cursor-pointer h-[450px]">
                         <!-- Front of card -->
                         <div class="flip-card-front p-6 flex flex-col items-center justify-center text-center">
@@ -209,7 +218,7 @@
                             <span class="mt-4 bg-yellow-500 text-blue-900 px-4 py-2 rounded-full text-sm font-bold">🏆 Medcriture</span>
                         </div>
                         <!-- Back of card -->
-                        <div class="flip-card-back bg-gradient-to-br from-yellow-500 to-amber-600 p-6 flex flex-col items-center justify-center text-center text-white ">
+                        <div class="flip-card-back bg-gradient-to-br from-yellow-500 to-amber-600 p-6 flex flex-col items-center justify-center text-center text-white">
                             <div class="overflow-y-auto max-h-[400px] pr-2">
                                 <p class="italic text-lg mb-4">"Écris chaque jour, même si ce n'est qu'une phrase."</p>
                                 <p class="text-sm mb-3"><strong>Parcours:</strong> Passionnée d'écriture depuis l'âge de 11 ans</p>
@@ -221,7 +230,7 @@
                 </div>
 
                 <!-- Esperancia Flip Card -->
-                <div class="flip-card opacity-0" data-aos="fade-up" data-aos-delay="100">
+                <div class="flip-card entrance">
                     <div class="flip-card-inner bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl shadow-xl overflow-hidden cursor-pointer h-[450px]">
                         <!-- Front of card -->
                         <div class="flip-card-front p-6 flex flex-col items-center justify-center text-center">
@@ -231,7 +240,7 @@
                             <span class="mt-4 bg-purple-500 text-white px-4 py-2 rounded-full text-sm font-bold">🎤 3ème Place</span>
                         </div>
                         <!-- Back of card -->
-                        <div class="flip-card-back bg-gradient-to-br from-purple-500 to-pink-600 p-6 flex flex-col items-center justify-center text-center text-white ">
+                        <div class="flip-card-back bg-gradient-to-br from-purple-500 to-pink-600 p-6 flex flex-col items-center justify-center text-center text-white">
                             <div class="overflow-y-auto max-h-[400px] pr-2">
                                 <p class="italic text-lg mb-4">"La musique est le langage universel de l'âme"</p>
                                 <p class="text-sm mb-3"><strong>Parcours:</strong> Dotée d'une voix exceptionnelle, elle brille dans tous les concours de chant</p>
@@ -243,195 +252,104 @@
                 </div>
 
                 <!-- Elga Flip Card -->
-                <div class="flip-card opacity-0" data-aos="fade-up" data-aos-delay="200">
-                    <div class="flip-card-inner bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl shadow-xl overflow-hidden cursor-pointer h-[450px]">
-                        <!-- Front of card -->
-                        <div class="flip-card-front p-6 flex flex-col items-center justify-center text-center">
-                            <img src="images/Elga2.jpeg.png" class="w-40 h-40 rounded-full object-cover mb-4 border-4 border-green-500 shadow-lg" alt="Elga">
-                            <h3 class="text-2xl font-bold text-blue-900 font-serif mb-2">Elga</h3>
-                            <p class="text-green-600 font-semibold">Poésie & Engagement</p>
-                            <span class="mt-4 bg-green-500 text-white px-4 py-2 rounded-full text-sm font-bold">✒️ Poétesse</span>
-                        </div>
-                        <!-- Back of card -->
-                        <div class="flip-card-back bg-gradient-to-br from-green-500 to-emerald-600 p-6 flex flex-col items-center justify-center text-center text-white ">
-                            <div class="overflow-y-auto max-h-[400px] pr-2">
-                                <p class="italic text-lg mb-4">"La poésie est le langage de l'âme"</p>
-                                <p class="text-sm mb-3"><strong>Parcours:</strong> À l'école depuis petite, s'engage activement dans toutes les activités du collège</p>
-                                <p class="text-sm mb-3"><strong>Réalisations:</strong> Connue de tous pour sa générosité et son aide constante, carte cadeau offerte par la promotion 1982</p>
-                                <button class="magazine-btn mt-4 bg-white text-green-600 px-6 py-2 rounded-full font-bold hover:bg-blue-900 hover:text-white transition">Voir le Magazine →</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Yvenie Flip Card -->
-                <div class="flip-card opacity-0" data-aos="fade-up" data-aos-delay="300">
-                    <div class="flip-card-inner bg-gradient-to-br from-orange-50 to-red-50 rounded-2xl shadow-xl overflow-hidden cursor-pointer h-[450px]">
-                        <!-- Front of card -->
-                        <div class="flip-card-front p-6 flex flex-col items-center justify-center text-center">
-                            <img src="https://images.unsplash.com/photo-1525926477800-7a3be5800fcb?auto=format&fit=crop&w=400&q=80" class="w-40 h-40 rounded-full object-cover mb-4 border-4 border-orange-500 shadow-lg" alt="Yvenie">
-                            <h3 class="text-2xl font-bold text-blue-900 font-serif mb-2">Yvenie</h3>
-                            <p class="text-orange-600 font-semibold">Excellence Académique</p>
-                            <span class="mt-4 bg-orange-500 text-white px-4 py-2 rounded-full text-sm font-bold">🎓 Bourse Complète</span>
-                        </div>
-                        <!-- Back of card -->
-                        <div class="flip-card-back bg-gradient-to-br from-orange-500 to-red-600 p-6 flex flex-col items-center justify-center text-center text-white ">
-                            <div class="overflow-y-auto max-h-[400px] pr-2">
-                                <p class="italic text-lg mb-4">"L'excellence est une habitude quotidienne"</p>
-                                <p class="text-sm mb-3"><strong>Parcours:</strong> Arrivée en 7ème année, excellent rendement scolaire depuis</p>
-                                <p class="text-sm mb-3"><strong>Réalisations:</strong> Bourse complète offerte par la promotion 1995 pour son excellence académique</p>
-                                <button class="magazine-btn mt-4 bg-white text-orange-600 px-6 py-2 rounded-full font-bold hover:bg-blue-900 hover:text-white transition">Voir le Magazine →</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Exposcience Girls Flip Card -->
-                <div class="flip-card opacity-0" data-aos="fade-up" data-aos-delay="400">
+                <div class="flip-card entrance">
                     <div class="flip-card-inner bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl shadow-xl overflow-hidden cursor-pointer h-[450px]">
                         <!-- Front of card -->
                         <div class="flip-card-front p-6 flex flex-col items-center justify-center text-center">
-                            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=400&q=80" class="w-40 h-40 rounded-full object-cover mb-4 border-4 border-blue-500 shadow-lg" alt="Exposcience">
-                            <h3 class="text-2xl font-bold text-blue-900 font-serif mb-2">Les Innovatrices</h3>
-                            <p class="text-blue-600 font-semibold">Promotion Armoni</p>
-                            <span class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-bold">🔬 Exposcience</span>
+                            <img src="images/Elga2.jpeg.png" class="w-40 h-40 rounded-full object-cover mb-4 border-4 border-blue-500 shadow-lg" alt="Elga" onerror="this.src='https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80'">
+                            <h3 class="text-2xl font-bold text-blue-900 font-serif mb-2">Elga</h3>
+                            <p class="text-blue-600 font-semibold">Poésie & Engagement</p>
+                            <span class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-bold">✨ Excellence</span>
                         </div>
                         <!-- Back of card -->
-                        <div class="flip-card-back bg-gradient-to-br from-blue-500 to-indigo-600 p-6 flex flex-col items-center justify-center text-center text-white ">
+                        <div class="flip-card-back bg-gradient-to-br from-blue-500 to-indigo-600 p-6 flex flex-col items-center justify-center text-center text-white">
                             <div class="overflow-y-auto max-h-[400px] pr-2">
-                                <p class="italic text-lg mb-4">"Ne comptez que sur vous et votre équipe"</p>
-                                <p class="text-sm mb-3"><strong>Parcours:</strong> Trois filles déterminées qui ont participé à Exposcience 2022 et 2023</p>
-                                <p class="text-sm mb-3"><strong>Réalisations:</strong> Gagnantes du concours Exposcience avec un projet environnemental innovant</p>
+                                <p class="italic text-lg mb-4">"Chaque mot a le pouvoir de changer une vie"</p>
+                                <p class="text-sm mb-3"><strong>Parcours:</strong> À l'école depuis petite, elle s'engage activement au collège</p>
+                                <p class="text-sm mb-3"><strong>Réalisations:</strong> Coordinatrice et rédactrice passionnée, elle donne vie aux événements à travers ses mots et crée des récits empreints d'émotion. Reconnue pour son excellence en poésie.</p>
                                 <button class="magazine-btn mt-4 bg-white text-blue-600 px-6 py-2 rounded-full font-bold hover:bg-blue-900 hover:text-white transition">Voir le Magazine →</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Promotion 1995 Flip Card -->
-                <div class="flip-card opacity-0" data-aos="fade-up" data-aos-delay="500">
-                    <div class="flip-card-inner bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl shadow-xl overflow-hidden cursor-pointer h-[450px]">
+                <!-- Yvenie Flip Card -->
+                <div class="flip-card entrance">
+                    <div class="flip-card-inner bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl shadow-xl overflow-hidden cursor-pointer h-[450px]">
                         <!-- Front of card -->
                         <div class="flip-card-front p-6 flex flex-col items-center justify-center text-center">
-                            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=400&q=80" class="w-40 h-40 rounded-full object-cover mb-4 border-4 border-indigo-500 shadow-lg" alt="Promotion 1995">
-                            <h3 class="text-2xl font-bold text-blue-900 font-serif mb-2">Promotion 1995</h3>
-                            <p class="text-indigo-600 font-semibold">Mérites Exceptionnels</p>
-                            <span class="mt-4 bg-indigo-500 text-white px-4 py-2 rounded-full text-sm font-bold">💝 Générosité</span>
+                            <img src="https://images.unsplash.com/photo-1525926477800-7a3be5800fcb?auto=format&fit=crop&w=400&q=80" class="w-40 h-40 rounded-full object-cover mb-4 border-4 border-green-500 shadow-lg" alt="Yvenie">
+                            <h3 class="text-2xl font-bold text-blue-900 font-serif mb-2">Yvenie</h3>
+                            <p class="text-green-600 font-semibold">Excellence Académique</p>
+                            <span class="mt-4 bg-green-500 text-white px-4 py-2 rounded-full text-sm font-bold">🎓 Bourse</span>
                         </div>
                         <!-- Back of card -->
-                        <div class="flip-card-back bg-gradient-to-br from-indigo-500 to-purple-600 p-6 flex flex-col items-center justify-center text-center text-white ">
+                        <div class="flip-card-back bg-gradient-to-br from-green-500 to-emerald-600 p-6 flex flex-col items-center justify-center text-center text-white">
                             <div class="overflow-y-auto max-h-[400px] pr-2">
-                                <p class="italic text-lg mb-4">"Toujours là pour leurs petites soeurs"</p>
-                                <p class="text-sm mb-3"><strong>Parcours:</strong> La seule promotion aussi généreuse qui aide toujours malgré les moments difficiles</p>
-                                <p class="text-sm mb-3"><strong>Réalisations:</strong> Bourses (1 entière + 1 demi), cartes cadeaux, imprimante 3D offerte</p>
-                                <button class="magazine-btn mt-4 bg-white text-indigo-600 px-6 py-2 rounded-full font-bold hover:bg-blue-900 hover:text-white transition">Voir le Magazine →</button>
+                                <p class="italic text-lg mb-4">"L'excellence est un voyage, pas une destination"</p>
+                                <p class="text-sm mb-3"><strong>Parcours:</strong> Venue au collège en 7e année avec un excellent rendement scolaire</p>
+                                <p class="text-sm mb-3"><strong>Réalisations:</strong> À l'école, on valorise l'excellence. C'est pour cela qu'elle a reçu la bourse complète offerte par la promotion 1995. Son parcours exemplaire montre que la persévérance et le travail acharné mènent toujours à la réussite.</p>
+                                <button class="magazine-btn mt-4 bg-white text-green-600 px-6 py-2 rounded-full font-bold hover:bg-blue-900 hover:text-white transition">Voir le Magazine →</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Exposcience Team Flip Card -->
+                <div class="flip-card entrance">
+                    <div class="flip-card-inner bg-gradient-to-br from-orange-50 to-red-50 rounded-2xl shadow-xl overflow-hidden cursor-pointer h-[450px]">
+                        <!-- Front of card -->
+                        <div class="flip-card-front p-6 flex flex-col items-center justify-center text-center">
+                            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=400&q=80" class="w-40 h-40 rounded-full object-cover mb-4 border-4 border-orange-500 shadow-lg" alt="Exposcience">
+                            <h3 class="text-2xl font-bold text-blue-900 font-serif mb-2">Les Innovatrices</h3>
+                            <p class="text-orange-600 font-semibold">Promotion Armoni</p>
+                            <span class="mt-4 bg-orange-500 text-white px-4 py-2 rounded-full text-sm font-bold">🚀 Exposcience</span>
+                        </div>
+                        <!-- Back of card -->
+                        <div class="flip-card-back bg-gradient-to-br from-orange-500 to-red-600 p-6 flex flex-col items-center justify-center text-center text-white">
+                            <div class="overflow-y-auto max-h-[400px] pr-2">
+                                <p class="italic text-lg mb-4">"L'innovation naît du courage d'essayer"</p>
+                                <p class="text-sm mb-3"><strong>Qu'est-ce qui vous a poussé à y participer?</strong> La première fois (2022), c'était pour l'expérience. La seconde (2023), c'était par égo - j'avais perdu et je voulais corriger cela.</p>
+                                <p class="text-sm mb-3"><strong>Obstacles surmontés:</strong> Manque de support, problèmes internes d'équipe, fatigue... Mais la veille de la compétition, malgré l'abandon prévu, on a décidé d'y aller!</p>
+                                <button class="magazine-btn mt-4 bg-white text-orange-600 px-6 py-2 rounded-full font-bold hover:bg-blue-900 hover:text-white transition">Voir le Magazine →</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Promotion 1995 Flip Card -->
+                <div class="flip-card entrance">
+                    <div class="flip-card-inner bg-gradient-to-br from-rose-50 to-pink-50 rounded-2xl shadow-xl overflow-hidden cursor-pointer h-[450px]">
+                        <!-- Front of card -->
+                        <div class="flip-card-front p-6 flex flex-col items-center justify-center text-center">
+                            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=400&q=80" class="w-40 h-40 rounded-full object-cover mb-4 border-4 border-rose-500 shadow-lg" alt="Promotion 1995">
+                            <h3 class="text-2xl font-bold text-blue-900 font-serif mb-2">Promotion 1995</h3>
+                            <p class="text-rose-600 font-semibold">Mérites Exceptionnels</p>
+                            <span class="mt-4 bg-rose-500 text-white px-4 py-2 rounded-full text-sm font-bold">💎 Générosité</span>
+                        </div>
+                        <!-- Back of card -->
+                        <div class="flip-card-back bg-gradient-to-br from-rose-500 to-pink-600 p-6 flex flex-col items-center justify-center text-center text-white">
+                            <div class="overflow-y-auto max-h-[400px] pr-2">
+                                <p class="italic text-lg mb-4">"Donner c'est recevoir infiniment plus"</p>
+                                <p class="text-sm mb-3"><strong>Engagement:</strong> La seule promotion qui a été aussi généreuse et qui aide toujours leurs petites sœurs</p>
+                                <p class="text-sm mb-3"><strong>Contributions:</strong> Malgré les moments difficiles, elles sont toujours là. Elles offrent une bourse complète à une fille du secondaire 4 et une demi-bourse à une fille de 6e année. Elles ont aussi offert une carte cadeau et une imprimante 3D!</p>
+                                <button class="magazine-btn mt-4 bg-white text-rose-600 px-6 py-2 rounded-full font-bold hover:bg-blue-900 hover:text-white transition">Voir le Magazine →</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-        <!-- Promotions Section -->
-        <div class="max-w-6xl mx-auto mb-20">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl md:text-5xl font-bold text-blue-900 mb-4 font-serif animate-title-glow">
-                    🙏 Hommage aux <span class="text-yellow-500">Promotions Légendaires</span>
+            <!-- Call to Action Section -->
+            <div class="max-w-4xl mx-auto text-center py-16 mb-12">
+                <h2 id="cta-text" class="text-3xl md:text-4xl font-bold text-blue-900 mb-6 opacity-0">
+                    Vous avez une histoire <span class="text-yellow-600 animate-text-wave">inspirante?</span>
                 </h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    Ces promotions ont profondément contribué au développement du collège par leur générosité et leur engagement
+                <p class="text-lg text-gray-600 mb-8 opacity-0" id="cta-subtext">
+                    Et vous souhaitez la partager avec notre communauté?
                 </p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Promotion 1982 -->
-                <div class="promotion-card opacity-0 translate-y-20 bg-gradient-to-br from-emerald-500 to-green-700 rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div>
-                    <div class="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full -ml-12 -mb-12"></div>
-                    <div class="relative z-10">
-                        <div class="flex items-center gap-4 mb-6">
-                            <div class="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center text-3xl">🎁</div>
-                            <div>
-                                <h3 class="text-3xl font-bold font-serif">Promotion 1982</h3>
-                                <p class="text-emerald-100">Mécènes de l'excellence</p>
-                            </div>
-                        </div>
-                        <p class="text-emerald-50 leading-relaxed mb-6">
-                            La promotion 1982 continue d'inspirer par son engagement envers les nouvelles générations. Leur soutien constant aux talents émergents, notamment à travers l'offre de cartes cadeaux aux élèves méritantes comme Elga, témoigne de leur attachement durable au collège.
-                        </p>
-                        <div class="flex flex-wrap gap-3">
-                            <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold">🎁 Cartes Cadeau</span>
-                            <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold">📚 Soutien Éducatif</span>
-                            <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold">💝 Générosité</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Promotion 1995 -->
-                <div class="promotion-card opacity-0 translate-y-20 bg-gradient-to-br from-blue-600 to-indigo-800 rounded-3xl p-8 text-white shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div>
-                    <div class="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full -ml-12 -mb-12"></div>
-                    <div class="relative z-10">
-                        <div class="flex items-center gap-4 mb-6">
-                            <div class="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center text-3xl">🎓</div>
-                            <div>
-                                <h3 class="text-3xl font-bold font-serif">Promotion 1995</h3>
-                                <p class="text-blue-100">Bâtisseurs d'avenir</p>
-                            </div>
-                        </div>
-                        <p class="text-blue-50 leading-relaxed mb-6">
-                            La promotion 1995 s'illustre par son investissement massif dans l'éducation des filles. En offrant des bourses complètes à des étudiantes exceptionnelles comme Yvenie, elles ouvrent les portes de l'avenir et transforment des rêves en réalités.
-                        </p>
-                        <div class="flex flex-wrap gap-3">
-                            <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold">🎓 Bourses Complètes</span>
-                            <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold">🚀 Avenir</span>
-                            <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold">⭐ Excellence</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Recent Donation - 3D Printer -->
-            <div class="promotion-card opacity-0 translate-y-20 mt-8 bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 rounded-3xl p-8 md:p-12 text-white shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2 relative overflow-hidden">
-                <div class="absolute inset-0 opacity-20">
-                    <div class="absolute top-10 left-10 w-20 h-20 border-4 border-white rounded-full animate-pulse"></div>
-                    <div class="absolute bottom-10 right-10 w-32 h-32 border-4 border-white rounded-full animate-pulse-delayed"></div>
-                </div>
-                <div class="relative z-10 flex flex-col md:flex-row items-center gap-8">
-                    <div class="flex-1">
-                        <div class="flex items-center gap-4 mb-6">
-                            <div class="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center text-4xl">🖨️</div>
-                            <div>
-                                <h3 class="text-3xl md:text-4xl font-bold font-serif">Don Récent Exceptionnel</h3>
-                                <p class="text-purple-100 text-lg">Une imprimante 3D pour l'innovation</p>
-                            </div>
-                        </div>
-                        <p class="text-purple-50 leading-relaxed text-lg mb-6">
-                            Grâce à la générosité continue des anciennes promotions, le collège vient de recevoir une <strong class="text-white">imprimante 3D</strong>. Cet équipement de pointe permettra aux élèves de concrétiser leurs idées innovantes et de se former aux technologies de demain.
-                        </p>
-                        <div class="flex flex-wrap gap-3">
-                            <span class="bg-white/20 backdrop-blur-sm px-5 py-3 rounded-full font-semibold">🔬 Innovation</span>
-                            <span class="bg-white/20 backdrop-blur-sm px-5 py-3 rounded-full font-semibold">💡 Créativité</span>
-                            <span class="bg-white/20 backdrop-blur-sm px-5 py-3 rounded-full font-semibold">🎯 Technologie</span>
-                            <span class="bg-white/20 backdrop-blur-sm px-5 py-3 rounded-full font-semibold">🚀 Avenir</span>
-                        </div>
-                    </div>
-                    <div class="flex-shrink-0">
-                        <div class="w-48 h-48 bg-white/10 backdrop-blur-sm rounded-3xl flex items-center justify-center border-4 border-white/30 shadow-2xl animate-float">
-                            <span class="text-8xl">🖨️</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Call to Action - Animated Text -->
-        <div class="text-center mb-20">
-            <div class="inline-block bg-gradient-to-r from-yellow-400 to-orange-500 rounded-3xl p-8 md:p-12 shadow-2xl transform hover:scale-105 transition-all duration-300">
-                <h3 id="cta-text" class="text-3xl md:text-4xl font-bold text-white mb-6 font-serif animate-text-wave">
-                    ✨ Vous avez une histoire inspirante ? Et vous souhaitez la partager ?
-                </h3>
-                <button onclick="window.location.href='contact.html'" class="bg-white text-blue-900 px-10 py-5 rounded-full font-bold text-xl hover:bg-yellow-400 hover:text-blue-900 transition-all transform hover:scale-105 shadow-lg">
-                    📩 Cliquer ici pour nous contacter
+                <button onclick="window.location.href='contact.html'" class="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-blue-900 px-8 py-4 rounded-full font-bold text-lg hover:from-yellow-500 hover:to-orange-600 transition-all transform hover:scale-105 shadow-lg glow-text opacity-0" id="cta-button">
+                    Cliquer ici pour nous contacter →
                 </button>
             </div>
         </div>
@@ -440,65 +358,20 @@
     <!-- Magazine Modal -->
     <div id="magazine-modal" class="magazine-modal">
         <div class="magazine-content">
-            <button onclick="closeMagazine()" class="absolute top-4 right-4 z-10 bg-white rounded-full p-3 shadow-lg hover:bg-red-500 hover:text-white transition">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-            </button>
-            <div id="magazine-body" class="p-8 md:p-12">
-                <!-- Content will be dynamically inserted -->
-            </div>
+            <button onclick="closeMagazine()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl z-10">×</button>
+            <div id="magazine-body" class="p-8 md:p-12"></div>
         </div>
     </div>
 
-    <main id="orientation" class="section-content pt-32 px-6">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-5xl font-bold text-center mb-4 text-blue-900 font-serif">Orientation Professionnelle</h2>
-            <p class="text-center text-gray-600 mb-16 text-lg max-w-3xl mx-auto">Découvrez les différents domaines de métiers et trouvez celui qui correspond à vos aspirations. Cliquez sur chaque affiche pour explorer en détail.</p>
+    <main id="orientation" class="section-content pt-32 px-6 pb-20">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl md:text-6xl font-bold text-blue-900 mb-4 font-serif">Orientation</h2>
+                <p class="text-xl text-gray-600">Explorez différents domaines et trouvez votre passion</p>
+            </div>
             
-            <!-- Grille des affiches de domaines -->
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Santé -->
-                <a href="orientation-sante.html" class="group block overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
-                    <div class="relative h-80 bg-gradient-to-br from-red-500 to-pink-600 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=800" alt="Santé" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-                        <div class="absolute bottom-0 left-0 right-0 p-8">
-                            <div class="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center text-4xl mb-4 border border-white/30">⚕️</div>
-                            <h3 class="text-3xl font-bold text-white mb-2">Santé & Médical</h3>
-                            <p class="text-white/80 text-sm">Médecins, infirmiers, pharmaciens, chercheurs...</p>
-                            <span class="inline-block mt-4 text-white font-semibold group-hover:translate-x-2 transition-transform">Explorer ce domaine →</span>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Diplomatie -->
-                <a href="orientation-diplomatie.html" class="group block overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
-                    <div class="relative h-80 bg-gradient-to-br from-blue-700 to-indigo-900 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1529101091760-61df528aa2a3?auto=format&fit=crop&q=80&w=800" alt="Diplomatie" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-                        <div class="absolute bottom-0 left-0 right-0 p-8">
-                            <div class="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center text-4xl mb-4 border border-white/30">🌍</div>
-                            <h3 class="text-3xl font-bold text-white mb-2">Diplomatie & Relations Internationales</h3>
-                            <p class="text-white/80 text-sm">Ambassadeurs, diplomates, analystes géopolitiques...</p>
-                            <span class="inline-block mt-4 text-white font-semibold group-hover:translate-x-2 transition-transform">Explorer ce domaine →</span>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Business et Gestion -->
-                <a href="orientation-business.html" class="group block overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
-                    <div class="relative h-80 bg-gradient-to-br from-emerald-600 to-teal-800 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=800" alt="Business" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-                        <div class="absolute bottom-0 left-0 right-0 p-8">
-                            <div class="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center text-4xl mb-4 border border-white/30">💼</div>
-                            <h3 class="text-3xl font-bold text-white mb-2">Business & Gestion</h3>
-                            <p class="text-white/80 text-sm">Entrepreneurs, managers, consultants financiers...</p>
-                            <span class="inline-block mt-4 text-white font-semibold group-hover:translate-x-2 transition-transform">Explorer ce domaine →</span>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Informatique et Technologie -->
+                <!-- Placeholder for orientation cards -->
                 <a href="orientation-tech.html" class="group block overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
                     <div class="relative h-80 bg-gradient-to-br from-purple-600 to-violet-900 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&q=80&w=800" alt="Technologie" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700">
@@ -511,362 +384,88 @@
                         </div>
                     </div>
                 </a>
-
-                <!-- Métiers Émergents -->
-                <a href="orientation-emergents.html" class="group block overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
-                    <div class="relative h-80 bg-gradient-to-br from-orange-500 to-amber-700 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&q=80&w=800" alt="Métiers émergents" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-                        <div class="absolute bottom-0 left-0 right-0 p-8">
-                            <div class="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center text-4xl mb-4 border border-white/30">🚀</div>
-                            <h3 class="text-3xl font-bold text-white mb-2">Métiers Émergents</h3>
-                            <p class="text-white/80 text-sm">Spécialistes IA, experts blockchain, bio-ingénieurs...</p>
-                            <span class="inline-block mt-4 text-white font-semibold group-hover:translate-x-2 transition-transform">Explorer ce domaine →</span>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Arts et Communication -->
-                <a href="orientation-arts.html" class="group block overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
-                    <div class="relative h-80 bg-gradient-to-br from-pink-500 to-rose-700 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&q=80&w=800" alt="Arts" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-                        <div class="absolute bottom-0 left-0 right-0 p-8">
-                            <div class="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center text-4xl mb-4 border border-white/30">🎨</div>
-                            <h3 class="text-3xl font-bold text-white mb-2">Arts & Communication</h3>
-                            <p class="text-white/80 text-sm">Artistes, journalistes, designers, communicants...</p>
-                            <span class="inline-block mt-4 text-white font-semibold group-hover:translate-x-2 transition-transform">Explorer ce domaine →</span>
-                        </div>
-                    </div>
-                </a>
             </div>
         </div>
     </main>
 
-    <!-- ==================== SECTION OPPORTUNITIES ==================== -->
-<main id="opportunities" class="section-content pt-32 px-4 md:px-8 pb-24 bg-slate-50/50">
-
-    <div class="max-w-6xl mx-auto">
-
-        <!-- En-tête -->
-        <div class="max-w-3xl mb-16">
-            <span class="text-xs font-bold tracking-widest uppercase text-amber-600 bg-amber-50 px-3 py-1.5 rounded-full">
-                Explore
-            </span>
-
-            <h2 class="text-4xl md:text-5xl font-black text-slate-900 mt-4 tracking-tight">
-                Opportunities
-            </h2>
-
-            <p class="text-slate-600 mt-4 text-lg leading-relaxed">
-                Vous souhaitez atteindre votre plein potentiel mais vous ne savez pas où trouver les activités,
-                programmes, concours et expériences qui pourraient vous ouvrir de nouvelles portes ?
-                Cette page a été conçue pour vous guider. Explorez des opportunités académiques,
-                culturelles et internationales qui vous permettront de développer vos compétences,
-                d'élargir vos horizons et de vous rapprocher de vos rêves.
-            </p>
-        </div>
-
-        <!-- ==================== VUE LISTE ==================== -->
-        <div id="opps-list-view">
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[220px]">
-
-                <!-- ROBOTIQUE -->
-                <div onclick="openOpportunity('robotique')"
-                    class="opportunity-card cursor-pointer md:col-span-2 md:row-span-2 rounded-[2rem] overflow-hidden shadow-sm border border-slate-200/60 relative group bg-white">
-
-                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=1200')] bg-cover bg-center group-hover:scale-105 transition-transform duration-500">
-                    </div>
-
-                    <div class="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-transparent"></div>
-
-                    <div class="absolute inset-0 p-8 md:p-12 flex flex-col justify-between max-w-md z-10">
-                        <div class="w-12 h-12 bg-blue-600/10 text-blue-600 rounded-2xl flex items-center justify-center text-2xl">
-                            🤖
-                        </div>
-
-                        <div>
-                            <h3 class="text-2xl font-bold text-slate-900 mb-2">
-                                Concours de Robotique
-                            </h3>
-
-                            <p class="text-slate-600 text-sm">
-                                Concevez, programmez et présentez des projets technologiques innovants.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ÉCRITURE -->
-                <div onclick="openOpportunity('ecriture')"
-                    class="opportunity-card cursor-pointer md:row-span-2 rounded-[2rem] p-8 border border-slate-200/60 shadow-sm bg-gradient-to-b from-amber-50/50 to-orange-50/20 flex flex-col justify-between">
-
-                    <div class="w-12 h-12 bg-amber-500/10 text-amber-600 rounded-2xl flex items-center justify-center text-2xl">
-                        ✍️
-                    </div>
-
-                    <div>
-                        <h3 class="text-2xl font-bold text-slate-900 mb-3">
-                            Concours d'Écriture
-                        </h3>
-
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            Exprimez votre créativité à travers des récits, essais et poèmes.
-                        </p>
-                    </div>
-
-                    <span class="text-amber-600 font-semibold text-sm">
-                        En savoir plus →
-                    </span>
-                </div>
-
-                <!-- PROGRAMME ÉTÉ -->
-                <div onclick="openOpportunity('programme-ete')"
-                    class="opportunity-card cursor-pointer rounded-[2rem] overflow-hidden shadow-sm border border-slate-200/60 relative group bg-white">
-
-                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=800')] bg-cover bg-center group-hover:scale-105 transition-transform duration-500">
-                    </div>
-
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent"></div>
-
-                    <div class="absolute inset-0 p-6 flex flex-col justify-between z-10">
-                        <div class="w-10 h-10 bg-white/20 backdrop-blur-md text-white rounded-xl flex items-center justify-center">
-                            ☀️
-                        </div>
-
-                        <h3 class="text-lg font-bold text-white">
-                            Programmes d'Été
-                        </h3>
-                    </div>
-                </div>
-
-                <!-- MUN -->
-                <div onclick="openOpportunity('mun')"
-                    class="opportunity-card cursor-pointer rounded-[2rem] p-6 border border-slate-200/60 shadow-sm bg-white flex flex-col justify-between">
-
-                    <div class="flex justify-between items-start">
-                        <div class="w-10 h-10 bg-sky-100 text-sky-600 rounded-xl flex items-center justify-center">
-                            🇺🇳
-                        </div>
-
-                        <span class="text-xs font-semibold text-slate-400">
-                            Diplomatie
-                        </span>
-                    </div>
-
-                    <div>
-                        <h3 class="text-lg font-bold text-slate-900">
-                            Model United Nations
-                        </h3>
-
-                        <p class="text-slate-500 text-xs mt-1">
-                            Incarnez un diplomate et débattez des enjeux mondiaux.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- BOURSES -->
-                <div onclick="openOpportunity('bourse')"
-                    class="opportunity-card cursor-pointer md:col-span-2 md:row-span-2 rounded-[2rem] overflow-hidden shadow-sm border border-slate-200/60 relative group bg-white">
-
-                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=1200')] bg-cover bg-center group-hover:scale-105 transition-transform duration-500">
-                    </div>
-
-                    <div class="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-transparent"></div>
-
-                    <div class="absolute inset-0 p-8 md:p-12 flex flex-col justify-between max-w-md z-10">
-                        <div class="w-12 h-12 bg-emerald-500/10 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl">
-                            🎓
-                        </div>
-
-                        <div>
-                            <h3 class="text-2xl font-bold text-slate-900 mb-2">
-                                Bourses d'Études
-                            </h3>
-
-                            <p class="text-slate-600 text-sm">
-                                Découvrez les programmes de financement pour poursuivre vos études.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- PLAIDOIRIE -->
-                <div onclick="openOpportunity('plaidoirie')"
-                    class="opportunity-card cursor-pointer rounded-[2rem] p-6 border border-slate-200/60 shadow-sm bg-purple-50/40 flex flex-col justify-between">
-
-                    <div class="w-10 h-10 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center">
-                        ⚖️
-                    </div>
-
-                    <div>
-                        <h3 class="text-lg font-bold text-slate-900">
-                            Plaidoirie
-                        </h3>
-
-                        <p class="text-slate-500 text-xs mt-1">
-                            Développez votre éloquence et votre capacité à convaincre.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- BÉNÉVOLAT -->
-                <div onclick="openOpportunity('benevolat')"
-                    class="opportunity-card cursor-pointer rounded-[2rem] p-6 border border-slate-200/60 shadow-sm bg-white flex flex-col justify-between">
-
-                    <div class="w-10 h-10 bg-rose-100 text-rose-600 rounded-xl flex items-center justify-center">
-                        🤝
-                    </div>
-
-                    <div>
-                        <h3 class="text-lg font-bold text-slate-900">
-                            Bénévolat
-                        </h3>
-
-                        <p class="text-slate-500 text-xs mt-1">
-                            Engagez-vous dans des projets à fort impact humain.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- UWC -->
-                <div onclick="openOpportunity('uwc')"
-                    class="opportunity-card cursor-pointer rounded-[2rem] overflow-hidden shadow-sm border border-slate-200/60 relative group bg-white">
-
-                    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&q=80&w=800')] bg-cover bg-center group-hover:scale-105 transition-transform duration-500">
-                    </div>
-
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent"></div>
-
-                    <div class="absolute inset-0 p-6 flex flex-col justify-between z-10">
-
-                        <div class="w-10 h-10 bg-white/20 backdrop-blur-md text-white rounded-xl flex items-center justify-center">
-                            🌍
-                        </div>
-
-                        <h3 class="text-lg font-bold text-white">
-                            United World Colleges
-                        </h3>
-
-                    </div>
-                </div>
-
-                <!-- CONCOURS INTERNATIONAUX -->
-                <div onclick="openOpportunity('international')"
-                    class="opportunity-card cursor-pointer md:col-span-3 rounded-[2rem] p-8 bg-gradient-to-r from-blue-900 to-indigo-900 text-white shadow-lg">
-
-                    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-
-                        <div>
-                            <span class="text-sm uppercase tracking-widest text-blue-200">
-                                Global Challenge
-                            </span>
-
-                            <h3 class="text-2xl font-bold mt-2">
-                                Concours Internationaux
-                            </h3>
-
-                            <p class="text-blue-100 mt-2">
-                                Représentez votre pays dans des compétitions mondiales en sciences,
-                                innovation, leadership et entrepreneuriat.
-                            </p>
-                        </div>
-
-                        <div class="text-5xl">
-                            🏆
-                        </div>
-
-                    </div>
-
-                </div>
-
+    <!-- Section Opportunities -->
+    <main id="opportunities" class="section-content pt-32 px-4 md:px-8 pb-24 bg-slate-50/50">
+        <div class="max-w-6xl mx-auto">
+            <div class="max-w-3xl mb-16">
+                <span class="text-xs font-bold tracking-widest uppercase text-amber-600 bg-amber-50 px-3 py-1.5 rounded-full">
+                    Explore
+                </span>
+                <h2 class="text-4xl md:text-5xl font-black text-slate-900 mt-4 tracking-tight">
+                    Opportunities
+                </h2>
+                <p class="text-slate-600 mt-4 text-lg leading-relaxed">
+                    Vous souhaitez atteindre votre plein potentiel mais vous ne savez pas où trouver les activités, programmes, concours et expériences qui pourraient vous ouvrir de nouvelles portes?
+                </p>
             </div>
-
         </div>
+    </main>
 
-        <!-- ==================== VUE DETAIL ==================== -->
-        <div id="opps-detail-view"
-            class="hidden opacity-0 scale-95 transition-all duration-300">
-
-            <div class="bg-white rounded-[2rem] shadow-xl border border-slate-200 p-8 md:p-12">
-
-                <button onclick="closeOpportunity()"
-                    class="back-btn mb-8 flex items-center gap-2 text-slate-500 hover:text-blue-900">
-                    ← Retour aux opportunités
-                </button>
-
-                <div id="detail-content"></div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</main>
-
-    <!-- Section Improving Modernisée et Dynamique -->
-   <main id="improving" class="section-content pt-32 px-6 pb-20">
-    <div class="max-w-4xl mx-auto bg-blue-950 text-white rounded-[2.5rem] p-8 md:p-12 shadow-2xl relative overflow-hidden">
-        <div class="relative z-10">
-            <h2 class="text-3xl font-bold mb-2 font-serif">Improving our system</h2>
-            <p class="mb-10 text-blue-200">Ta voix compte. Dis-nous ce qu'il manque à ton école pour que tu puisses t'épanouir pleinement.</p>
-            
-            <form id="improving-form" action="https://formspree.io/f/xgojvjqb" method="POST" class="grid gap-6">
+    <!-- Section Improving -->
+    <main id="improving" class="section-content pt-32 px-6 pb-20">
+        <div class="max-w-4xl mx-auto bg-blue-950 text-white rounded-[2.5rem] p-8 md:p-12 shadow-2xl relative overflow-hidden">
+            <div class="relative z-10">
+                <h2 class="text-3xl font-bold mb-2 font-serif">Improving our system</h2>
+                <p class="mb-10 text-blue-200">Ta voix compte. Dis-nous ce qu'il manque à ton école pour que tu puisses t'épanouir pleinement.</p>
                 
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="flex flex-col gap-2">
-                        <label for="student-lastname" class="text-xs font-semibold uppercase tracking-wider text-blue-200">Nom</label>
-                        <input type="text" id="student-lastname" name="nom" placeholder="Votre nom" class="bg-white/10 border border-white/15 p-4 rounded-xl outline-none focus:border-yellow-500 focus:bg-white/20 transition placeholder-white/40" required>
+                <form id="improving-form" action="https://formspree.io/f/xgojvjqb" method="POST" class="grid gap-6">
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="flex flex-col gap-2">
+                            <label for="student-lastname" class="text-xs font-semibold uppercase tracking-wider text-blue-200">Nom</label>
+                            <input type="text" id="student-lastname" name="nom" placeholder="Votre nom" class="bg-white/10 border border-white/15 p-4 rounded-xl outline-none focus:border-yellow-500 focus:bg-white/20 transition placeholder-white/40" required>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label for="student-firstname" class="text-xs font-semibold uppercase tracking-wider text-blue-200">Prénom</label>
+                            <input type="text" id="student-firstname" name="prenom" placeholder="Votre prénom" class="bg-white/10 border border-white/15 p-4 rounded-xl outline-none focus:border-yellow-500 focus:bg-white/20 transition placeholder-white/40" required>
+                        </div>
                     </div>
-                    <div class="flex flex-col gap-2">
-                        <label for="student-firstname" class="text-xs font-semibold uppercase tracking-wider text-blue-200">Prénom</label>
-                        <input type="text" id="student-firstname" name="prenom" placeholder="Votre prénom" class="bg-white/10 border border-white/15 p-4 rounded-xl outline-none focus:border-yellow-500 focus:bg-white/20 transition placeholder-white/40" required>
-                    </div>
-                </div>
 
-                <div class="flex flex-col gap-3 my-2">
-                    <span class="text-xs font-semibold uppercase tracking-wider text-blue-200">Votre Statut</span>
-                    <div class="flex flex-wrap gap-6 bg-white/5 p-4 rounded-xl border border-white/10">
-                        <label class="flex items-center gap-2 cursor-pointer select-none">
-                            <input type="radio" name="statut" value="Eleve Actuelle" id="status-current" class="w-4 h-4 accent-yellow-500" required>
-                            <span class="text-sm">Élève actuelle</span>
-                        </label>
-                        <label class="flex items-center gap-2 cursor-pointer select-none">
-                            <input type="radio" name="statut" value="Ancienne Eleve" id="status-alumni" class="w-4 h-4 accent-yellow-500">
-                            <span class="text-sm">Ancienne élève</span>
-                        </label>
-                        <label class="flex items-center gap-2 cursor-pointer select-none">
-                            <input type="radio" name="statut" value="Visitor" id="status-visitor" class="w-4 h-4 accent-yellow-500">
-                            <span class="text-sm">Visitor</span>
-                        </label>
+                    <div class="flex flex-col gap-3 my-2">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-blue-200">Votre Statut</span>
+                        <div class="flex flex-wrap gap-6 bg-white/5 p-4 rounded-xl border border-white/10">
+                            <label class="flex items-center gap-2 cursor-pointer select-none">
+                                <input type="radio" name="statut" value="Eleve Actuelle" id="status-current" class="w-4 h-4 accent-yellow-500" required>
+                                <span class="text-sm">Élève actuelle</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer select-none">
+                                <input type="radio" name="statut" value="Ancienne Eleve" id="status-alumni" class="w-4 h-4 accent-yellow-500">
+                                <span class="text-sm">Ancienne élève</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer select-none">
+                                <input type="radio" name="statut" value="Visitor" id="status-visitor" class="w-4 h-4 accent-yellow-500">
+                                <span class="text-sm">Visitor</span>
+                            </label>
+                        </div>
                     </div>
-                </div>
 
-                <div id="conditional-fields" class="hidden grid md:grid-cols-2 gap-6 p-5 rounded-2xl bg-white/5 border border-dashed border-white/20">
+                    <div id="conditional-fields" class="hidden grid md:grid-cols-2 gap-6 p-5 rounded-2xl bg-white/5 border border-dashed border-white/20">
+                        <div class="flex flex-col gap-2">
+                            <label for="student-class" class="text-xs font-semibold uppercase tracking-wider text-yellow-400">Classe</label>
+                            <input type="text" id="student-class" name="classe" placeholder="Ex: Terminale A, Rhéto..." class="bg-white/10 border border-white/15 p-4 rounded-xl outline-none focus:border-yellow-500 focus:bg-white/20 transition placeholder-white/40">
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label for="student-email" class="text-xs font-semibold uppercase tracking-wider text-yellow-400">Email</label>
+                            <input type="email" id="student-email" name="email" placeholder="votre.email@exemple.com" class="bg-white/10 border border-white/15 p-4 rounded-xl outline-none focus:border-yellow-500 focus:bg-white/20 transition placeholder-white/40">
+                        </div>
+                    </div>
+
                     <div class="flex flex-col gap-2">
-                        <label for="student-class" class="text-xs font-semibold uppercase tracking-wider text-yellow-400">Classe</label>
-                        <input type="text" id="student-class" name="classe" placeholder="Ex: Terminale A, Rhéto..." class="bg-white/10 border border-white/15 p-4 rounded-xl outline-none focus:border-yellow-500 focus:bg-white/20 transition placeholder-white/40">
+                        <label for="student-suggestion" class="text-xs font-semibold uppercase tracking-wider text-blue-200">Vos Suggestions / Commentaires</label>
+                        <textarea id="student-suggestion" name="message" rows="4" placeholder="Quelles suggestions as-tu pour améliorer les compétences scolaires des filles ou enrichir notre système ?" class="bg-white/10 border border-white/15 p-4 rounded-xl outline-none focus:border-yellow-500 focus:bg-white/20 transition placeholder-white/50" required></textarea>
                     </div>
-                    <div class="flex flex-col gap-2">
-                        <label for="student-email" class="text-xs font-semibold uppercase tracking-wider text-yellow-400">Email</label>
-                        <input type="email" id="student-email" name="email" placeholder="votre.email@exemple.com" class="bg-white/10 border border-white/15 p-4 rounded-xl outline-none focus:border-yellow-500 focus:bg-white/20 transition placeholder-white/40">
-                    </div>
-                </div>
 
-                <div class="flex flex-col gap-2">
-                    <label for="student-suggestion" class="text-xs font-semibold uppercase tracking-wider text-blue-200">Vos Suggestions / Commentaires</label>
-                    <textarea id="student-suggestion" name="message" rows="4" placeholder="Quelles suggestions as-tu pour améliorer les compétences scolaires des filles ou enrichir notre système ?" class="bg-white/10 border border-white/15 p-4 rounded-xl outline-none focus:border-yellow-500 focus:bg-white/20 transition placeholder-white/50" required></textarea>
-                </div>
-
-                <button type="submit" class="bg-yellow-500 text-blue-950 font-bold py-4 rounded-xl hover:bg-yellow-400 transition uppercase tracking-widest text-sm mt-2">
-                    Envoyer mes conseils
-                </button>
-            </form>
+                    <button type="submit" class="bg-yellow-500 text-blue-950 font-bold py-4 rounded-xl hover:bg-yellow-400 transition uppercase tracking-widest text-sm mt-2">
+                        Envoyer mes conseils
+                    </button>
+                </form>
+            </div>
         </div>
-    </div>
-</main>
+    </main>
 
 <footer class="py-12 border-t mt-20 text-center text-gray-400 text-sm">
     <p>© 2026 Succes Story. Pour les leaders de demain. Promotion NEXORA❤️</p>
@@ -897,27 +496,6 @@
         }
     }
     
-    // Filter stories by category
-    function filterStories(category) {
-        // Update active button
-        document.querySelectorAll('.story-filter-btn').forEach(btn => {
-            btn.classList.remove('active');
-        });
-        event.target.classList.add('active');
-        
-        // Filter cards
-        const allCards = document.querySelectorAll('.story-card');
-        allCards.forEach(card => {
-            if (category === 'all' || card.dataset.category === category) {
-                card.classList.remove('hidden');
-                setTimeout(() => card.classList.add('visible'), 100);
-            } else {
-                card.classList.remove('visible');
-                card.classList.add('hidden');
-            }
-        });
-    }
-    
     // Trigger animations when stories section is visible
     function triggerStoryAnimations() {
         // Animate title falling from sky
@@ -941,13 +519,26 @@
             }, 800 + (index * 150));
         });
 
-        // Animate promotion cards
-        const promoCards = document.querySelectorAll('.promotion-card');
-        promoCards.forEach((card, index) => {
+        // Animate CTA section
+        const ctaText = document.getElementById('cta-text');
+        const ctaSubtext = document.getElementById('cta-subtext');
+        const ctaButton = document.getElementById('cta-button');
+        
+        if (ctaText) {
             setTimeout(() => {
-                card.classList.add('visible');
-            }, (flipCards.length * 150) + (index * 200));
-        });
+                ctaText.style.animation = 'fadeUp 0.8s ease-out forwards';
+            }, 1500);
+        }
+        if (ctaSubtext) {
+            setTimeout(() => {
+                ctaSubtext.style.animation = 'fadeUp 0.8s ease-out forwards';
+            }, 1700);
+        }
+        if (ctaButton) {
+            setTimeout(() => {
+                ctaButton.style.animation = 'fadeUp 0.8s ease-out forwards';
+            }, 1900);
+        }
     }
     
     // Flip Card functionality
@@ -967,7 +558,7 @@
             annee: 'Secondaire 4',
             photo: 'images/karina18.jpeg',
             photos: ['images/karina18.jpeg', 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=400&q=80', 'images/Medcriture.jpeg', 'https://images.unsplash.com/photo-1457139621581-67576207ac79?auto=format&fit=crop&w=400&q=80'],
-            experience: "Élève de Secondaire 4, elle a participé de nombreuses fois à des concours d'écriture mais qui est la 3e gagnante du concours d'écriture Medcriture. Elle nous explique qu'elle a suivi l'exemple de son aînée Kate qui l'année antérieure avait participé à ce concours et avait décroché la 2e place. Passionnée par les mots depuis l'âge de 11 ans, Karina continue d'inspirer ses camarades par sa persévérance et son talent exceptionnel."
+            experience: "Élève de Secondaire 4, elle a participé de nombreuses fois à des concours d'écriture mais elle est la 3ème gagnante du concours d'écriture Medcriture. Elle nous explique qu'elle a suivi l'exemple de son aînée Kate qui l'année antérieure avait participé à ce concours et avait décroché la 2ème place. Passionnée par les mots depuis l'âge de 11 ans, Karina continue d'inspirer ses camarades par sa persévérance et son talent exceptionnel."
         },
         esperancia: {
             name: 'Esperancia',
@@ -975,7 +566,7 @@
             annee: 'Chant & Musique',
             photo: 'images/Esperancia.jpeg',
             photos: ['images/Esperancia.jpeg', 'https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?auto=format&fit=crop&w=400&q=80', 'https://images.unsplash.com/photo-1493225457124-a3ebf183729f?auto=format&fit=crop&w=400&q=80', 'https://images.unsplash.com/photo-1501612780327-45045538702b?auto=format&fit=crop&w=400&q=80'],
-            experience: "Dotée d'une voix exceptionnelle, Esperancia a brillé lors d'un concours de chant en décrochant la 3ème place. Sa passion pour la musique et son talent naturel continuent de l'inspirer dans son parcours artistique. Elle inspire ses camarades par sa détermination et son amour pour la musique."
+            experience: "Dotée d'une voix exceptionnelle, Esperancia a brillé lors d'un concours de chant en décrochant la 3ème place. Sa passion pour la musique et son talent naturel continuent de l'inspirer dans son parcours artistique. Elle inspire ses camarades par sa détermination et son amour pour la musique. Son engagement envers l'excellence musicale en fait une source d'inspiration pour toute la communauté."
         },
         elga: {
             name: 'Elga',
@@ -983,7 +574,7 @@
             annee: 'Poésie & Engagement',
             photo: 'images/Elga2.jpeg.png',
             photos: ['images/Elga2.jpeg.png'],
-            experience: "À l'école depuis petite, Elga s'engage activement au collège. Tout le monde la connaît car elle est toujours prête à aider. Coordinatrice et rédactrice passionnée, elle donne vie aux événements à travers ses mots et crée des récits empreints d'émotion. Elle a reçu une carte cadeau offerte par la promotion 1982 pour son excellence en poésie."
+            experience: "À l'école depuis petite, Elga s'engage activement au collège. Tout le monde la connaît car elle est toujours prête à aider. Coordinatrice et rédactrice passionnée, elle donne vie aux événements à travers ses mots et crée des récits empreints d'émotion. Elle a reçu une carte cadeau offerte par la promotion 1982 pour son excellence en poésie. Son dévouement envers la communauté scolaire et son talent littéraire en font une figure centrale du collège."
         },
         yvenie: {
             name: 'Yvenie',
@@ -991,7 +582,7 @@
             annee: 'Excellence Académique',
             photo: 'https://images.unsplash.com/photo-1525926477800-7a3be5800fcb?auto=format&fit=crop&w=400&q=80',
             photos: ['https://images.unsplash.com/photo-1525926477800-7a3be5800fcb?auto=format&fit=crop&w=400&q=80'],
-            experience: "Elle est venue au collège à la 7e année et elle a depuis toujours eu de bon rendement scolaire. À l'école, on valorise l'excellence, c'est pour cela qu'elle a reçu la bourse complète offerte par la promotion 1995. Son parcours exemplaire montre que la persévérance et le travail acharné mènent toujours à la réussite."
+            experience: "Elle est venue au collège à la 7ème année et elle a depuis toujours eu de bon rendement scolaire. À l'école, on valorise l'excellence, c'est pour cela qu'elle a reçu la bourse complète offerte par la promotion 1995. Son parcours exemplaire montre que la persévérance et le travail acharné mènent toujours à la réussite. Elle est un modèle d'excellence académique pour ses camarades."
         },
         exposcience: {
             name: 'Les Innovatrices',
@@ -999,7 +590,7 @@
             annee: 'Exposcience',
             photo: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=400&q=80',
             photos: ['https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=400&q=80', 'https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&w=400&q=80', 'https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=400&q=80', 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=400&q=80'],
-            experience: "Qu'est-ce qui vous a poussé à y participer ? R: Bon... la première fois (en 2022), c'était purement pour l'expérience mais la seconde (en 2023), c'était par égo si je peux le dire ainsi. J'avais perdu et je voulais corriger cela. Quels sont les obstacles que vous avez rencontré ? Durant les deux éditions, on a eu un problème de support assez terrible. On s'est investi nous-mêmes, on a fait nos propres recherches donc en terme d'accompagnement, c'était vraiment pas top. Les autres problèmes rencontrés étaient interne à l'équipe (entre les exams officiels et la soeur qui nous poussait à avoir 8, on était assez fatiguée et lassée à un moment donné). Fun fact, la veille de la compétition, on avait abandonné ! J'ai dit à la soeur qu'on était pas prête et elle avait appelé les organisateurs pour leur faire savoir que notre équipe se retirait de la compétition. Puis, plus tard ce jour là, j'ai reçu un appel de Mme Vital (je crois), qui nous a dit que tout était déjà prêt pour recevoir l'équipe donc mieux vaut quand même y aller. J'ai accepté puis j'ai passé la nuit à préparer l'app ! Djeïka avait un rendez-vous le jour de l'activité, elle m'avait dit qu'elle serait là vers les 10h. Donc, Joannie et moi avons tous pris en charge de la veille jusqu'à sa venue. (Quel beau souvenir !) Quel conseil donneriez-vous à vos petites soeurs ? Très franchement, le seul conseil réel que je peux vous donner c'est de ne compter que sur vous et votre équipe. Et également de vous préparez intelligemment avant tout. Après ma défaite en 2022, j'avais analysé les projets gagnants, les patterns du concours ainsi que les domaines prisées pour mettre toutes les chances de notre côté en 2023. C'est la raison pour laquelle j'étais partie sur un projet environnemental."
+            experience: "<strong>Qu'est-ce qui vous a poussé à y participer?</strong><br>La première fois (en 2022), c'était purement pour l'expérience mais la seconde (en 2023), c'était par égo si je peux le dire ainsi. J'avais perdu et je voulais corriger cela.<br><br><strong>Quels sont les obstacles que vous avez rencontré?</strong><br>Durant les deux éditions, on a eu un problème de support assez terrible. On s'est investi nous-mêmes, on a fait nos propres recherches donc en terme d'accompagnement, c'était vraiment pas top. Les autres problèmes rencontrés étaient internes à l'équipe (entre les exams officiels et la sœur qui nous poussait à avoir 8, on était assez fatiguée et lassée à un moment donné). Fun fact, la veille de la compétition, on avait abandonné! J'ai dit à la sœur qu'on était pas prête et elle avait appelé les organisateurs pour leur faire savoir que notre équipe se retirait de la compétition. Puis, plus tard ce jour là, j'ai reçu un appel de Mme Vital qui nous a dit que tout était déjà prêt pour recevoir l'équipe donc mieux vaut quand même y aller. J'ai accepté puis j'ai passé la nuit à préparer l'app!<br><br><strong>Quel conseil donneriez-vous à vos petites sœurs?</strong><br>Très franchement, le seul conseil réel que je peux vous donner c'est de ne compter que sur vous et votre équipe. Et également de vous préparez intelligemment avant tout. Après ma défaite en 2022, j'avais analysé les projets gagnants, les patterns du concours ainsi que les domaines prisées pour mettre toutes les chances de notre côté en 2023. C'est la raison pour laquelle j'étais partie sur un projet environnemental."
         },
         promotion1995: {
             name: 'Promotion 1995',
@@ -1007,7 +598,7 @@
             annee: '1995',
             photo: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=400&q=80',
             photos: ['https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=400&q=80'],
-            experience: "C'est la seule promotion qui a été aussi généreuse et qui aide toujours leurs petites soeurs. Malgré les moments difficiles, elles sont toujours là et prennent de nos nouvelles. Elles offrent toujours des bourses : une bourse complète à une fille du secondaire 4 et une demi-bourse à une fille de 6e année, et elles renouvellent toujours. Elles ont aussi offert une carte cadeau et durant l'année, elles ont fait don d'une imprimante 3D. Leur engagement envers les nouvelles générations est exemplaire."
+            experience: "C'est la seule promotion qui a été aussi généreuse et qui aide toujours leurs petites sœurs. Malgré les moments difficiles, elles sont toujours là et prennent de nos nouvelles. Elles offrent toujours des bourses : une bourse complète à une fille du secondaire 4 et une demi-bourse à une fille de 6ème année, et elles renouvellent toujours. Elles ont aussi offert une carte cadeau et durant l'année, elles ont fait don d'une imprimante 3D. Leur engagement envers les nouvelles générations est exemplaire et inspire chacun d'entre nous."
         }
     };
 
@@ -1081,8 +672,8 @@
             });
         }, observerOptions);
         
-        // Observe all story and promotion cards
-        document.querySelectorAll('.story-card, .promotion-card, .flip-card').forEach(card => {
+        // Observe all flip cards
+        document.querySelectorAll('.flip-card').forEach(card => {
             observer.observe(card);
         });
     });
@@ -1099,7 +690,6 @@
             allStatusRadios.forEach(radio => {
                 radio.addEventListener('change', function() {
                     if (statusCurrent && statusCurrent.checked) {
-                        // Supprime la classe 'hidden' et force l'affichage en CSS standard
                         if (conditionalFields) {
                             conditionalFields.classList.remove('hidden');
                             conditionalFields.style.display = 'grid';
@@ -1107,7 +697,6 @@
                         if (classInput) classInput.required = true;
                         if (emailInput) emailInput.required = true;
                     } else {
-                        // Remet la classe 'hidden' et nettoie les valeurs
                         if (conditionalFields) {
                             conditionalFields.classList.add('hidden');
                             conditionalFields.style.display = 'none';
