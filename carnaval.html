@@ -2,371 +2,721 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Le carnaval - Livre Magique</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Carnaval - Collège Marie-Anne</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
-        /* --- CONFIGURATION DU FOND ANIMÉ ET FESTIF --- */
-        body.body-foire {
+        /* --- FOND ANIMÉ FESTIF --- */
+        * {
             margin: 0;
             padding: 0;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #2e1a47, #7209b7, #f72585, #ffb703);
-            background-size: 400% 400%;
-            animation: carnivalGradient 15s ease infinite;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            overflow-x: hidden;
+            box-sizing: border-box;
         }
 
-        @keyframes carnivalGradient {
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        @keyframes gradientShift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        /* --- EFFET VERRE POUR LES TITRES --- */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 24px;
-            padding: 30px;
-            text-align: center;
-            max-width: 800px;
-            margin: 40px auto;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-        }
-
-        .gold-text {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            background: linear-gradient(to right, #ffe600, #ffb703, #ffffff, #ffb703);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin: 0 0 10px 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .glass-card p {
-            color: #ffffff;
-            font-size: 1.2rem;
-            font-weight: 300;
-            margin: 0;
-            letter-spacing: 1px;
-        }
-
-        /* --- STRUCTURE DU LIVRE 3D FIXÉE ET CORRIGÉE --- */
-        .book-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 40px 20px;
-            perspective: 2500px; 
-        }
-
-        .book {
-            width: 550px;  
-            height: 680px; 
-            position: relative; /* CORRIGÉ : L'élément s'affiche maintenant correctement */
-            transform-style: preserve-3d;
-            transition: transform 0.5s;
-        }
-
-        .page {
-            position: absolute;
-            width: 100%;
-            height: 100%;
+        /* --- CANVAS POUR LES CONFETTIS --- */
+        #confetti-canvas {
+            position: fixed;
             top: 0;
             left: 0;
-            transform-origin: left center;
-            transform-style: preserve-3d;
-            transition: transform 1.4s cubic-bezier(0.25, 1, 0.5, 1);
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
             z-index: 1;
         }
 
-        /* Look Parchemin */
-        .front, .back {
+        /* --- NAVIGATION --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo a {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-decoration: none;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .nav-links a:hover {
+            transform: translateY(-2px);
+            text-shadow: 0 0 10px rgba(255,255,255,0.8);
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 10px 0;
+            min-width: 220px;
+            list-style: none;
+            margin-top: 10px;
+            display: none;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .dropdown-menu.active {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .dropdown-menu li a {
+            display: block;
+            padding: 12px 20px;
+            color: #4a154b;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .dropdown-menu li a:hover {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        /* --- CONTENU PRINCIPAL --- */
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* --- CARTE D'INTRODUCTION GLASSMORPHISM --- */
+        .intro-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
+            padding: 50px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            margin-bottom: 60px;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .intro-card h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, #ffe600, #ffb703, #ffffff, #ffb703);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+            }
+            to {
+                filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
+            }
+        }
+
+        .intro-card p {
+            color: #ffffff;
+            font-size: 1.3rem;
+            line-height: 1.8;
+            font-weight: 300;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+
+        /* --- GALERIE IMMERSIVE --- */
+        .gallery-section {
+            margin: 60px 0;
+        }
+
+        .gallery-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #ffffff;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .gallery-container {
+            position: relative;
+            width: 100%;
+            height: 700px;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .gallery-slide {
             position: absolute;
             width: 100%;
             height: 100%;
-            top: 0;
-            left: 0;
-            background: #fcf8f2;
-            backface-visibility: hidden;
-            box-shadow: inset 4px 0 30px rgba(0, 0, 0, 0.2), 15px 15px 35px rgba(0,0,0,0.5);
-            border-radius: 0 24px 24px 0;
-            padding: 40px;
-            box-sizing: border-box;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            border: 1px solid #e2d4c9;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 40px;
         }
 
-        /* Couverture extérieure (Page 1 Front) */
-        #p1 .front {
-            background: linear-gradient(135deg, #4a154b, #2c003e); 
-            border: 4px solid #ffb703; 
-            border-radius: 0 24px 24px 0;
+        .gallery-slide.active {
+            opacity: 1;
+            transform: scale(1);
+            z-index: 10;
         }
 
-        #p1 .front h2 {
-            color: #ffb703 !important;
-            font-size: 2.5rem;
-            text-align: center;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-        }
-
-        .back {
-            transform: rotateY(180deg);
-            border-radius: 24px 0 0 24px;
-        }
-
-        .front::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 25px;
-            height: 100%;
-            background: linear-gradient(to right, rgba(0,0,0,0.2), transparent);
-        }
-
-        .book h2 {
-            font-family: 'Playfair Display', serif;
-            color: #4a154b;
-            margin-top: 0;
-            font-size: 1.8rem;
-            border-bottom: 2px solid rgba(138, 127, 164, 0.2);
-            padding-bottom: 10px;
-        }
-
-        .media-box {
+        .media-wrapper {
             width: 100%;
-            height: 65%;
-            border-radius: 12px;
+            max-width: 900px;
+            height: 500px;
+            border-radius: 20px;
             overflow: hidden;
-            background: #111;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-            border: 3px solid #ffffff;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            background: #000;
         }
 
-        .media-box img, .media-box video {
+        .media-wrapper img,
+        .media-wrapper video {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .page.flipped {
-            transform: rotateY(-180deg);
+        .slide-caption {
+            margin-top: 30px;
+            text-align: center;
+            color: #ffffff;
         }
 
-        /* --- BOUTONS TOURNER LA PAGE --- */
-        .controls {
-            margin-top: 40px;
-            display: flex;
-            gap: 25px;
+        .slide-caption h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
-        .book-btn {
-            background: linear-gradient(135deg, #ffb703, #ff8c00);
-            color: #fff;
-            border: none;
-            padding: 16px 40px;
+        .slide-caption p {
             font-size: 1.1rem;
-            font-weight: 700;
+            font-weight: 300;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* --- CONTRÔLES DE NAVIGATION --- */
+        .gallery-controls {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 100;
+        }
+
+        .control-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            font-size: 1rem;
+            font-weight: 600;
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 6px 25px rgba(255, 136, 0, 0.4);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        .book-btn:hover {
-            transform: translateY(-4px) scale(1.05);
-            box-shadow: 0 12px 30px rgba(255, 136, 0, 0.6);
+        .control-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
-        .book-btn:disabled {
-            background: rgba(255,255,255,0.2);
-            color: rgba(255,255,255,0.4);
-            box-shadow: none;
+        .control-btn:disabled {
+            background: rgba(255, 255, 255, 0.2);
             cursor: not-allowed;
             transform: none;
         }
 
-        /* --- ZONE TEXTE EN DESSOUS --- */
+        /* --- INDICATEURS DE PAGES --- */
+        .page-indicators {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 100;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .indicator.active {
+            background: #ffffff;
+            transform: scale(1.3);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        /* --- SECTION DESCRIPTION --- */
         .description-section {
-            max-width: 850px;
-            margin: 50px auto;
-            padding: 40px;
             background: rgba(255, 255, 255, 0.95);
-            border-radius: 24px;
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 50px;
+            margin: 60px 0;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             color: #2c003e;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
         }
 
         .description-section h2 {
-            color: #7209b7;
-            font-size: 2rem;
-            margin-top: 0;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #764ba2;
+            margin-bottom: 20px;
+        }
+
+        .description-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .intro-card h1 {
+                font-size: 2.5rem;
+            }
+            
+            .gallery-container {
+                height: 600px;
+            }
+            
+            .media-wrapper {
+                height: 400px;
+            }
+            
+            .nav-links {
+                gap: 20px;
+            }
         }
     </style>
 </head>
-<body class="body-foire">
-    
-    <nav class="navbar" style="display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background-color: #ffffff; box-shadow: 0 4px 15px rgba(138, 127, 164, 0.05); position: sticky; top: 0; z-index: 1000;">
+<body>
+
+    <!-- CANVAS POUR LES CONFETTIS -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
         <div class="logo">
-            <a href="yearbook.html" style="font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: #8a7fa4; text-decoration: none; letter-spacing: -0.5px;">Our Yearbook</a>
+            <a href="yearbook.html">Our Yearbook</a>
         </div>
-        <ul class="nav-links" style="display: flex; list-style: none; gap: 35px; align-items: center; margin: 0; padding: 0;">
-            <li><a href="yearbook.html" style="text-decoration: none; color: #635b77; font-weight: 600; font-size: 0.95rem; transition: color 0.3s;">Accueil</a></li>
-            <li class="dropdown" style="position: relative;">
-                <a href="#" class="dropdown-toggle" style="text-decoration: none; color: #8a7fa4; font-weight: 700; font-size: 0.95rem; display: flex; align-items: center; gap: 5px;">
+        <ul class="nav-links">
+            <li><a href="yearbook.html">Accueil</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">
                     Événements <span style="font-size: 0.8rem;">▼</span>
                 </a>
-                <ul class="dropdown-menu" style="position: absolute; top: 100%; right: 0; background-color: #ffffff; box-shadow: 0 8px 24px rgba(138, 127, 164, 0.12); border-radius: 12px; padding: 10px 0; min-width: 200px; list-style: none; margin-top: 10px; display: none; border: 1px solid rgba(138, 127, 164, 0.08);">
-                    <li><a href="philosophie.html" style="display: block; padding: 12px 20px; text-decoration: none; color: #635b77; font-weight: 500; font-size: 0.9rem; transition: background 0.2s;">Fête des Philosophes</a></li>
-                    <li><a href="noel.html" style="display: block; padding: 12px 20px; text-decoration: none; color: #635b77; font-weight: 500; font-size: 0.9rem; transition: background 0.2s;">Noël Enchanté</a></li>
-                    <li><a href="carnaval.html" style="display: block; padding: 12px 20px; text-decoration: none; color: #635b77; font-weight: 500; font-size: 0.9rem; transition: background 0.2s;">Carnaval</a></li>
-                    <li><a href="foire.html" style="display: block; padding: 12px 20px; text-decoration: none; color: #635b77; font-weight: 500; font-size: 0.9rem; transition: background 0.2s;">La Foire</a></li>
+                <ul class="dropdown-menu">
+                    <li><a href="philosophie.html">Fête des Philosophes</a></li>
+                    <li><a href="noel.html">Noël Enchanté</a></li>
+                    <li><a href="carnaval.html">Carnaval</a></li>
+                    <li><a href="foire.html">La Foire</a></li>
                 </ul>
             </li>
         </ul>
     </nav>
 
+    <!-- CONTENU PRINCIPAL -->
+    <div class="container">
+        
+        <!-- CARTE D'INTRODUCTION -->
+        <div class="intro-card">
+            <h1>🎭 Le Carnaval du Collège Marie-Anne</h1>
+            <p>Plongez dans l'univers magique et coloré de notre carnaval annuel ! Des costumes extravagants, des rires éclatants, des moments inoubliables... Découvrez comment nos élèves ont transformé le collège en un véritable festival de joie et de créativité.</p>
+        </div>
+
+        <!-- GALERIE IMMERSIVE -->
+        <section class="gallery-section">
+            <h2 class="gallery-title">✨ Album Souvenir Interactif</h2>
+            
+            <div class="gallery-container">
+                <!-- Indicateurs de pages -->
+                <div class="page-indicators" id="indicators"></div>
+                
+                <!-- Les slides seront générés dynamiquement par JavaScript -->
+                <div id="slides-container"></div>
+                
+                <!-- Contrôles -->
+                <div class="gallery-controls">
+                    <button class="control-btn" id="prev-btn" disabled>← Précédent</button>
+                    <button class="control-btn" id="next-btn">Suivant →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION DESCRIPTION -->
+        <section class="description-section">
+            <h2>🎉 Récit de notre Édition Magique</h2>
+            <p>Bienvenue sur l'album virtuel du festival carnavalesque du Collège Marie-Anne. Cet espace a été pensé pour capturer la folie, les rires et l'énergie débordante qui ont rythmé notre événement.</p>
+            <p>De la préparation des costumes jusqu'au défilé final, chaque moment a été immortalisé pour que vous puissiez revivre cette journée exceptionnelle encore et encore.</p>
+            <p>Nos élèves ont fait preuve d'une créativité incroyable, transformant les couloirs du collège en un véritable spectacle haut en couleur. Les professeurs, les parents et les élèves se sont unis pour créer des souvenirs qui resteront gravés dans nos mémoires.</p>
+        </section>
+
+    </div>
+
+    <!-- SCRIPTS -->
     <script>
+        // ============================================
+        // 📸 SYSTÈME DE GESTION DES MÉDIAS
+        // ============================================
+        // AJOUTEZ VOS PHOTOS ET VIDÉOS ICI !
+        // C'est TRÈS SIMPLE : copiez une ligne et changez les infos
+        
+        const mediaData = [
+            // EXEMPLE 1 : Photo
+            {
+                type: 'image',
+                src: 'https://via.placeholder.com/900x500/ff007f/ffffff?text=Photo+1+-+Les+Déguisements',
+                title: '🎭 Les Costumes Créatifs',
+                description: 'Les déguisements les plus originaux de l\'année !'
+            },
+            
+            // EXEMPLE 2 : Photo
+            {
+                type: 'image',
+                src: 'https://via.placeholder.com/900x500/7209b7/ffffff?text=Photo+2+-+Le+Défilé',
+                title: '🎨 Le Grand Défilé',
+                description: 'Un défilé haut en couleur dans les couloirs du collège.'
+            },
+            
+            // EXEMPLE 3 : Vidéo
+            {
+                type: 'video',
+                src: 'https://www.w3schools.com/html/mov_bbb.mp4',
+                poster: 'https://via.placeholder.com/900x500/000000/ffffff?text=Cliquez+pour+lire+la+vidéo',
+                title: '🎬 Les Moments Forts en Vidéo',
+                description: 'Revivez les meilleurs moments de cette journée exceptionnelle.'
+            },
+            
+            // EXEMPLE 4 : Photo
+            {
+                type: 'image',
+                src: 'https://via.placeholder.com/900x500/4facfe/ffffff?text=Photo+3+-+Les+Stands',
+                title: '🎪 Les Stands de Créations',
+                description: 'Nos jeunes talents ont exposé leurs œuvres incroyables.'
+            },
+            
+            // EXEMPLE 5 : Photo
+            {
+                type: 'image',
+                src: 'https://via.placeholder.com/900x500/f5576c/ffffff?text=Photo+4+-+Ambiance+Festive',
+                title: '🎉 L\'Ambiance Festive',
+                description: 'Des rires, de la musique et une énergie débordante !'
+            },
+            
+            // AJOUTEZ AUTANT DE MÉDIAS QUE VOUS VOULEZ !
+            // Copiez ce modèle et changez les valeurs :
+            /*
+            {
+                type: 'image',  // ou 'video' pour une vidéo
+                src: 'chemin/vers/votre/image.jpg',
+                title: 'Titre de votre photo',
+                description: 'Description de votre photo'
+            },
+            */
+        ];
+
+        // ============================================
+        // 🎭 SYSTÈME DE GALERIE IMMERSIVE
+        // ============================================
+        
+        let currentSlide = 0;
+        const slidesContainer = document.getElementById('slides-container');
+        const indicatorsContainer = document.getElementById('indicators');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+
+        // Générer les slides dynamiquement
+        function generateSlides() {
+            mediaData.forEach((media, index) => {
+                // Créer le slide
+                const slide = document.createElement('div');
+                slide.className = 'gallery-slide';
+                if (index === 0) slide.classList.add('active');
+                
+                // Créer le contenu média
+                let mediaContent = '';
+                if (media.type === 'image') {
+                    mediaContent = `<img src="${media.src}" alt="${media.title}">`;
+                } else if (media.type === 'video') {
+                    mediaContent = `<video controls ${media.poster ? `poster="${media.poster}"` : ''}>
+                        <source src="${media.src}" type="video/mp4">
+                        Votre navigateur ne supporte pas les vidéos.
+                    </video>`;
+                }
+                
+                slide.innerHTML = `
+                    <div class="media-wrapper">
+                        ${mediaContent}
+                    </div>
+                    <div class="slide-caption">
+                        <h3>${media.title}</h3>
+                        <p>${media.description}</p>
+                    </div>
+                `;
+                
+                slidesContainer.appendChild(slide);
+                
+                // Créer l'indicateur
+                const indicator = document.createElement('div');
+                indicator.className = 'indicator';
+                if (index === 0) indicator.classList.add('active');
+                indicator.addEventListener('click', () => goToSlide(index));
+                indicatorsContainer.appendChild(indicator);
+            });
+        }
+
+        // Navigation entre les slides
+        function goToSlide(index) {
+            const slides = document.querySelectorAll('.gallery-slide');
+            const indicators = document.querySelectorAll('.indicator');
+            
+            slides[currentSlide].classList.remove('active');
+            indicators[currentSlide].classList.remove('active');
+            
+            currentSlide = index;
+            
+            slides[currentSlide].classList.add('active');
+            indicators[currentSlide].classList.add('active');
+            
+            updateButtons();
+        }
+
+        function nextSlide() {
+            if (currentSlide < mediaData.length - 1) {
+                goToSlide(currentSlide + 1);
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                goToSlide(currentSlide - 1);
+            }
+        }
+
+        function updateButtons() {
+            prevBtn.disabled = currentSlide === 0;
+            nextBtn.disabled = currentSlide === mediaData.length - 1;
+            
+            if (currentSlide === mediaData.length - 1) {
+                nextBtn.textContent = 'Fin de l\'album ✨';
+            } else {
+                nextBtn.textContent = 'Suivant →';
+            }
+        }
+
+        // Événements
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+
+        // Navigation au clavier
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+
+        // Initialiser la galerie
+        generateSlides();
+        updateButtons();
+
+        // ============================================
+        // 🎉 SYSTÈME DE CONFETTIS ANIMÉS
+        // ============================================
+        
+        const canvas = document.getElementById('confetti-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        const confettiColors = ['#ff007f', '#7209b7', '#4facfe', '#ffe600', '#f5576c', '#43e97b', '#fa709a'];
+        const confettiPieces = [];
+
+        class Confetti {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height - canvas.height;
+                this.size = Math.random() * 8 + 5;
+                this.speedY = Math.random() * 3 + 2;
+                this.speedX = Math.random() * 2 - 1;
+                this.color = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+                this.rotation = Math.random() * 360;
+                this.rotationSpeed = Math.random() * 10 - 5;
+            }
+
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                this.rotation += this.rotationSpeed;
+
+                if (this.y > canvas.height) {
+                    this.y = -20;
+                    this.x = Math.random() * canvas.width;
+                }
+            }
+
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation * Math.PI / 180);
+                ctx.fillStyle = this.color;
+                ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
+                ctx.restore();
+            }
+        }
+
+        // Créer les confettis
+        for (let i = 0; i < 100; i++) {
+            confettiPieces.push(new Confetti());
+        }
+
+        // Animation des confettis
+        function animateConfetti() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            confettiPieces.forEach(confetti => {
+                confetti.update();
+                confetti.draw();
+            });
+            
+            requestAnimationFrame(animateConfetti);
+        }
+
+        animateConfetti();
+
+        // ============================================
+        // 📱 MENU DÉROULANT
+        // ============================================
+        
         const dropdownToggle = document.querySelector('.dropdown-toggle');
         const dropdownMenu = document.querySelector('.dropdown-menu');
+        
         if (dropdownToggle && dropdownMenu) {
             dropdownToggle.addEventListener('click', (e) => {
                 e.preventDefault();
-                const isDisplayed = dropdownMenu.style.display === 'block';
-                dropdownMenu.style.display = isDisplayed ? 'none' : 'block';
+                e.stopPropagation();
+                dropdownMenu.classList.toggle('active');
             });
+
             document.addEventListener('click', (e) => {
                 if (!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
-                    dropdownMenu.style.display = 'none';
+                    dropdownMenu.classList.remove('active');
                 }
             });
         }
     </script>
 
-    <main class="container">
-        <div class="glass-card">
-            <h1 class="gold-text">🎡 Le Carnaval</h1>
-            <p>Découvrez notre album interactif haut en couleur !</p>
-        </div>
-
-        <!-- LIVRE INTERACTIF -->
-        <section class="book-section">
-            <div class="book">
-                
-                <!-- COUVERTURE ET PAGE 1 -->
-                <div class="page" id="p1" style="z-index: 3;">
-                    <!-- Couverture Royale -->
-                    <div class="front" style="justify-content: center; align-items: center; gap: 20px;">
-                        <span style="font-size: 5rem;">✨</span>
-                        <h2>LIVRE SOUVENIR<br><span style="color:#fff; font-size:1.5rem;">Édition Spéciale</span></h2>
-                        <p style="color: #ffb703; font-weight: bold; font-size: 1.2rem;">Cliquez sur tourner la page ➔</p>
-                    </div>
-                    <!-- Page intérieure 1 -->
-                    <div class="back">
-                        <h2>🎭 L'Ambiance du Carnaval</h2>
-                        <div class="media-box">
-                            <img src="https://via.placeholder.com/550x680/ff007f/ffffff?text=Photo+1+-+Les+Déguisements" alt="Photo 1">
-                        </div>
-                        <p style="color: #555; font-style: italic; margin: 10px 0 0 0;">Les costumes les plus créatifs de l'année.</p>
-                    </div>
-                </div>
-
-                <!-- PAGE 2 -->
-                <div class="page" id="p2" style="z-index: 2;">
-                    <!-- Page intérieure 2 -->
-                    <div class="front">
-                        <h2>🎨 Stands de Créations</h2>
-                        <div class="media-box">
-                            <img src="https://via.placeholder.com/550x680/7209b7/ffffff?text=Photo+2+-+Les+Expositions" alt="Photo 2">
-                        </div>
-                        <p style="color: #555; font-style: italic; margin: 10px 0 0 0;">Une vitrine incroyable pour nos jeunes talents.</p>
-                    </div>
-                    <!-- Page Vidéo Finale -->
-                    <div class="back">
-                        <h2>🎬 Le Grand Récap' Vidéo</h2>
-                        <div class="media-box">
-                            <video controls poster="https://via.placeholder.com/550x680/000000/ffffff?text=Lancer+le+Film+du+Carnaval">
-                                <source src="" type="video/mp4">
-                                Votre navigateur ne supporte pas les vidéos.
-                            </video>
-                        </div>
-                        <p style="color: #555; font-style: italic; margin: 10px 0 0 0;">Installez-vous confortablement et visionnez le film.</p>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- BOUTONS -->
-            <div class="controls">
-                <button class="book-btn" id="prev-btn" style="background: linear-gradient(135deg, #6c757d, #495057); box-shadow: none;" disabled>Page Précédente</button>
-                <button class="book-btn" id="next-btn">Tournez la page</button>
-            </div>
-        </section>
-
-        <!-- ESPACES TEXTES -->
-        <section class="description-section">
-            <h2>✨ Récit de notre Édition Magique</h2>
-            <p>Bienvenue sur l'album virtuel du festival carnavalesque. Cet espace a été pensé pour capturer la folie, les rires et l'énergie débordante qui ont rythmé notre événement de type Carnaval.</p>
-            <p>Ajoute ici toutes les descriptions que tu souhaites. Ce bloc blanc immaculé ressortira parfaitement bien sur le dégradé en mouvement en arrière-plan sans perturber le livre 3D.</p>
-        </section>
-
-    </main>
-
-    <script>
-        const prevBtn = document.querySelector("#prev-btn");
-        const nextBtn = document.querySelector("#next-btn");
-        const page1 = document.querySelector("#p1");
-        const page2 = document.querySelector("#p2");
-
-        let currentState = 1;
-
-        function goNextPage() {
-            if(currentState === 1) {
-                page1.classList.add("flipped");
-                page1.style.zIndex = 1;
-                page2.style.zIndex = 3;
-                prevBtn.disabled = false;
-                currentState = 2;
-            } else if(currentState === 2) {
-                page2.classList.add("flipped");
-                page2.style.zIndex = 2;
-                nextBtn.disabled = true;
-                nextBtn.innerText = "Fin de l'album";
-                currentState = 3;
-            }
-        }
-
-        function goPrevPage() {
-            if(currentState === 2) {
-                page1.classList.remove("flipped");
-                page1.style.zIndex = 3;
-                page2.style.zIndex = 2;
-                prevBtn.disabled = true;
-                currentState = 1;
-            } else if(currentState === 3) {
-                page2.classList.remove("flipped");
-                page2.style.zIndex = 3;
-                nextBtn.disabled = false;
-                nextBtn.innerText = "Tournez la page";
-                currentState = 2;
-            }
-        }
-
-        nextBtn.addEventListener("click", goNextPage);
-        prevBtn.addEventListener("click", goPrevPage);
-    </script>
-
-    <script src="script.js"></script>
 </body>
 </html>
