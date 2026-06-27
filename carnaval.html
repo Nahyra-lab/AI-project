@@ -207,9 +207,33 @@
             text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
         }
 
+        /* --- SECTION DESCRIPTION (MAINTENANT EN HAUT) --- */
+        .description-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 50px;
+            margin-bottom: 60px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            color: #2c003e;
+        }
+
+        .description-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #764ba2;
+            margin-bottom: 20px;
+        }
+
+        .description-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
         /* --- GALERIE IMMERSIVE --- */
         .gallery-section {
-            margin: 60px 0;
+            margin-bottom: 40px;
         }
 
         .gallery-title {
@@ -290,43 +314,6 @@
             text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
 
-        /* --- CONTRÔLES DE NAVIGATION --- */
-        .gallery-controls {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 20px;
-            z-index: 100;
-        }
-
-        .control-btn {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            padding: 15px 35px;
-            font-size: 1rem;
-            font-weight: 600;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .control-btn:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .control-btn:disabled {
-            background: rgba(255, 255, 255, 0.2);
-            cursor: not-allowed;
-            transform: none;
-        }
-
         /* --- INDICATEURS DE PAGES --- */
         .page-indicators {
             position: absolute;
@@ -353,28 +340,39 @@
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
         }
 
-        /* --- SECTION DESCRIPTION --- */
-        .description-section {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 30px;
-            padding: 50px;
-            margin: 60px 0;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            color: #2c003e;
+        /* --- CONTRÔLES DE NAVIGATION (MAINTENANT EN DESSOUS) --- */
+        .gallery-controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            padding: 20px;
         }
 
-        .description-section h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: #764ba2;
-            margin-bottom: 20px;
+        .control-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .description-section p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 15px;
+        .control-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .control-btn:disabled {
+            background: rgba(255, 255, 255, 0.2);
+            cursor: not-allowed;
+            transform: none;
         }
 
         /* --- RESPONSIVE --- */
@@ -432,6 +430,14 @@
             <p>Plongez dans l'univers magique et coloré de notre carnaval annuel ! Des costumes extravagants, des rires éclatants, des moments inoubliables... Découvrez comment nos élèves ont transformé le collège en un véritable festival de joie et de créativité.</p>
         </div>
 
+        <!-- SECTION DESCRIPTION (MAINTENANT EN HAUT, AVANT LA GALERIE) -->
+        <section class="description-section">
+            <h2>🎉 Récit de notre Édition Magique</h2>
+            <p>Bienvenue sur l'album virtuel du festival carnavalesque du Collège Marie-Anne. Cet espace a été pensé pour capturer la folie, les rires et l'énergie débordante qui ont rythmé notre événement.</p>
+            <p>De la préparation des costumes jusqu'au défilé final, chaque moment a été immortalisé pour que vous puissiez revivre cette journée exceptionnelle encore et encore.</p>
+            <p>Nos élèves ont fait preuve d'une créativité incroyable, transformant les couloirs du collège en un véritable spectacle haut en couleur. Les professeurs, les parents et les élèves se sont unis pour créer des souvenirs qui resteront gravés dans nos mémoires.</p>
+        </section>
+
         <!-- GALERIE IMMERSIVE -->
         <section class="gallery-section">
             <h2 class="gallery-title">✨ Album Souvenir Interactif</h2>
@@ -442,21 +448,13 @@
                 
                 <!-- Les slides seront générés dynamiquement par JavaScript -->
                 <div id="slides-container"></div>
-                
-                <!-- Contrôles -->
-                <div class="gallery-controls">
-                    <button class="control-btn" id="prev-btn" disabled>← Précédent</button>
-                    <button class="control-btn" id="next-btn">Suivant →</button>
-                </div>
             </div>
-        </section>
-
-        <!-- SECTION DESCRIPTION -->
-        <section class="description-section">
-            <h2>🎉 Récit de notre Édition Magique</h2>
-            <p>Bienvenue sur l'album virtuel du festival carnavalesque du Collège Marie-Anne. Cet espace a été pensé pour capturer la folie, les rires et l'énergie débordante qui ont rythmé notre événement.</p>
-            <p>De la préparation des costumes jusqu'au défilé final, chaque moment a été immortalisé pour que vous puissiez revivre cette journée exceptionnelle encore et encore.</p>
-            <p>Nos élèves ont fait preuve d'une créativité incroyable, transformant les couloirs du collège en un véritable spectacle haut en couleur. Les professeurs, les parents et les élèves se sont unis pour créer des souvenirs qui resteront gravés dans nos mémoires.</p>
+            
+            <!-- CONTRÔLES MAINTENANT EN DESSOUS DE LA GALERIE -->
+            <div class="gallery-controls">
+                <button class="control-btn" id="prev-btn" disabled>← Précédent</button>
+                <button class="control-btn" id="next-btn">Suivant →</button>
+            </div>
         </section>
 
     </div>
