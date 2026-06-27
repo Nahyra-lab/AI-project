@@ -27,6 +27,14 @@
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(-100vh); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideInFromLeft {
+            from { opacity: 0; transform: translateX(-100px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
         @keyframes float {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
             50% { transform: translateY(-20px) rotate(5deg); }
@@ -38,10 +46,6 @@
         @keyframes pulseDelayed {
             0%, 100% { transform: scale(1); opacity: 0.3; }
             50% { transform: scale(1.1); opacity: 0.5; }
-        }
-        @keyframes slideInLeft {
-            from { opacity: 0; transform: translateX(-50px); }
-            to { opacity: 1; transform: translateX(0); }
         }
         @keyframes slideInRight {
             from { opacity: 0; transform: translateX(50px); }
@@ -86,12 +90,20 @@
         .flip-card { perspective: 1000px; }
         .flip-card-inner { 
             position: relative; 
+            width: 100%;
+            height: 100%;
             transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
             transform-style: preserve-3d;
         }
         .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
-        .backface-hidden { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
-        .rotate-y-180 { transform: rotateY(180deg); }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        .flip-card-back { transform: rotateY(180deg); }
         
         /* Magazine Modal */
         .magazine-modal {
@@ -190,14 +202,14 @@
                 <div class="flip-card opacity-0" data-aos="fade-up">
                     <div class="flip-card-inner bg-gradient-to-br from-yellow-50 to-amber-50 rounded-2xl shadow-xl overflow-hidden cursor-pointer h-[450px]">
                         <!-- Front of card -->
-                        <div class="flip-card-front absolute inset-0 backface-hidden p-6 flex flex-col items-center justify-center text-center">
-                            <img src="images/Karina18.jpeg" class="w-40 h-40 rounded-full object-cover mb-4 border-4 border-yellow-500 shadow-lg" alt="Karina" onerror="this.src='https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=400&q=80'">
+                        <div class="flip-card-front p-6 flex flex-col items-center justify-center text-center">
+                            <img src="images/karina18.jpeg" class="w-40 h-40 rounded-full object-cover mb-4 border-4 border-yellow-500 shadow-lg" alt="Karina" onerror="this.src='https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=400&q=80'">
                             <h3 class="text-2xl font-bold text-blue-900 font-serif mb-2">Karina</h3>
                             <p class="text-yellow-600 font-semibold">Secondaire 4</p>
                             <span class="mt-4 bg-yellow-500 text-blue-900 px-4 py-2 rounded-full text-sm font-bold">🏆 Medcriture</span>
                         </div>
                         <!-- Back of card -->
-                        <div class="flip-card-back absolute inset-0 backface-hidden bg-gradient-to-br from-yellow-500 to-amber-600 p-6 flex flex-col items-center justify-center text-center text-white rotate-y-180">
+                        <div class="flip-card-back bg-gradient-to-br from-yellow-500 to-amber-600 p-6 flex flex-col items-center justify-center text-center text-white ">
                             <div class="overflow-y-auto max-h-[400px] pr-2">
                                 <p class="italic text-lg mb-4">"Écris chaque jour, même si ce n'est qu'une phrase."</p>
                                 <p class="text-sm mb-3"><strong>Parcours:</strong> Passionnée d'écriture depuis l'âge de 11 ans</p>
@@ -212,14 +224,14 @@
                 <div class="flip-card opacity-0" data-aos="fade-up" data-aos-delay="100">
                     <div class="flip-card-inner bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl shadow-xl overflow-hidden cursor-pointer h-[450px]">
                         <!-- Front of card -->
-                        <div class="flip-card-front absolute inset-0 backface-hidden p-6 flex flex-col items-center justify-center text-center">
-                            <img src="https://images.unsplash.com/photo-1516280440614-6697288d5d38?auto=format&fit=crop&w=400&q=80" class="w-40 h-40 rounded-full object-cover mb-4 border-4 border-purple-500 shadow-lg" alt="Esperancia">
+                        <div class="flip-card-front p-6 flex flex-col items-center justify-center text-center">
+                            <img src="images/Esperancia.jpeg" class="w-40 h-40 rounded-full object-cover mb-4 border-4 border-purple-500 shadow-lg" alt="Esperancia" onerror="this.src='https://images.unsplash.com/photo-1516280440614-6697288d5d38?auto=format&fit=crop&w=400&q=80'">
                             <h3 class="text-2xl font-bold text-blue-900 font-serif mb-2">Esperancia</h3>
                             <p class="text-purple-600 font-semibold">Chant & Musique</p>
                             <span class="mt-4 bg-purple-500 text-white px-4 py-2 rounded-full text-sm font-bold">🎤 3ème Place</span>
                         </div>
                         <!-- Back of card -->
-                        <div class="flip-card-back absolute inset-0 backface-hidden bg-gradient-to-br from-purple-500 to-pink-600 p-6 flex flex-col items-center justify-center text-center text-white rotate-y-180">
+                        <div class="flip-card-back bg-gradient-to-br from-purple-500 to-pink-600 p-6 flex flex-col items-center justify-center text-center text-white ">
                             <div class="overflow-y-auto max-h-[400px] pr-2">
                                 <p class="italic text-lg mb-4">"La musique est le langage universel de l'âme"</p>
                                 <p class="text-sm mb-3"><strong>Parcours:</strong> Dotée d'une voix exceptionnelle, elle brille dans tous les concours de chant</p>
@@ -234,14 +246,14 @@
                 <div class="flip-card opacity-0" data-aos="fade-up" data-aos-delay="200">
                     <div class="flip-card-inner bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl shadow-xl overflow-hidden cursor-pointer h-[450px]">
                         <!-- Front of card -->
-                        <div class="flip-card-front absolute inset-0 backface-hidden p-6 flex flex-col items-center justify-center text-center">
+                        <div class="flip-card-front p-6 flex flex-col items-center justify-center text-center">
                             <img src="images/Elga2.jpeg.png" class="w-40 h-40 rounded-full object-cover mb-4 border-4 border-green-500 shadow-lg" alt="Elga">
                             <h3 class="text-2xl font-bold text-blue-900 font-serif mb-2">Elga</h3>
                             <p class="text-green-600 font-semibold">Poésie & Engagement</p>
                             <span class="mt-4 bg-green-500 text-white px-4 py-2 rounded-full text-sm font-bold">✒️ Poétesse</span>
                         </div>
                         <!-- Back of card -->
-                        <div class="flip-card-back absolute inset-0 backface-hidden bg-gradient-to-br from-green-500 to-emerald-600 p-6 flex flex-col items-center justify-center text-center text-white rotate-y-180">
+                        <div class="flip-card-back bg-gradient-to-br from-green-500 to-emerald-600 p-6 flex flex-col items-center justify-center text-center text-white ">
                             <div class="overflow-y-auto max-h-[400px] pr-2">
                                 <p class="italic text-lg mb-4">"La poésie est le langage de l'âme"</p>
                                 <p class="text-sm mb-3"><strong>Parcours:</strong> À l'école depuis petite, s'engage activement dans toutes les activités du collège</p>
@@ -256,14 +268,14 @@
                 <div class="flip-card opacity-0" data-aos="fade-up" data-aos-delay="300">
                     <div class="flip-card-inner bg-gradient-to-br from-orange-50 to-red-50 rounded-2xl shadow-xl overflow-hidden cursor-pointer h-[450px]">
                         <!-- Front of card -->
-                        <div class="flip-card-front absolute inset-0 backface-hidden p-6 flex flex-col items-center justify-center text-center">
+                        <div class="flip-card-front p-6 flex flex-col items-center justify-center text-center">
                             <img src="https://images.unsplash.com/photo-1525926477800-7a3be5800fcb?auto=format&fit=crop&w=400&q=80" class="w-40 h-40 rounded-full object-cover mb-4 border-4 border-orange-500 shadow-lg" alt="Yvenie">
                             <h3 class="text-2xl font-bold text-blue-900 font-serif mb-2">Yvenie</h3>
                             <p class="text-orange-600 font-semibold">Excellence Académique</p>
                             <span class="mt-4 bg-orange-500 text-white px-4 py-2 rounded-full text-sm font-bold">🎓 Bourse Complète</span>
                         </div>
                         <!-- Back of card -->
-                        <div class="flip-card-back absolute inset-0 backface-hidden bg-gradient-to-br from-orange-500 to-red-600 p-6 flex flex-col items-center justify-center text-center text-white rotate-y-180">
+                        <div class="flip-card-back bg-gradient-to-br from-orange-500 to-red-600 p-6 flex flex-col items-center justify-center text-center text-white ">
                             <div class="overflow-y-auto max-h-[400px] pr-2">
                                 <p class="italic text-lg mb-4">"L'excellence est une habitude quotidienne"</p>
                                 <p class="text-sm mb-3"><strong>Parcours:</strong> Arrivée en 7ème année, excellent rendement scolaire depuis</p>
@@ -278,14 +290,14 @@
                 <div class="flip-card opacity-0" data-aos="fade-up" data-aos-delay="400">
                     <div class="flip-card-inner bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl shadow-xl overflow-hidden cursor-pointer h-[450px]">
                         <!-- Front of card -->
-                        <div class="flip-card-front absolute inset-0 backface-hidden p-6 flex flex-col items-center justify-center text-center">
+                        <div class="flip-card-front p-6 flex flex-col items-center justify-center text-center">
                             <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=400&q=80" class="w-40 h-40 rounded-full object-cover mb-4 border-4 border-blue-500 shadow-lg" alt="Exposcience">
                             <h3 class="text-2xl font-bold text-blue-900 font-serif mb-2">Les Innovatrices</h3>
                             <p class="text-blue-600 font-semibold">Promotion Armoni</p>
                             <span class="mt-4 bg-blue-500 text-white px-4 py-2 rounded-full text-sm font-bold">🔬 Exposcience</span>
                         </div>
                         <!-- Back of card -->
-                        <div class="flip-card-back absolute inset-0 backface-hidden bg-gradient-to-br from-blue-500 to-indigo-600 p-6 flex flex-col items-center justify-center text-center text-white rotate-y-180">
+                        <div class="flip-card-back bg-gradient-to-br from-blue-500 to-indigo-600 p-6 flex flex-col items-center justify-center text-center text-white ">
                             <div class="overflow-y-auto max-h-[400px] pr-2">
                                 <p class="italic text-lg mb-4">"Ne comptez que sur vous et votre équipe"</p>
                                 <p class="text-sm mb-3"><strong>Parcours:</strong> Trois filles déterminées qui ont participé à Exposcience 2022 et 2023</p>
@@ -300,14 +312,14 @@
                 <div class="flip-card opacity-0" data-aos="fade-up" data-aos-delay="500">
                     <div class="flip-card-inner bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl shadow-xl overflow-hidden cursor-pointer h-[450px]">
                         <!-- Front of card -->
-                        <div class="flip-card-front absolute inset-0 backface-hidden p-6 flex flex-col items-center justify-center text-center">
+                        <div class="flip-card-front p-6 flex flex-col items-center justify-center text-center">
                             <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=400&q=80" class="w-40 h-40 rounded-full object-cover mb-4 border-4 border-indigo-500 shadow-lg" alt="Promotion 1995">
                             <h3 class="text-2xl font-bold text-blue-900 font-serif mb-2">Promotion 1995</h3>
                             <p class="text-indigo-600 font-semibold">Mérites Exceptionnels</p>
                             <span class="mt-4 bg-indigo-500 text-white px-4 py-2 rounded-full text-sm font-bold">💝 Générosité</span>
                         </div>
                         <!-- Back of card -->
-                        <div class="flip-card-back absolute inset-0 backface-hidden bg-gradient-to-br from-indigo-500 to-purple-600 p-6 flex flex-col items-center justify-center text-center text-white rotate-y-180">
+                        <div class="flip-card-back bg-gradient-to-br from-indigo-500 to-purple-600 p-6 flex flex-col items-center justify-center text-center text-white ">
                             <div class="overflow-y-auto max-h-[400px] pr-2">
                                 <p class="italic text-lg mb-4">"Toujours là pour leurs petites soeurs"</p>
                                 <p class="text-sm mb-3"><strong>Parcours:</strong> La seule promotion aussi généreuse qui aide toujours malgré les moments difficiles</p>
@@ -953,16 +965,16 @@
             name: 'Karina',
             prenom: '',
             annee: 'Secondaire 4',
-            photo: 'images/Karina18.jpeg',
-            photos: ['images/Karina18.jpeg', 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=400&q=80', 'images/Medcriture.jpeg', 'https://images.unsplash.com/photo-1457139621581-67576207ac79?auto=format&fit=crop&w=400&q=80'],
+            photo: 'images/karina18.jpeg',
+            photos: ['images/karina18.jpeg', 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=400&q=80', 'images/Medcriture.jpeg', 'https://images.unsplash.com/photo-1457139621581-67576207ac79?auto=format&fit=crop&w=400&q=80'],
             experience: "Élève de Secondaire 4, elle a participé de nombreuses fois à des concours d'écriture mais qui est la 3e gagnante du concours d'écriture Medcriture. Elle nous explique qu'elle a suivi l'exemple de son aînée Kate qui l'année antérieure avait participé à ce concours et avait décroché la 2e place. Passionnée par les mots depuis l'âge de 11 ans, Karina continue d'inspirer ses camarades par sa persévérance et son talent exceptionnel."
         },
         esperancia: {
             name: 'Esperancia',
             prenom: '',
             annee: 'Chant & Musique',
-            photo: 'https://images.unsplash.com/photo-1516280440614-6697288d5d38?auto=format&fit=crop&w=400&q=80',
-            photos: ['https://images.unsplash.com/photo-1516280440614-6697288d5d38?auto=format&fit=crop&w=400&q=80', 'https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?auto=format&fit=crop&w=400&q=80', 'https://images.unsplash.com/photo-1493225457124-a3ebf183729f?auto=format&fit=crop&w=400&q=80', 'https://images.unsplash.com/photo-1501612780327-45045538702b?auto=format&fit=crop&w=400&q=80'],
+            photo: 'images/Esperancia.jpeg',
+            photos: ['images/Esperancia.jpeg', 'https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?auto=format&fit=crop&w=400&q=80', 'https://images.unsplash.com/photo-1493225457124-a3ebf183729f?auto=format&fit=crop&w=400&q=80', 'https://images.unsplash.com/photo-1501612780327-45045538702b?auto=format&fit=crop&w=400&q=80'],
             experience: "Dotée d'une voix exceptionnelle, Esperancia a brillé lors d'un concours de chant en décrochant la 3ème place. Sa passion pour la musique et son talent naturel continuent de l'inspirer dans son parcours artistique. Elle inspire ses camarades par sa détermination et son amour pour la musique."
         },
         elga: {
