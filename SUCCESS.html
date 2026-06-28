@@ -621,5 +621,15 @@
     <p>© 2026 Succes Story. Pour les leaders de demain. Promotion NEXORA❤️</p>
 </footer>
 
+<script>
+  // Routage par hash : SUCCESS.html#orientation ouvre la section correspondante
+  (function () {
+    var hash = window.location.hash.replace('#', '');
+    var valid = ['accueil', 'orientation', 'opportunities', 'improving'];
+    if (hash && valid.indexOf(hash) !== -1 && typeof showSection === 'function') {
+      showSection(hash);
+    }
+  })();
+</script>
 </body>
 </html>
