@@ -199,6 +199,31 @@
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
             border-color: #D4AF37;
         }
+
+        /* ===== Mystery Cards : Pile -> Eparpillement -> Grille ===== */
+        .mystery-hint { text-align: center; margin-bottom: 1.5rem; font-size: 0.95rem; color: #475569; min-height: 2.5rem; }
+        .mystery-stage { position: relative; width: 100%; max-width: 1000px; margin: 0 auto; overflow: hidden; border-radius: 1.5rem; transition: height 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+        .mcard { position: absolute; left: 0; top: 0; width: 220px; height: 330px; transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); will-change: transform; }
+        .mcard .mystery-card { width: 100%; height: 100%; }
+        .mcard .mystery-card-inner { height: 100%; border-radius: 1rem; overflow: hidden; }
+        .mystery-stage.phase-grid .mcard { cursor: pointer; }
+        .mystery-stage.phase-grid .mcard:hover { z-index: 20; }
+        .scatter-btn { position: absolute; inset: 0; z-index: 50; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 1rem; background: none; border: none; }
+        .scatter-btn[hidden] { display: none; }
+        .scatter-btn__inner { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.7rem 1.4rem; border-radius: 9999px; background: linear-gradient(135deg, #D4AF37, #F59E0B); color: #0A192F; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; box-shadow: 0 8px 20px rgba(0,0,0,0.25); animation: float 1.4s ease-in-out infinite; }
+        .reset-btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.65rem 1.4rem; border-radius: 9999px; background: white; color: #0A192F; border: 2px solid #D4AF37; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; cursor: pointer; transition: all 0.2s ease; }
+        .reset-btn:hover { background: #D4AF37; color: white; }
+        .mystery-actions { text-align: center; margin-top: 2rem; }
+
+        /* Titre qui tombe du ciel */
+        @keyframes titleFallSky { 0% { opacity: 0; transform: translateY(-480px) rotate(-6deg); } 50% { opacity: 1; } 100% { opacity: 1; transform: translateY(0) rotate(0); } }
+        .title-fall { animation: titleFallSky 1.3s cubic-bezier(0.34, 1.4, 0.64, 1) forwards !important; }
+
+        /* Mot par mot (catchphrase) */
+        .catch-word { display: inline-block; opacity: 0; transform: translateX(-24px); filter: blur(4px); transition: opacity 0.4s ease-out, transform 0.4s ease-out, filter 0.4s ease-out; }
+        .catch-word.visible { opacity: 1; transform: translateX(0); filter: blur(0); }
+
+        @media (max-width: 639px) { .mcard { width: 170px; height: 255px; } }
     </style>
 </head>
 <body class="text-slate-800">
@@ -258,124 +283,127 @@
                 <h1 id="stories-title" class="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 opacity-0" style="font-family: 'Great Vibes', cursive; text-shadow: 0 0 30px rgba(255,215,0,0.5);">
                     The <span class="text-yellow-400 italic">Stories</span>
                 </h1>
-                <!-- Tagline -->
-                <p id="stories-tagline" class="text-lg md:text-xl text-gray-200 mb-8 opacity-0 max-w-4xl mx-auto leading-relaxed">
-                    Chaque grande histoire commence sur les bancs du collège. Aujourd'hui, nous célébrons celles qui inspirent par leur parcours, pour encourager celles qui écriront les plus belles histoires de demain.
-                </p>
+                <!-- Tagline (mot par mot) -->
+                <p id="stories-tagline" class="text-lg md:text-xl text-gray-200 mb-8 max-w-4xl mx-auto leading-relaxed" data-text="Chaque grande histoire commence sur les bancs du collège. Aujourd'hui, nous célébrons celles qui inspirent par leur parcours, pour encourager celles qui écriront les plus belles histoires de demain."></p>
             </div>
         </div>
 
-        <!-- Mystery Cards Grid -->
-        <div class="max-w-7xl mx-auto mb-20">
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Karina Mystery Card -->
-                <div class="mystery-card opacity-0 animate-fade-in-up delay-100" data-person="karina">
-                    <div class="mystery-card-inner h-[350px] rounded-2xl shadow-xl overflow-hidden">
-                        <!-- Front: Mystery -->
-                        <div class="mystery-card-front gradient-yellow flex flex-col items-center justify-center">
-                            <div class="question-mark">?</div>
-                            <p class="text-white font-bold mt-4 text-lg">Cliquez pour découvrir</p>
-                        </div>
-                        <!-- Back: Profile -->
-                        <div class="mystery-card-back gradient-yellow profile-card">
-                            <img src="images/karina18.jpeg" class="profile-image" alt="Karina" onerror="this.src='https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=400&q=80'">
-                            <div class="profile-name">Karina</div>
-                            <p class="text-white/90">Secondaire 4</p>
-                            <div class="profile-badge">🏆 Medcriture</div>
-                        </div>
-                    </div>
-                </div>
+        <!-- Mystery Cards : Pile → Éparpillement → Grille -->
+        <div id="mystery-hint" class="mystery-hint">
+          Une pile de <strong>6 cartes mystère</strong> se cache au centre. Cliquez dessus pour les éparpiller.
+        </div>
 
-                <!-- Esperancia Mystery Card -->
-                <div class="mystery-card opacity-0 animate-fade-in-up delay-200" data-person="esperancia">
-                    <div class="mystery-card-inner h-[350px] rounded-2xl shadow-xl overflow-hidden">
-                        <!-- Front: Mystery -->
-                        <div class="mystery-card-front gradient-purple flex flex-col items-center justify-center">
-                            <div class="question-mark">?</div>
-                            <p class="text-white font-bold mt-4 text-lg">Cliquez pour découvrir</p>
-                        </div>
-                        <!-- Back: Profile -->
-                        <div class="mystery-card-back gradient-purple profile-card">
-                            <img src="images/Esperancia.jpeg" class="profile-image" alt="Esperancia" onerror="this.src='https://images.unsplash.com/photo-1516280440614-6697288d5d38?auto=format&fit=crop&w=400&q=80'">
-                            <div class="profile-name">Esperancia</div>
-                            <p class="text-white/90">Chant & Musique</p>
-                            <div class="profile-badge">🎤 3ème Place</div>
-                        </div>
-                    </div>
-                </div>
+        <div id="mystery-stage" class="mystery-stage">
+          <button id="scatter-btn" class="scatter-btn" type="button" aria-label="Éparpiller les cartes">
+            <span class="scatter-btn__inner">✦ Cliquez pour éparpiller</span>
+          </button>
 
-                <!-- Elga Mystery Card -->
-                <div class="mystery-card opacity-0 animate-fade-in-up delay-300" data-person="elga">
-                    <div class="mystery-card-inner h-[350px] rounded-2xl shadow-xl overflow-hidden">
-                        <!-- Front: Mystery -->
-                        <div class="mystery-card-front gradient-blue flex flex-col items-center justify-center">
-                            <div class="question-mark">?</div>
-                            <p class="text-white font-bold mt-4 text-lg">Cliquez pour découvrir</p>
-                        </div>
-                        <!-- Back: Profile -->
-                        <div class="mystery-card-back gradient-blue profile-card">
-                            <img src="images/Elga2.jpeg.png" class="profile-image" alt="Elga" onerror="this.src='https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80'">
-                            <div class="profile-name">Elga</div>
-                            <p class="text-white/90">Poésie & Engagement</p>
-                            <div class="profile-badge">✨ Excellence</div>
-                        </div>
-                    </div>
+          <div class="mcard" data-person="karina" data-index="0">
+            <div class="mystery-card" data-person="karina">
+              <div class="mystery-card-inner">
+                <div class="mystery-card-front gradient-yellow flex flex-col items-center justify-center">
+                  <div class="question-mark">?</div>
+                  <p class="text-white font-bold mt-4 text-lg">Cliquez pour découvrir</p>
                 </div>
-
-                <!-- Yvenie Mystery Card -->
-                <div class="mystery-card opacity-0 animate-fade-in-up delay-400" data-person="yvenie">
-                    <div class="mystery-card-inner h-[350px] rounded-2xl shadow-xl overflow-hidden">
-                        <!-- Front: Mystery -->
-                        <div class="mystery-card-front gradient-green flex flex-col items-center justify-center">
-                            <div class="question-mark">?</div>
-                            <p class="text-white font-bold mt-4 text-lg">Cliquez pour découvrir</p>
-                        </div>
-                        <!-- Back: Profile -->
-                        <div class="mystery-card-back gradient-green profile-card">
-                            <img src="images/scholarship-1995.jpg" class="profile-image" alt="Yvenie">
-                            <div class="profile-name">Yvenie</div>
-                            <p class="text-white/90">Excellence Académique</p>
-                            <div class="profile-badge">🎓 Bourse</div>
-                        </div>
-                    </div>
+                <div class="mystery-card-back gradient-yellow profile-card">
+                  <img src="images/karina18.jpeg" class="profile-image" alt="Karina" onerror="this.src='https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=400&q=80'">
+                  <div class="profile-name">Karina</div>
+                  <p class="text-white/90">Secondaire 4</p>
+                  <div class="profile-badge">🏆 Medcriture</div>
                 </div>
-
-                <!-- Exposcience Mystery Card -->
-                <div class="mystery-card opacity-0 animate-fade-in-up delay-500" data-person="exposcience">
-                    <div class="mystery-card-inner h-[350px] rounded-2xl shadow-xl overflow-hidden">
-                        <!-- Front: Mystery -->
-                        <div class="mystery-card-front gradient-orange flex flex-col items-center justify-center">
-                            <div class="question-mark">?</div>
-                            <p class="text-white font-bold mt-4 text-lg">Cliquez pour découvrir</p>
-                        </div>
-                        <!-- Back: Profile -->
-                        <div class="mystery-card-back gradient-orange profile-card">
-                            <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=400&q=80" class="profile-image" alt="Exposcience">
-                            <div class="profile-name">Les Innovatrices</div>
-                            <p class="text-white/90">Promotion Armoni</p>
-                            <div class="profile-badge">🚀 Exposcience</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Promotion 1995 Mystery Card -->
-                <div class="mystery-card opacity-0 animate-fade-in-up delay-600" data-person="promotion1995">
-                    <div class="mystery-card-inner h-[350px] rounded-2xl shadow-xl overflow-hidden">
-                        <!-- Front: Mystery -->
-                        <div class="mystery-card-front gradient-rose flex flex-col items-center justify-center">
-                            <div class="question-mark">?</div>
-                            <p class="text-white font-bold mt-4 text-lg">Cliquez pour découvrir</p>
-                        </div>
-                        <!-- Back: Profile -->
-                        <div class="mystery-card-back gradient-rose profile-card">
-                            <img src="images/writing-award.jpg" class="profile-image" alt="Promotion 1995">
-                            <div class="profile-name">Promotion 1995</div>
-                            <p class="text-white/90">Mérites Exceptionnels</p>
-                            <div class="profile-badge">💎 Générosité</div>
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
+          </div>
+
+          <div class="mcard" data-person="esperancia" data-index="1">
+            <div class="mystery-card" data-person="esperancia">
+              <div class="mystery-card-inner">
+                <div class="mystery-card-front gradient-purple flex flex-col items-center justify-center">
+                  <div class="question-mark">?</div>
+                  <p class="text-white font-bold mt-4 text-lg">Cliquez pour découvrir</p>
+                </div>
+                <div class="mystery-card-back gradient-purple profile-card">
+                  <img src="images/Esperancia.jpeg" class="profile-image" alt="Esperancia" onerror="this.src='https://images.unsplash.com/photo-1516280440614-6697288d5d38?auto=format&fit=crop&w=400&q=80'">
+                  <div class="profile-name">Esperancia</div>
+                  <p class="text-white/90">Chant & Musique</p>
+                  <div class="profile-badge">🎤 3ème Place</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mcard" data-person="elga" data-index="2">
+            <div class="mystery-card" data-person="elga">
+              <div class="mystery-card-inner">
+                <div class="mystery-card-front gradient-blue flex flex-col items-center justify-center">
+                  <div class="question-mark">?</div>
+                  <p class="text-white font-bold mt-4 text-lg">Cliquez pour découvrir</p>
+                </div>
+                <div class="mystery-card-back gradient-blue profile-card">
+                  <img src="images/Elga2.jpeg.png" class="profile-image" alt="Elga" onerror="this.src='https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80'">
+                  <div class="profile-name">Elga</div>
+                  <p class="text-white/90">Poésie & Engagement</p>
+                  <div class="profile-badge">✨ Excellence</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mcard" data-person="yvenie" data-index="3">
+            <div class="mystery-card" data-person="yvenie">
+              <div class="mystery-card-inner">
+                <div class="mystery-card-front gradient-green flex flex-col items-center justify-center">
+                  <div class="question-mark">?</div>
+                  <p class="text-white font-bold mt-4 text-lg">Cliquez pour découvrir</p>
+                </div>
+                <div class="mystery-card-back gradient-green profile-card">
+                  <img src="images/scholarship-1995.jpg" class="profile-image" alt="Yvenie">
+                  <div class="profile-name">Yvenie</div>
+                  <p class="text-white/90">Excellence Académique</p>
+                  <div class="profile-badge">🎓 Bourse</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mcard" data-person="exposcience" data-index="4">
+            <div class="mystery-card" data-person="exposcience">
+              <div class="mystery-card-inner">
+                <div class="mystery-card-front gradient-orange flex flex-col items-center justify-center">
+                  <div class="question-mark">?</div>
+                  <p class="text-white font-bold mt-4 text-lg">Cliquez pour découvrir</p>
+                </div>
+                <div class="mystery-card-back gradient-orange profile-card">
+                  <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=400&q=80" class="profile-image" alt="Exposcience">
+                  <div class="profile-name">Les Innovatrices</div>
+                  <p class="text-white/90">Promotion Armoni</p>
+                  <div class="profile-badge">🚀 Exposcience</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mcard" data-person="promotion1995" data-index="5">
+            <div class="mystery-card" data-person="promotion1995">
+              <div class="mystery-card-inner">
+                <div class="mystery-card-front gradient-rose flex flex-col items-center justify-center">
+                  <div class="question-mark">?</div>
+                  <p class="text-white font-bold mt-4 text-lg">Cliquez pour découvrir</p>
+                </div>
+                <div class="mystery-card-back gradient-rose profile-card">
+                  <img src="images/writing-award.jpg" class="profile-image" alt="Promotion 1995">
+                  <div class="profile-name">Promotion 1995</div>
+                  <p class="text-white/90">Mérites Exceptionnels</p>
+                  <div class="profile-badge">💎 Générosité</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mystery-actions">
+          <button id="reset-btn" class="reset-btn" type="button" hidden>↺ Recommencer</button>
+        </div>
 
             <!-- Call to Action Section -->
             <div class="max-w-4xl mx-auto text-center py-20 mt-12">
