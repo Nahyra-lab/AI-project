@@ -24,7 +24,7 @@
             color: #334155;
         }
 
-        /* --- BARRE DE NAVIGATION RECONSTRUITE À L'IDENTIQUE --- */
+        /* --- BARRE DE NAVIGATION --- */
         .navbar {
             width: 100%;
             display: flex;
@@ -155,16 +155,21 @@
 
         .book {
             position: relative;
-            width: 460px; /* Largeur d'une page */
+            width: 460px;
             height: 560px;
             transform-style: preserve-3d;
             transition: transform 1s ease;
-            transform: translateX(0); /* Aligné au centre fermé au début */
+            transform: translateX(0); /* Fermé au début (centré) */
         }
 
-        /* Décale l'axe central du livre quand il est ouvert pour voir la page gauche ET droite */
+        /* Décalage quand le livre est ouvert */
         .book.opened {
             transform: translateX(230px);
+        }
+
+        /* Quand le livre se referme à la fin, il bascule complètement à gauche */
+        .book.closed-end {
+            transform: translateX(460px);
         }
 
         /* --- BLOC DOUBLE-PAGE --- */
@@ -180,14 +185,13 @@
             z-index: 1;
         }
 
-        /* Gestion de la superposition des pages */
-        #p1 { z-index: 6; }
-        #p2 { z-index: 5; }
-        #p5 { z-index: 4; }
-        #p3 { z-index: 3; }
-        #p4 { z-index: 2; }
+        /* Gestion de la superposition */
+        #p1 { z-index: 4; }
+        #p2 { z-index: 3; }
+        #p5 { z-index: 2; }
+        #p3 { z-index: 1; }
 
-        /* --- FACES AVANT ET ARRIÈRE D'UNE PAGE --- */
+        /* --- FACES AVANT ET ARRIÈRE --- */
         .front, .back {
             position: absolute;
             width: 100%;
@@ -211,13 +215,22 @@
             border-radius: 16px 4px 4px 16px;
             border: 1px solid #e2e8f0;
             border-right: none;
-            transform: rotateY(180deg); /* Retourne le dos de la page */
+            transform: rotateY(180deg);
         }
 
-        /* --- DESIGN DE LA COUVERTURE FERMÉE --- */
+        /* --- DESIGN DES COUVERTURES (DÉBUT ET FIN) --- */
         .front-cover {
             background: linear-gradient(135deg, #2e2a72 0%, #17153b 100%);
             border-left: 8px solid #0f0e26;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .back-cover {
+            background: linear-gradient(135deg, #2e2a72 0%, #17153b 100%);
+            border-right: 8px solid #0f0e26;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -239,20 +252,19 @@
             to { text-shadow: 0 0 10px #fff, 0 0 20px #a5b4fc, 0 0 35px #6366f1; }
         }
 
-        /* Reliures et ombrages réalistes au centre du livre ouvert */
+        /* Reliures et ombrages */
         .front:not(.front-cover) {
             box-shadow: inset 15px 0 20px rgba(0,0,0,0.04), 4px 4px 10px rgba(0,0,0,0.05);
         }
-        .back {
+        .back:not(.back-cover) {
             box-shadow: inset -15px 0 20px rgba(0,0,0,0.04), -4px 4px 10px rgba(0,0,0,0.05);
         }
 
-        /* --- CLASSE DE FEUILLETAGE (PASSAGE À LA PAGE SUIVANTE) --- */
         .flipped {
             transform: rotateY(-180deg);
         }
 
-        /* --- CONTENU DE L'INTÉRIEUR DU LIVRE --- */
+        /* --- CONTENU --- */
         .page-title {
             font-family: 'Playfair Display', serif;
             font-size: 1.7rem;
@@ -290,7 +302,7 @@
             transform: scale(1.03);
         }
 
-        /* --- MODAL ZOOM EXTERNE --- */
+        /* --- MODAL ZOOM --- */
         .modal {
             display: none;
             position: fixed;
@@ -407,8 +419,10 @@
                         <img src="images/image43.jpg.jpeg" class="book-photo" onclick="zoomImage(this.src)">
                     </div>
                 </div>
-                
-
+                <div class="back back-cover">
+                    <h1 class="neon-title">Fin</h1>
+                    <div style="font-size: 2.5rem; margin-top: 20px;">❤️</div>
+                </div>
             </div>
 
         </div>
@@ -420,7 +434,6 @@
     </div>
 
     <script>
-        // --- GESTION DU FEUILLETAGE MULTI-PAGES ---
         const prevBtn = document.getElementById("prev-btn");
         const nextBtn = document.getElementById("next-btn");
         const book = document.getElementById("book");
@@ -429,18 +442,22 @@
         const p2 = document.getElementById("p2");
         const p5 = document.getElementById("p5");
         const p3 = document.getElementById("p3");
-        const p4 = document.getElementById("p4");
 
         let currentState = 1;
-        const maxState = 6; // Changé à 6 car on a rajouté un bloc de pages
+        const maxState = 5; // 5 états au total désormais
 
         function openBook() {
+            book.classList.remove("closed-end");
             book.classList.add("opened");
         }
 
         function closeBook(isAtStart) {
             if(isAtStart) {
+                book.classList.remove("opened", "closed-end");
+            } else {
+                // Se referme à la fin en se décalant correctement
                 book.classList.remove("opened");
+                book.classList.add("closed-end");
             }
         }
 
@@ -460,14 +477,12 @@
                     case 3:
                         p5.classList.add("flipped");
                         p5.style.zIndex = 3;
+                        nextBtn.textContent = "Fermer le livre";
                         break;
                     case 4:
                         p3.classList.add("flipped");
                         p3.style.zIndex = 4;
-                        break;
-                    case 5:
-                        p4.classList.add("flipped");
-                        p4.style.zIndex = 5;
+                        closeBook(false); // On ferme le livre à la fin !
                         nextBtn.textContent = "Fin du Livre";
                         nextBtn.disabled = true;
                         break;
@@ -483,26 +498,24 @@
                     case 2:
                         closeBook(true);
                         p1.classList.remove("flipped");
-                        p1.style.zIndex = 6;
+                        p1.style.zIndex = 4;
                         nextBtn.textContent = "Ouvrir le livre";
                         prevBtn.disabled = true;
                         break;
                     case 3:
                         p2.classList.remove("flipped");
-                        p2.style.zIndex = 5;
+                        p2.style.zIndex = 3;
                         break;
                     case 4:
                         p5.classList.remove("flipped");
-                        p5.style.zIndex = 4;
+                        p5.style.zIndex = 2;
+                        nextBtn.textContent = "Page Suivante";
                         break;
                     case 5:
+                        openBook(); // Ré-ouvrir le livre en revenant en arrière
                         p3.classList.remove("flipped");
-                        p3.style.zIndex = 3;
-                        break;
-                    case 6:
-                        p4.classList.remove("flipped");
-                        p4.style.zIndex = 2;
-                        nextBtn.textContent = "Page Suivante";
+                        p3.style.zIndex = 1;
+                        nextBtn.textContent = "Fermer le livre";
                         nextBtn.disabled = false;
                         break;
                 }
@@ -513,7 +526,7 @@
         nextBtn.addEventListener("click", goNext);
         prevBtn.addEventListener("click", goPrev);
 
-        // --- INTERACTIVITÉ DU MENU DROPDOWN ---
+        // --- MENU DROPDOWN ---
         const dropdownToggle = document.querySelector('.dropdown-toggle');
         const dropdownMenu = document.querySelector('.dropdown-menu');
         
@@ -528,7 +541,7 @@
             }
         });
 
-        // --- MODAL ZOOM DES IMAGES ---
+        // --- MODAL ZOOM ---
         const modal = document.getElementById('zoom-modal');
         const modalImg = document.getElementById('modal-img');
 
