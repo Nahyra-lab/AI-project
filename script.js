@@ -51,7 +51,7 @@ const opportunitiesData = {
     bourse: {
         icon: "🎓",
         title: "Bourses d'Étude",
-        intro: "Financer vos rêves.",
+        intro: "Financer vos rêmes.",
         description: "Il existe de multiples dispositifs pour financer vos études supérieures, en Haïti et à l'international. Découvrez les bourses qui correspondent à votre profil.",
         requirements: "Excellence académique, dossier complet, lettres de recommandation.",
         benefits: "Financement des études, accès à des institutions prestigieuses, reconnaissance académique."
@@ -185,13 +185,25 @@ function triggerStoryAnimations() {
     const title = document.getElementById('stories-title');
     const tagline = document.getElementById('stories-tagline');
 
+    // Titre qui tombe du ciel
     if (title) {
-        title.style.animation = 'fadeInUp 1s ease-out forwards';
+        title.classList.remove('opacity-0');
+        title.classList.add('title-fall');
     }
-    if (tagline) {
-        setTimeout(() => {
-            tagline.style.animation = 'slideInFromLeft 1s ease-out forwards';
-        }, 500);
+
+    // Catchphrase : reveal mot par mot (gauche -> droite)
+    if (tagline && tagline.dataset.text) {
+        const text = tagline.dataset.text;
+        tagline.innerHTML = '';
+        const words = text.split(' ');
+        words.forEach((word, i) => {
+            const span = document.createElement('span');
+            span.className = 'catch-word';
+            span.textContent = word;
+            tagline.appendChild(span);
+            tagline.appendChild(document.createTextNode('\u00A0'));
+            setTimeout(() => span.classList.add('visible'), 600 + i * 35);
+        });
     }
 
     // Animate CTA section
@@ -199,21 +211,12 @@ function triggerStoryAnimations() {
     const ctaSubtext = document.getElementById('cta-subtext');
     const ctaButton = document.getElementById('cta-button');
 
-    if (ctaText) {
-        setTimeout(() => {
-            ctaText.style.animation = 'fadeInUp 0.8s ease-out forwards';
-        }, 2000);
-    }
-    if (ctaSubtext) {
-        setTimeout(() => {
-            ctaSubtext.style.animation = 'fadeInUp 0.8s ease-out forwards';
-        }, 2200);
-    }
-    if (ctaButton) {
-        setTimeout(() => {
-            ctaButton.style.animation = 'fadeInUp 0.8s ease-out forwards';
-        }, 2400);
-    }
+    if (ctaText) { setTimeout(() => { ctaText.style.animation = 'fadeInUp 0.8s ease-out forwards'; }, 2600); }
+    if (ctaSubtext) { setTimeout(() => { ctaSubtext.style.animation = 'fadeInUp 0.8s ease-out forwards'; }, 2800); }
+    if (ctaButton) { setTimeout(() => { ctaButton.style.animation = 'fadeInUp 0.8s ease-out forwards'; }, 3000); }
+
+    // Initialiser les cartes mystere (pile)
+    initMysteryStack();
 }
 
 // ==========================================
@@ -331,22 +334,167 @@ function closeMagazine() {
 }
 
 // ==========================================
+//  5bis. CARTES MYSTERE : Pile -> Eparpillement -> Grille
+// ==========================================
+const MysteryStack = {
+    phase: 'stack',
+    revealed: new Set(),
+    scatterPos: [],
+    containerW: 0,
+    layout: { cols: 3, cardW: 220, cardH: 330, rows: 2, startX: 0, gridH: 0, stackH: 420 },
+    cards: [],
+    GAP: 24,
+
+    init() {
+        const self = this;
+        this.stage = document.getElementById('mystery-stage');
+        this.hint = document.getElementById('mystery-hint');
+        this.scatterBtn = document.getElementById('scatter-btn');
+        this.resetBtn = document.getElementById('reset-btn');
+        if (!this.stage) return;
+
+        this.cards = Array.from(document.querySelectorAll('.mcard')).map((el, i) => ({
+            el, inner: el.querySelector('.mystery-card'), index: i,
+            person: el.dataset.person
+        }));
+
+        this.measure();
+        this.positionAll();
+
+        if (this.scatterBtn) this.scatterBtn.addEventListener('click', () => self.scatter());
+        if (this.resetBtn) this.resetBtn.addEventListener('click', () => self.reset());
+
+        this.cards.forEach(c => {
+            c.el.addEventListener('click', function () { self.onCardClick(c); });
+        });
+
+        window.addEventListener('resize', () => {
+            self.measure();
+            self.positionAll();
+        });
+    },
+
+    measure() {
+        if (!this.stage) return;
+        this.containerW = this.stage.clientWidth;
+        const n = this.cards.length;
+        const cols = this.containerW >= 760 ? 3 : this.containerW >= 480 ? 2 : 1;
+        const cardW = Math.max(170, Math.min(260, (this.containerW - this.GAP * (cols - 1)) / cols));
+        const cardH = Math.round(cardW * 1.5);
+        const rows = Math.ceil(n / cols);
+        const totalGridW = cols * cardW + (cols - 1) * this.GAP;
+        const startX = Math.max(0, (this.containerW - totalGridW) / 2);
+        const gridH = rows * cardH + (rows - 1) * this.GAP;
+        const stackH = cardH + 90;
+        this.layout = { cols, cardW, cardH, rows, startX, gridH, stackH };
+        this.cards.forEach(c => {
+            c.el.style.width = cardW + 'px';
+            c.el.style.height = cardH + 'px';
+        });
+    },
+
+    stackPos(i) {
+        const n = this.cards.length;
+        const l = this.layout;
+        const cx = (this.containerW - l.cardW) / 2;
+        const cy = (l.stackH - l.cardH) / 2;
+        const offset = i - (n - 1) / 2;
+        return { x: cx + offset * 1.4, y: cy + offset * 2.2, rotate: offset * 4, scale: 1 };
+    },
+
+    gridPos(i) {
+        const l = this.layout;
+        const col = i % l.cols;
+        const row = Math.floor(i / l.cols);
+        return { x: l.startX + col * (l.cardW + this.GAP), y: row * (l.cardH + this.GAP), rotate: 0, scale: 1 };
+    },
+
+    target(i) {
+        if (this.phase === 'stack') return this.stackPos(i);
+        if (this.phase === 'scatter') {
+            const s = this.scatterPos[i] || this.stackPos(i);
+            return { x: s.x, y: s.y, rotate: s.rotate, scale: 0.94 };
+        }
+        return this.gridPos(i);
+    },
+
+    positionAll() {
+        const self = this;
+        this.cards.forEach((c, i) => {
+            const t = self.target(i);
+            c.el.style.transform = 'translate(' + t.x + 'px,' + t.y + 'px) rotate(' + t.rotate + 'deg) scale(' + t.scale + ')';
+            c.el.style.zIndex = self.phase === 'stack' ? String(self.cards.length - i) : '1';
+        });
+        const h = this.phase === 'stack' ? this.layout.stackH : this.layout.gridH;
+        this.stage.style.height = h + 'px';
+        this.stage.classList.toggle('phase-grid', this.phase === 'grid');
+    },
+
+    scatter() {
+        if (this.phase !== 'stack') return;
+        const self = this;
+        const l = this.layout;
+        const maxY = Math.max(l.gridH, l.cardH * 2);
+        this.scatterPos = this.cards.map(() => ({
+            x: Math.random() * Math.max(0, this.containerW - l.cardW),
+            y: Math.random() * Math.max(0, maxY - l.cardH),
+            rotate: (Math.random() - 0.5) * 60,
+        }));
+        this.phase = 'scatter';
+        if (this.scatterBtn) this.scatterBtn.hidden = true;
+        this.cards.forEach(c => { c.el.style.transitionDuration = '0.5s'; });
+        this.positionAll();
+        setTimeout(() => {
+            self.cards.forEach(c => { c.el.style.transitionDuration = '0.7s'; });
+            self.phase = 'grid';
+            self.positionAll();
+            self.updateHint();
+            if (self.resetBtn) self.resetBtn.hidden = false;
+        }, 600);
+    },
+
+    onCardClick(c) {
+        if (this.phase !== 'grid') return;
+        if (this.revealed.has(c.person)) {
+            openMagazine(c.person);
+        } else {
+            this.revealed.add(c.person);
+            if (c.inner) c.inner.classList.add('revealed');
+            this.updateHint();
+        }
+    },
+
+    reset() {
+        this.phase = 'stack';
+        this.revealed.clear();
+        this.cards.forEach(c => { if (c.inner) c.inner.classList.remove('revealed'); });
+        this.scatterPos = [];
+        if (this.scatterBtn) this.scatterBtn.hidden = false;
+        if (this.resetBtn) this.resetBtn.hidden = true;
+        this.positionAll();
+        this.updateHint();
+    },
+
+    updateHint() {
+        if (!this.hint) return;
+        if (this.phase === 'stack') {
+            this.hint.innerHTML = 'Une pile de <strong>6 cartes mystere</strong> se cache au centre. Cliquez dessus pour les eparpiller.';
+        } else {
+            this.hint.innerHTML = '<strong>' + this.revealed.size + ' / 6</strong> cartes revelees - cliquez une carte face cachee pour la retourner, ou une carte revelee pour lire son magazine.';
+        }
+    },
+};
+
+function initMysteryStack() {
+    MysteryStack.init();
+}
+
 //  6. INITIALISATION AU CHARGEMENT
 // ==========================================
 document.addEventListener("DOMContentLoaded", function () {
     console.log("DOM prêt - Initialisation des modules");
 
-    // --- 6.1 Mystery Card Click Handlers ---
-    document.querySelectorAll('.mystery-card').forEach(card => {
-        card.addEventListener('click', function (e) {
-            if (this.classList.contains('revealed')) {
-                const person = this.dataset.person;
-                openMagazine(person);
-            } else {
-                this.classList.add('revealed');
-            }
-        });
-    });
+    // --- 6.1 Mystery Cards : la logique pile -> eparpillement -> grille est dans initMysteryStack() ---
 
     // --- 6.2 Close modal on outside click ---
     const magazineModal = document.getElementById('magazine-modal');
