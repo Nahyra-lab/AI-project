@@ -1,1 +1,1311 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Stories | Success Story</title>
+  <meta name="description" content="Chaque grande histoire commence sur les bancs du collège. Nous célébrons celles qui inspirent par leur parcours, pour encourager celles qui écriront les plus belles histoires de demain." />
 
+  <!-- Polices Google : calligraphique + serif éditoriale -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+/* ============================================================
+   THE STORIES — Feuille de style
+   ============================================================ */
+
+/* ---------- 1. Thème & variables ---------- */
+:root {
+  --radius: 0.625rem;
+  --background: oklch(0.985 0.006 60);
+  --foreground: oklch(0.18 0.01 350);
+  --card: oklch(1 0 0);
+  --muted: oklch(0.96 0.008 45);
+  --muted-foreground: oklch(0.48 0.02 355);
+  --border: oklch(0.9 0.012 45);
+  --rose: oklch(0.55 0.13 12);
+  --rose-soft: oklch(0.78 0.06 15);
+  --rose-ink: color-mix(in oklch, var(--rose) 70%, var(--foreground));
+  --gold: oklch(0.74 0.13 75);
+  --gold-ink: color-mix(in oklch, var(--gold) 70%, #5a3a00);
+  --ink: oklch(0.2 0.01 350);
+  --paper: var(--background);
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-calligraphy: "Great Vibes", cursive;
+  --font-serif: "Playfair Display", Georgia, serif;
+}
+
+/* ---------- 2. Reset & base ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-sans);
+  background: var(--background);
+  color: var(--foreground);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+img { max-width: 100%; display: block; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+a { color: inherit; text-decoration: none; }
+
+/* ---------- 3. Utilitaires polices ---------- */
+.font-calligraphy { font-family: var(--font-calligraphy); }
+.font-serif { font-family: var(--font-serif); }
+
+/* ---------- 4. Layout ---------- */
+#stories { display: flex; flex-direction: column; min-height: 100vh; }
+.view { display: none; flex: 1; }
+.view--active { display: block; }
+
+/* ---------- 5. Lignes décoratives ---------- */
+.rule {
+  display: inline-block; height: 1px; width: 2.5rem; vertical-align: middle;
+  background: linear-gradient(to right, transparent, color-mix(in oklch, var(--rose) 60%, transparent), transparent);
+}
+.editorial-rule {
+  height: 1px;
+  background: linear-gradient(to right, transparent, color-mix(in oklch, var(--rose) 60%, transparent), transparent);
+}
+.paper-texture {
+  background-image:
+    radial-gradient(circle at 20% 20%, color-mix(in oklch, var(--rose) 4%, transparent) 0, transparent 40%),
+    radial-gradient(circle at 80% 0%, color-mix(in oklch, var(--gold) 5%, transparent) 0, transparent 35%);
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  min-height: 78vh; max-width: 60rem; margin: 0 auto;
+  padding: 5rem 1.5rem 7rem; text-align: center;
+}
+.hero__feather { font-size: 1.75rem; color: var(--rose-ink); margin-bottom: 0.5rem; opacity: 0; animation: fadeDown 0.8s 0.2s forwards; }
+.hero__title {
+  font-size: 5rem; line-height: 1; color: var(--foreground);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.08);
+  opacity: 0; transform: translateY(-480px) rotate(-6deg);
+  animation: titleFall 1.3s cubic-bezier(0.34, 1.4, 0.64, 1) 0.15s forwards;
+}
+.hero__subtitle { display: flex; align-items: center; gap: 0.75rem; margin-top: 0.5rem; opacity: 0; animation: fadeUp 0.6s 0.9s forwards; }
+.hero__kicker { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.4em; color: var(--muted-foreground); }
+.hero__catchphrase {
+  max-width: 42rem; margin: 2rem auto 0; font-size: 1.125rem; font-style: italic;
+  line-height: 1.7; color: color-mix(in oklch, var(--foreground) 90%, transparent);
+}
+.hero__catchphrase .word {
+  display: inline-block; opacity: 0; transform: translateX(-24px); filter: blur(4px);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out, filter 0.4s ease-out;
+}
+.hero__catchphrase .word.visible { opacity: 1; transform: translateX(0); filter: blur(0); }
+
+@keyframes titleFall {
+  0% { opacity: 0; transform: translateY(-480px) rotate(-6deg); }
+  50% { opacity: 1; }
+  100% { opacity: 1; transform: translateY(0) rotate(0); }
+}
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-20px) rotate(-30deg); }
+  to { opacity: 1; transform: translateY(0) rotate(0); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   SECTION HEAD
+   ============================================================ */
+.cards-section { max-width: 72rem; margin: 0 auto; padding: 3rem 1.5rem 4rem; }
+.section-head { text-align: center; margin-bottom: 2.5rem; }
+.section-kicker { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.4em; color: var(--muted-foreground); }
+.section-title { font-size: 2rem; font-weight: 700; margin-top: 0.5rem; color: var(--foreground); }
+.section-help { max-width: 36rem; margin: 0.75rem auto 0; font-size: 0.875rem; color: var(--muted-foreground); }
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+/* ============================================================
+   CARTES MYSTÈRE
+   ============================================================ */
+.cards-hint { text-align: center; margin-bottom: 1.5rem; font-size: 0.875rem; color: var(--muted-foreground); min-height: 2.5rem; }
+.cards-stage {
+  position: relative; width: 100%; margin: 0 auto; overflow: hidden; border-radius: 1rem;
+  transition: height 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.scatter-btn { position: absolute; inset: 0; z-index: 50; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 1rem; }
+.scatter-btn[hidden] { display: none; }
+.scatter-btn__inner {
+  display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.5rem 1rem; border-radius: 9999px;
+  background: color-mix(in oklch, var(--foreground) 90%, transparent); color: var(--background);
+  font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15); animation: bounce 1.4s ease-in-out infinite;
+}
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
+.card { position: absolute; left: 0; top: 0; width: 200px; height: 300px; transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); will-change: transform; }
+.card-btn { display: block; width: 100%; height: 100%; background: none; border: none; padding: 0; cursor: pointer; perspective: 1400px; outline: none; }
+.card-btn:focus-visible { box-shadow: 0 0 0 3px color-mix(in oklch, var(--rose) 60%, transparent); border-radius: 0.75rem; }
+.card-inner { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+.card.revealed .card-inner { transform: rotateY(180deg); }
+.card-face {
+  position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  border-radius: 0.75rem; overflow: hidden; border: 1px solid; box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.cards-stage.phase-grid .card { cursor: pointer; }
+.cards-stage.phase-grid .card:hover { z-index: 20; }
+.cards-stage.phase-grid .card:hover .card-inner { transform: scale(1.05); }
+.cards-stage.phase-grid .card.revealed:hover .card-inner { transform: rotateY(180deg) scale(1.05); }
+
+/* Dos de carte */
+.card-back { display: flex; align-items: center; justify-content: center; }
+.accent-rose .card-back {
+  background: linear-gradient(135deg, color-mix(in oklch, var(--rose) 22%, var(--paper)), color-mix(in oklch, var(--rose-soft) 42%, var(--paper)));
+  border-color: color-mix(in oklch, var(--rose) 45%, transparent);
+}
+.accent-gold .card-back {
+  background: linear-gradient(135deg, color-mix(in oklch, var(--gold) 22%, var(--paper)), color-mix(in oklch, var(--gold) 45%, var(--paper)));
+  border-color: color-mix(in oklch, var(--gold) 55%, transparent);
+}
+.accent-ink .card-back {
+  background: linear-gradient(135deg, color-mix(in oklch, var(--ink) 16%, var(--paper)), color-mix(in oklch, var(--ink) 30%, var(--paper)));
+  border-color: color-mix(in oklch, var(--ink) 35%, transparent);
+}
+.card-back__border { position: absolute; inset: 8px; border: 1px solid currentColor; border-radius: 0.5rem; opacity: 0.2; }
+.card-back__border-2 { position: absolute; inset: 12px; border: 1px solid currentColor; border-radius: 0.375rem; opacity: 0.1; }
+.card-back__halo { position: absolute; width: 7rem; height: 7rem; border-radius: 50%; filter: blur(2rem); opacity: 0.7; }
+.accent-rose .card-back__halo { background: color-mix(in oklch, var(--rose) 32%, transparent); }
+.accent-gold .card-back__halo { background: color-mix(in oklch, var(--gold) 38%, transparent); }
+.accent-ink .card-back__halo { background: color-mix(in oklch, var(--ink) 22%, transparent); }
+.card-back__top, .card-back__bottom { position: absolute; left: 0; right: 0; text-align: center; font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.4em; }
+.card-back__top { top: 12px; }
+.card-back__bottom { bottom: 12px; }
+.accent-rose .card-back__top, .accent-rose .card-back__bottom { color: var(--rose-ink); }
+.accent-gold .card-back__top, .accent-gold .card-back__bottom { color: var(--gold-ink); }
+.accent-ink .card-back__top, .accent-ink .card-back__bottom { color: color-mix(in oklch, var(--ink) 85%, var(--rose)); }
+.card-back__question { font-family: var(--font-calligraphy); font-size: 5.5rem; line-height: 1; text-shadow: 0 1px 2px rgba(0,0,0,0.1); z-index: 1; }
+.accent-rose .card-back__question { color: color-mix(in oklch, var(--rose) 60%, var(--ink)); }
+.accent-gold .card-back__question { color: color-mix(in oklch, var(--gold) 80%, #5a3a00); }
+.accent-ink .card-back__question { color: color-mix(in oklch, var(--ink) 80%, var(--rose)); }
+.card-back__corner { position: absolute; font-size: 0.7rem; }
+.card-back__corner--tl { top: 32px; left: 12px; }
+.card-back__corner--tr { top: 32px; right: 12px; }
+.card-back__corner--bl { bottom: 32px; left: 12px; }
+.card-back__corner--br { bottom: 32px; right: 12px; }
+.accent-rose .card-back__corner { color: var(--rose-ink); }
+.accent-gold .card-back__corner { color: var(--gold-ink); }
+.accent-ink .card-back__corner { color: color-mix(in oklch, var(--ink) 85%, var(--rose)); }
+
+/* Face profil */
+.card-front { transform: rotateY(180deg); background: var(--card); display: flex; flex-direction: column; padding: 12px; }
+.accent-rose .card-front { border-color: color-mix(in oklch, var(--rose) 45%, transparent); }
+.accent-gold .card-front { border-color: color-mix(in oklch, var(--gold) 55%, transparent); }
+.accent-ink .card-front { border-color: color-mix(in oklch, var(--ink) 35%, transparent); }
+.card-front__badge {
+  position: absolute; top: 8px; right: 8px; z-index: 2; display: inline-flex; align-items: center; gap: 4px;
+  padding: 2px 8px; border-radius: 9999px; background: color-mix(in oklch, var(--gold) 85%, #5a3a00);
+  color: white; font-size: 0.55rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+}
+.card-front__portrait { width: 70%; margin: 0 auto; }
+.portrait-frame {
+  position: relative; aspect-ratio: 3 / 4; width: 100%; border-radius: 0.375rem; overflow: hidden;
+  border: 1px solid; box-shadow: inset 0 2px 8px rgba(0,0,0,0.1);
+}
+.accent-rose .portrait-frame {
+  background: linear-gradient(135deg, color-mix(in oklch, var(--rose) 22%, var(--paper)), color-mix(in oklch, var(--rose-soft) 40%, var(--paper)));
+  border-color: color-mix(in oklch, var(--rose) 45%, transparent);
+}
+.accent-gold .portrait-frame {
+  background: linear-gradient(135deg, color-mix(in oklch, var(--gold) 22%, var(--paper)), color-mix(in oklch, var(--gold) 45%, var(--paper)));
+  border-color: color-mix(in oklch, var(--gold) 55%, transparent);
+}
+.accent-ink .portrait-frame {
+  background: linear-gradient(135deg, color-mix(in oklch, var(--ink) 16%, var(--paper)), color-mix(in oklch, var(--ink) 28%, var(--paper)));
+  border-color: color-mix(in oklch, var(--ink) 35%, transparent);
+}
+.portrait-frame__border { position: absolute; inset: 8px; border: 1px solid currentColor; border-radius: 0.125rem; opacity: 0.15; }
+.portrait-frame__border-2 { position: absolute; inset: 12px; border: 1px solid currentColor; border-radius: 0.125rem; opacity: 0.1; }
+.portrait-frame__mono { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--font-calligraphy); font-size: 3.5rem; line-height: 1; }
+.accent-rose .portrait-frame__mono { color: color-mix(in oklch, var(--rose) 60%, var(--ink)); }
+.accent-gold .portrait-frame__mono { color: color-mix(in oklch, var(--gold) 80%, #5a3a00); }
+.accent-ink .portrait-frame__mono { color: color-mix(in oklch, var(--ink) 80%, var(--rose)); }
+.portrait-frame__top { position: absolute; top: 12px; left: 0; right: 0; text-align: center; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.35em; }
+.accent-rose .portrait-frame__top { color: var(--rose-ink); }
+.accent-gold .portrait-frame__top { color: var(--gold-ink); }
+.accent-ink .portrait-frame__top { color: color-mix(in oklch, var(--ink) 85%, var(--rose)); }
+.portrait-frame__bottom { position: absolute; bottom: 12px; left: 0; right: 0; text-align: center; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.2em; }
+.accent-rose .portrait-frame__bottom { color: var(--rose-ink); }
+.accent-gold .portrait-frame__bottom { color: var(--gold-ink); }
+.accent-ink .portrait-frame__bottom { color: color-mix(in oklch, var(--ink) 85%, var(--rose)); }
+.card-front__name { text-align: center; margin-top: 10px; }
+.card-front__name h3 { font-family: var(--font-serif); font-size: 1.125rem; font-weight: 700; line-height: 1.1; color: var(--foreground); }
+.card-front__name p { margin-top: 2px; font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--muted-foreground); }
+.card-front__cta { margin-top: auto; padding-top: 8px; }
+.card-front__cta span { display: flex; align-items: center; justify-content: center; gap: 6px; padding: 8px 12px; border-radius: 9999px; background: var(--foreground); color: var(--background); font-size: 0.6rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
+.cards-actions { text-align: center; margin-top: 2rem; }
+
+/* ============================================================
+   BOUTONS
+   ============================================================ */
+.btn {
+  display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.875rem 1.75rem; border-radius: 9999px;
+  font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; outline: none;
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+.btn:focus-visible { box-shadow: 0 0 0 3px color-mix(in oklch, var(--rose) 60%, transparent); }
+.btn--primary { background: var(--foreground); color: var(--background); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+.btn--primary:hover { transform: scale(1.04); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+.btn--ghost { background: var(--background); color: var(--foreground); border: 1px solid var(--border); padding: 0.625rem 1.25rem; font-size: 0.7rem; }
+.btn--ghost:hover { background: var(--foreground); color: var(--background); }
+.btn__arrow { transition: transform 0.2s ease; }
+.btn--primary:hover .btn__arrow { transform: translateX(4px); }
+
+/* ============================================================
+   CTA
+   ============================================================ */
+.cta-section { max-width: 48rem; margin: 0 auto; padding: 5rem 1.5rem 7rem; text-align: center; }
+.cta-text { font-size: 1.5rem; font-weight: 600; line-height: 1.3; color: var(--foreground); }
+.cta-text .word { display: inline-block; margin-right: 0.5rem; opacity: 0; transform: translateY(14px); transition: opacity 0.4s ease-out, transform 0.4s ease-out; }
+.cta-text .word.visible { opacity: 1; transform: translateY(0); }
+.cta-btn { margin-top: 2.5rem; }
+
+/* ============================================================
+   VUE CONTACT
+   ============================================================ */
+.contact { max-width: 72rem; margin: 0 auto; padding: 4rem 1.5rem 5rem; }
+.contact__head { text-align: center; opacity: 0; animation: fadeUp 0.6s 0.1s forwards; }
+.contact__kicker { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.4em; color: var(--muted-foreground); }
+.contact__title { font-size: 4rem; font-weight: 900; letter-spacing: -0.02em; margin-top: 0.5rem; color: var(--foreground); }
+.contact__ornament { display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin-top: 1rem; }
+.serif-ornament { font-family: var(--font-serif); font-size: 1.25rem; }
+.contact__grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin-top: 3rem; align-items: stretch; }
+@media (min-width: 1024px) { .contact__grid { grid-template-columns: 1fr 1fr; } }
+.contact__lines { display: flex; flex-direction: column; justify-content: center; gap: 1.25rem; }
+.contact-line {
+  position: relative; overflow: hidden; border-radius: 1rem; border: 1px solid var(--border);
+  background: var(--card); padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease; opacity: 0; transform: translateX(-40px);
+}
+.contact-line.in { opacity: 1; transform: translateX(0); }
+.contact-line:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+.contact-line__glow { position: absolute; top: 0; right: 0; width: 6rem; height: 6rem; border-radius: 50%; background: color-mix(in oklch, var(--rose) 8%, transparent); filter: blur(2rem); transform: translate(2rem, -2rem); transition: background 0.2s ease; }
+.contact-line:hover .contact-line__glow { background: color-mix(in oklch, var(--rose) 16%, transparent); }
+.contact-line__tag { display: inline-block; padding: 4px 12px; border-radius: 9999px; background: color-mix(in oklch, var(--rose) 15%, transparent); font-size: 0.6rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; color: var(--rose-ink); }
+.contact-line__text { font-family: var(--font-serif); font-size: 1.125rem; line-height: 1.3; margin-top: 0.75rem; color: var(--foreground); }
+@media (min-width: 640px) { .contact-line__text { font-size: 1.25rem; } }
+.contact-line__phone { display: inline-flex; align-items: center; gap: 0.75rem; margin-top: 1rem; padding: 0.75rem 1.25rem; border-radius: 9999px; background: var(--foreground); color: var(--background); font-size: 1.125rem; font-weight: 700; letter-spacing: 0.05em; transition: transform 0.2s ease; text-decoration: none; }
+.contact-line__phone:hover { transform: scale(1.03); }
+.contact-line__phone-icon { display: flex; align-items: center; justify-content: center; width: 2.25rem; height: 2.25rem; border-radius: 50%; background: color-mix(in oklch, var(--background) 20%, transparent); font-size: 0.9rem; }
+.contact__image { position: relative; overflow: hidden; border-radius: 1rem; border: 1px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,0.08); min-height: 18rem; opacity: 0; transform: scale(0.95); }
+.contact__image.in { opacity: 1; transform: scale(1); transition: opacity 0.6s ease, transform 0.6s ease; }
+.contact__image img { width: 100%; height: 100%; min-height: 18rem; object-fit: cover; }
+.contact__image-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.4), transparent 50%); pointer-events: none; }
+.contact__image-caption { position: absolute; bottom: 1.25rem; left: 1.25rem; right: 1.25rem; font-size: 2rem; color: white; text-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+.contact__back { text-align: center; margin-top: 3rem; opacity: 0; animation: fadeUp 0.5s 0.7s forwards; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer { margin-top: auto; border-top: 1px solid var(--border); background: var(--background); display: flex; flex-direction: column; align-items: center; gap: 0.75rem; padding: 2rem 1.5rem; text-align: center; }
+@media (min-width: 640px) {
+  .footer { flex-direction: row; justify-content: space-between; text-align: left; max-width: 72rem; margin-left: auto; margin-right: auto; width: 100%; }
+}
+.footer__brand { font-size: 1.5rem; line-height: 1; color: var(--foreground); }
+.footer__copy { font-size: 0.75rem; color: var(--muted-foreground); }
+
+/* ============================================================
+   MODAL MAGAZINE
+   ============================================================ */
+.modal { position: fixed; inset: 0; z-index: 100; display: none; align-items: stretch; justify-content: center; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); }
+.modal.open { display: flex; animation: modalFade 0.3s ease forwards; }
+@keyframes modalFade { from { opacity: 0; } to { opacity: 1; } }
+.modal__close {
+  position: fixed; top: 1rem; right: 1rem; z-index: 110; display: flex; align-items: center; justify-content: center;
+  width: 2.75rem; height: 2.75rem; border-radius: 50%; background: color-mix(in oklch, var(--background) 90%, transparent);
+  color: var(--foreground); font-size: 1.25rem; box-shadow: 0 4px 12px rgba(0,0,0,0.2); border: 1px solid var(--border);
+  transition: transform 0.2s ease;
+}
+.modal__close:hover { transform: scale(1.1); }
+.modal__content {
+  width: 100%; max-width: 56rem; margin: 1rem auto; height: calc(100vh - 2rem); overflow-y: auto;
+  background: var(--background); border-radius: 1rem; box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+  animation: modalScale 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  scrollbar-width: thin; scrollbar-color: var(--rose-soft) transparent;
+}
+@keyframes modalScale { from { transform: scale(0.92); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.modal__content::-webkit-scrollbar { width: 8px; }
+.modal__content::-webkit-scrollbar-track { background: transparent; }
+.modal__content::-webkit-scrollbar-thumb { background: color-mix(in oklch, var(--rose) 45%, transparent); border-radius: 9999px; }
+.mag-page { display: none; }
+.mag-page--active { display: block; }
+
+/* Couverture magazine */
+.mag-cover {
+  display: flex; flex-direction: column; min-height: 100%;
+  background-image:
+    radial-gradient(circle at 20% 20%, color-mix(in oklch, var(--rose) 4%, transparent) 0, transparent 40%),
+    radial-gradient(circle at 80% 0%, color-mix(in oklch, var(--gold) 5%, transparent) 0, transparent 35%);
+}
+.mag-masthead { border-bottom: 2px solid color-mix(in oklch, var(--foreground) 80%, transparent); padding: 2rem 1.5rem 1rem; text-align: center; }
+@media (min-width: 640px) { .mag-masthead { padding: 2rem 2.5rem 1rem; } }
+.mag-masthead__kicker { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.4em; color: var(--muted-foreground); }
+.mag-masthead__title { font-family: var(--font-serif); font-size: 3rem; font-weight: 900; letter-spacing: -0.02em; color: var(--foreground); margin-top: 0.25rem; }
+@media (min-width: 640px) { .mag-masthead__title { font-size: 4.5rem; } }
+.mag-masthead__sub { display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin-top: 0.25rem; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.3em; color: var(--muted-foreground); }
+.mag-cover__body { display: grid; grid-template-columns: 1fr; gap: 1.5rem; padding: 2rem 1.5rem; flex: 1; }
+@media (min-width: 640px) { .mag-cover__body { grid-template-columns: 1fr 1fr; padding: 2.5rem; } }
+.mag-cover__portrait { max-width: 16rem; margin: 0 auto; }
+.mag-cover__portrait .portrait-frame__mono { font-size: 5rem; }
+.mag-cover__info { display: flex; flex-direction: column; justify-content: space-between; }
+.mag-cover__alaune { font-family: var(--font-serif); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.3em; color: var(--rose-ink); }
+.mag-cover__name { font-family: var(--font-serif); font-size: 2.5rem; font-weight: 700; line-height: 0.95; margin-top: 0.5rem; color: var(--foreground); }
+@media (min-width: 640px) { .mag-cover__name { font-size: 3rem; } }
+.mag-cover__fullname { font-family: var(--font-serif); font-size: 1.5rem; font-style: italic; color: var(--muted-foreground); margin-top: 0.25rem; }
+.mag-cover__parcours { font-size: 0.875rem; color: var(--muted-foreground); margin-top: 0.75rem; }
+.mag-cover__lines { list-style: none; margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; }
+.mag-cover__lines li { display: flex; align-items: baseline; gap: 0.75rem; }
+.mag-cover__lines li::before { content: "›"; font-family: var(--font-serif); font-size: 1.125rem; font-weight: 900; color: var(--rose-ink); }
+.mag-cover__lines li span { font-family: var(--font-serif); font-size: 1.125rem; font-weight: 600; line-height: 1.2; color: var(--foreground); }
+.mag-cover__footer { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; margin-top: 1.5rem; }
+.mag-cover__num { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.3em; color: var(--muted-foreground); }
+.mag-barcode { display: flex; align-items: flex-end; gap: 1px; height: 2.5rem; }
+.mag-barcode span { display: block; width: 2px; background: var(--foreground); }
+.mag-cover__cta { position: sticky; bottom: 0; border-top: 1px solid var(--border); background: color-mix(in oklch, var(--background) 90%, transparent); backdrop-filter: blur(4px); padding: 1rem 1.5rem; }
+@media (min-width: 640px) { .mag-cover__cta { padding: 1rem 2.5rem; } }
+.mag-cover__cta .btn { width: 100%; justify-content: center; }
+
+/* Page intérieure magazine */
+.mag-inside {
+  background-image:
+    radial-gradient(circle at 20% 20%, color-mix(in oklch, var(--rose) 4%, transparent) 0, transparent 40%),
+    radial-gradient(circle at 80% 0%, color-mix(in oklch, var(--gold) 5%, transparent) 0, transparent 35%);
+  min-height: 100%;
+}
+.mag-inside__bar { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); background: color-mix(in oklch, var(--background) 90%, transparent); backdrop-filter: blur(4px); padding: 0.75rem 1.5rem; }
+@media (min-width: 640px) { .mag-inside__bar { padding: 0.75rem 2.5rem; } }
+.mag-back-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted-foreground); transition: color 0.2s ease; }
+.mag-back-btn:hover { color: var(--foreground); }
+.mag-inside__brand { font-family: var(--font-serif); font-size: 0.875rem; font-weight: 700; color: var(--foreground); }
+.mag-inside__promo { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.3em; color: var(--muted-foreground); }
+.mag-article { max-width: 48rem; margin: 0 auto; padding: 2.5rem 1.5rem; }
+@media (min-width: 640px) { .mag-article { padding: 2.5rem; } }
+.mag-article__header { text-align: center; margin-bottom: 2rem; }
+.mag-article__kicker { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.4em; color: var(--rose-ink); }
+.mag-article__title { font-family: var(--font-serif); font-size: 2.5rem; font-weight: 700; line-height: 1.1; margin-top: 0.5rem; color: var(--foreground); }
+@media (min-width: 640px) { .mag-article__title { font-size: 3rem; } }
+.mag-article__rule { width: 6rem; margin: 1rem auto 0; }
+.mag-intro { font-family: var(--font-serif); font-size: 1.125rem; line-height: 1.7; color: var(--foreground); }
+.mag-intro::first-letter { font-family: var(--font-serif); float: left; font-size: 3.4rem; line-height: 0.8; padding: 0.1em 0.12em 0 0; color: var(--rose); font-weight: 700; }
+.mag-body p { margin-top: 1.25rem; font-size: 1rem; line-height: 1.7; color: color-mix(in oklch, var(--foreground) 90%, transparent); }
+.mag-interview { margin-top: 2.5rem; }
+.mag-interview__head { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; }
+.mag-interview__label { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 900; color: var(--rose-ink); }
+.mag-interview__line { flex: 1; height: 1px; background: linear-gradient(to right, color-mix(in oklch, var(--rose) 60%, transparent), transparent); }
+.mag-qa { border: 1px solid color-mix(in oklch, var(--border) 70%, transparent); background: color-mix(in oklch, var(--card) 60%, transparent); border-radius: 0.5rem; padding: 1.25rem; margin-bottom: 1.5rem; opacity: 0; transform: translateY(16px); transition: opacity 0.45s ease, transform 0.45s ease; }
+.mag-qa.in { opacity: 1; transform: translateY(0); }
+.mag-qa__q { display: flex; gap: 0.5rem; font-family: var(--font-serif); font-size: 1rem; font-weight: 700; color: var(--foreground); }
+.mag-qa__q::before { content: "Q."; color: var(--rose-ink); flex-shrink: 0; }
+.mag-qa__a { display: flex; gap: 0.5rem; margin-top: 0.5rem; font-size: 0.875rem; line-height: 1.6; color: var(--muted-foreground); white-space: pre-line; }
+.mag-qa__a::before { content: "R."; font-family: var(--font-serif); font-weight: 700; color: var(--foreground); flex-shrink: 0; }
+.mag-gallery { margin-top: 3rem; }
+.mag-gallery__head { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; }
+.mag-gallery__label { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 900; color: var(--rose-ink); }
+.mag-gallery__line { flex: 1; height: 1px; background: linear-gradient(to right, color-mix(in oklch, var(--rose) 60%, transparent), transparent); }
+.mag-gallery__grid { display: grid; gap: 1.25rem; }
+.mag-gallery__grid--2 { grid-template-columns: 1fr 1fr; }
+.mag-gallery__grid--1 { grid-template-columns: 1fr; }
+@media (max-width: 639px) { .mag-gallery__grid--2 { grid-template-columns: 1fr; } }
+.mag-photo { display: flex; flex-direction: column; gap: 0.5rem; }
+.mag-photo__img { overflow: hidden; border-radius: 0.375rem; border: 1px solid color-mix(in oklch, var(--border) 70%, transparent); background: var(--muted); }
+.mag-photo__img img { aspect-ratio: 4 / 3; width: 100%; object-fit: cover; transition: transform 0.7s ease; }
+.mag-photo__img img:hover { transform: scale(1.05); }
+.mag-photo__caption { font-size: 0.7rem; font-style: italic; color: var(--muted-foreground); }
+.mag-end { display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin-top: 3rem; color: var(--muted-foreground); }
+.mag-end__ornament { font-family: var(--font-serif); font-size: 1.125rem; }
+
+/* RESPONSIVE */
+@media (max-width: 639px) { .hero__title { font-size: 4rem; } .contact__title { font-size: 3rem; } .cta-text { font-size: 1.25rem; } }
+@media (min-width: 768px) { .hero__title { font-size: 7rem; } }
+@media (min-width: 1024px) { .hero__title { font-size: 9rem; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; } }
+
+/* ============================================================
+   NAVIGATION DU SITE (matches SUCCESS.html style)
+   ============================================================ */
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1rem 1.5rem; background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+.site-nav__brand { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; color: #0A192F; text-decoration: none; }
+.site-nav__brand-accent { font-family: var(--font-serif); font-style: italic; color: #D4AF37; }
+.site-nav__links { display: none; gap: 1.5rem; }
+@media (min-width: 768px) { .site-nav__links { display: flex; } }
+.site-nav__link {
+  font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
+  color: #1e293b; text-decoration: none; padding-bottom: 4px; border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.site-nav__link:hover { color: #D4AF37; }
+.site-nav__link--active { border-bottom-color: #D4AF37; color: #D4AF37; }
+#stories { padding-top: 4.5rem; }
+  </style>
+</head>
+<body>
+
+  <!-- ============ NAVIGATION DU SITE ============ -->
+  <nav class="site-nav">
+    <a href="SUCCESS.html" class="site-nav__brand">
+      SUCCES <span class="site-nav__brand-accent">Story</span>
+    </a>
+    <div class="site-nav__links">
+      <a href="SUCCESS.html" class="site-nav__link">Accueil</a>
+      <a href="stories.html" class="site-nav__link site-nav__link--active">The Stories</a>
+      <a href="SUCCESS.html#orientation" class="site-nav__link">Orientation</a>
+      <a href="SUCCESS.html#opportunities" class="site-nav__link">Opportunities</a>
+      <a href="SUCCESS.html#improving" class="site-nav__link">Improving</a>
+    </div>
+  </nav>
+
+  <main id="stories">
+    <!-- ============ VUE STORIES ============ -->
+    <section id="stories-view" class="view view--active">
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero__feather">✒</div>
+        <h1 class="hero__title font-calligraphy">The Stories</h1>
+        <div class="hero__subtitle">
+          <span class="rule"></span>
+          <span class="hero__kicker">Portraits &amp; parcours</span>
+          <span class="rule"></span>
+        </div>
+        <p class="hero__catchphrase font-serif" id="catchphrase"></p>
+      </section>
+
+      <!-- CARTES MYSTÈRE -->
+      <section class="cards-section">
+        <div class="section-head reveal">
+          <p class="section-kicker">Les portraits</p>
+          <h2 class="section-title font-serif">Cartes mystère</h2>
+          <p class="section-help">
+            Cliquez sur la pile pour éparpiller les cartes, puis retournez
+            chacune pour découvrir un profil.
+          </p>
+        </div>
+
+        <div id="cards-hint" class="cards-hint">
+          Une pile de <strong>6 cartes mystère</strong> se cache au centre.
+          Cliquez dessus pour les éparpiller.
+        </div>
+
+        <div id="cards-stage" class="cards-stage">
+          <!-- cartes générées en JS -->
+          <button id="scatter-btn" class="scatter-btn" type="button" aria-label="Éparpiller les cartes">
+            <span class="scatter-btn__inner">✦ Cliquez pour éparpiller</span>
+          </button>
+        </div>
+
+        <div class="cards-actions">
+          <button id="reset-btn" class="btn btn--ghost" type="button" hidden>
+            ↺ Recommencer
+          </button>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="cta-section">
+        <p class="cta-text font-serif" id="cta-text"></p>
+        <button id="go-contact" class="btn btn--primary cta-btn" type="button">
+          <span class="btn__icon">✉</span>
+          Cliquer ici pour nous contacter
+          <span class="btn__arrow">→</span>
+        </button>
+      </section>
+    </section>
+        <!-- ============ VUE CONTACT ============ -->
+    <section id="contact-view" class="view">
+      <div class="contact">
+        <div class="contact__head">
+          <p class="contact__kicker">The Stories</p>
+          <h1 class="contact__title font-serif">Contact:</h1>
+          <div class="contact__ornament">
+            <span class="rule"></span>
+            <span class="serif-ornament">❦</span>
+            <span class="rule"></span>
+          </div>
+        </div>
+
+        <div class="contact__grid">
+          <div class="contact__lines" id="contact-lines">
+            <!-- généré en JS -->
+          </div>
+
+          <div class="contact__image">
+            <img src="images/contact-hero.jpg" alt="Illustration éditoriale — un livre ouvert, une plume et une rose" />
+            <div class="contact__image-overlay"></div>
+            <p class="contact__image-caption font-calligraphy">Écrivons la suite</p>
+          </div>
+        </div>
+
+        <div class="contact__back">
+          <button id="go-stories" class="btn btn--ghost" type="button">
+            ← Retour aux histoires
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+      <span class="footer__brand font-calligraphy">The Stories</span>
+      <p class="footer__copy">
+            <!-- ============ MODAL MAGAZINE ============ -->
+    <div id="magazine-modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+      <button id="modal-close" class="modal__close" type="button" aria-label="Fermer le magazine">✕</button>
+      <div id="magazine-content" class="modal__content"></div>
+    </div>
+  </main>
+
+  <script>
+/* ============================================================
+   THE STORIES — Logique JavaScript
+   ============================================================ */
+"use strict";
+    /* ============================================================
+   1. DONNÉES
+   ============================================================ */
+const DATA = [
+  {
+    id: "karina",
+    name: "Karina",
+    firstName: "Karina",
+    promotion: "Secondaire 4",
+    initials: "K",
+    accent: "rose",
+    featured: false,
+    citation: "« Écrire, c'est tendre la main à celles qui liront après nous. »",
+    parcours:
+      "Élève de Secondaire 4, plume assidue, elle a participé à de nombreux concours d'écriture avant de décrocher le podium.",
+    realisations:
+      "3ᵉ gagnante du concours d'écriture Medcriture, dans les pas de son aînée Kate.",
+    coverLines: ["La plume qui ose", "Concours Medcriture", "Dans les pas de Kate"],
+    intro:
+      "Karina est en Secondaire 4. Elle a participé de nombreuses fois à des concours d'écriture, et c'est aujourd'hui la 3ᵉ gagnante du concours d'écriture Medcriture.",
+    body: [
+      "Elle nous explique qu'elle a suivi l'exemple de son aînée Kate qui, l'année antérieure, avait participé à ce même concours et avait décroché la 2ᵉ place. Ce souvenir est resté gravé comme une promesse : « Si elle l'a fait, je le peux aussi. »",
+      "Entre les brouillons recommencés et les nuits passées à chercher le bon mot, Karina a appris qu'un texte naît autant de la patience que du talent. Aujourd'hui, elle envoie un message clair à ses petites sœurs : osez soumettre, osez perdre, osez recommencer.",
+    ],
+    qa: null,
+    photos: [
+      { kind: "image", src: "images/writing-manuscript.jpg", caption: "Extrait d'un de ses textes" },
+      { kind: "image", src: "images/writing-award.jpg", caption: "Le concours Medcriture" },
+      { kind: "image", src: "images/library-books.jpg", caption: "Là où tout commence" },
+    ],
+  },
+  {
+    id: "esperancia",
+    name: "Esperancia",
+    firstName: "Esperancia",
+    promotion: "Secondaire",
+    initials: "E",
+    accent: "gold",
+    featured: false,
+    citation: "« L'espoir porte bien mon nom : je le porte aussi dans tout ce que j'entreprends. »",
+    parcours:
+      "Discrète et déterminée, elle avance avec une régularité qui force le respect.",
+    realisations:
+      "Un parcours constant, une attitude qui inspire ses camarades au quotidien.",
+    coverLines: ["L'espoir incarné", "Une force tranquille", "Le fil de son histoire"],
+    intro:
+      "Esperancia est de ces élèves dont la détermination s'écrit sans bruit mais avec une profondeur qui marque. Son histoire, longue et riche, mérite qu'on prenne le temps de la lire.",
+    body: [
+      "[ Ici prendra place le long texte dédié à Esperancia — son parcours, ses engagements, ses rêves et les leçons qu'elle souhaite transmettre. ]",
+      "Chaque ligne viendra raconter comment, étape après étape, elle a transformé les obstacles en marches vers l'avant, et pourquoi son prénom, qui porte l'espoir, lui sied si bien.",
+    ],
+    qa: null,
+    photos: [{ kind: "image", src: "images/library-books.jpg", caption: "À la croisée des pages" }],
+  },
+  {
+    id: "elga",
+    name: "Elga",
+    firstName: "Elga",
+    promotion: "Secondaire",
+    initials: "E",
+    accent: "rose",
+    featured: false,
+    citation: "« Connaître une école, c'est l'aimer deux fois. Et l'aimer, c'est la servir. »",
+    parcours:
+      "Présente au collège depuis l'enfance, elle connaît chaque couloir, chaque visage, chaque tradition.",
+    realisations:
+      "Engagement constant, toujours prête à aider, un repère pour toute la communauté.",
+    coverLines: ["La mémoire vivante", "Toujours présente", "Le cœur du collège"],
+    intro:
+      "Elga est à l'école depuis toute petite. Elle s'engage activement au collège, et tout le monde la connaît.",
+    body: [
+      "Elle est toujours prête à aider — une camarade en difficulté, un professeur débordé, une activité à organiser. Cette présence, discrète mais constante, fait d'elle une véritable mémoire vivante du collège.",
+      "Grandir dans un même lieu, c'est en épouser les rythmes, en connaître les histoires et en porter les valeurs. Elga incarne cette continuité précieuse, ce fil rouge qui relie les promotions entre elles.",
+    ],
+    qa: null,
+    photos: [{ kind: "image", src: "images/campus-school.jpg", caption: "Son collège, son histoire" }],
+  },
+  {
+    id: "yvenie",
+    name: "Yvenie",
+    firstName: "Yvenie",
+    promotion: "Boursière",
+    initials: "Y",
+    accent: "gold",
+    featured: false,
+    citation: "« L'excellence n'est pas un privilège : c'est une réponse à ceux qui croient en nous. »",
+    parcours:
+      "Arrivée au collège en 7ᵉ année, elle n'a cessé de se distinguer par son rendement scolaire.",
+    realisations:
+      "Boursière — l'école valorise l'excellence, et elle en est l'une des plus belles illustrations.",
+    coverLines: ["L'excellence récompensée", "Boursière", "Une arrivée, une ascension"],
+    intro:
+      "Yvenie est arrivée au collège en 7ᵉ année. Elle a depuis toujours eu un bon rendement scolaire.",
+    body: [
+      "À l'école, on valorise l'excellence. C'est pour cela qu'elle a reçu la bourse — une reconnaissance qui récompense des années d'efforts constants et de sérieux jamais démenti.",
+      "Pour Yvenie, la bourse n'est pas une arrivée mais un encouragement : elle sait que derrière chaque note se cache une responsabilité, celle de montrer à celles qui suivent que le travail paie, toujours.",
+    ],
+    qa: null,
+    photos: [{ kind: "image", src: "images/scholarship-1995.jpg", caption: "La bourse de l'excellence" }],
+  },
+  {
+    id: "exposcience",
+    name: "Les filles d'Exposcience",
+    firstName: "Djeïka, Joannie & compagnie",
+    promotion: "Promotion Armoni",
+    initials: "A",
+    accent: "rose",
+    featured: false,
+    citation: "« Ne comptez que sur vous et votre équipe. Préparez-vous intelligemment. »",
+    parcours:
+      "Une équipe de la promotion Armoni qui a relevé le défi d'Exposcience sur deux éditions (2022 et 2023).",
+    realisations:
+      "De la défaite à la victoire : un projet environnemental couronné après une analyse rigoureuse du concours.",
+    coverLines: ["Deux éditions, une leçon", "Exposcience", "La revanche d'Armoni"],
+    intro:
+      "Les filles d'Exposcience, de la promotion Armoni, ont participé à deux éditions du concours. Voici, en leurs mots, ce que cette aventure leur a appris.",
+    body: [],
+    qa: [
+      {
+        q: "Qu'est-ce qui vous a poussé à y participer ?",
+        a: "Bon... la première fois (en 2022), c'était purement pour l'expérience mais la seconde (en 2023), c'était par égo si je peux le dire ainsi. J'avais perdu et je voulais corriger cela.",
+      },
+      {
+        q: "Quels sont les obstacles que vous avez rencontré et comment les avez-vous surmontés ?",
+        a: "Durant les deux éditions, on a eu un problème de support assez terrible. On s'est investi nous-mêmes, on a fait nos propres recherches, so en terme d'accompagnement, c'était vraiment pas top. Les autres problèmes rencontrés étaient internes à l'équipe (entre les exams officiels et la sœur qui nous poussait à avoir 8, on était assez fatiguée et lassée à un moment donné). Fun fact, la veille de la compétition, on avait abandonné 😂 J'ai dit à la sœur qu'on n'était pas prêtes et elle avait appelé les organisateurs pour leur faire savoir que notre équipe se retirait de la compétition. Puis, plus tard ce jour-là, j'ai reçu un appel de Mme Vital (je crois), qui nous a dit que tout était déjà prêt pour recevoir l'équipe donc mieux vaut quand même y aller. J'ai accepté puis j'ai passé la nuit à préparer l'app 😭 Djeïka avait un rendez-vous le jour de l'activité, elle m'avait dit qu'elle serait là vers les 10h. Donc, Joannie et moi avons tout pris en charge de la veille jusqu'à sa venue. (Quel beau souvenir 😂) bref.",
+      },
+      {
+        q: "Quels conseils donneriez-vous à vos petites sœurs ?",
+        a: "Très franchement, le seul conseil réel que je peux vous donner c'est de ne compter que sur vous et votre équipe. Et également de vous préparer intelligemment avant tout. Après ma défaite en 2022, j'avais analysé les projets gagnants, les patterns du concours ainsi que les domaines prisés pour mettre toutes les chances de notre côté en 2023. C'est la raison pour laquelle j'étais partie sur un projet environnemental.",
+      },
+    ],
+    photos: [
+      { kind: "image", src: "images/science-eco.jpg", caption: "Le projet environnemental (2023)" },
+      { kind: "image", src: "images/science-team.jpg", caption: "Le stand Exposcience" },
+      { kind: "image", src: "images/campus-school.jpg", caption: "Au collège, tout commence" },
+    ],
+  },
+  {
+    id: "promo-1995",
+    name: "Promotion 1995",
+    firstName: "Mérites exceptionnels",
+    promotion: "Promotion 1995",
+    initials: "95",
+    accent: "gold",
+    featured: true,
+    citation: "« On n'oublie jamais d'où l'on vient. On y retourne, simplement, pour tendre la main. »",
+    parcours:
+      "La seule promotion aussi généreuse : toujours présentes, toujours à prendre des nouvelles de leurs petites sœurs.",
+    realisations:
+      "Bourses renouvelées, carte cadeau, don d'une imprimante 3D — un accompagnement sans faille.",
+    coverLines: ["Mérites exceptionnels", "La générosité qui dure", "Toujours présentes"],
+    intro:
+      "La promotion 1995 est la seule promotion qui a été aussi généreuse et qui aide toujours leurs petites sœurs. Malgré les moments difficiles, elles sont toujours là et prennent de leurs nouvelles.",
+    body: [
+      "Elles offrent toujours une bourse à une fille du Secondaire 4 et une demi-bourse à une fille de 6ᵉ année, et elles renouvellent toujours. Elles ont également donné une carte cadeau, et durant l'année, elles ont fait don d'une imprimante 3D au collège.",
+      "Ce qui distingue la promotion 1995, ce n'est pas seulement ce qu'elles donnent, mais la constance avec laquelle elles le font. Année après année, elles démontrent que la solidarité entre promotions est la plus belle des traditions — un héritage vivant qui continue d'écrire l'histoire du collège.",
+    ],
+    qa: null,
+    photos: [{ kind: "image", src: "images/scholarship-1995.jpg", caption: "Bourses & générosité" }],
+  },
+];
+
+const CONTACT = {
+  phoneJournal: "31429876",
+  phoneHistoire: "34145675",
+  journalLabel: "Si vous voulez intégrer la rédaction, contacter au",
+  histoireLabel: "Si vous voulez partager votre histoire, contacter au",
+  lines: [
+    { label: "Si vous voulez intégrer la rédaction, contacter au", phone: "31429876", tag: "La rédaction" },
+    { label: "Si vous voulez partager votre histoire, contacter au", phone: "34145675", tag: "Ton histoire" },
+  ],
+};
+
+const CATCHPHRASE =
+  "Chaque grande histoire commence sur les bancs du collège. Aujourd'hui, nous célébrons celles qui inspirent par leur parcours, pour encourager celles qui écriront les plus belles histoires de demain.";
+
+const CTA_WORDS = [
+  "Vous", "avez", "une", "histoire", "inspirante", "?",
+  "Et", "vous", "souhaitez", "la", "partager", "?",
+];
+
+const GAP = 24;
+
+/* ============================================================
+   2. UTILITAIRES
+   ============================================================ */
+function $(sel, ctx) { return (ctx || document).querySelector(sel); }
+function $$(sel, ctx) { return Array.from((ctx || document).querySelectorAll(sel)); }
+function rand(min, max) { return Math.random() * (max - min) + min; }
+
+function splitWords(text, container) {
+  container.innerHTML = "";
+  text.split(" ").forEach(function (word) {
+    var span = document.createElement("span");
+    span.className = "word";
+    span.textContent = word;
+    container.appendChild(span);
+    container.appendChild(document.createTextNode("\u00A0"));
+  });
+  return $$(".word", container);
+}
+
+/* ============================================================
+   3. COMMUTATION DES VUES (Stories / Contact)
+   ============================================================ */
+const ViewManager = {
+  init: function () {
+    var self = this;
+    $("#go-contact").addEventListener("click", function () { self.show("contact"); });
+    $("#go-stories").addEventListener("click", function () { self.show("stories"); });
+  },
+  show: function (view) {
+    var stories = $("#stories-view");
+    var contact = $("#contact-view");
+    if (view === "contact") {
+      stories.classList.remove("view--active");
+      contact.classList.add("view--active");
+      ContactView.animateIn();
+    } else {
+      contact.classList.remove("view--active");
+      stories.classList.add("view--active");
+    }
+    window.scrollTo({ top: 0, behavior: "auto" });
+  },
+};
+
+/* ============================================================
+   4. HERO — phrase d'accroche (reveal gauche → droite)
+   ============================================================ */
+function initCatchphrase() {
+  var container = $("#catchphrase");
+  var words = splitWords(CATCHPHRASE, container);
+  words.forEach(function (w, i) {
+    setTimeout(function () {
+      w.classList.add("visible");
+    }, 1150 + i * 18);
+  });
+}
+
+/* ============================================================
+   5. CARTES MYSTÈRE
+   ============================================================ */
+const Cards = {
+  phase: "stack",
+  revealed: new Set(),
+  scatterPos: [],
+  containerW: 0,
+  layout: { cols: 3, cardW: 200, cardH: 300, rows: 2, startX: 0, gridH: 0, stackH: 390 },
+  cards: [],
+
+  init: function () {
+    var self = this;
+    this.stage = $("#cards-stage");
+    this.hint = $("#cards-hint");
+    this.scatterBtn = $("#scatter-btn");
+    this.resetBtn = $("#reset-btn");
+
+    this.render();
+    this.measure();
+    this.positionAll(true);
+
+    this.scatterBtn.addEventListener("click", function () { self.scatter(); });
+    this.resetBtn.addEventListener("click", function () { self.reset(); });
+    window.addEventListener("resize", function () {
+      self.measure();
+      self.positionAll(false);
+    });
+
+    var head = $(".section-head");
+    if (head && "IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { head.classList.add("in"); io.unobserve(head); }
+        });
+      }, { threshold: 0.2 });
+      io.observe(head);
+    } else {
+      head.classList.add("in");
+    }
+  },
+
+  render: function () {
+    var self = this;
+    DATA.forEach(function (p, i) {
+      var card = document.createElement("div");
+      card.className = "card accent-" + p.accent;
+      card.dataset.id = p.id;
+      card.dataset.index = i;
+      card.style.zIndex = String(DATA.length - i);
+
+      card.innerHTML =
+        '<button class="card-btn" type="button" aria-label="Révéler la carte ' + (i + 1) + '">' +
+          '<div class="card-inner">' +
+            '<div class="card-face card-back">' +
+              '<div class="card-back__halo"></div>' +
+              '<div class="card-back__border"></div>' +
+              '<div class="card-back__border-2"></div>' +
+              '<div class="card-back__top">The Stories</div>' +
+              '<div class="card-back__question">?</div>' +
+              '<span class="card-back__corner card-back__corner--tl">✦</span>' +
+              '<span class="card-back__corner card-back__corner--tr">✦</span>' +
+              '<span class="card-back__corner card-back__corner--bl">✦</span>' +
+              '<span class="card-back__corner card-back__corner--br">✦</span>' +
+              '<div class="card-back__bottom">' + (p.featured ? "Mérites" : "Mystère") + '</div>' +
+            '</div>' +
+            '<div class="card-face card-front">' +
+              (p.featured ? '<span class="card-front__badge">✦ Mérites</span>' : "") +
+              '<div class="card-front__portrait">' +
+                '<div class="portrait-frame">' +
+                  '<div class="portrait-frame__border"></div>' +
+                  '<div class="portrait-frame__border-2"></div>' +
+                  '<div class="portrait-frame__top">The Stories</div>' +
+                  '<div class="portrait-frame__mono">' + p.initials + '</div>' +
+                  '<div class="portrait-frame__bottom">' + p.promotion + '</div>' +
+                '</div>' +
+              '</div>' +
+              '<div class="card-front__name">' +
+                '<h3>' + p.name + '</h3>' +
+                '<p>' + p.promotion + '</p>' +
+              '</div>' +
+              '<div class="card-front__cta"><span>📖 Lire le magazine</span></div>' +
+            '</div>' +
+          '</div>' +
+        '</button>';
+
+      card.querySelector(".card-btn").addEventListener("click", function () {
+        self.onCardClick(p.id);
+      });
+
+      self.stage.appendChild(card);
+      self.cards.push({ el: card, data: p, index: i });
+    });
+  },
+
+  measure: function () {
+    this.containerW = this.stage.clientWidth;
+    var n = DATA.length;
+    var cols = this.containerW >= 880 ? 3 : this.containerW >= 520 ? 2 : 1;
+    var cardW = Math.max(168, Math.min(252, (this.containerW - GAP * (cols - 1)) / cols));
+    var cardH = Math.round(cardW * 1.5);
+    var rows = Math.ceil(n / cols);
+    var totalGridW = cols * cardW + (cols - 1) * GAP;
+    var startX = Math.max(0, (this.containerW - totalGridW) / 2);
+    var gridH = rows * cardH + (rows - 1) * GAP;
+    var stackH = cardH + 90;
+    this.layout = { cols: cols, cardW: cardW, cardH: cardH, rows: rows, startX: startX, gridH: gridH, stackH: stackH };
+    var self = this;
+    this.cards.forEach(function (c) {
+      c.el.style.width = cardW + "px";
+      c.el.style.height = cardH + "px";
+    });
+  },
+
+  stackPos: function (i) {
+    var n = DATA.length;
+    var l = this.layout;
+    var cx = (this.containerW - l.cardW) / 2;
+    var cy = (l.stackH - l.cardH) / 2;
+    var offset = i - (n - 1) / 2;
+    return { x: cx + offset * 1.4, y: cy + offset * 2.2, rotate: offset * 4, scale: 1 };
+  },
+
+  gridPos: function (i) {
+    var l = this.layout;
+    var col = i % l.cols;
+    var row = Math.floor(i / l.cols);
+    return {
+      x: l.startX + col * (l.cardW + GAP),
+      y: row * (l.cardH + GAP),
+      rotate: 0,
+      scale: 1,
+    };
+  },
+
+  target: function (i) {
+    if (this.phase === "stack") return this.stackPos(i);
+    if (this.phase === "scatter") {
+      var s = this.scatterPos[i] || this.stackPos(i);
+      return { x: s.x, y: s.y, rotate: s.rotate, scale: 0.94 };
+    }
+    return this.gridPos(i);
+  },
+
+  positionAll: function (initial) {
+    var self = this;
+    this.cards.forEach(function (c, i) {
+      var t = self.target(i);
+      var delay = initial ? (self.phase === "stack" ? 0.06 * i : i * 0.04) : 0;
+      if (initial) {
+        c.el.style.transitionDelay = delay + "s";
+      } else {
+        c.el.style.transitionDelay = "0s";
+      }
+      c.el.style.transform =
+        "translate(" + t.x + "px, " + t.y + "px) rotate(" + t.rotate + "deg) scale(" + t.scale + ")";
+      c.el.style.zIndex = self.phase === "stack" ? String(DATA.length - i) : "1";
+    });
+    var h = this.phase === "stack" ? this.layout.stackH : this.layout.gridH;
+    this.stage.style.height = h + "px";
+    this.stage.classList.toggle("phase-grid", this.phase === "grid");
+  },
+
+  scatter: function () {
+    if (this.phase !== "stack") return;
+    var self = this;
+    var l = this.layout;
+    var maxY = Math.max(l.gridH, l.cardH * 2);
+    this.scatterPos = DATA.map(function () {
+      return {
+        x: rand(0, Math.max(0, self.containerW - l.cardW)),
+        y: rand(0, Math.max(0, maxY - l.cardH)),
+        rotate: (Math.random() - 0.5) * 60,
+      };
+    });
+    this.phase = "scatter";
+    this.scatterBtn.hidden = true;
+    this.positionAll(false);
+    this.cards.forEach(function (c) {
+      c.el.style.transitionDuration = "0.5s";
+    });
+    setTimeout(function () {
+      self.cards.forEach(function (c) {
+        c.el.style.transitionDuration = "0.7s";
+      });
+      self.phase = "grid";
+      self.positionAll(false);
+      self.updateHint();
+      self.resetBtn.hidden = false;
+    }, 600);
+  },
+
+  onCardClick: function (id) {
+    if (this.phase !== "grid") return;
+    if (this.revealed.has(id)) {
+      Magazine.open(id);
+    } else {
+      this.revealed.add(id);
+      var card = this.cards.find(function (c) { return c.data.id === id; });
+      if (card) card.el.classList.add("revealed");
+      var btn = card.el.querySelector(".card-btn");
+      if (btn) btn.setAttribute("aria-label", "Ouvrir le magazine de " + card.data.name);
+      this.updateHint();
+    }
+  },
+
+  reset: function () {
+    this.phase = "stack";
+    this.revealed.clear();
+    var self = this;
+    this.cards.forEach(function (c, i) {
+      c.el.classList.remove("revealed");
+      var btn = c.el.querySelector(".card-btn");
+      if (btn) btn.setAttribute("aria-label", "Révéler la carte " + (i + 1));
+    });
+    this.scatterPos = [];
+    this.scatterBtn.hidden = false;
+    this.resetBtn.hidden = true;
+    this.positionAll(false);
+    this.updateHint();
+  },
+
+  updateHint: function () {
+    if (this.phase === "stack") {
+      this.hint.innerHTML =
+        'Une pile de <strong>6 cartes mystère</strong> se cache au centre. Cliquez dessus pour les éparpiller.';
+    } else {
+      this.hint.innerHTML =
+        '<strong>' + this.revealed.size + ' / 6</strong> cartes révélées — cliquez une carte face cachée pour la retourner, ou une carte révélée pour lire son magazine.';
+    }
+  },
+};
+
+/* ============================================================
+   6. MODAL MAGAZINE
+   ============================================================ */
+const Magazine = {
+  currentId: null,
+
+  init: function () {
+    var self = this;
+    this.modal = $("#magazine-modal");
+    this.content = $("#magazine-content");
+    $("#modal-close").addEventListener("click", function () { self.close(); });
+    this.modal.addEventListener("click", function (e) {
+      if (e.target === self.modal) self.close();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && self.modal.classList.contains("open")) self.close();
+    });
+  },
+
+  open: function (id) {
+    var p = DATA.find(function (x) { return x.id === id; });
+    if (!p) return;
+    this.currentId = id;
+    this.content.innerHTML = this.buildHTML(p);
+    this.modal.classList.add("open");
+    this.modal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+
+    var self = this;
+    var enterBtn = this.content.querySelector(".mag-enter");
+    if (enterBtn) enterBtn.addEventListener("click", function () { self.showPage("inside"); });
+    var backBtn = this.content.querySelector(".mag-back-btn");
+    if (backBtn) backBtn.addEventListener("click", function () { self.showPage("cover"); });
+
+    this.showPage("cover");
+    this.animateQA();
+  },
+
+  showPage: function (page) {
+    $$(".mag-page", this.content).forEach(function (el) {
+      el.classList.remove("mag-page--active");
+    });
+    var target = this.content.querySelector(page === "cover" ? ".mag-cover" : ".mag-inside");
+    if (target) {
+      target.classList.add("mag-page--active");
+      target.scrollTop = 0;
+    }
+    this.content.scrollTop = 0;
+    if (page === "inside") this.animateQA();
+  },
+
+  close: function () {
+    this.modal.classList.remove("open");
+    this.modal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    this.currentId = null;
+  },
+
+  animateQA: function () {
+    var qas = $$(".mag-qa", this.content);
+    qas.forEach(function (qa, i) {
+      qa.classList.remove("in");
+    });
+    qas.forEach(function (qa, i) {
+      setTimeout(function () { qa.classList.add("in"); }, 100 + i * 80);
+    });
+  },
+
+  buildHTML: function (p) {
+    var accentClass = "accent-" + p.accent;
+    var num = p.id.slice(0, 4).padEnd(4, "0");
+
+    var bars = "";
+    for (var b = 0; b < 28; b++) {
+      var h = 30 + ((b * 37) % 70);
+      bars += '<span style="height:' + h + '%"></span>';
+    }
+
+    var lines = p.coverLines.map(function (l) {
+      return '<li><span>' + l + "</span></li>";
+    }).join("");
+
+    var body = p.body.map(function (para) {
+      return "<p>" + para + "</p>";
+    }).join("");
+
+    var interview = "";
+    if (p.qa && p.qa.length) {
+      var qas = p.qa.map(function (item) {
+        return '<div class="mag-qa">' +
+          '<p class="mag-qa__q">' + item.q + "</p>" +
+          '<p class="mag-qa__a">' + item.a + "</p>" +
+        "</div>";
+      }).join("");
+      interview =
+        '<div class="mag-interview">' +
+          '<div class="mag-interview__head">' +
+            '<span class="mag-interview__label">Interview</span>' +
+            '<span class="mag-interview__line"></span>' +
+          "</div>" + qas +
+        "</div>";
+    }
+
+    var gallery = "";
+    if (p.photos.length) {
+      var gridClass = p.photos.length >= 4 ? "mag-gallery__grid--2" : "mag-gallery__grid--1";
+      var photos = p.photos.map(function (ph) {
+        return '<figure class="mag-photo">' +
+          '<div class="mag-photo__img"><img src="' + ph.src + '" alt="' + (ph.caption || "") + '" /></div>' +
+          (ph.caption ? '<figcaption class="mag-photo__caption">' + ph.caption + "</figcaption>" : "") +
+        "</figure>";
+      }).join("");
+      gallery =
+        '<div class="mag-gallery">' +
+          '<div class="mag-gallery__head">' +
+            '<span class="mag-gallery__label">En images</span>' +
+            '<span class="mag-gallery__line"></span>' +
+          "</div>" +
+          '<div class="mag-gallery__grid ' + gridClass + '">' + photos + "</div>" +
+        "</div>";
+    }
+
+    return (
+      '<div class="mag-page mag-cover mag-page--active ' + accentClass + '">' +
+        '<div class="mag-masthead">' +
+          '<p class="mag-masthead__kicker">Édition spéciale · Portraits</p>' +
+          '<h2 class="mag-masthead__title">THE STORIES</h2>' +
+          '<div class="mag-masthead__sub">' +
+            '<span class="rule"></span>' + p.promotion + '<span class="rule"></span>' +
+          "</div>" +
+        "</div>" +
+        '<div class="mag-cover__body">' +
+          '<div class="mag-cover__portrait">' +
+            '<div class="portrait-frame">' +
+              '<div class="portrait-frame__border"></div>' +
+              '<div class="portrait-frame__border-2"></div>' +
+              '<div class="portrait-frame__top">The Stories</div>' +
+              '<div class="portrait-frame__mono">' + p.initials + '</div>' +
+              '<div class="portrait-frame__bottom">' + p.promotion + '</div>' +
+            "</div>" +
+          "</div>" +
+          '<div class="mag-cover__info">' +
+            "<div>" +
+              '<p class="mag-cover__alaune">À la une</p>' +
+              '<h3 class="mag-cover__name">' + p.firstName + "</h3>" +
+              '<p class="mag-cover__fullname">' + p.name + "</p>" +
+              '<p class="mag-cover__parcours">' + p.parcours + "</p>" +
+            "</div>" +
+            '<ul class="mag-cover__lines">' + lines + "</ul>" +
+            '<div class="mag-cover__footer">' +
+              '<span class="mag-cover__num">N° ' + num + "</span>" +
+              '<div class="mag-barcode">' + bars + "</div>" +
+            "</div>" +
+          "</div>" +
+        "</div>" +
+        '<div class="mag-cover__cta">' +
+          '<button class="btn btn--primary mag-enter" type="button">📖 Ouvrir le magazine</button>' +
+        "</div>" +
+      "</div>" +
+      '<div class="mag-page mag-inside ' + accentClass + '">' +
+        '<div class="mag-inside__bar">' +
+          '<button class="mag-back-btn" type="button">← Couverture</button>' +
+          '<span class="mag-inside__brand">THE STORIES</span>' +
+          '<span class="mag-inside__promo">' + p.promotion + "</span>" +
+        "</div>" +
+        '<div class="mag-article">' +
+          '<div class="mag-article__header">' +
+            '<p class="mag-article__kicker">Portrait</p>' +
+            '<h2 class="mag-article__title">' + p.name + "</h2>" +
+            '<div class="editorial-rule mag-article__rule"></div>' +
+          "</div>" +
+          '<p class="mag-intro">' + p.intro + "</p>" +
+          '<div class="mag-body">' + body + "</div>" +
+          interview +
+          gallery +
+          '<div class="mag-end">' +
+            '<span class="rule"></span>' +
+            '<span class="mag-end__ornament">❦</span>' +
+            '<span class="rule"></span>' +
+          "</div>" +
+        "</div>" +
+      "</div>"
+    );
+  },
+};
+
+/* ============================================================
+   7. VUE CONTACT
+   ============================================================ */
+const ContactView = {
+  built: false,
+  init: function () {
+    var container = $("#contact-lines");
+    container.innerHTML = CONTACT.lines.map(function (line, i) {
+      return (
+        '<div class="contact-line" data-i="' + i + '">' +
+          '<div class="contact-line__glow"></div>' +
+          '<span class="contact-line__tag">' + line.tag + "</span>" +
+          '<p class="contact-line__text">' + line.label + "</p>" +
+          '<a class="contact-line__phone" href="tel:' + line.phone + '">' +
+            '<span class="contact-line__phone-icon">📞</span>' + line.phone +
+          "</a>" +
+        "</div>"
+      );
+    }).join("");
+    this.built = true;
+  },
+  animateIn: function () {
+    if (!this.built) this.init();
+    var lines = $$(".contact-line");
+    lines.forEach(function (l) { l.classList.remove("in"); });
+    var img = $(".contact__image");
+    if (img) img.classList.remove("in");
+    void document.body.offsetWidth;
+    lines.forEach(function (l, i) {
+      setTimeout(function () { l.classList.add("in"); }, 200 + i * 150);
+    });
+    setTimeout(function () { if (img) img.classList.add("in"); }, 300);
+  },
+};
+
+/* ============================================================
+   8. CTA — texte animé mot par mot
+   ============================================================ */
+function initCTA() {
+  var container = $("#cta-text");
+  var words = splitWords(CTA_WORDS.join(" "), container);
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          words.forEach(function (w, i) {
+            setTimeout(function () { w.classList.add("visible"); }, 100 + i * 60);
+          });
+          io.unobserve(container);
+        }
+      });
+    }, { threshold: 0.5 });
+    io.observe(container);
+  } else {
+    words.forEach(function (w, i) {
+      setTimeout(function () { w.classList.add("visible"); }, 100 + i * 60);
+    });
+  }
+}
+
+/* ============================================================
+   9. INIT
+   ============================================================ */
+document.addEventListener("DOMContentLoaded", function () {
+  $("#year").textContent = new Date().getFullYear();
+  ViewManager.init();
+  initCatchphrase();
+  Cards.init();
+  Magazine.init();
+  ContactView.init();
+  initCTA();
+});
+  </script>
+</body>
+</html>
