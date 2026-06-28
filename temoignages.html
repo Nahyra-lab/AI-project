@@ -93,7 +93,6 @@
 </head>
 <body>
 
-    <!-- BARRE DE NAVIGATION (Identique à la page 1) -->
     <nav class="navbar" style="display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; background: #ffffff; border-bottom: 1px solid rgba(138, 127, 164, 0.1); position: sticky; top: 0; z-index: 1000;">
         <div class="logo">
             <a href="index.html" style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #8a7fa4; text-decoration: none; font-weight: bold;">Our Yearbook</a>
@@ -114,7 +113,6 @@
         </ul>
     </nav>
 
-    <!-- CONTENU PRINCIPAL : TÉMOIGNAGES -->
     <div class="yearbook-wrapper">
         <div class="guestbook-section">
             <h2>Livre d'Or &amp; Témoignages</h2>
@@ -142,14 +140,12 @@
         </div>
     </div>
 
-    <!-- PIED DE PAGE -->
     <footer>
         <div class="team-container" style="text-align: center; padding: 30px; margin-top: 50px; border-top: 1px dashed rgba(138, 127, 164, 0.3);">
-            <p style="font-size: 0.9rem; color: #8a7fa4; letter-spacing: 1px;">Créé avec ♥ par Marcel Jardlyne, Elga Auguste &amp; Mesidor Carmita</p>
+            <p style="font-size: 0.9rem; color: #8a7fa4; letter-spacing: 1px;">Créé avec ♥️ par Marcel Jardlyne, Elga Auguste &amp; Mesidor Carmita</p>
         </div>
     </footer>
 
-    <!-- SCRIPT UNIQUEMENT POUR LE LIVRE D'OR -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             // Gestion du menu déroulant
@@ -187,11 +183,15 @@
                     const text = document.getElementById('user-message').value;
                     const isAnon = document.getElementById('is-anonymous').checked;
 
-                    // Mots interdits filtrés
-                    const bannedWords = ["idiot", "stupide", "con", "nul", "merde", "fuck", "bitch"];
+                    // Liste étendue des mots grossiers interdits
+                    const bannedWords = [
+                        "idiot", "stupide", "con", "nul", "merde", "fuck", "bitch", 
+                        "putain", "pute", "caca", "salope", "connard", "chier"
+                    ];
+                    
                     for (let word of bannedWords) {
                         if (text.toLowerCase().includes(word)) {
-                            alert("Votre message contient un mot inapproprié et ne peut pas être publié.");
+                            alert("Votre message contient un mot inapproprié ou grossier et ne peut pas être publié.");
                             return;
                         }
                     }
