@@ -10,77 +10,211 @@ console.log("Script.js chargé avec succès !");
 const opportunitiesData = {
     robotique: {
         icon: "🤖",
-        title: "Concours de Robotique",
+        title: "Concours de Robotique (DRILL)",
         intro: "Le carrefour des futures ingénieures.",
-        description: "Les concours de robotique permettent de concevoir, construire et programmer des robots pour réaliser des missions précises. C'est l'occasion parfaite de développer des compétences en ingénierie, en programmation et en travail d'équipe.",
-        requirements: "Logique, créativité, esprit d'équipe, connaissances de base en programmation (un plus).",
-        benefits: "Développement des compétences STEM, résolution de problèmes, networking, reconnaissance nationale."
+        description: "Le programme s'appelle <strong>DRILL</strong> (Dynamic Robotics and Independent Learning Lab). Il s'agit d'une formation gratuite de 20 heures, répartie sur deux week-ends, qui permet aux élèves de découvrir la robotique et l'ingénierie de manière très pratique. Aucune expérience préalable n'est nécessaire ! Après avoir obtenu le certificat DRILL, les étudiants peuvent postuler au GEAR Lab, un programme plus avancé.",
+        target: "Élèves motivés (Aucun prérequis requis)",
+        timeline: "Réparti sur 2 week-ends",
+        detailsTitle: "Objectifs & Avantages :",
+        details: [
+            "Développer la pensée d'ingénieur, la créativité et le travail d'équipe.",
+            "Résolution de problèmes complexes.",
+            "Déjeuner fourni gratuitement aux participants.",
+            "Accès ultérieur potentiel au GEAR Lab (programmation, électronique, fabrication numérique)."
+        ]
     },
     ecriture: {
         icon: "✍️",
         title: "Concours d'Écriture",
         intro: "Libérez votre imaginaire.",
-        description: "Qu'il s'agisse de nouvelles, de poésie ou d'essais, les concours d'écriture vous permettent d'exprimer votre créativité et de partager votre voix unique avec le monde.",
-        requirements: "Passion pour l'écriture, imagination, maîtrise de la langue, patience.",
-        benefits: "Publication, visibilité, amélioration de l'expression écrite, opportunités littéraires."
+        description: "Il existe de nombreux concours d'écriture en Haïti permettant aux élèves de s'exprimer librement et d'être reconnus pour leurs efforts.",
+        target: "Jeunes et élèves du secondaire selon les concours",
+        timeline: "Variable selon l'agenda des structures",
+        detailsTitle: "Concours notables en Haïti :",
+        details: [
+            "<strong>Médcriture</strong> : Un carrefour d'expression clé.",
+            "<strong>Salon du livre de P-au-P</strong> : Concours « Lettre à mon auteur.e préféré.e » destiné aux jeunes.",
+            "<strong>Concours National des Jeunes Écrivains Émergents</strong> : Lancé par Minouche Sénéphard.",
+            "<strong>Centre Muse Haïti</strong> : Organise un concours national de dissertation scolaire.",
+            "<strong>ACTIF</strong> : Lance parfois des concours de poésie et d'écriture autour de thèmes sociaux.",
+            "<strong>MOLICAJ</strong> : Organise des concours littéraires et des événements comme Étoile des Lettres."
+        ]
     },
     plaidoirie: {
         icon: "⚖️",
-        title: "Concours de Plaidoirie",
+        title: "Grand Concours de Plaidoirie de l'OPC",
         intro: "Prenez la parole.",
-        description: "Une arène où vous apprenez à défendre vos idées avec conviction et élégance. Développez votre aisance oratoire et votre esprit critique face à un jury.",
-        requirements: "Débat, recherche documentaire, aisance à l'oral, capacité d'argumentation.",
-        benefits: "Maîtrise de l'art oratoire, confiance en soi, pensée critique, réseau juridique."
+        description: "Une arène prestigieuse organisée par l'Office de la Protection du Citoyen (OPC) où vous apprenez à défendre vos idées avec conviction et élégance sur des sujets cruciaux.",
+        target: "Élèves du Secondaire 1 au Secondaire 4",
+        timeline: "Date limite d'inscription : 31 juillet",
+        extraBadge: "Thème : Droit des femmes et des élections",
+        detailsTitle: "Compétences clés évaluées :",
+        details: [
+            "Maîtrise parfaite du sujet imposé.",
+            "Qualité, rigueur et structure de l'argumentation.",
+            "Éloquence, posture et expression orale face au jury.",
+            "Originalité et profondeur de l'analyse critique."
+        ]
     },
     'programme-ete': {
         icon: "☀️",
-        title: "Programmes d'Été",
-        intro: "Immersion universitaire.",
-        description: "Organisés par de grandes universités en Haïti et à l'étranger, ces programmes offrent une immersion académique enrichissante et un aperçu de la vie universitaire.",
-        requirements: "Dossier scolaire solide, lettre de motivation, bon niveau académique.",
-        benefits: "Réseau international, crédits universitaires, expérience culturelle, boost de CV."
+        title: "Programmes d'Été & Formations",
+        intro: "Immersion académique et leadership.",
+        description: "Découvrez deux programmes d'excellence qui se déroulent principalement <strong>en ligne</strong> : <br><br><strong>1. Programme PAYS (Fondation Hector) :</strong> Lancé en 2019, c'est un programme intensif de deux semaines pour développer vos compétences académiques, votre leadership et vous préparer aux études supérieures.<br><br><strong>2. ESLP (Edlight) :</strong> Programme entièrement financé de deux semaines axé sur le leadership, l'entrepreneuriat, les finances personnelles et les rencontres avec des intervenants d'institutions comme Harvard, MIT, Microsoft et Cornell.",
+        target: "Élèves du Secondaire 1, 2 et 3 (PAYS) / Jeunes de 15 à 18 ans (ESLP)",
+        timeline: "Sessions durant l'été (Généralement en ligne)",
+        detailsTitle: "Ce que vous allez y faire :",
+        details: [
+            "Séminaires interactifs avec des professionnels de divers domaines.",
+            "Initiation rigoureuse à la rédaction d'essais.",
+            "Conseils stratégiques pour les candidatures universitaires en Haïti et à l'étranger.",
+            "Développement de projets d'impact communautaire (ESLP).",
+            "Mentorat d'élite et opportunités de réseautage."
+        ]
     },
     benevolat: {
         icon: "🤝",
-        title: "Bénévolat",
-        intro: "Forger son leadership.",
-        description: "Aider au sein d'ONG, d'associations ou de projets communautaires. Le bénévolat développe votre sens des responsabilités et votre empathie tout en enrichissant votre parcours.",
-        requirements: "Empathie, engagement, disponibilité, esprit d'initiative.",
-        benefits: "Altruisme, développement personnel, expérience concrète, réseau humanitaire."
+        title: "Bénévolat & Engagement Citoyen",
+        intro: "Forger son leadership par l'action.",
+        description: "Le bénévolat permet d’aider les autres et de faire une différence dans sa communauté. Il aide à développer des qualités comme le sens des responsabilités, le travail en équipe et l'empathie, tout en construisant un CV solide.",
+        target: "Tous les jeunes engagés et disponibles",
+        timeline: "Tout au long de l'année",
+        detailsTitle: "Organisations qui recrutent en Haïti :",
+        details: [
+            "<strong>IDEJEN</strong> : Œuvre depuis plus de 20 ans pour la formation, l'entrepreneuriat et l'insertion professionnelle des jeunes.",
+            "<strong>EVEIL_Haïti</strong> : Organise des ateliers de leadership, d'éducation financière, de citoyenneté et des actions éco-citoyennes.",
+            "<strong>Connect Jeune</strong> : Rassemble les jeunes autour du développement durable et de l'engagement citoyen.",
+            "<strong>Youth Foundation Haiti</strong> : Intervient auprès des enfants vulnérables (éducation, alimentation, soutien psychosocial).",
+            "<strong>OVDDHMO</strong> : Projets humanitaires, santé et éducation (Possibilité d'obtenir un certificat et une lettre de recommandation)."
+        ]
     },
     bourse: {
         icon: "🎓",
-        title: "Bourses d'Étude",
-        intro: "Financer vos rêmes.",
-        description: "Il existe de multiples dispositifs pour financer vos études supérieures, en Haïti et à l'international. Découvrez les bourses qui correspondent à votre profil.",
-        requirements: "Excellence académique, dossier complet, lettres de recommandation.",
-        benefits: "Financement des études, accès à des institutions prestigieuses, reconnaissance académique."
+        title: "Bourses d'Étude (Licence / Undergraduate)",
+        intro: "Financer vos rêves académiques.",
+        description: "Il existe de multiples dispositifs internationaux pour financer vos études supérieures après le secondaire. Voici les opportunités majeures par destination :",
+        target: "Élèves en fin d'études secondaires avec un excellent dossier",
+        timeline: "Variable (Généralement entre septembre et janvier)",
+        detailsTitle: "Options de bourses par pays :",
+        details: [
+            "<strong>🇨🇦 Canada :</strong> Bourse <i>Lester B. Pearson</i> (U de Toronto - couverture complète), <i>UBC International Scholars Program</i>, et bourses d'entrée standards.",
+            "<strong>🇬🇧 Royaume-Uni :</strong> Bourses d'excellence partielles ou réductions sur les frais selon les universités.",
+            "<strong>🇫🇷 France :</strong> Bourses d'excellence des établissements et aides via les programmes Campus France.",
+            "<strong>🇰🇷 Corée du Sud :</strong> <i>Global Korea Scholarship (GKS)</i> - Couvre frais, avion, allocation et cours de langue.",
+            "<strong>🇯🇵 Japon :</strong> Bourse <i>MEXT</i> - Couvre les études, les allocations et le voyage.",
+            "<strong>🇭🇺 Hongrie :</strong> Bourse <i>Stipendium Hungaricum</i> - Couvre la scolarité, le logement et offre une allocation."
+        ]
     },
     mun: {
         icon: "🇺🇳",
-        title: "Model United Nations",
-        intro: "Coulisses de la diplomatie.",
-        description: "Les simulations de l'ONU vous plongent au cœur de la diplomatie internationale. Défendez les intérêts d'un pays, négociez des résolutions et développez votre vision géopolitique.",
-        requirements: "Géopolitique, anglais courant, recherche, négociation.",
-        benefits: "Bilinguisme, networking international, compréhension des enjeux mondiaux, confiance."
+        title: "Model United Nations (MUN)",
+        intro: "Dans les coulisses de la diplomatie.",
+        description: "Le Model United Nations est une activité parascolaire mondiale où les élèves jouent le rôle de diplomates représentant différents pays lors d'une simulation des Nations Unies.",
+        target: "Écoliers et lycéens passionnés de géopolitique",
+        timeline: "Préparations annuelles",
+        detailsTitle: "Conférences prestigieuses & Compétences développées :",
+        details: [
+            "<strong>Conférences majeures :</strong> Harvard Model United Nations (HMUN), Yale Model United Nations (YMUN), National High School Model United Nations.",
+            "Maîtrise de la prise de parole en public et de la négociation.",
+            "Compétences poussées en recherche, analyse et rédaction de textes officiels.",
+            "Développement du leadership et collaboration interculturelle."
+        ]
     },
     uwc: {
         icon: "🌍",
-        title: "United World College",
-        intro: "Éducation globale.",
-        description: "UWC est un réseau mondial d'écoles qui unissent les jeunes de tous horizons pour une éducation axée sur la paix et la compréhension internationale.",
-        requirements: "15-18 ans, dossier complet, entretiens, engagement communautaire.",
-        benefits: "International, baccalauréat reconnu, réseau mondial, expérience transformative."
+        title: "United World College (UWC)",
+        intro: "Éducation globale et transformative.",
+        description: "L'UWC est un réseau mondial d'écoles qui unissent les jeunes de tous horizons. Il vous permet de terminer vos études à l'étranger et d'obtenir un <strong>Baccalauréat International</strong> grâce à une éducation axée sur la paix, la pratique et l'échange culturel.",
+        target: "Élèves du Secondaire 2 et du Secondaire 3 (Ages 15-18 ans)",
+        timeline: "Dépôt des candidatures : Novembre à Décembre",
+        detailsTitle: "Processus de sélection rigoureux :",
+        details: [
+            "Étape 1 : Analyse approfondie du dossier scolaire et engagement communautaire.",
+            "Étape 2 : Examens écrits.",
+            "Étape 3 : Entrevue de groupe et entrevue individuelle."
+        ]
     },
     international: {
         icon: "🏆",
         title: "Concours Internationaux",
         intro: "Brillez sur la scène mondiale.",
-        description: "Olympiades de Mathématiques, concours de sciences, compétitions artistiques... Représentez Haïti et montrez votre excellence sur la scène internationale.",
-        requirements: "Niveau avancé dans le domaine, préparation rigoureuse, anglais technique.",
-        benefits: "Reconnaissance mondiale, bourses potentielles, networking, excellence académique."
+        description: "Olympiades, compétitions scientifiques ou artistiques... Représentez Haïti et montrez votre excellence à l'échelle internationale.",
+        target: "Lycéens de niveau avancé selon la discipline",
+        timeline: "Tout au long de l'année",
+        detailsTitle: "Compétitions recommandées :",
+        details: [
+            "<strong>🌱 Environnement / Sciences :</strong> <i>Regeneron ISEF</i> (Grand concours mondial), <i>Ocean Awareness Contest</i> (Art, écriture autour du climat), <i>Science in School Contest</i>.",
+            "<strong>💼 Business / Entrepreneuriat :</strong> <i>Blue Ocean Competition</i> (Pitch en ligne), <i>GYEC</i> (Solutions globales en équipe), <i>AI Entrepreneurship Contest (AIEC)</i>.",
+            "<strong>✍️ Écriture & Réflexion :</strong> <i>John Locke Institute Essay Competition</i> (Philosophie, économie, histoire), <i>Harvard International Review Contest</i>, <i>Scholastic Art & Writing Awards</i>.",
+            "<strong>🚀 Innovation :</strong> <i>The Conrad Challenge</i> (Résolution de problèmes mondiaux), <i>Diamond Challenge</i> (Entrepreneuriat)."
+        ]
     }
 };
+
+// Fonction pour ouvrir les détails d'une opportunité
+function openOpportunity(id) {
+    const data = opportunitiesData[id];
+    if (!data) return;
+
+    const detailContent = document.getElementById('detail-content');
+    
+    // Génération dynamique de la liste des détails
+    const listItems = data.details.map(item => `<li class="flex items-start gap-3 text-gray-600 mb-2"><span class="text-blue-500 mt-1">✔</span><span>${item}</span></li>`).join('');
+
+    // Badge thématique supplémentaire (ex: Thème OPC)
+    const extraBadgeHtml = data.extraBadge ? `<span class="inline-block bg-blue-50 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full mb-4">${data.extraBadge}</span>` : '';
+
+    // Injection de la structure propre dans le composant détail
+    detailContent.innerHTML = `
+        <div class="flex items-center gap-4 mb-6">
+            <span class="text-5xl">${data.icon}</span>
+            <div>
+                <h3 class="text-2xl md:text-3xl font-black text-slate-900">${data.title}</h3>
+                <p class="text-blue-600 font-medium">${data.intro}</p>
+            </div>
+        </div>
+        
+        ${extraBadgeHtml}
+
+        <div class="grid md:grid-cols-3 gap-8 mt-6">
+            <div class="md:col-span-2 space-y-6">
+                <div>
+                    <h4 class="font-bold text-slate-800 mb-2">Description</h4>
+                    <p class="text-gray-600 leading-relaxed">${data.description}</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-slate-800 mb-3">${data.detailsTitle}</h4>
+                    <ul class="space-y-2">${listItems}</ul>
+                </div>
+            </div>
+            
+            <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 h-fit space-y-4">
+                <div>
+                    <span class="block text-xs font-bold uppercase text-gray-400 tracking-wider">Qui est concerné ?</span>
+                    <p class="text-sm font-semibold text-slate-700 mt-1">${data.target}</p>
+                </div>
+                <hr class="border-slate-200">
+                <div>
+                    <span class="block text-xs font-bold uppercase text-gray-400 tracking-wider">Période / Date Limite</span>
+                    <p class="text-sm font-semibold text-amber-600 mt-1 flex items-center gap-1">📅 ${data.timeline}</p>
+                </div>
+            </div>
+        </div>
+    `;
+
+    // Gestion de l'affichage (Masque la grille, affiche le détail)
+    document.getElementById('opps-list-view').classList.add('hidden');
+    document.getElementById('opps-detail-view').classList.remove('hidden');
+    
+    // Scroll fluide vers le haut de la section pour le confort utilisateur
+    document.getElementById('opportunities').scrollIntoView({ behavior: 'smooth' });
+}
+
+// Fonction pour revenir à la vue en grille
+function closeOpportunity() {
+    document.getElementById('opps-detail-view').classList.add('hidden');
+    document.getElementById('opps-list-view').classList.remove('hidden');
+}
 
 // ==========================================
 //  2. DONNÉES DU MAGAZINE
