@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Success Story | Inspiring Minds</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="script.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&family=Great+Vibes:wght@400&display=swap" rel="stylesheet">
     <style>
       
@@ -182,6 +183,22 @@
             margin-top: 1rem;
             border: 1px solid rgba(255,255,255,0.3);
         }
+
+        /* Opportunity Cards */
+        .opp-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e5e7eb;
+        }
+        .opp-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            border-color: #D4AF37;
+        }
     </style>
 </head>
 <body class="text-slate-800">
@@ -197,6 +214,7 @@
         </div>
     </nav>
 
+    <!-- ==================== SECTION ACCUEIL ==================== -->
     <main id="accueil" class="section-content active pt-32 px-6">
         <div class="max-w-5xl mx-auto text-center">
             <h1 class="text-6xl md:text-8xl text-blue-900 mb-8">Meeting between <br><span class="text-yellow-600 italic">inspired minds</span></h1>
@@ -230,6 +248,7 @@
         </div>
     </main>
 
+    <!-- ==================== SECTION STORIES ==================== -->
     <main id="stories" class="section-content pt-20 px-6 overflow-hidden">
         <!-- Hero Section with Animated Title -->
         <div class="relative min-h-[60vh] flex items-center justify-center mb-20">
@@ -381,15 +400,63 @@
         </div>
     </div>
 
+    <!-- ==================== SECTION ORIENTATION ==================== -->
     <main id="orientation" class="section-content pt-32 px-6 pb-20">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-5xl md:text-6xl font-bold text-blue-900 mb-4 font-serif">Orientation</h2>
                 <p class="text-xl text-gray-600">Explorez différents domaines et trouvez votre passion</p>
             </div>
+
+            <!-- Cards des domaines d'orientation -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                <!-- Santé -->
+                <a href="orientation-sante.html" class="opp-card text-center group">
+                    <div class="text-4xl mb-3">🏥</div>
+                    <h3 class="font-bold text-lg text-blue-900 group-hover:text-yellow-600 transition">Santé & Médecine</h3>
+                    <p class="text-sm text-gray-500 mt-2">Médecins, infirmiers, pharmaciens, chercheurs...</p>
+                </a>
+                <!-- Diplomatie -->
+                <a href="orientation-diplomatie.html" class="opp-card text-center group">
+                    <div class="text-4xl mb-3">🌍</div>
+                    <h3 class="font-bold text-lg text-blue-900 group-hover:text-yellow-600 transition">Diplomatie & Relations Internationales</h3>
+                    <p class="text-sm text-gray-500 mt-2">Ambassadeurs, diplomates, négociateurs...</p>
+                </a>
+                <!-- Business -->
+                <a href="orientation-business.html" class="opp-card text-center group">
+                    <div class="text-4xl mb-3">💼</div>
+                    <h3 class="font-bold text-lg text-blue-900 group-hover:text-yellow-600 transition">Business & Gestion</h3>
+                    <p class="text-sm text-gray-500 mt-2">Entrepreneurs, managers, consultants...</p>
+                </a>
+                <!-- Tech -->
+                <a href="orientation-tech.html" class="opp-card text-center group">
+                    <div class="text-4xl mb-3">💻</div>
+                    <h3 class="font-bold text-lg text-blue-900 group-hover:text-yellow-600 transition">Informatique & Technologie</h3>
+                    <p class="text-sm text-gray-500 mt-2">Développeurs, data scientists, ingénieurs...</p>
+                </a>
+                <!-- Métiers Émergents -->
+                <a href="orientation-emergents.html" class="opp-card text-center group">
+                    <div class="text-4xl mb-3">🚀</div>
+                    <h3 class="font-bold text-lg text-blue-900 group-hover:text-yellow-600 transition">Métiers Émergents</h3>
+                    <p class="text-sm text-gray-500 mt-2">IA, blockchain, énergies renouvelables...</p>
+                </a>
+                <!-- Arts & Culture -->
+                <a href="orientation-arts.html" class="opp-card text-center group">
+                    <div class="text-4xl mb-3">🎨</div>
+                    <h3 class="font-bold text-lg text-blue-900 group-hover:text-yellow-600 transition">Arts & Culture</h3>
+                    <p class="text-sm text-gray-500 mt-2">Artistes, designers, musiciens...</p>
+                </a>
+            </div>
+
+            <div class="text-center">
+                <a href="orientation.html" class="inline-flex items-center gap-2 bg-blue-900 text-white px-8 py-4 rounded-full font-bold hover:bg-blue-800 transition-all transform hover:scale-105 shadow-lg">
+                    Voir la page Orientation complète →
+                </a>
+            </div>
         </div>
     </main>
 
+    <!-- ==================== SECTION OPPORTUNITIES ==================== -->
     <main id="opportunities" class="section-content pt-32 px-4 md:px-8 pb-24 bg-slate-50/50">
         <div class="max-w-6xl mx-auto">
             <div class="max-w-3xl mb-16">
@@ -399,10 +466,68 @@
                 <h2 class="text-4xl md:text-5xl font-black text-slate-900 mt-4 tracking-tight">
                     Opportunities
                 </h2>
+                <p class="text-gray-600 mt-4 text-lg">Découvrez les opportunités qui vous attendent et donnez un coup de boost à votre parcours.</p>
+            </div>
+
+            <!-- Vue Liste -->
+            <div id="opps-list-view">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div onclick="openOpportunity('robotique')" class="opp-card text-center">
+                        <div class="text-4xl mb-3">🤖</div>
+                        <h3 class="font-bold text-blue-900">Concours de Robotique</h3>
+                        <p class="text-sm text-gray-500 mt-2">Le carrefour des futures ingénieures</p>
+                    </div>
+                    <div onclick="openOpportunity('ecriture')" class="opp-card text-center">
+                        <div class="text-4xl mb-3">✍️</div>
+                        <h3 class="font-bold text-blue-900">Concours d'Écriture</h3>
+                        <p class="text-sm text-gray-500 mt-2">Libérez votre imaginaire</p>
+                    </div>
+                    <div onclick="openOpportunity('plaidoirie')" class="opp-card text-center">
+                        <div class="text-4xl mb-3">⚖️</div>
+                        <h3 class="font-bold text-blue-900">Concours de Plaidoirie</h3>
+                        <p class="text-sm text-gray-500 mt-2">Prenez la parole</p>
+                    </div>
+                    <div onclick="openOpportunity('programme-ete')" class="opp-card text-center">
+                        <div class="text-4xl mb-3">☀️</div>
+                        <h3 class="font-bold text-blue-900">Programmes d'Été</h3>
+                        <p class="text-sm text-gray-500 mt-2">Immersion universitaire</p>
+                    </div>
+                    <div onclick="openOpportunity('benevolat')" class="opp-card text-center">
+                        <div class="text-4xl mb-3">🤝</div>
+                        <h3 class="font-bold text-blue-900">Bénévolat</h3>
+                        <p class="text-sm text-gray-500 mt-2">Forger son leadership</p>
+                    </div>
+                    <div onclick="openOpportunity('bourse')" class="opp-card text-center">
+                        <div class="text-4xl mb-3">🎓</div>
+                        <h3 class="font-bold text-blue-900">Bourses d'Étude</h3>
+                        <p class="text-sm text-gray-500 mt-2">Financer vos rêves</p>
+                    </div>
+                    <div onclick="openOpportunity('mun')" class="opp-card text-center">
+                        <div class="text-4xl mb-3">🇺🇳</div>
+                        <h3 class="font-bold text-blue-900">Model United Nations</h3>
+                        <p class="text-sm text-gray-500 mt-2">Coulisses de la diplomatie</p>
+                    </div>
+                    <div onclick="openOpportunity('uwc')" class="opp-card text-center">
+                        <div class="text-4xl mb-3">🌍</div>
+                        <h3 class="font-bold text-blue-900">United World College</h3>
+                        <p class="text-sm text-gray-500 mt-2">Éducation globale</p>
+                    </div>
+                    <div onclick="openOpportunity('international')" class="opp-card text-center">
+                        <div class="text-4xl mb-3">🏆</div>
+                        <h3 class="font-bold text-blue-900">Concours Internationaux</h3>
+                        <p class="text-sm text-gray-500 mt-2">Brillez sur la scène mondiale</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vue Détail -->
+            <div id="opps-detail-view" class="hidden" style="display: none;">
+                <div id="detail-content"></div>
             </div>
         </div>
     </main>
 
+    <!-- ==================== SECTION IMPROVING ==================== -->
     <main id="improving" class="section-content pt-32 px-6 pb-20">
         <div class="max-w-4xl mx-auto bg-blue-950 text-white rounded-[2.5rem] p-8 md:p-12 shadow-2xl relative overflow-hidden">
             <div class="relative z-10">
@@ -467,106 +592,6 @@
 <footer class="py-12 border-t mt-20 text-center text-gray-400 text-sm">
     <p>© 2026 Succes Story. Pour les leaders de demain. Promotion NEXORA❤️</p>
 </footer>
-<script>
-
-    function openMagazine(person) {
-        const data = magazineData[person];
-        if (!data) return;
-        
-        const modal = document.getElementById('magazine-modal');
-        const body = document.getElementById('magazine-body');
-        
-        let photosHtml = '';
-        if (data.photos && data.photos.length > 0) {
-            photosHtml = '<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">';
-            data.photos.forEach(photo => {
-                photosHtml += `<img src="${photo}" class="w-full h-40 object-cover rounded-lg shadow-md" alt="${data.name}" onerror="this.src='https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=400&q=80'">`;
-            });
-            photosHtml += '</div>';
-        }
-        
-        body.innerHTML = `
-            <div class="text-center mb-8">
-                <img src="${data.photo}" class="w-48 h-48 mx-auto rounded-full object-cover border-4 border-yellow-500 shadow-xl mb-4" alt="${data.name}" onerror="this.src='https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=400&q=80'">
-                <h2 class="text-4xl font-bold text-blue-900 font-serif">${data.name} ${data.prenom}</h2>
-                <p class="text-xl text-yellow-600 font-semibold mt-2">${data.annee}</p>
-            </div>
-            ${photosHtml}
-            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 rounded-2xl border-l-4 border-blue-600">
-                <h3 class="text-2xl font-bold text-blue-900 mb-4 font-serif">Mon Expérience</h3>
-                <p class="text-gray-700 leading-relaxed text-lg">${data.experience}</p>
-            </div>
-        `;
-        
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeMagazine() {
-        const modal = document.getElementById('magazine-modal');
-        modal.classList.remove('active');
-        document.body.style.overflow = 'auto';
-    }
-
-    // Close modal on outside click
-    document.getElementById('magazine-modal').addEventListener('click', function(e) {
-        if (e.target === this) {
-            closeMagazine();
-        }
-    });
-
-    // Intersection Observer for animations
-    document.addEventListener('DOMContentLoaded', function() {
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-        
-        document.querySelectorAll('.mystery-card').forEach(card => {
-            observer.observe(card);
-        });
-    });
-
-    // Status radio button handler
-    document.addEventListener("DOMContentLoaded", function() {
-        const statusCurrent = document.getElementById('status-current');
-        const allStatusRadios = document.querySelectorAll('input[name="statut"]');
-        const conditionalFields = document.getElementById('conditional-fields');
-        const classInput = document.getElementById('student-class');
-        const emailInput = document.getElementById('student-email');
-
-        if (allStatusRadios.length > 0) {
-            allStatusRadios.forEach(radio => {
-                radio.addEventListener('change', function() {
-                    if (statusCurrent && statusCurrent.checked) {
-                        if (conditionalFields) {
-                            conditionalFields.classList.remove('hidden');
-                            conditionalFields.style.display = 'grid';
-                        }
-                        if (classInput) classInput.required = true;
-                        if (emailInput) emailInput.required = true;
-                    } else {
-                        if (conditionalFields) {
-                            conditionalFields.classList.add('hidden');
-                            conditionalFields.style.display = 'none';
-                        }
-                        if (classInput) { classInput.required = false; classInput.value = ''; }
-                        if (emailInput) { emailInput.required = false; emailInput.value = ''; }
-                    }
-                });
-            });
-        }
-    });
-};
-</script>
 
 </body>
 </html>
