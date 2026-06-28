@@ -199,6 +199,94 @@
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
             border-color: #D4AF37;
         }
+                /* ===== OPPORTUNITIES DYNAMIQUES ===== */
+        @keyframes oppPulse {
+            0%, 100% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
+            50% { transform: scale(1.15); opacity: 0.85; box-shadow: 0 0 0 8px rgba(245, 158, 11, 0); }
+        }
+        .opp-pulse { animation: oppPulse 1.8s ease-in-out infinite; }
+
+        @keyframes oppTitleIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .opp-title { animation: oppTitleIn 0.8s ease-out both; }
+        .opp-badge { animation: oppTitleIn 0.6s ease-out 0.1s both; }
+
+        /* Filtres */
+        .opp-filters { gap: 0.5rem; }
+        .opp-filter {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.55rem 1.1rem; border-radius: 9999px;
+            font-size: 0.8rem; font-weight: 600; cursor: pointer;
+            background: white; color: #475569; border: 1px solid #e2e8f0;
+            transition: all 0.25s ease; outline: none;
+        }
+        .opp-filter:hover { border-color: #D4AF37; color: #0f172a; transform: translateY(-1px); }
+        .opp-filter--active {
+            background: linear-gradient(135deg, #0A192F, #1e3a5f);
+            color: #fff; border-color: transparent;
+            box-shadow: 0 4px 12px rgba(10, 25, 47, 0.25);
+        }
+
+        /* Cartes dynamiques */
+        .opp-card-dyn {
+            position: relative; overflow: hidden;
+            background: white; padding: 2rem 1.75rem; border-radius: 1.25rem;
+            border: 1px solid #e2e8f0; cursor: pointer; text-align: left;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+            opacity: 0; transform: translateY(30px);
+        }
+        .opp-card-dyn.in { opacity: 1; transform: translateY(0); }
+        .opp-card-dyn:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px -10px rgba(10, 25, 47, 0.18);
+            border-color: transparent;
+        }
+        .opp-card-dyn__glow {
+            position: absolute; top: -50%; right: -30%;
+            width: 70%; height: 200%; border-radius: 50%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.12), transparent 60%);
+            opacity: 0; transition: opacity 0.4s ease; pointer-events: none;
+        }
+        .opp-card-dyn:hover .opp-card-dyn__glow { opacity: 1; }
+        .opp-card-dyn__badge {
+            position: absolute; top: 1rem; right: 1rem;
+            font-size: 0.6rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.08em; padding: 0.25rem 0.7rem; border-radius: 9999px;
+            opacity: 0; transform: translateY(-4px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .opp-card-dyn:hover .opp-card-dyn__badge { opacity: 1; transform: translateY(0); }
+        .opp-badge-blue { background: #dbeafe; color: #1e40af; }
+        .opp-badge-rose { background: #fce7f3; color: #9d174d; }
+        .opp-badge-amber { background: #fef3c7; color: #92400e; }
+        .opp-badge-orange { background: #ffedd5; color: #9a3412; }
+        .opp-badge-green { background: #d1fae5; color: #065f46; }
+        .opp-badge-purple { background: #ede9fe; color: #5b21b6; }
+        .opp-badge-teal { background: #ccfbf1; color: #115e59; }
+
+        .opp-icon-bounce {
+            display: inline-block;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .opp-card-dyn:hover .opp-icon-bounce { transform: scale(1.25) rotate(-8deg); }
+
+        .opp-card-dyn__cta {
+            margin-top: 1rem; font-size: 0.8rem; font-weight: 600;
+            color: #0A192F; opacity: 0; transform: translateX(-8px);
+            transition: opacity 0.3s ease 0.05s, transform 0.3s ease 0.05s;
+        }
+        .opp-card-dyn:hover .opp-card-dyn__cta { opacity: 1; transform: translateX(0); }
+
+        /* États filtrés */
+        .opp-card-dyn.filtered-out {
+            opacity: 0.25; transform: scale(0.95); pointer-events: none; filter: grayscale(0.6);
+        }
+        @media (max-width: 767px) {
+            .opp-card-dyn { padding: 1.5rem; }
+        }
 
         /* ===== Mystery Cards : Pile -> Eparpillement -> Grille ===== */
         .mystery-hint { text-align: center; margin-bottom: 1.5rem; font-size: 0.95rem; color: #475569; min-height: 2.5rem; }
