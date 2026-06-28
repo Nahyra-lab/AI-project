@@ -215,7 +215,47 @@ function closeOpportunity() {
     document.getElementById('opps-detail-view').classList.add('hidden');
     document.getElementById('opps-list-view').classList.remove('hidden');
 }
+// ==========================================
+//  4bis. FILTRES + ANIMATION DES CARTES OPPORTUNITIES
+// ==========================================
+function filterOpps(cat) {
+    const cards = document.querySelectorAll('.opp-card-dyn');
+    const filters = document.querySelectorAll('.opp-filter');
 
+    filters.forEach(f => f.classList.remove('opp-filter--active'));
+    const active = document.querySelector('.opp-filter[data-cat="' + cat + '"]');
+    if (active) active.classList.add('opp-filter--active');
+
+    cards.forEach(card => {
+        const cardCat = card.dataset.cat;
+        if (cat === 'all' || cardCat === cat) {
+            card.classList.remove('filtered-out');
+        } else {
+            card.classList.add('filtered-out');
+        }
+    });
+}
+
+function initOppsAnimations() {
+    const cards = document.querySelectorAll('.opp-card-dyn');
+    if (!cards.length) return;
+
+    if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    const card = entry.target;
+                    const index = Array.from(cards).indexOf(card);
+                    setTimeout(() => card.classList.add('in'), index * 80);
+                    io.unobserve(card);
+                }
+            });
+        }, { threshold: 0.15 });
+        cards.forEach(c => io.observe(c));
+    } else {
+        cards.forEach(c => c.classList.add('in'));
+    }
+}
 // ==========================================
 //  2. DONNÉES DU MAGAZINE
 // ==========================================
@@ -312,6 +352,9 @@ function showSection(sectionId) {
 
     if (sectionId === 'stories') {
         setTimeout(triggerStoryAnimations, 100);
+    }
+        if (sectionId === 'opportunities') {
+        setTimeout(initOppsAnimations, 150);
     }
 }
 
