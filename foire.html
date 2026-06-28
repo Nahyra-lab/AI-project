@@ -186,9 +186,10 @@
         }
 
         /* Gestion de la superposition */
-        #p1 { z-index: 4; }
-        #p2 { z-index: 3; }
-        #p5 { z-index: 2; }
+        #p1 { z-index: 5; }
+        #p2 { z-index: 4; }
+        #p5 { z-index: 3; }
+        #p4 { z-index: 2; }
         #p3 { z-index: 1; }
 
         /* --- FACES AVANT ET ARRIÈRE --- */
@@ -408,6 +409,29 @@
                 </div>
             </div>
 
+            <div class="page-block" id="p4">
+                <div class="front">
+                    <h2 class="page-title">🧪 Science Expo</h2>
+                    <p class="page-text">Découvertes scientifiques, imprimante 3D et esprit d'équipe : nos jeunes scientifiques repoussent les limites de l'innovation avec passion et créativité.</p>
+                    <div class="page-grid">
+                        <img src="images/science-team.jpg" class="book-photo" onclick="zoomImage(this.src)">
+                        <img src="images/science-team.jpg" class="book-photo" onclick="zoomImage(this.src)">
+                        <img src="images/science-team.jpg" class="book-photo" onclick="zoomImage(this.src)">
+                        <img src="images/science-team.jpg" class="book-photo" onclick="zoomImage(this.src)">
+                    </div>
+                </div>
+                <div class="back">
+                    <h2 class="page-title">🌱 Projet Écologie</h2>
+                    <p class="page-text">Maquettes architecturales, recyclage et développement durable : nos élèves s'engagent pour un avenir plus vert à travers des projets concrets et innovants.</p>
+                    <div class="page-grid">
+                        <img src="images/science-eco.jpg" class="book-photo" onclick="zoomImage(this.src)">
+                        <img src="images/science-eco.jpg" class="book-photo" onclick="zoomImage(this.src)">
+                        <img src="images/science-eco.jpg" class="book-photo" onclick="zoomImage(this.src)">
+                        <img src="images/science-eco.jpg" class="book-photo" onclick="zoomImage(this.src)">
+                    </div>
+                </div>
+            </div>
+
             <div class="page-block" id="p3">
                 <div class="front">
                     <h2 class="page-title">🎥 Impression 3D</h2>
@@ -441,10 +465,11 @@
         const p1 = document.getElementById("p1");
         const p2 = document.getElementById("p2");
         const p5 = document.getElementById("p5");
+        const p4 = document.getElementById("p4");
         const p3 = document.getElementById("p3");
 
         let currentState = 1;
-        const maxState = 5; // 5 états au total désormais
+        const maxState = 6;
 
         function openBook() {
             book.classList.remove("closed-end");
@@ -455,7 +480,6 @@
             if(isAtStart) {
                 book.classList.remove("opened", "closed-end");
             } else {
-                // Se referme à la fin en se décalant correctement
                 book.classList.remove("opened");
                 book.classList.add("closed-end");
             }
@@ -477,12 +501,16 @@
                     case 3:
                         p5.classList.add("flipped");
                         p5.style.zIndex = 3;
-                        nextBtn.textContent = "Fermer le livre";
                         break;
                     case 4:
+                        p4.classList.add("flipped");
+                        p4.style.zIndex = 4;
+                        nextBtn.textContent = "Fermer le livre";
+                        break;
+                    case 5:
                         p3.classList.add("flipped");
-                        p3.style.zIndex = 4;
-                        closeBook(false); // On ferme le livre à la fin !
+                        p3.style.zIndex = 5;
+                        closeBook(false);
                         nextBtn.textContent = "Fin du Livre";
                         nextBtn.disabled = true;
                         break;
@@ -498,21 +526,26 @@
                     case 2:
                         closeBook(true);
                         p1.classList.remove("flipped");
-                        p1.style.zIndex = 4;
+                        p1.style.zIndex = 5;
                         nextBtn.textContent = "Ouvrir le livre";
                         prevBtn.disabled = true;
                         break;
                     case 3:
                         p2.classList.remove("flipped");
-                        p2.style.zIndex = 3;
+                        p2.style.zIndex = 4;
                         break;
                     case 4:
                         p5.classList.remove("flipped");
-                        p5.style.zIndex = 2;
+                        p5.style.zIndex = 3;
                         nextBtn.textContent = "Page Suivante";
                         break;
                     case 5:
-                        openBook(); // Ré-ouvrir le livre en revenant en arrière
+                        p4.classList.remove("flipped");
+                        p4.style.zIndex = 2;
+                        nextBtn.textContent = "Page Suivante";
+                        break;
+                    case 6:
+                        openBook();
                         p3.classList.remove("flipped");
                         p3.style.zIndex = 1;
                         nextBtn.textContent = "Fermer le livre";
